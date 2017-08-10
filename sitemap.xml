@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mzz.pub/404.html</loc>
+    
+    <lastmod>2017-08-10T11:43:11.278Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mzz.pub/2017/08/10/SG%E5%8D%9A%E5%BC%88%E7%9A%84%E7%89%B9%E7%82%B9%20-%20%E4%B8%A2%E5%8F%B2%E8%92%82%E8%8A%AC%E5%A6%AE%E5%9B%9E%E9%A1%BE/</loc>
     
     <lastmod>2017-08-10T11:23:54.689Z</lastmod>
@@ -103,13 +110,6 @@
     <loc>http://mzz.pub/about/index.html</loc>
     
     <lastmod>2017-08-10T09:22:25.116Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/404.html</loc>
-    
-    <lastmod>2017-08-10T09:22:25.112Z</lastmod>
     
   </url>
   
