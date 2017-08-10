@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mzz.pub/ice3/index.html</loc>
+    
+    <lastmod>2017-08-10T13:20:29.145Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/ice4/index.html</loc>
+    
+    <lastmod>2017-08-10T13:19:41.818Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/ice2/index.html</loc>
+    
+    <lastmod>2017-08-10T13:16:26.836Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/ice/index.html</loc>
+    
+    <lastmod>2017-08-10T13:16:20.618Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mzz.pub/2017/08/10/dp%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2017-08-10T11:49:25.718Z</lastmod>
@@ -79,13 +107,6 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/google902a41086ff81836.html</loc>
-    
-    <lastmod>2017-08-10T09:22:25.121Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://mzz.pub/neteasemusic.html</loc>
     
     <lastmod>2017-08-10T09:22:25.121Z</lastmod>
@@ -94,6 +115,13 @@
   
   <url>
     <loc>http://mzz.pub/search/index.html</loc>
+    
+    <lastmod>2017-08-10T09:22:25.121Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/google902a41086ff81836.html</loc>
     
     <lastmod>2017-08-10T09:22:25.121Z</lastmod>
     
