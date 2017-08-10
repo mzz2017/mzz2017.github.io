@@ -1,0 +1,570 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>SG博弈的特点 - 丢史蒂芬妮回顾 | mzz&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="莫之章">
+    
+
+    
+    <meta name="description" content="引言：回过头来又回顾一遍 SHU418 - 丢史蒂芬妮，教训中明白了SG博弈的特点。">
+<meta name="keywords" content="博弈,SG博弈,巴什博弈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SG博弈的特点 - 丢史蒂芬妮回顾">
+<meta property="og:url" content="http://mzz.pub/2017/08/10/SG博弈的特点 - 丢史蒂芬妮回顾/index.html">
+<meta property="og:site_name" content="mzz&#39;s blog">
+<meta property="og:description" content="引言：回过头来又回顾一遍 SHU418 - 丢史蒂芬妮，教训中明白了SG博弈的特点。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-10T10:38:03.016Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SG博弈的特点 - 丢史蒂芬妮回顾">
+<meta name="twitter:description" content="引言：回过头来又回顾一遍 SHU418 - 丢史蒂芬妮，教训中明白了SG博弈的特点。">
+
+    
+    
+    <link rel="icon" href="/img/f.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+	
+	
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
+</head>
+
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="mzz&#39;s blog">mzz&#39;s blog</a></h1>
+				<h2 class="blog-motto">　　　　　虽千万人，  吾往矣</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" class="st-default-search-input" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/08/10/SG博弈的特点 - 丢史蒂芬妮回顾/" title="SG博弈的特点 - 丢史蒂芬妮回顾" itemprop="url">SG博弈的特点 - 丢史蒂芬妮回顾</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
+		
+  <p class="article-time">
+    <time datetime="2017-08-10T06:43:38.000Z" itemprop="datePublished"> 发表于 2017-08-10</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1巴什博弈"><span class="toc-number">1.</span> <span class="toc-text"> 方法1：巴什博弈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2sg博弈"><span class="toc-number">2.</span> <span class="toc-text"> 方法2：SG博弈</span></a></li></ol>
+		
+		</div>
+		
+		<p>引言：回过头来又回顾一遍 <strong><a href="http://acmoj.shu.edu.cn/problem/418/" target="_blank" rel="external">SHU418 - 丢史蒂芬妮</a></strong>，教训中明白了SG博弈的特点。</p>
+<hr>
+<a id="more"></a>
+<p>无论什么博弈，我们不要想本步以外的事情，比如说我只考虑我这一步能不能必胜能不能必败。</p>
+<h2 id="方法1巴什博弈"><a class="markdownIt-Anchor" href="#方法1巴什博弈"></a> 方法1：巴什博弈</h2>
+<ul>
+<li>可一步取到必输点（0，0）的点：</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtable><mtr><mtd><mrow><mn>0</mn></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd></mtr><mtr><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd></mtr><mtr><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex"> \begin{matrix}
+0&amp;&amp;2&amp;3&amp;&amp;5&amp;&amp;7\\
+\\
+2&amp;&amp;2\\
+3&amp;&amp;&amp;3\\
+\\
+5&amp;&amp;&amp;&amp;&amp;5\\
+\\
+7&amp;&amp;&amp;&amp;&amp;&amp;&amp;7\\
+\end{matrix} </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:5.6499999999999995em;"></span><span class="strut bottom" style="height:10.8em;vertical-align:-5.15em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">0</span></span></span><span style="top:-3.609999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:-2.409999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-1.2099999999999989em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-0.009999999999998621em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:1.1900000000000015em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:2.390000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:3.590000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:4.79em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:-2.4099999999999993em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:-1.2099999999999993em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:1.1900000000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:3.5900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-2.4099999999999993em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-1.2099999999999993em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:1.1900000000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:3.5900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-1.2099999999999989em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:1.1900000000000015em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:3.590000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:1.1900000000000015em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:3.5900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:1.1900000000000015em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:3.5900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span style="top:3.5899999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:3.5899999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>
+<p>将丢史蒂芬妮这个游戏抽象为2个石子堆，每次你可以从A堆拿走素数个石子，或者从B堆中拿走素数个石子，或者从A堆和B堆同时拿走素数个石子。很显然，（0，0）这个坐标点代表没有石子，先手无法取任何石子，肯定是必输点。</p>
+</li>
+<li>
+<p>根据巴什博弈， <strong>任何能一步走到必输点的点为必胜点</strong> ，那么能把石子取到（0，0）的，上图初步罗列了一下7以内的。以（7，7）为例，它可以取到必输点（0，0），必胜点（7，0）、（0，7）或其他什么什么点，我其实不用管，只知道它可以取到必输点（0，0）就行了，（7，7）就是必胜点。</p>
+</li>
+<li>
+<p>我们将能一步取到（0，0）这个必输点的点全部罗列出来后，考虑取不到必输点的点是必输点，（0，1）也是必输点（实际上每次罗列完毕后的最小未罗列点必为必输点），我们同样的，罗列出所有能一步取到（0，1）点的点，标为必胜点。相似的（1，0），（1，1）也如法炮制即可。</p>
+</li>
+<li>
+<p>最终未罗列的点为必输点，已罗列的点为必胜点。游戏开始的时候看先手站在哪个点上即可。</p>
+</li>
+<li>
+<p>AC代码：</p>
+</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctype.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdbool.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> max(x,y)((x)&gt;(y)?(x):(y))</span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">int</span> prime[<span class="number">510</span>];</div><div class="line"><span class="keyword">int</span> maze[<span class="number">510</span>][<span class="number">510</span>];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</div><div class="line">    <span class="built_in">memset</span>(prime,<span class="number">0</span>,<span class="keyword">sizeof</span> prime);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="number">500</span>;i++)</div><div class="line">        <span class="keyword">if</span>(!prime[i])</div><div class="line">        &#123;</div><div class="line">            prime[cnt++]=i;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+i;j&lt;=<span class="number">500</span>;j+=i)</div><div class="line">                prime[j]=<span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">500</span>;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=<span class="number">500</span>;j++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(!maze[i][j])</div><div class="line">            &#123;</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;cnt;k++)</div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">if</span>(i+prime[k]&lt;=<span class="number">500</span>)maze[i+prime[k]][j]=<span class="number">1</span>;</div><div class="line">                    <span class="keyword">if</span>(j+prime[k]&lt;=<span class="number">500</span>)maze[i][j+prime[k]]=<span class="number">1</span>;</div><div class="line">                    <span class="keyword">if</span>(i+prime[k]&lt;=<span class="number">500</span> &amp;&amp; j+prime[k]&lt;=<span class="number">500</span>)maze[i+prime[k]][j+prime[k]]=<span class="number">1</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> T;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</div><div class="line">    init();</div><div class="line">    <span class="keyword">while</span>(T--)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> n,m;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>,&amp;n,&amp;m);</div><div class="line">        maze[n<span class="number">-1</span>][m<span class="number">-1</span>]?<span class="built_in">puts</span>(<span class="string">"Sora"</span>):<span class="built_in">puts</span>(<span class="string">"Shiro"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="方法2sg博弈"><a class="markdownIt-Anchor" href="#方法2sg博弈"></a> <s>方法2：SG博弈</s></h2>
+<ul>
+<li>这道题我用SG博弈搞了很久发现这确实不是SG博弈，下面是我对SG博弈的理解：</li>
+<li>SG博弈的条件：
+<ol>
+<li>SG博弈是基于<strong>巴什博弈</strong>的，如n堆石子取任意个的问题。</li>
+<li>SG博弈是基于<strong>多个巴什博弈</strong>的，它需要将子游戏（基于巴什博弈的SG博弈或巴什博弈）异或，本题不能强行找到多个巴什博弈。</li>
+</ol>
+</li>
+<li>那什么叫做多个巴什博弈？
+<ul>
+<li>多个巴什博弈满足互不干扰，一个巴什博弈与任意其他巴什博弈的状态不交叉或传递。如POJ2311 - Cutting Game中我将A纸进行切割不影响B纸的大小。在本题，如果我将“向右走”、“向下走”、“向右下走”分别看做三个巴什博弈的话，“向右下走”将会影响另外两个博弈的状态，和另外两个博弈交叉传递了，因此本题不适用SG博弈。</li>
+</ul>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/博弈/">博弈</a><a href="/tags/SG博弈/">SG博弈</a><a href="/tags/巴什博弈/">巴什博弈</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://mzz.pub/2017/08/10/SG博弈的特点 - 丢史蒂芬妮回顾/" data-title="SG博弈的特点 - 丢史蒂芬妮回顾 | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2017/08/10/dp总结/"  title="DP一系列基础问题">
+ <strong>下一篇：</strong><br/> 
+ <span>DP一系列基础问题
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+
+<div id="hypercomments_widget"></div>
+<script type="text/javascript">
+_hcwp = window._hcwp || [];
+_hcwp.push({widget:"Stream", widget_id: 94148});
+(function() {
+if("HC_LOAD_INIT" in window)return;
+HC_LOAD_INIT = true;
+var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/94148/"+lang+"/widget.js";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hcc, s.nextSibling);
+})();
+</script>
+<a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+
+
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1巴什博弈"><span class="toc-number">1.</span> <span class="toc-text"> 方法1：巴什博弈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2sg博弈"><span class="toc-number">2.</span> <span class="toc-text"> 方法2：SG博弈</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/2017暑期集训/" title="2017暑期集训">2017暑期集训<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>6</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/dp/" style="font-size: 10px;">dp</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 15px;">图论</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 10px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://alphalrx.cn/" target="_blank" title="lrx">lrx</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://psyduck.wang/" target="_blank" title="psyduck">psyduck</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://cubercsl.cn/" target="_blank" title="CSL">CSL</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://ybmj.github.io/" target="_blank" title="ybmj">ybmj</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://0ggmr0.cn/" target="_blank" title="GMR">GMR</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+<iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am with little well content, And a little from thee sent <br/>
+			Is enough, with true intent. To be steadfast friend.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/mzz2017" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:m@mzz.pub" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo" style="color: #fff;">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman" style="color: #fff;">Jacman</a> © 2017 
+		
+		<a href="/about" target="_blank" title="莫之章" style="color: #fff">莫之章</a>
+		
+		
+		</p>
+		
+		<script type="text/javascript">
+		  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+		  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+		  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+		  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+		  
+		  _st('install','KARTphmFVqNf53QQL7QN','2.0.0');
+		</script>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div style="text-align:center; color:#fff;" class="theme-info">
+  博客全站共17.1k字 | 总访客数:<span id="busuanzi_value_site_uv">
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(15,260-$(this).scrollTop()));
+	o.css("right",30);
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+	  if(config.close_aside)c.click();
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(50,295-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1263193610'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263193610%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+<!-- BAIDU_PUSH Begin -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- BAIDU_PUSH End -->
+
+<!-- MathJax Begin -->
+<!-- partial('mathjax') -->
+<!-- MathJax End -->
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css">
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>
