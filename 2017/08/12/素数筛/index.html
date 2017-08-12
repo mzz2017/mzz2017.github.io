@@ -4,25 +4,25 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>快速排序算法 | mzz&#39;s blog</title>
+    <title>素数筛 | mzz&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="莫之章">
     
 
     
-    <meta name="description" content="引言：本文介绍快排的思想、代码实现及最基础的优化">
-<meta name="keywords" content="排序">
+    <meta name="description" content="引言：总是会忘记素数筛的写法，在这里写一下加强记忆。">
+<meta name="keywords" content="数论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速排序算法">
-<meta property="og:url" content="http://mzz.pub/2017/07/31/快排/index.html">
+<meta property="og:title" content="素数筛">
+<meta property="og:url" content="http://mzz.pub/2017/08/12/素数筛/index.html">
 <meta property="og:site_name" content="mzz&#39;s blog">
-<meta property="og:description" content="引言：本文介绍快排的思想、代码实现及最基础的优化">
+<meta property="og:description" content="引言：总是会忘记素数筛的写法，在这里写一下加强记忆。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-10T09:38:42.378Z">
+<meta property="og:updated_time" content="2017-08-12T10:47:57.571Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快速排序算法">
-<meta name="twitter:description" content="引言：本文介绍快排的思想、代码实现及最基础的优化">
+<meta name="twitter:title" content="素数筛">
+<meta name="twitter:description" content="引言：总是会忘记素数筛的写法，在这里写一下加强记忆。">
 
     
     
@@ -50,7 +50,7 @@
         border-top-color: #1E92FB;    /*上边框颜色*/
         border-left-color: #1E92FB;    /*左边框颜色*/
     }
-</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</style><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
 </head>
 
 
@@ -95,14 +95,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/07/31/快排/" title="快速排序算法" itemprop="url">快速排序算法</a>
+      <a href="/2017/08/12/素数筛/" title="素数筛" itemprop="url">素数筛</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
   <p class="article-time">
-    <time datetime="2017-07-30T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-07-31</time>
+    <time datetime="2017-08-12T09:40:32.000Z" itemprop="datePublished"> 发表于 2017-08-12</time>
     
   </p>
 </header>
@@ -111,82 +111,24 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简言"><span class="toc-number">1.</span> <span class="toc-text"> 简言：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度"><span class="toc-number">1.1.</span> <span class="toc-text"> 复杂度：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思想"><span class="toc-number">1.2.</span> <span class="toc-text"> 思想：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理实现"><span class="toc-number">2.</span> <span class="toc-text"> 原理实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现"><span class="toc-number">2.1.</span> <span class="toc-text"> 基本实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化实现"><span class="toc-number">2.2.</span> <span class="toc-text"> 优化实现:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text"> 代码实现：</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#埃拉托斯特尼筛法"><span class="toc-number">1.</span> <span class="toc-text"> 埃拉托斯特尼筛法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#欧拉筛法"><span class="toc-number">2.</span> <span class="toc-text"> 欧拉筛法</span></a></li></ol>
 		
 		</div>
 		
-		<p>引言：本文介绍快排的思想、代码实现及最基础的优化</p>
+		<p>引言：总是会忘记素数筛的写法，在这里写一下加强记忆。</p>
 <hr>
 <a id="more"></a>
-<h2 id="简言"><a class="markdownIt-Anchor" href="#简言"></a> 简言：</h2>
-<h3 id="复杂度"><a class="markdownIt-Anchor" href="#复杂度"></a> 复杂度：</h3>
+<p>这个素数筛的时间复杂度是接近<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>的，叫做<code>埃拉托斯特尼筛法</code>，怎么样，是不是被这个牛逼名字震撼到了？实际上它的复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlog(log(n)))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>，嗯复杂度也很牛逼。但还有更牛逼的筛法叫欧拉筛，复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，巧了，我不会。传送门：<a href="http://wiki.gyh.me/Math/%E7%BA%BF%E6%80%A7%E7%AD%9B%E4%B8%8E%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0/" target="_blank" rel="external"><strong>线性筛和积性函数</strong></a></p>
+<h2 id="埃拉托斯特尼筛法"><a class="markdownIt-Anchor" href="#埃拉托斯特尼筛法"></a> 埃拉托斯特尼筛法</h2>
 <ul>
-<li>快排最坏情况复杂度O(n²)，平均复杂度O(nlogn)，是一种不稳定算法。</li>
+<li>这个埃氏筛，就是将2~n中，从小到大挑一个数，比方说2吧，把2放进素数数组里，把2及2的倍数都标记为已访问，表示它们除了2都是非素数，这些数我已经确认身份了。然后挑个3，把3放进素数数组里，把3及3的倍数都标记为已访问。然后是4，4已访问跳过，再看5，5未访问，把5放进素数数组里，将5和5的倍数标记为已访问。一直到n。</li>
+<li>下面这个代码将vis数组和prime数组合并了，条件是：筛到某素数时，一定有素数值大于已得到的素数个数。</li>
 </ul>
-<h3 id="思想"><a class="markdownIt-Anchor" href="#思想"></a> 思想：</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">int</span> prime[<span class="number">1000</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;<span class="number">1000</span>;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(!prime[i])<span class="comment">//充当vis数组</span></div><div class="line">        &#123;</div><div class="line">            prime[cnt++]=i;<span class="comment">//这里是prime数组</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+i;j&lt;<span class="number">1000</span>;j+=i)</div><div class="line">                prime[j]=<span class="number">1</span>;<span class="comment">//充当vis数组</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,prime[i]);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="欧拉筛法"><a class="markdownIt-Anchor" href="#欧拉筛法"></a> 欧拉筛法</h2>
 <ul>
-<li>快排的思想是：设定序列中一个数（尽量重心）为k，将比k大的数与比k小的数分别放于k的两侧，此时k即归位。<br>
-<em>注：归位是指该元素已在应在的位置，即该元素已排好序</em></li>
+<li>不会做</li>
 </ul>
-<hr>
-<h2 id="原理实现"><a class="markdownIt-Anchor" href="#原理实现"></a> 原理实现：</h2>
-<h3 id="基本实现"><a class="markdownIt-Anchor" href="#基本实现"></a> 基本实现：</h3>
-<p>根据《啊哈算法》我们很快就能明白快排是怎么实现的：</p>
-<ol>
-<li>若将一个序列从小到大排序。那么从右往左找比k（通常取a[left]）小的（下标记为j），左向右找比k大的（下标记为i），找到就交换a[i]与a[j]。这样保证了让比k小的到左边去，比k大的到右边去。然后进行下一次寻找，再交换。直到i和j碰面（i==j），结束寻找。</li>
-<li>因此推到最后碰面之后，应该让k与a[i]交换，因为此时a[i]比k小（记住我们取a[left]为k），秉承小的放左边的原则，k与a[i]交换。</li>
-<li>为了让一轮最后k成功与a[i]交换，i这个下标在一轮结束前的最后一次交换后就不应该改变。那么我每次应该让j去碰i，即先从右往左找比k大的，这样ij碰在一起i就无法再移动了），交换k和a[i]（或k和a[j]是一样的，因为i==j）。这样每次一轮就可以将一个k归位。</li>
-<li><strong>注意：根据上述推理，先从右往左找还是从左往右找，取决于我取的k位于左边还是右边。</strong></li>
-</ol>
-<p>但难点在于如何进行优化。上述代码慢就慢在交换i和j需要3次赋值。</p>
-<h3 id="优化实现"><a class="markdownIt-Anchor" href="#优化实现"></a> 优化实现:</h3>
-<ol>
-<li>依旧假设从小到大排序。我们从右往左找，找到一个比k小的，我们的目的就是将这个值移到左边去。</li>
-<li>我们的思想是“空缺可填”思想，记住这个思想你将很快理解我在说什么。</li>
-<li>一开始a[left]即a[i]的值已经被装到k里面去了，那么i这个位置就是可填的。一开始，我们从右往左找，找到第一个比k大的，称作a[j]，我们把这个数a[j]赋值给a[i]，这样j的位置空出来了，j是可填的。然后我们从左往右找，找到第一个比k小的a[i]，将a[i]填到j去，现在是i可填了。</li>
-<li>现在想一下是不是一次交换后总是i可填，并且此时a[j]==a[i]？</li>
-<li>那么可以预见一轮下来，a[j]放的肯定是比k大的值，而i的位置空了出来，还没来及去填比k小的，那正好填k。</li>
-<li>接着考虑，如果让i先走，去碰j，那么一轮最后我保留的是j的坐标，同理让j先走保留的是i的坐标，因此j先走，和我们一开始的预设一致。</li>
-<li>如此反复几轮，便完成了排序。</li>
-</ol>
-<hr>
-<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现：</h2>
-<p>优化后代码：<br>
-#define _CRT_SECURE_NO_WARNINGS<br>
-#include&lt;stdio.h&gt;<br>
-#include&lt;stdlib.h&gt;<br>
-#include&lt;ctype.h&gt;<br>
-#include&lt;string.h&gt;<br>
-#include&lt;math.h&gt;<br>
-#include&lt;stdbool.h&gt;<br>
-int a[10] = { 6,1,2,7,9,3,4,5,10,8 };<br>
-void quicksort(int left, int right)<br>
-//每一轮将满足条件的a[j]移到左边，将满足条件的a[i]移动右边，最终i==j时将a[i]归位为key<br>
-{<br>
-if (left &gt;= right)<br>
-return;<br>
-int key = a[left], t, i = left, j = right;</p>
-<pre><code>	while (i&lt;j)
-	{
-		while (a[j] &gt;= key &amp;&amp; j&gt;i)
-			j--;
-		a[i] = a[j];
-		while (a[i] &lt;= key &amp;&amp; j&gt;i)
-			i++;
-		a[j] = a[i];
-	}
-	a[i] = key;
-	quicksort(left, i - 1);，
-	quicksort(i + 1, right);
-}
-int main(void)
-{
-	quicksort(0, 9);
-	for (int i = 0; i&lt;10; i++)
-		printf(&quot;%d &quot;, a[i]);
-	return 0;
-}
-</code></pre>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -200,7 +142,7 @@ int main(void)
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/排序/">排序</a>
+  <span></span> <a href="/tags/数论/">数论</a>
   </div>
 
 </div>
@@ -209,7 +151,7 @@ int main(void)
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2017/07/31/快排/" data-title="快速排序算法 | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://mzz.pub/2017/08/12/素数筛/" data-title="素数筛 | mzz&#39;s blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -223,13 +165,21 @@ int main(void)
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/08/01/POJ1789/" title="POJ1789 - Truck History (最小生成树)">
+ <a href="/2017/08/12/2017 SHU 8.12 个人赛/" title="2017SHU8.12个人赛 已做题目总结">
   <strong>上一篇：</strong><br/>
   <span>
-  POJ1789 - Truck History (最小生成树)</span>
+  2017SHU8.12个人赛 已做题目总结</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2017/08/10/SG博弈的特点 - 丢史蒂芬妮回顾/"  title="SG博弈的特点 - 丢史蒂芬妮回顾">
+ <strong>下一篇：</strong><br/> 
+ <span>SG博弈的特点 - 丢史蒂芬妮回顾
+</span>
+</a>
+</div>
 
 </nav>
 
@@ -262,7 +212,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简言"><span class="toc-number">1.</span> <span class="toc-text"> 简言：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度"><span class="toc-number">1.1.</span> <span class="toc-text"> 复杂度：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思想"><span class="toc-number">1.2.</span> <span class="toc-text"> 思想：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理实现"><span class="toc-number">2.</span> <span class="toc-text"> 原理实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现"><span class="toc-number">2.1.</span> <span class="toc-text"> 基本实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化实现"><span class="toc-number">2.2.</span> <span class="toc-text"> 优化实现:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text"> 代码实现：</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#埃拉托斯特尼筛法"><span class="toc-number">1.</span> <span class="toc-text"> 埃拉托斯特尼筛法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#欧拉筛法"><span class="toc-number">2.</span> <span class="toc-text"> 欧拉筛法</span></a></li></ol>
  
   </div>
 
