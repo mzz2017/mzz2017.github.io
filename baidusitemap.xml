@@ -4,8 +4,50 @@
 
     
   <url>
+    <loc>http://mzz.pub/2017/08/15/%E5%BC%BA%E8%BF%9E%E9%80%9A/</loc>
+    <lastmod>2017-08-15T13:38:40.867Z</lastmod>
+    <data>
+        <display>
+        <title>强连通专题</title>
+        <pubTime>2017-08-15T12:18:00.000Z</pubTime>
+        
+        <tag>图论</tag>
+         
+        <tag>强连通</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://mzz.pub/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://mzz.pub/2017/07/31/%E5%BF%AB%E6%8E%92/</loc>
+    <lastmod>2017-08-14T15:08:59.746Z</lastmod>
+    <data>
+        <display>
+        <title>快速排序算法</title>
+        <pubTime>2017-07-30T16:00:00.000Z</pubTime>
+        
+        <tag>排序</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://mzz.pub/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://mzz.pub/2017/08/10/dp%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2017-08-14T03:22:46.969Z</lastmod>
+    <lastmod>2017-08-14T03:30:00.924Z</lastmod>
     <data>
         <display>
         <title>DP一系列基础问题</title>
@@ -237,26 +279,6 @@
         <pubTime>2017-07-31T16:00:00.000Z</pubTime>
         
         <tag>数论</tag>
-         
-         
-           
-             
-              <breadCrumb title="算法" url="http://mzz.pub/categories/%E7%AE%97%E6%B3%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://mzz.pub/2017/07/31/%E5%BF%AB%E6%8E%92/</loc>
-    <lastmod>2017-08-10T09:38:42.378Z</lastmod>
-    <data>
-        <display>
-        <title>快速排序算法</title>
-        <pubTime>2017-07-30T16:00:00.000Z</pubTime>
-        
-        <tag>排序</tag>
          
          
            

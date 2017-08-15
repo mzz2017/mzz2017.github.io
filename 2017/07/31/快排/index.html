@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：本文介绍快排的思想、代码实现及最基础的优化">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-10T09:38:42.378Z">
+<meta property="og:updated_time" content="2017-08-14T15:08:59.746Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="快速排序算法">
 <meta name="twitter:description" content="引言：本文介绍快排的思想、代码实现及最基础的优化">
@@ -151,43 +151,8 @@
 </ol>
 <hr>
 <h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现：</h2>
-<p>优化后代码：<br>
-#define _CRT_SECURE_NO_WARNINGS<br>
-#include&lt;stdio.h&gt;<br>
-#include&lt;stdlib.h&gt;<br>
-#include&lt;ctype.h&gt;<br>
-#include&lt;string.h&gt;<br>
-#include&lt;math.h&gt;<br>
-#include&lt;stdbool.h&gt;<br>
-int a[10] = { 6,1,2,7,9,3,4,5,10,8 };<br>
-void quicksort(int left, int right)<br>
-//每一轮将满足条件的a[j]移到左边，将满足条件的a[i]移动右边，最终i==j时将a[i]归位为key<br>
-{<br>
-if (left &gt;= right)<br>
-return;<br>
-int key = a[left], t, i = left, j = right;</p>
-<pre><code>	while (i&lt;j)
-	{
-		while (a[j] &gt;= key &amp;&amp; j&gt;i)
-			j--;
-		a[i] = a[j];
-		while (a[i] &lt;= key &amp;&amp; j&gt;i)
-			i++;
-		a[j] = a[i];
-	}
-	a[i] = key;
-	quicksort(left, i - 1);，
-	quicksort(i + 1, right);
-}
-int main(void)
-{
-	quicksort(0, 9);
-	for (int i = 0; i&lt;10; i++)
-		printf(&quot;%d &quot;, a[i]);
-	return 0;
-}
-</code></pre>
-  
+<p>优化后代码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctype.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdbool.h&gt;</span></span></div><div class="line"><span class="keyword">int</span> a[<span class="number">10</span>] = &#123; <span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">8</span> &#125;;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></div><div class="line"><span class="function"><span class="comment">//每一轮将满足条件的a[j]移到左边，将满足条件的a[i]移动右边，最终i==j时将a[i]归位为key</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">if</span> (left &gt;= right)</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">int</span> key = a[left], t, i = left, j = right;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (i&lt;j)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">while</span> (a[j] &gt;= key &amp;&amp; j&gt;i)</div><div class="line">            j--;</div><div class="line">        a[i] = a[j];</div><div class="line">        <span class="keyword">while</span> (a[i] &lt;= key &amp;&amp; j&gt;i)</div><div class="line">            i++;</div><div class="line">        a[j] = a[i];</div><div class="line">    &#125;</div><div class="line">    a[i] = key;</div><div class="line">    quicksort(left, i - <span class="number">1</span>);，</div><div class="line">    quicksort(i + <span class="number">1</span>, right);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    quicksort(<span class="number">0</span>, <span class="number">9</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">10</span>; i++)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -223,10 +188,10 @@ int main(void)
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2017/08/01/快速阶乘/" title="快速阶乘的几种算法">
+ <a href="/2017/08/01/POJ1789/" title="POJ1789 - Truck History (最小生成树)">
   <strong>上一篇：</strong><br/>
   <span>
-  快速阶乘的几种算法</span>
+  POJ1789 - Truck History (最小生成树)</span>
 </a>
 </div>
 
@@ -284,7 +249,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
-			<li><a href="/categories/算法/" title="算法">算法<sup>7</sup></a></li>
+			<li><a href="/categories/算法/" title="算法">算法<sup>8</sup></a></li>
 		  
 		
 		</ul>
@@ -295,7 +260,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 15px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a>
     </div>
   </div>
 
@@ -394,7 +359,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共20.9k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共23.8k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
