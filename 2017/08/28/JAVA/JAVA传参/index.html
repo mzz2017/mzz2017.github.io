@@ -4,25 +4,25 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>快速排序算法 | mzz&#39;s blog</title>
+    <title>JAVA传参 | JAVA可以传引用吗？ | mzz&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="莫之章">
     
 
     
-    <meta name="description" content="引言：本文介绍快排的思想、代码实现及最基础的优化">
-<meta name="keywords" content="排序">
+    <meta name="description" content="引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？">
+<meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="快速排序算法">
-<meta property="og:url" content="http://mzz.pub/2017/07/31/快排/index.html">
+<meta property="og:title" content="JAVA传参 | JAVA可以传引用吗？">
+<meta property="og:url" content="http://mzz.pub/2017/08/28/JAVA/JAVA传参/index.html">
 <meta property="og:site_name" content="mzz&#39;s blog">
-<meta property="og:description" content="引言：本文介绍快排的思想、代码实现及最基础的优化">
+<meta property="og:description" content="引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-14T15:09:00.000Z">
+<meta property="og:updated_time" content="2017-08-28T09:38:52.127Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快速排序算法">
-<meta name="twitter:description" content="引言：本文介绍快排的思想、代码实现及最基础的优化">
+<meta name="twitter:title" content="JAVA传参 | JAVA可以传引用吗？">
+<meta name="twitter:description" content="引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？">
 
     
     
@@ -95,14 +95,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/07/31/快排/" title="快速排序算法" itemprop="url">快速排序算法</a>
+      <a href="/2017/08/28/JAVA/JAVA传参/" title="JAVA传参 | JAVA可以传引用吗？" itemprop="url">JAVA传参 | JAVA可以传引用吗？</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
   <p class="article-time">
-    <time datetime="2017-07-30T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-07-31</time>
+    <time datetime="2017-08-28T09:35:00.000Z" itemprop="datePublished"> 发表于 2017-08-28</time>
     
   </p>
 </header>
@@ -111,61 +111,62 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简言"><span class="toc-number">1.</span> <span class="toc-text"> 简言：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度"><span class="toc-number">1.1.</span> <span class="toc-text"> 复杂度：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思想"><span class="toc-number">1.2.</span> <span class="toc-text"> 思想：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理实现"><span class="toc-number">2.</span> <span class="toc-text"> 原理实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现"><span class="toc-number">2.1.</span> <span class="toc-text"> 基本实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化实现"><span class="toc-number">2.2.</span> <span class="toc-text"> 优化实现:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text"> 代码实现：</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#将指针藏起来的java"><span class="toc-number">1.</span> <span class="toc-text"> 将指针藏起来的JAVA</span></a></li></ol>
 		
 		</div>
 		
-		<p>引言：本文介绍快排的思想、代码实现及最基础的优化</p>
+		<p>引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？</p>
 <hr>
 <a id="more"></a>
-<h2 id="简言"><a class="markdownIt-Anchor" href="#简言"></a> 简言：</h2>
-<h3 id="复杂度"><a class="markdownIt-Anchor" href="#复杂度"></a> 复杂度：</h3>
+<h2 id="将指针藏起来的java"><a class="markdownIt-Anchor" href="#将指针藏起来的java"></a> 将指针藏起来的JAVA</h2>
 <ul>
-<li>快排最坏情况复杂度O(n²)，平均复杂度O(nlogn)，是一种不稳定算法。</li>
-</ul>
-<h3 id="思想"><a class="markdownIt-Anchor" href="#思想"></a> 思想：</h3>
+<li>
+<p>JAVA是存在指针的，但它的用法被极大的限制了，以至于我们察觉不到它的存在。但我认为如果因此不去了解JAVA的指针，是无法学好JAVA的。</p>
+</li>
+<li>
+<p>代码转自知乎<a href="https://www.zhihu.com/question/31203609" target="_blank" rel="external">java到底是值传递还是引用传递？</a>Intopass的回答。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一个例子：基本类型</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">    value = <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line">foo(num); <span class="comment">// num 没有被改变</span></div><div class="line"></div><div class="line"><span class="comment">//第二个例子：没有提供改变自身方法的引用类型</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(String text)</span> </span>&#123;</div><div class="line">    text = <span class="string">"windows"</span>;</div><div class="line">&#125;</div><div class="line">foo(str); <span class="comment">// str 也没有被改变</span></div><div class="line"></div><div class="line"><span class="comment">//第三个例子：提供了改变自身方法的引用类型</span></div><div class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"iphone"</span>);</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(StringBuilder builder)</span> </span>&#123;</div><div class="line">    builder.append(<span class="string">"4"</span>);</div><div class="line">&#125;</div><div class="line">foo(sb); <span class="comment">// sb 被改变了，变成了"iphone4"。</span></div><div class="line"></div><div class="line"><span class="comment">//第四个例子：提供了改变自身方法的引用类型，但是不使用，而是使用赋值运算符。</span></div><div class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"iphone"</span>);</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(StringBuilder builder)</span> </span>&#123;</div><div class="line">    builder = <span class="keyword">new</span> StringBuilder(<span class="string">"ipad"</span>);</div><div class="line">&#125;</div><div class="line">foo(sb); <span class="comment">// sb 没有被改变，还是 "iphone"。</span></div></pre></td></tr></table></figure>
+<blockquote>
 <ul>
-<li>快排的思想是：设定序列中一个数（尽量重心）为k，将比k大的数与比k小的数分别放于k的两侧，此时k即归位。<br>
-<em>注：归位是指该元素已在应在的位置，即该元素已排好序</em></li>
+<li>如果已经入手一段时间JAVA，就会发现<code>Dog d;</code> 这样的声明只会产生一个Dog对象的指针，它没有任何空间，需要使用<code>d=new Dog();</code> 为其划分空间后才能使用。这是对于对象。</li>
+<li>如果我这样写<code>int a;</code> 那么a是可以立即被使用的，它已经被划分好了空间。因为它是基本类型变量。</li>
 </ul>
-<hr>
-<h2 id="原理实现"><a class="markdownIt-Anchor" href="#原理实现"></a> 原理实现：</h2>
-<h3 id="基本实现"><a class="markdownIt-Anchor" href="#基本实现"></a> 基本实现：</h3>
-<p>根据《啊哈算法》我们很快就能明白快排是怎么实现的：</p>
-<ol>
-<li>若将一个序列从小到大排序。那么从右往左找比k（通常取a[left]）小的（下标记为j），左向右找比k大的（下标记为i），找到就交换a[i]与a[j]。这样保证了让比k小的到左边去，比k大的到右边去。然后进行下一次寻找，再交换。直到i和j碰面（i==j），结束寻找。</li>
-<li>因此推到最后碰面之后，应该让k与a[i]交换，因为此时a[i]比k小（记住我们取a[left]为k），秉承小的放左边的原则，k与a[i]交换。</li>
-<li>为了让一轮最后k成功与a[i]交换，i这个下标在一轮结束前的最后一次交换后就不应该改变。那么我每次应该让j去碰i，即先从右往左找比k大的，这样ij碰在一起i就无法再移动了），交换k和a[i]（或k和a[j]是一样的，因为i==j）。这样每次一轮就可以将一个k归位。</li>
-<li><strong>注意：根据上述推理，先从右往左找还是从左往右找，取决于我取的k位于左边还是右边。</strong></li>
-</ol>
-<p>但难点在于如何进行优化。上述代码慢就慢在交换i和j需要3次赋值。</p>
-<h3 id="优化实现"><a class="markdownIt-Anchor" href="#优化实现"></a> 优化实现:</h3>
-<ol>
-<li>依旧假设从小到大排序。我们从右往左找，找到一个比k小的，我们的目的就是将这个值移到左边去。</li>
-<li>我们的思想是“空缺可填”思想，记住这个思想你将很快理解我在说什么。</li>
-<li>一开始a[left]即a[i]的值已经被装到k里面去了，那么i这个位置就是可填的。一开始，我们从右往左找，找到第一个比k大的，称作a[j]，我们把这个数a[j]赋值给a[i]，这样j的位置空出来了，j是可填的。然后我们从左往右找，找到第一个比k小的a[i]，将a[i]填到j去，现在是i可填了。</li>
-<li>现在想一下是不是一次交换后总是i可填，并且此时a[j]==a[i]？</li>
-<li>那么可以预见一轮下来，a[j]放的肯定是比k大的值，而i的位置空了出来，还没来及去填比k小的，那正好填k。</li>
-<li>接着考虑，如果让i先走，去碰j，那么一轮最后我保留的是j的坐标，同理让j先走保留的是i的坐标，因此j先走，和我们一开始的预设一致。</li>
-<li>如此反复几轮，便完成了排序。</li>
-</ol>
-<hr>
-<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现：</h2>
-<p>优化后代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctype.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdbool.h&gt;</span></span></div><div class="line"><span class="keyword">int</span> a[<span class="number">10</span>] = &#123; <span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">8</span> &#125;;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></div><div class="line"><span class="function"><span class="comment">//每一轮将满足条件的a[j]移到左边，将满足条件的a[i]移动右边，最终i==j时将a[i]归位为key</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">if</span> (left &gt;= right)</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">int</span> key = a[left], t, i = left, j = right;</div><div class="line"></div><div class="line">    <span class="keyword">while</span> (i&lt;j)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">while</span> (a[j] &gt;= key &amp;&amp; j&gt;i)</div><div class="line">            j--;</div><div class="line">        a[i] = a[j];</div><div class="line">        <span class="keyword">while</span> (a[i] &lt;= key &amp;&amp; j&gt;i)</div><div class="line">            i++;</div><div class="line">        a[j] = a[i];</div><div class="line">    &#125;</div><div class="line">    a[i] = key;</div><div class="line">    quicksort(left, i - <span class="number">1</span>);，</div><div class="line">    quicksort(i + <span class="number">1</span>, right);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    quicksort(<span class="number">0</span>, <span class="number">9</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">10</span>; i++)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>  
+</blockquote>
+<p>也就是说，当我传参传入的是int的话，其实是将int复制了一份，形参和实参仅仅值是一样的，而我传入的是String的话，是将String的指针复制了一份，形参和实参（都指的是指向对象的指针）指向的对象是一样的。</p>
+</li>
+<li>
+<p>提问：那是不是意味着传对象就相当于传引用了呢？</p>
+<p>没错。但你也要考虑清楚，如同上述代码第二个例子，<code>text=&quot;windows&quot;;</code>，你要理解这究竟是什么意思，它实际上是重载运算符，等价于<code>text=new String(&quot;windows&quot;);</code>，说到这里你应该明白了，这只是给text指针分配了一个新的地址空间而已，原空间的str没有任何改变。</p>
+</li>
+<li>
+<p>提问：如果我写<code>int[] iArray={1,3,5,7,9};</code> 将其传入函数，为什么可以修改？</p>
+<p>很好理解，你可以按照JAVA的理解，数组也是对象，因此可以成功将引用传入函数，而由于数组元素类型都是int，不存在重载赋值运算符为new之类的操作，因此是可以修改的。</p>
+<p>你也可以按照C语言的理解，传入的是数组首元素的地址，因此可以进行修改。</p>
+</li>
+<li>
+<p>提问：如果我想传int引用怎么办？</p>
+<p>实测Integer对象是无法达到传引用的目的的，因此我能想到的方法就是封装一个int类。因为目前水平有限，还不会重载运算符，因此我简单的进行了一个封装，看管明白一下意思就行了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(Intege a)</span></span>&#123;</div><div class="line">    a.setValue(<span class="number">123</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</div><div class="line">    Intege a=<span class="keyword">new</span> Intege();</div><div class="line">    test(a);</div><div class="line">    System.out.println(a.getValue());</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//……省略若干代码</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Intege</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> a;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.a=a;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.a;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样将Intege型的变量传入后，即可通过setValue方法对值进行修改。</p>
+</li>
+<li>
+<p>不管怎样，我觉得没有指针的日子很难过……</p>
+</li>
+</ul>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/算法/">算法</a>
+  <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/排序/">排序</a>
+  <span></span> <a href="/tags/JAVA/">JAVA</a>
   </div>
 
 </div>
@@ -174,7 +175,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2017/07/31/快排/" data-title="快速排序算法 | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://mzz.pub/2017/08/28/JAVA/JAVA传参/" data-title="JAVA传参 | JAVA可以传引用吗？ | mzz&#39;s blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -187,14 +188,14 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/08/01/POJ1789/" title="POJ1789 - Truck History (最小生成树)">
-  <strong>上一篇：</strong><br/>
-  <span>
-  POJ1789 - Truck History (最小生成树)</span>
+
+<div class="next">
+<a href="/2017/08/28/JAVA/JAVA数组篇/"  title="JAVA数组篇">
+ <strong>下一篇：</strong><br/> 
+ <span>JAVA数组篇
+</span>
 </a>
 </div>
-
 
 </nav>
 
@@ -227,7 +228,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简言"><span class="toc-number">1.</span> <span class="toc-text"> 简言：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度"><span class="toc-number">1.1.</span> <span class="toc-text"> 复杂度：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思想"><span class="toc-number">1.2.</span> <span class="toc-text"> 思想：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理实现"><span class="toc-number">2.</span> <span class="toc-text"> 原理实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现"><span class="toc-number">2.1.</span> <span class="toc-text"> 基本实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化实现"><span class="toc-number">2.2.</span> <span class="toc-text"> 优化实现:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text"> 代码实现：</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#将指针藏起来的java"><span class="toc-number">1.</span> <span class="toc-text"> 将指针藏起来的JAVA</span></a></li></ol>
  
   </div>
 
