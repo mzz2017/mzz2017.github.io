@@ -632,7 +632,7 @@ $(document).ready(function(){
   c.click(function(){
     a.addClass('fadeOut').css('display', 'none');
     o.css('display', 'block').addClass('fadeIn');
-	$('#toc.toc-aside').css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');
     m.addClass('moveMain');
   });
   o.click(function(){
@@ -642,14 +642,14 @@ $(document).ready(function(){
   });
   $(window).scroll(function(){
     o.css("top",Math.max(15,260-$(this).scrollTop()));
-	o.css("right",30);
+    o.css("right",30);
   });
   
   $(window).resize(function(){
     getSize(); 
     if (myWidth >= 1024) {
       $('header nav').removeClass('shownav');
-	  if(config.close_aside)c.click();
+      c.click();
     }else{
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
