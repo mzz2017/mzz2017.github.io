@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-28T09:38:52.127Z">
+<meta property="og:updated_time" content="2017-08-28T15:42:21.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA传参 | JAVA可以传引用吗？">
 <meta name="twitter:description" content="引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？">
@@ -132,7 +132,7 @@
 <li>如果我这样写<code>int a;</code> 那么a是可以立即被使用的，它已经被划分好了空间。因为它是基本类型变量。</li>
 </ul>
 </blockquote>
-<p>也就是说，当我传参传入的是int的话，其实是将int复制了一份，形参和实参仅仅值是一样的，而我传入的是String的话，是将String的指针复制了一份，形参和实参（都指的是指向对象的指针）指向的对象是一样的。</p>
+<p>也就是说，当我传参传入的是int的话，其实是将值复制了一份，形参和实参它们两个只有值是一样的，而我传入的是String的话，是将String的指针复制了一份，形参和实参（都指的是指向对象的指针）指向的对象是一样的。</p>
 </li>
 <li>
 <p>提问：那是不是意味着传对象就相当于传引用了呢？</p>
@@ -145,7 +145,7 @@
 </li>
 <li>
 <p>提问：如果我想传int引用怎么办？</p>
-<p>实测Integer对象是无法达到传引用的目的的，因此我能想到的方法就是封装一个int类。因为目前水平有限，还不会重载运算符，因此我简单的进行了一个封装，看管明白一下意思就行了：</p>
+<p>实测Integer对象是无法达到传引用的目的的，因此我能想到的方法就是封装一个int类。因为目前水平有限，还不会重载运算符，因此我简单的进行了一个封装，看官明白一下意思就行了：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(Intege a)</span></span>&#123;</div><div class="line">    a.setValue(<span class="number">123</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</div><div class="line">    Intege a=<span class="keyword">new</span> Intege();</div><div class="line">    test(a);</div><div class="line">    System.out.println(a.getValue());</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//……省略若干代码</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Intege</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> a;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.a=a;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.a;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>这样将Intege型的变量传入后，即可通过setValue方法对值进行修改。</p>
 </li>
@@ -188,6 +188,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2017/10/25/cpp继承与多态章节小结/" title="C++继承与多态章节小结">
+  <strong>上一篇：</strong><br/>
+  <span>
+  C++继承与多态章节小结</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2017/08/28/JAVA/JAVA数组篇/"  title="JAVA数组篇">
@@ -250,6 +258,10 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
+			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
 		  
 		
@@ -265,7 +277,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a>
     </div>
   </div>
 
@@ -364,7 +376,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共26.4k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共29.2k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
