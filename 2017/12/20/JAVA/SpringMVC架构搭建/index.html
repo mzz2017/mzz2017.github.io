@@ -25,7 +25,7 @@
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/77663015.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/58028691.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/24716346.jpg">
-<meta property="og:updated_time" content="2017-12-23T02:59:49.937Z">
+<meta property="og:updated_time" content="2017-12-23T04:41:20.016Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SpringMVC架构搭建">
 <meta name="twitter:description" content="引言：上周四朱文浩导师布置任务，让我用springmvc跑个helloworld，我心想那太好了，不就是个helloworld吗。然鹅做的时候我眉头一皱，发现事情并不简单……">
@@ -178,20 +178,43 @@
 <p>这个return的字符串是直接作为结果返回的，可以是一个页面的前缀（这样相当于response对应的网页），也可以是一个json、xml格式的字符串，也可以是一个简单的字符串</p>
 <h2 id="tomcat配置与run"><a class="markdownIt-Anchor" href="#tomcat配置与run"></a> tomcat配置与run</h2>
 <ol>
-<li>先点击<img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/66897543.jpg" alt=""></li>
-<li>随后：</li>
+<li>
+<p>下载tomcat: <a href="https://tomcat.apache.org/download-80.cgi" target="_blank" rel="external">Apache Tomcat</a> 并解压</p>
+</li>
+<li>
+<p>先点击Configure project structure</p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/66897543.jpg" alt=""></p>
+</li>
+<li>
+<p>随后：</p>
+</li>
 </ol>
 <p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/64656032.jpg" alt=""></p>
 <ol start="3">
-<li>然后一路确定。</li>
-<li>右上角，edit configurations</li>
-</ol>
+<li>
+<p>然后一路确定。</p>
+</li>
+<li>
+<p>右上角，edit configurations</p>
 <p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/77663015.jpg" alt=""></p>
-<ol start="5">
-<li>add a tomcat local server configuration<img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/58028691.jpg" alt=""></li>
-<li>配置deployment，添加一个war exploded artifact（我不知道这是啥），第3步是这个项目基于哪个子目录下的，如果写/HelloWeb，则根目录在localhost:8080/HelloWeb<img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/24716346.jpg" alt=""></li>
-<li>RUN吧。你可以访问localhost:8080/HelloWeb/hello看看效果。</li>
-<li>进阶教程看<strong>http://wiki.jikexueyuan.com/project/spring/environment-setup.html</strong></li>
+</li>
+<li>
+<p>add a tomcat local server configuration</p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/58028691.jpg" alt=""></p>
+</li>
+<li>
+<p>右边Application server选择我们第一步下载并解压的tomcat文件夹</p>
+</li>
+<li>
+<p>配置deployment，添加一个war exploded artifact（我不知道这是啥），第3步是这个项目基于哪个子目录下的，如果写/HelloWeb，则根目录在localhost:8080/HelloWeb</p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-20/24716346.jpg" alt=""></p>
+</li>
+<li>
+<p>RUN吧。你可以访问localhost:8080/HelloWeb/hello看看效果。</p>
+</li>
+<li>
+<p>进阶教程看<strong>http://wiki.jikexueyuan.com/project/spring/environment-setup.html</strong></p>
+</li>
 </ol>
   
 	</div>
