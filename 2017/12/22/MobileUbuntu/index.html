@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/63193847.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-23/37940158.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-23/84437549.jpg">
-<meta property="og:updated_time" content="2017-12-22T15:25:45.233Z">
+<meta property="og:updated_time" content="2017-12-22T16:16:07.727Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把Ubuntu16.04装进移动硬盘的惨痛实战">
 <meta name="twitter:description" content="引言：由于我的台式机性能比较好，所以一般在寝室都用台式机办公，但免不了出门用笔记本办公的时候，于是想到有一个移动硬盘，把ubuntu装进移动硬盘岂不美哉！完美移动办公了！">
@@ -140,12 +140,18 @@
 <h2 id="惨痛教训"><a class="markdownIt-Anchor" href="#惨痛教训"></a> 惨痛教训</h2>
 <p>在我奋战了三天共计4+5+12=21个小时后，我终于走出了一条正确的道路。现在想想，花费这么多时间有很大一部分原因是因为一开始自己不太重视这个问题，没有正面去解决这个问题。</p>
 <ul>
-<li>问题1：使用台式机在移动硬盘上装好ubuntu后，windows和ubuntu的引导被grub整合，拔掉移动硬盘台式机无法启动，且ubuntu无法在其他机器运行。</li>
-<li>解决：在安装过程中有一个“安装启动引导的设备”，应选择/dev/sda（准确说选择移动硬盘），这样grub引导程序将安装在移动硬盘，而不是windows下。如此可以解决拔掉移动硬盘台式机无法启动的问题。</li>
-<li>问题2：手动boot选择移动硬盘之后，进入grub命令行，却启动不了ubuntu，或根本进不了grub命令行怎么办？</li>
-<li>解决：windows下使用bootice手动添加uefi启动序列，然后修改grub.cfg文件（解决方法在文末单独列出）。</li>
-<li>问题3：我在台式机上把ubuntu装在了移动硬盘上，boot也没问题，选windows就windows，选移动硬盘就ubuntu，换了个电脑咋就不行了？</li>
-<li>解决：这正是我遇到的最恶心的问题。最终解决方案是手动安装GRUB4DOS建立引导。</li>
+<li>
+<p>问题1：使用台式机在移动硬盘上装好ubuntu后，windows和ubuntu的引导被grub整合，拔掉移动硬盘台式机无法启动，且ubuntu无法在其他机器运行。</p>
+<p>解决：在安装过程中有一个“安装启动引导的设备”，应选择/dev/sda（准确说选择移动硬盘），这样grub引导程序将安装在移动硬盘，而不是windows下。如此可以解决拔掉移动硬盘台式机无法启动的问题。</p>
+</li>
+<li>
+<p>问题2：手动boot选择移动硬盘之后，进入grub命令行，却启动不了ubuntu，或根本进不了grub命令行怎么办？</p>
+<p>解决：windows下使用bootice手动添加uefi启动序列，然后修改grub.cfg文件（解决方法在文末单独列出）。</p>
+</li>
+<li>
+<p>问题3：我在台式机上把ubuntu装在了移动硬盘上，boot也没问题，选windows就windows，选移动硬盘就ubuntu，换了个电脑咋就不行了？</p>
+<p>解决：这正是我遇到的最恶心的问题。最终解决方案是手动装GRUB4DOS建立引导。</p>
+</li>
 </ul>
 <h2 id="正式开始吧"><a class="markdownIt-Anchor" href="#正式开始吧"></a> 正式开始吧！</h2>
 <blockquote>
@@ -466,7 +472,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共32.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共32.8k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
