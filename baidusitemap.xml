@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>http://mzz.pub/2017/12/22/MobileUbuntu/</loc>
+    <lastmod>2017-12-24T16:23:52.147Z</lastmod>
+    <data>
+        <display>
+        <title>把Ubuntu16.04装进移动硬盘的惨痛实战</title>
+        <pubTime>2017-12-22T11:20:00.000Z</pubTime>
+        
+        <tag>ubuntu</tag>
+         
+         
+           
+             
+              <breadCrumb title="ubuntu" url="http://mzz.pub/categories/ubuntu/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://mzz.pub/2017/12/20/JAVA/SpringMVC%E6%9E%B6%E6%9E%84%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2017-12-23T04:41:20.016Z</lastmod>
+    <lastmod>2017-12-23T04:56:08.308Z</lastmod>
     <data>
         <display>
         <title>SpringMVC架构搭建</title>
@@ -19,26 +39,6 @@
            
              
               <breadCrumb title="JAVA" url="http://mzz.pub/categories/JAVA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://mzz.pub/2017/12/22/MobileUbuntu/</loc>
-    <lastmod>2017-12-22T16:16:07.727Z</lastmod>
-    <data>
-        <display>
-        <title>把Ubuntu16.04装进移动硬盘的惨痛实战</title>
-        <pubTime>2017-12-22T11:20:00.000Z</pubTime>
-        
-        <tag>ubuntu</tag>
-         
-         
-           
-             
-              <breadCrumb title="ubuntu" url="http://mzz.pub/categories/ubuntu/"/>
           
         </display>
     </data>

@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/63193847.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-23/37940158.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-23/84437549.jpg">
-<meta property="og:updated_time" content="2017-12-22T16:16:07.727Z">
+<meta property="og:updated_time" content="2017-12-24T16:23:52.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把Ubuntu16.04装进移动硬盘的惨痛实战">
 <meta name="twitter:description" content="引言：由于我的台式机性能比较好，所以一般在寝室都用台式机办公，但免不了出门用笔记本办公的时候，于是想到有一个移动硬盘，把ubuntu装进移动硬盘岂不美哉！完美移动办公了！">
@@ -130,7 +130,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#惨痛教训"><span class="toc-number">1.</span> <span class="toc-text"> 惨痛教训</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正式开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 正式开始吧！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#制作启动盘"><span class="toc-number">3.</span> <span class="toc-text"> 制作启动盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题2详细解决方法"><span class="toc-number">4.</span> <span class="toc-text"> 问题2详细解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重要参考文献"><span class="toc-number">5.</span> <span class="toc-text"> 重要参考文献</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#惨痛教训"><span class="toc-number">1.</span> <span class="toc-text"> 惨痛教训</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正式开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 正式开始吧！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#制作启动盘"><span class="toc-number">2.1.</span> <span class="toc-text"> 制作启动盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装ubuntu"><span class="toc-number">2.2.</span> <span class="toc-text"> 安装ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装grub4dos引导"><span class="toc-number">2.3.</span> <span class="toc-text"> 安装GRUB4DOS引导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题2详细解决方法"><span class="toc-number">3.</span> <span class="toc-text"> 问题2详细解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重要参考文献"><span class="toc-number">4.</span> <span class="toc-text"> 重要参考文献</span></a></li></ol>
 		
 		</div>
 		
@@ -166,9 +166,10 @@
 <li>U盘（作安装启动盘和LiveCD）</li>
 </ol>
 </blockquote>
-<h2 id="制作启动盘"><a class="markdownIt-Anchor" href="#制作启动盘"></a> 制作启动盘</h2>
+<h3 id="制作启动盘"><a class="markdownIt-Anchor" href="#制作启动盘"></a> 制作启动盘</h3>
 <p>运行Universal-USB-Installer，关键步骤如下图：</p>
 <p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/35626309.jpg" alt=""></p>
+<h3 id="安装ubuntu"><a class="markdownIt-Anchor" href="#安装ubuntu"></a> 安装ubuntu</h3>
 <p>完毕后重启，在boot menu中选择该U盘进入（如何进入boot menu视主板而定，可观察boot前的提示或询问淘宝客服该型号电脑进入boot menu的方法）。</p>
 <p>在接下来的界面选择第一项：Try Ubuntu without installing，不要选第二项Install Ubuntu。</p>
 <p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/17956849.jpg" alt=""></p>
@@ -203,20 +204,15 @@
 <p>在选择地区的时候，可以选择台北，网速要快一点，而且时区也是正确的。</p>
 </li>
 <li>
-<p>安装完毕后提示是否重启，不要点击重启，用ubuntu自带的文件管理器打开移动硬盘安装盘的根目录（&quot;/“挂载盘），用gedit打开”/etc/fstab&quot;，把挂载点为&quot;/&quot;的盘符（如/dev/sdc5）和UUID记下来，然后使用命令<code>cat /proc/version</code> 获取内核版本号（如4.10.0-28），也记录下来。</p>
+<p>安装完毕后提示是否重启，不要点击重启，一定先点一下继续，这样移动硬盘会加载回来。然后用ubuntu自带的文件管理器打开移动硬盘安装盘的根目录（&quot;/“挂载盘），用gedit打开”/etc/fstab&quot;，把挂载点为&quot;/&quot;的盘符（如/dev/sdc5）和UUID记下来，然后使用命令<code>cat /proc/version</code> 获取内核版本号（如4.10.0-28），也记录下来。</p>
 </li>
-<li>
-<p>趁热打铁，下载<a href="/static/grub4dos.zip">GRUB4DOS</a>， 解压后有一个menu.lst，将其中的<code>4.10.0-28</code> 全部替换为你的内核版本号，将<code>8578bdcd-8385-4121-80c4-d48cc0b2e282</code> 全部替换为你的UUID，将<code>(hd0,0)</code> 的0全部替换为你的盘符号减1的值（如/dev/sdc5则把(hd0,0)替换为(hd0,4)），保存修改。</p>
-</li>
-<li>
-<p>在menu.lst目录下右键open in terminal，使用命令<code>sudo cp menu.lst grldr /media/用户名/UUID</code> （将用户名替换为你刚才装系统设置的用户名（常可以在登录页面看见），UUID替换为刚记下的UUID）。<img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/68242781.jpg" alt=""></p>
-</li>
-<li>
-<p>关闭计算机，用同样的方法进入boot menu，选择打开WINDOWS。在WINDOWS下使用<a href="/static/grub4dos.zip">GRUB4DOS</a> 中的grubinst_gui.exe，右键以管理员身份打开，在磁盘中选择你的移动硬盘，下面勾选Grub第二版，点击安装。<img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/25127566.jpg" alt=""></p>
-</li>
-<li>
-<p>现在你的移动硬盘已经可以到处使了！</p>
-</li>
+</ul>
+<h3 id="安装grub4dos引导"><a class="markdownIt-Anchor" href="#安装grub4dos引导"></a> 安装GRUB4DOS引导</h3>
+<ul>
+<li>趁热打铁，下载<a href="/static/grub4dos.zip">GRUB4DOS</a>， 解压后有一个menu.lst，将其中的<code>4.10.0-28</code> 全部替换为你的内核版本号，将<code>8578bdcd-8385-4121-80c4-d48cc0b2e282</code> 全部替换为你的UUID，将<code>(hd0,0)</code> 的0全部替换为你的盘符号减1的值（如/dev/sdc5则把(hd0,0)替换为(hd0,4)），保存修改。</li>
+<li>在menu.lst文件所在目录下右键open in terminal，使用命令<code>sudo cp menu.lst grldr /media/ubuntu/UUID</code> （将UUID替换为刚记下的UUID）。<img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/68242781.jpg" alt=""></li>
+<li>关闭计算机，用同样的方法进入boot menu，选择打开WINDOWS。在WINDOWS下使用<a href="/static/grub4dos.zip">GRUB4DOS</a> 中的grubinst_gui.exe，一定要以右键以管理员身份打开，否则刷新不出磁盘来。在磁盘中选择你的移动硬盘，下面勾选Grub第二版，点击安装。<img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/25127566.jpg" alt=""></li>
+<li>现在你的移动硬盘已经可以到处使了！想进入ubuntu的时候，在开机的时候进入boot menu切换ubuntu即可。</li>
 </ul>
 <p><strong>注意：升级内核后须手动修改menu.lst中的kernel、initrd项，新内核方可生效！</strong></p>
 <h2 id="问题2详细解决方法"><a class="markdownIt-Anchor" href="#问题2详细解决方法"></a> 问题2详细解决方法</h2>
@@ -328,7 +324,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#惨痛教训"><span class="toc-number">1.</span> <span class="toc-text"> 惨痛教训</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正式开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 正式开始吧！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#制作启动盘"><span class="toc-number">3.</span> <span class="toc-text"> 制作启动盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题2详细解决方法"><span class="toc-number">4.</span> <span class="toc-text"> 问题2详细解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重要参考文献"><span class="toc-number">5.</span> <span class="toc-text"> 重要参考文献</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#惨痛教训"><span class="toc-number">1.</span> <span class="toc-text"> 惨痛教训</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正式开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 正式开始吧！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#制作启动盘"><span class="toc-number">2.1.</span> <span class="toc-text"> 制作启动盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装ubuntu"><span class="toc-number">2.2.</span> <span class="toc-text"> 安装ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装grub4dos引导"><span class="toc-number">2.3.</span> <span class="toc-text"> 安装GRUB4DOS引导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题2详细解决方法"><span class="toc-number">3.</span> <span class="toc-text"> 问题2详细解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重要参考文献"><span class="toc-number">4.</span> <span class="toc-text"> 重要参考文献</span></a></li></ol>
  
   </div>
 
@@ -472,7 +468,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共32.8k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共33.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
