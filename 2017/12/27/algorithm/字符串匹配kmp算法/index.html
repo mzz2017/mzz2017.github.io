@@ -4,25 +4,40 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>JAVA传参 | JAVA可以传引用吗？ | mzz&#39;s blog</title>
+    <title>归纳法学习kmp | mzz&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="莫之章">
     
 
     
-    <meta name="description" content="引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？">
-<meta name="keywords" content="JAVA">
+    <meta name="description" content="引言：人生苦短，我用归纳。">
+<meta name="keywords" content="字符串">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA传参 | JAVA可以传引用吗？">
-<meta property="og:url" content="http://mzz.pub/2017/08/28/JAVA/JAVA传参/index.html">
+<meta property="og:title" content="归纳法学习kmp">
+<meta property="og:url" content="http://mzz.pub/2017/12/27/algorithm/字符串匹配kmp算法/index.html">
 <meta property="og:site_name" content="mzz&#39;s blog">
-<meta property="og:description" content="引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？">
+<meta property="og:description" content="引言：人生苦短，我用归纳。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-28T15:42:21.468Z">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/50757238.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/54505672.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/70491036.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/84581875.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/29618862.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/26176032.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/26582933.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/70747304.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/7613366.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/91467930.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/27459414.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/81624193.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/70323060.jpg">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/32874957.jpg">
+<meta property="og:updated_time" content="2017-12-27T05:11:11.053Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA传参 | JAVA可以传引用吗？">
-<meta name="twitter:description" content="引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？">
+<meta name="twitter:title" content="归纳法学习kmp">
+<meta name="twitter:description" content="引言：人生苦短，我用归纳。">
+<meta name="twitter:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/50757238.jpg">
 
     
     
@@ -95,14 +110,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/08/28/JAVA/JAVA传参/" title="JAVA传参 | JAVA可以传引用吗？" itemprop="url">JAVA传参 | JAVA可以传引用吗？</a>
+      <a href="/2017/12/27/algorithm/字符串匹配kmp算法/" title="归纳法学习kmp" itemprop="url">归纳法学习kmp</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
   <p class="article-time">
-    <time datetime="2017-08-28T09:35:00.000Z" itemprop="datePublished"> 发表于 2017-08-28</time>
+    <time datetime="2017-12-27T05:02:00.000Z" itemprop="datePublished"> 发表于 2017-12-27</time>
     
   </p>
 </header>
@@ -111,48 +126,63 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#将指针藏起来的java"><span class="toc-number">1.</span> <span class="toc-text"> 将指针藏起来的JAVA</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#归纳法学习kmp的实现原理"><span class="toc-number">1.</span> <span class="toc-text"> 归纳法学习kmp的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#已匹配部分最长前后缀公共长度咋算"><span class="toc-number">2.</span> <span class="toc-text"> 已匹配部分最长前后缀公共长度咋算？</span></a></li></ol>
 		
 		</div>
 		
-		<p>引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？</p>
+		<p>引言：人生苦短，我用归纳。</p>
 <hr>
 <a id="more"></a>
-<h2 id="将指针藏起来的java"><a class="markdownIt-Anchor" href="#将指针藏起来的java"></a> 将指针藏起来的JAVA</h2>
+<h2 id="归纳法学习kmp的实现原理"><a class="markdownIt-Anchor" href="#归纳法学习kmp的实现原理"></a> 归纳法学习kmp的实现原理</h2>
+<p>来看一组图：</p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/50757238.jpg" alt=""></p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/54505672.jpg" alt=""></p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/70491036.jpg" alt=""></p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/84581875.jpg" alt=""></p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/29618862.jpg" alt=""></p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/26176032.jpg" alt=""></p>
+<p>perfect! matching continue…</p>
+<p>……<br>
+……</p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/26582933.jpg" alt=""></p>
+<p>until…</p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/70747304.jpg" alt=""></p>
+<p>失配了！！！</p>
+<p>这个故事太悲伤了。我们需要重新开始匹配了，把模式串右移一位，从模式串的首字母A开始匹配吧。</p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/7613366.jpg" alt=""></p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/91467930.jpg" alt=""></p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/27459414.jpg" alt=""></p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/81624193.jpg" alt=""></p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/70323060.jpg" alt=""></p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/32874957.jpg" alt=""></p>
+<p>至此我们又开始了成功的匹配。</p>
 <ul>
 <li>
-<p>JAVA是存在指针的，但它的用法被极大的限制了，以至于我们察觉不到它的存在。但我认为如果因此不去了解JAVA的指针，是无法学好JAVA的。</p>
+<p>C++姑娘：多扎心啊……失配之后人家能不能不要从头来过啊，这太让人悲伤了！！要是我直接就知道从那个后面的A开始我就能匹配成功，那该有多好啊~~</p>
 </li>
 <li>
-<p>代码转自知乎<a href="https://www.zhihu.com/question/31203609" target="_blank" rel="external">java到底是值传递还是引用传递？</a>Intopass的回答。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一个例子：基本类型</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">    value = <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line">foo(num); <span class="comment">// num 没有被改变</span></div><div class="line"></div><div class="line"><span class="comment">//第二个例子：没有提供改变自身方法的引用类型</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(String text)</span> </span>&#123;</div><div class="line">    text = <span class="string">"windows"</span>;</div><div class="line">&#125;</div><div class="line">foo(str); <span class="comment">// str 也没有被改变</span></div><div class="line"></div><div class="line"><span class="comment">//第三个例子：提供了改变自身方法的引用类型</span></div><div class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"iphone"</span>);</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(StringBuilder builder)</span> </span>&#123;</div><div class="line">    builder.append(<span class="string">"4"</span>);</div><div class="line">&#125;</div><div class="line">foo(sb); <span class="comment">// sb 被改变了，变成了"iphone4"。</span></div><div class="line"></div><div class="line"><span class="comment">//第四个例子：提供了改变自身方法的引用类型，但是不使用，而是使用赋值运算符。</span></div><div class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"iphone"</span>);</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(StringBuilder builder)</span> </span>&#123;</div><div class="line">    builder = <span class="keyword">new</span> StringBuilder(<span class="string">"ipad"</span>);</div><div class="line">&#125;</div><div class="line">foo(sb); <span class="comment">// sb 没有被改变，还是 "iphone"。</span></div></pre></td></tr></table></figure>
-<blockquote>
+<p>好的，C++姑娘你别急，各位看官，我们观察一下，我们在失配之后从ABC开始继续匹配，这个位置有什么特点？</p>
+<p>发现了吗？失配的时候，我们成功匹配的文本串与模式串的公共部分是ABCDEFABC，它有相同的前缀和后缀！这个相同的部分就是ABC，我们发现我们就是从文本串的已匹配部分后缀ABC开始重新获得匹配的。（想想为什么跟前缀后缀有关。你把模式串左右移动移动蹭来蹭去或许就看明白了……提示：模式串的前缀，文本串已匹配部分的后缀，已匹配部分同时存在于文本串和模式串）</p>
+<p>获得这样的发现后，我们进一步可以发现，我们其实可以直接从文本串的’L’和模式串的’D’继续比较就可以了！前面的公共部分肯定是匹配成功的！（见最后一张图）</p>
+</li>
+<li>
+<p>继续归纳：假设模式串存在char数组p中，在上例中，已知失配时，已匹配部分前缀和后缀的公共长度为3，则我们从p[3]开始继续匹配即可。</p>
+</li>
+<li>
+<p>我们不妨继续大胆归纳：</p>
 <ul>
-<li>如果已经入手一段时间JAVA，就会发现<code>Dog d;</code> 这样的声明只会产生一个Dog对象的指针，它没有任何空间，需要使用<code>d=new Dog();</code> 为其划分空间后才能使用。这是对于对象。</li>
-<li>如果我这样写<code>int a;</code> 那么a是可以立即被使用的，它已经被划分好了空间。因为它是基本类型变量。</li>
+<li>假设文本串存于char数组s中，模式串存于char数组p中，那么假设在s[i]与p[j]失配时，我们可以知道已匹配的串为p[0]~p[j]，该串最长公共前后缀长度为l，则我们只需要继续从s[i]与p[l]进行匹配即可。再次失配时同样适用此规则。</li>
+<li>上述规则其实有一个特例，当失配于s[i]与p[0]时，从s[i+1]和p[0]继续匹配。</li>
+<li>当然，s[i]和p[j]匹配成功时，从s[i+1]和p[j+1]继续匹配，这个很容易知道。</li>
 </ul>
-</blockquote>
-<p>也就是说，当我传参传入的是int的话，其实是将值复制了一份，形参和实参它们两个只有值是一样的，而我传入的是String的话，是将String的指针复制了一份，形参和实参（都指的是指向对象的指针）指向的对象是一样的。</p>
 </li>
 <li>
-<p>提问：那是不是意味着传对象就相当于传引用了呢？</p>
-<p>没错。但你也要考虑清楚，如同上述代码第二个例子，<code>text=&quot;windows&quot;;</code>，你要理解这究竟是什么意思，它实际上是重载运算符，等价于<code>text=new String(&quot;windows&quot;);</code>，说到这里你应该明白了，这只是给text指针分配了一个新的地址空间而已，原空间的str没有任何改变。</p>
-</li>
-<li>
-<p>提问：如果我写<code>int[] iArray={1,3,5,7,9};</code> 将其传入函数，为什么可以修改？</p>
-<p>很好理解，你可以按照JAVA的理解，数组也是对象，因此可以成功将引用传入函数，而由于数组元素类型都是int，不存在重载赋值运算符为new之类的操作，因此是可以修改的。</p>
-<p>你也可以按照C语言的理解，传入的是数组首元素的地址，因此可以进行修改。</p>
-</li>
-<li>
-<p>提问：如果我想传int引用怎么办？</p>
-<p>实测Integer对象是无法达到传引用的目的的，因此我能想到的方法就是封装一个int类。因为目前水平有限，还不会重载运算符，因此我简单的进行了一个封装，看官明白一下意思就行了：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(Intege a)</span></span>&#123;</div><div class="line">    a.setValue(<span class="number">123</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</div><div class="line">    Intege a=<span class="keyword">new</span> Intege();</div><div class="line">    test(a);</div><div class="line">    System.out.println(a.getValue());</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//……省略若干代码</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Intege</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> a;</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.a=a;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.a;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这样将Intege型的变量传入后，即可通过setValue方法对值进行修改。</p>
-</li>
-<li>
-<p>不管怎样，我觉得没有指针的日子很难过……</p>
+<p>到目前为止，我们已经知道了kmp的实现原理。</p>
 </li>
 </ul>
+<h2 id="已匹配部分最长前后缀公共长度咋算"><a class="markdownIt-Anchor" href="#已匹配部分最长前后缀公共长度咋算"></a> 已匹配部分最长前后缀公共长度咋算？</h2>
+<p>很机智的你已经提出问题了：大哥，那我也得知道每次失配的时候，已匹配部分的最长公共前后缀长度吧？</p>
+<p>好问题，等下回有时间我再来更。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -160,13 +190,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/JAVA/">JAVA</a>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/JAVA/">JAVA</a>
+  <span></span> <a href="/tags/字符串/">字符串</a>
   </div>
 
 </div>
@@ -175,7 +205,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2017/08/28/JAVA/JAVA传参/" data-title="JAVA传参 | JAVA可以传引用吗？ | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://mzz.pub/2017/12/27/algorithm/字符串匹配kmp算法/" data-title="归纳法学习kmp | mzz&#39;s blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -188,19 +218,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/10/25/cpp/cpp继承与多态章节小结/" title="C++继承与多态章节小结">
-  <strong>上一篇：</strong><br/>
-  <span>
-  C++继承与多态章节小结</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/08/28/JAVA/JAVA数组篇/"  title="JAVA数组篇">
+<a href="/2017/12/22/MobileUbuntu/"  title="把Ubuntu16.04装进移动硬盘的惨痛实战">
  <strong>下一篇：</strong><br/> 
- <span>JAVA数组篇
+ <span>把Ubuntu16.04装进移动硬盘的惨痛实战
 </span>
 </a>
 </div>
@@ -236,7 +258,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#将指针藏起来的java"><span class="toc-number">1.</span> <span class="toc-text"> 将指针藏起来的JAVA</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#归纳法学习kmp的实现原理"><span class="toc-number">1.</span> <span class="toc-text"> 归纳法学习kmp的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#已匹配部分最长前后缀公共长度咋算"><span class="toc-number">2.</span> <span class="toc-text"> 已匹配部分最长前后缀公共长度咋算？</span></a></li></ol>
  
   </div>
 

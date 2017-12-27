@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/63193847.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-23/37940158.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-23/84437549.jpg">
-<meta property="og:updated_time" content="2017-12-24T16:23:52.147Z">
+<meta property="og:updated_time" content="2017-12-24T16:55:42.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把Ubuntu16.04装进移动硬盘的惨痛实战">
 <meta name="twitter:description" content="引言：由于我的台式机性能比较好，所以一般在寝室都用台式机办公，但免不了出门用笔记本办公的时候，于是想到有一个移动硬盘，把ubuntu装进移动硬盘岂不美哉！完美移动办公了！">
@@ -197,7 +197,7 @@
 <p>注意：</p>
 <ul>
 <li>无需挂载boot类型的partition</li>
-<li>记得在Device for boot loader installation中选择你的移动硬盘</li>
+<li>记得在Device for boot loader installation中选择你的移动硬盘，否则开机引导会被grub2无情整合导致不插硬盘启动不了</li>
 </ul>
 </li>
 <li>
@@ -284,6 +284,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2017/12/27/algorithm/字符串匹配kmp算法/" title="归纳法学习kmp">
+  <strong>上一篇：</strong><br/>
+  <span>
+  归纳法学习kmp</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2017/12/20/JAVA/SpringMVC架构搭建/"  title="SpringMVC架构搭建">
@@ -358,7 +366,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
-			<li><a href="/categories/算法/" title="算法">算法<sup>9</sup></a></li>
+			<li><a href="/categories/算法/" title="算法">算法<sup>10</sup></a></li>
 		  
 		
 		</ul>
@@ -369,7 +377,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/字符串/" style="font-size: 10px;">字符串</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a>
     </div>
   </div>
 
@@ -468,7 +476,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共33.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共33.8k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
