@@ -33,7 +33,7 @@
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/81624193.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/70323060.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/32874957.jpg">
-<meta property="og:updated_time" content="2017-12-27T05:11:11.053Z">
+<meta property="og:updated_time" content="2017-12-27T05:23:05.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="归纳法学习kmp">
 <meta name="twitter:description" content="引言：人生苦短，我用归纳。">
@@ -65,7 +65,7 @@
         border-top-color: #1E92FB;    /*上边框颜色*/
         border-left-color: #1E92FB;    /*左边框颜色*/
     }
-</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</style><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
 </head>
 
 
@@ -126,13 +126,16 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#归纳法学习kmp的实现原理"><span class="toc-number">1.</span> <span class="toc-text"> 归纳法学习kmp的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#已匹配部分最长前后缀公共长度咋算"><span class="toc-number">2.</span> <span class="toc-text"> 已匹配部分最长前后缀公共长度咋算？</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是kmp算法"><span class="toc-number">1.</span> <span class="toc-text"> 什么是kmp算法？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#归纳法学习kmp的实现原理"><span class="toc-number">2.</span> <span class="toc-text"> 归纳法学习kmp的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#已匹配部分最长前后缀公共长度咋算"><span class="toc-number">3.</span> <span class="toc-text"> 已匹配部分最长前后缀公共长度咋算？</span></a></li></ol>
 		
 		</div>
 		
 		<p>引言：人生苦短，我用归纳。</p>
 <hr>
 <a id="more"></a>
+<h2 id="什么是kmp算法"><a class="markdownIt-Anchor" href="#什么是kmp算法"></a> 什么是kmp算法？</h2>
+<p>KMP算法是一种改进的字符串匹配算法，由D.E.Knuth，J.H.Morris和V.R.Pratt同时发现，所以叫KMP算法。</p>
+<p>我们一般在文本串中查找某个模式串，要求完全匹配，如在MMMMABCDEFABCLLLLLL中查找ABCDEFABCKKK（当然，找不到的，但是蠢蠢的计算机是要尝试匹配才能知道找不找得到），常规的朴素的算法是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>∗</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n*m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mbin">∗</span><span class="mord mathit">m</span><span class="mclose">)</span></span></span></span>的，而kmp算法是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n+m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mbin">+</span><span class="mord mathit">m</span><span class="mclose">)</span></span></span></span> 的，效率比较高。</p>
 <h2 id="归纳法学习kmp的实现原理"><a class="markdownIt-Anchor" href="#归纳法学习kmp的实现原理"></a> 归纳法学习kmp的实现原理</h2>
 <p>来看一组图：</p>
 <p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-27/50757238.jpg" alt=""></p>
@@ -258,7 +261,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#归纳法学习kmp的实现原理"><span class="toc-number">1.</span> <span class="toc-text"> 归纳法学习kmp的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#已匹配部分最长前后缀公共长度咋算"><span class="toc-number">2.</span> <span class="toc-text"> 已匹配部分最长前后缀公共长度咋算？</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是kmp算法"><span class="toc-number">1.</span> <span class="toc-text"> 什么是kmp算法？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#归纳法学习kmp的实现原理"><span class="toc-number">2.</span> <span class="toc-text"> 归纳法学习kmp的实现原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#已匹配部分最长前后缀公共长度咋算"><span class="toc-number">3.</span> <span class="toc-text"> 已匹配部分最长前后缀公共长度咋算？</span></a></li></ol>
  
   </div>
 
@@ -402,7 +405,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共33.8k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共34.6k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>

@@ -37,7 +37,8 @@
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/63193847.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-23/37940158.jpg">
 <meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-23/84437549.jpg">
-<meta property="og:updated_time" content="2017-12-24T16:55:42.816Z">
+<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-12-30/24114973.jpg">
+<meta property="og:updated_time" content="2017-12-30T07:52:11.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把Ubuntu16.04装进移动硬盘的惨痛实战">
 <meta name="twitter:description" content="引言：由于我的台式机性能比较好，所以一般在寝室都用台式机办公，但免不了出门用笔记本办公的时候，于是想到有一个移动硬盘，把ubuntu装进移动硬盘岂不美哉！完美移动办公了！">
@@ -130,7 +131,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#惨痛教训"><span class="toc-number">1.</span> <span class="toc-text"> 惨痛教训</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正式开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 正式开始吧！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#制作启动盘"><span class="toc-number">2.1.</span> <span class="toc-text"> 制作启动盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装ubuntu"><span class="toc-number">2.2.</span> <span class="toc-text"> 安装ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装grub4dos引导"><span class="toc-number">2.3.</span> <span class="toc-text"> 安装GRUB4DOS引导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题2详细解决方法"><span class="toc-number">3.</span> <span class="toc-text"> 问题2详细解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重要参考文献"><span class="toc-number">4.</span> <span class="toc-text"> 重要参考文献</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#惨痛教训"><span class="toc-number">1.</span> <span class="toc-text"> 惨痛教训</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正式开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 正式开始吧！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#制作启动盘"><span class="toc-number">2.1.</span> <span class="toc-text"> 制作启动盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装ubuntu"><span class="toc-number">2.2.</span> <span class="toc-text"> 安装ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装grub4dos引导"><span class="toc-number">2.3.</span> <span class="toc-text"> 安装GRUB4DOS引导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题2详细解决方法"><span class="toc-number">3.</span> <span class="toc-text"> 问题2详细解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双硬盘安装双系统ssd-windows-hdd-ubuntu"><span class="toc-number">4.</span> <span class="toc-text"> 双硬盘安装双系统（SSD-Windows / HDD-Ubuntu）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#处理try-hd00-ext2问题"><span class="toc-number">4.1.</span> <span class="toc-text"> 处理try (hd0,0) ext2问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方案"><span class="toc-number">4.1.1.</span> <span class="toc-text"> 解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遗憾"><span class="toc-number">4.1.2.</span> <span class="toc-text"> 遗憾</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双硬盘双系统最佳解决方案"><span class="toc-number">4.2.</span> <span class="toc-text"> 双硬盘双系统最佳解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重要参考文献"><span class="toc-number">5.</span> <span class="toc-text"> 重要参考文献</span></a></li></ol>
 		
 		</div>
 		
@@ -156,10 +157,10 @@
 <h2 id="正式开始吧"><a class="markdownIt-Anchor" href="#正式开始吧"></a> 正式开始吧！</h2>
 <blockquote>
 <p>准备：</p>
-<p>ubuntu镜像文件：<a href="http://cn.ubuntu.com/download/" target="_blank" rel="external">ubuntu-16.04.3-desktop-amd64.iso</a></p>
-<p>启动盘制作软件：<a href="https://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/" target="_blank" rel="external">Universal-USB-Installer</a></p>
+<p>ubuntu镜像文件：<a href="http://cn.ubuntu.com/download/" target="_blank" rel="external"><strong>ubuntu-16.04.3-desktop-amd64.iso</strong></a></p>
+<p>启动盘制作软件：<a href="https://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/" target="_blank" rel="external"><strong>Universal-USB-Installer</strong></a></p>
 <p>磁盘管理软件：DiskGenius</p>
-<p>引导程序：<a href="/static/grub4dos.zip">GRUB4DOS</a></p>
+<p>引导程序：<a href="/static/grub4dos.zip"><strong>GRUB4DOS</strong></a></p>
 <p>硬件准备：</p>
 <ol>
 <li>移动硬盘（或10G以上U盘）</li>
@@ -209,9 +210,9 @@
 </ul>
 <h3 id="安装grub4dos引导"><a class="markdownIt-Anchor" href="#安装grub4dos引导"></a> 安装GRUB4DOS引导</h3>
 <ul>
-<li>趁热打铁，下载<a href="/static/grub4dos.zip">GRUB4DOS</a>， 解压后有一个menu.lst，将其中的<code>4.10.0-28</code> 全部替换为你的内核版本号，将<code>8578bdcd-8385-4121-80c4-d48cc0b2e282</code> 全部替换为你的UUID，将<code>(hd0,0)</code> 的0全部替换为你的盘符号减1的值（如/dev/sdc5则把(hd0,0)替换为(hd0,4)），保存修改。</li>
+<li>趁热打铁，下载**<a href="/static/grub4dos.zip">GRUB4DOS</a>**， 解压后有一个menu.lst，将其中的<code>4.10.0-28</code> 全部替换为你的内核版本号，将<code>8578bdcd-8385-4121-80c4-d48cc0b2e282</code> 全部替换为你的UUID，将<code>(hd0,0)</code> 的0全部替换为你的盘符号减1的值（如/dev/sdc5则把(hd0,0)替换为(hd0,4)），保存修改。</li>
 <li>在menu.lst文件所在目录下右键open in terminal，使用命令<code>sudo cp menu.lst grldr /media/ubuntu/UUID</code> （将UUID替换为刚记下的UUID）。<img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/68242781.jpg" alt=""></li>
-<li>关闭计算机，用同样的方法进入boot menu，选择打开WINDOWS。在WINDOWS下使用<a href="/static/grub4dos.zip">GRUB4DOS</a> 中的grubinst_gui.exe，一定要以右键以管理员身份打开，否则刷新不出磁盘来。在磁盘中选择你的移动硬盘，下面勾选Grub第二版，点击安装。<img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/25127566.jpg" alt=""></li>
+<li>关闭计算机，用同样的方法进入boot menu，选择打开WINDOWS。在WINDOWS下使用**<a href="/static/grub4dos.zip">GRUB4DOS</a>** 中的grubinst_gui.exe，一定要以右键以管理员身份打开，否则刷新不出磁盘来。在磁盘中选择你的移动硬盘，下面勾选Grub第二版，点击安装。<img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-22/25127566.jpg" alt=""></li>
 <li>现在你的移动硬盘已经可以到处使了！想进入ubuntu的时候，在开机的时候进入boot menu切换ubuntu即可。</li>
 </ul>
 <p><strong>注意：升级内核后须手动修改menu.lst中的kernel、initrd项，新内核方可生效！</strong></p>
@@ -244,10 +245,46 @@
 <p>大功告成！！！</p>
 </li>
 </ol>
+<h2 id="双硬盘安装双系统ssd-windows-hdd-ubuntu"><a class="markdownIt-Anchor" href="#双硬盘安装双系统ssd-windows-hdd-ubuntu"></a> 双硬盘安装双系统（SSD-Windows / HDD-Ubuntu）</h2>
+<blockquote>
+<p>案例：单机器双硬盘（SSD+HDD），在SSD中存在windows系统的情况下，在HDD中安装ubuntu，并且使用grub整合引导windows和ubuntu</p>
+<p>需求：1TB HDD中安装UBUNTU，并且保留600G作为NTFS格式储存空间</p>
+<p>简略历程：</p>
+<ol>
+<li>
+<p>操作：给HDD分区时挂载了<code>\</code> <code>\boot</code> <code>swap</code> <code>\home</code> 并且将引导装在SSD的EFI分区下。</p>
+<p>出现情况：安装过程中出现失败（猜测是EFI分区空间不足）</p>
+</li>
+<li>
+<p>操作：给HDD分区时挂载了<code>\</code> <code>\boot</code> <code>swap</code> <code>\home</code> 并且将引导装在HDD的boot分区下。</p>
+<p>出现情况：boot menu选择HDD启动后，找不到引导，只有一个光标一直闪动</p>
+<p>操作：进入windows安装GRUB4DOS引导，用LiveCD弄好剩余步骤。</p>
+<p>出现情况：boot menu选择HDD启动后，出现try (hd0,0) ext2：</p>
+</li>
+<li>
+<p>操作：给HDD分区时挂载了<code>\</code> <code>swap</code> <code>\home</code> 并且将引导装在HDD下（按本教程将HDD当做移动硬盘安装UBUNTU）</p>
+<p>出现情况：boot menu选择HDD启动后，出现try (hd0,0) ext2：</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="处理try-hd00-ext2问题"><a class="markdownIt-Anchor" href="#处理try-hd00-ext2问题"></a> 处理try (hd0,0) ext2问题</h3>
+<h4 id="解决方案"><a class="markdownIt-Anchor" href="#解决方案"></a> 解决方案</h4>
+<p>由于目的是使用grub整合windows和ubuntu，于是我使用了有UEFI引导的LiveCD（必须用UEFI进入，如果不支持UEFI，在使用Universal-USB-Installer时选中格式化U盘的选项再装一次，直到支持UEFI）。</p>
+<p>使用LiveCD进入try without install的ubuntu系统后，我们选择使用boot-repair来修复引导，它会用grub整合windows和ubuntu，这也是我们想要的（注意，制作移动硬盘ubuntu时，这往往不是我们想要的。但它会在windows盘EFI分区创建好ubuntu的引导，这可以帮助我们在无法使用移动硬盘的机器上手动创建efi引导从而曲线救国）。</p>
+<ul>
+<li><strong><a href="https://jingyan.baidu.com/article/5553fa82cd48a765a23934ae.html" target="_blank" rel="external">如何使用boot-repair修复引导？</a></strong></li>
+</ul>
+<h4 id="遗憾"><a class="markdownIt-Anchor" href="#遗憾"></a> 遗憾</h4>
+<p>上述解决方案只是为了解决问题而解决问题，我依然不明白为什么手动安装的GRUB4DOS无法正确引导……</p>
+<h3 id="双硬盘双系统最佳解决方案"><a class="markdownIt-Anchor" href="#双硬盘双系统最佳解决方案"></a> 双硬盘双系统最佳解决方案</h3>
+<p>先使用DiskGenius在HDD划分出600G的NTFS空间，保留400<br>
+G未使用。用<a href="https://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3/" target="_blank" rel="external"><strong>Universal-USB-Installer</strong></a>在U盘制作好LiveCD后，开机进入boot menu进入U盘安装Ubuntu。在下图步骤中选择与windows（windows manager）共存而不是Something else。这样会充分利用剩余空间安装Ubuntu。</p>
+<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-12-30/24114973.jpg" alt=""></p>
 <h2 id="重要参考文献"><a class="markdownIt-Anchor" href="#重要参考文献"></a> 重要参考文献</h2>
 <ul>
-<li><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=86&amp;t=29692&amp;sid=5126d88f33eb2c69b8be09e2be168c56" target="_blank" rel="external">【2008.09.30更新2楼】把 ubuntu linux 装入移动硬盘，并在不同电脑上运行</a></li>
-<li><a href="http://www.linuxidc.com/Linux/2014-10/108238.htm" target="_blank" rel="external">GRUB2手动引导Ubuntu</a></li>
+<li><a href="http://forum.ubuntu.org.cn/viewtopic.php?f=86&amp;t=29692&amp;sid=5126d88f33eb2c69b8be09e2be168c56" target="_blank" rel="external"><strong>【2008.09.30更新2楼】把 ubuntu linux 装入移动硬盘，并在不同电脑上运行</strong></a></li>
+<li><a href="http://www.linuxidc.com/Linux/2014-10/108238.htm" target="_blank" rel="external"><strong>GRUB2手动引导Ubuntu</strong></a></li>
+<li><a href="https://jingyan.baidu.com/article/5553fa82cd48a765a23934ae.html" target="_blank" rel="external"><strong>如何使用boot-repair修复引导？</strong></a></li>
 </ul>
   
 	</div>
@@ -332,7 +369,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#惨痛教训"><span class="toc-number">1.</span> <span class="toc-text"> 惨痛教训</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正式开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 正式开始吧！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#制作启动盘"><span class="toc-number">2.1.</span> <span class="toc-text"> 制作启动盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装ubuntu"><span class="toc-number">2.2.</span> <span class="toc-text"> 安装ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装grub4dos引导"><span class="toc-number">2.3.</span> <span class="toc-text"> 安装GRUB4DOS引导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题2详细解决方法"><span class="toc-number">3.</span> <span class="toc-text"> 问题2详细解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重要参考文献"><span class="toc-number">4.</span> <span class="toc-text"> 重要参考文献</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#惨痛教训"><span class="toc-number">1.</span> <span class="toc-text"> 惨痛教训</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正式开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 正式开始吧！</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#制作启动盘"><span class="toc-number">2.1.</span> <span class="toc-text"> 制作启动盘</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装ubuntu"><span class="toc-number">2.2.</span> <span class="toc-text"> 安装ubuntu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装grub4dos引导"><span class="toc-number">2.3.</span> <span class="toc-text"> 安装GRUB4DOS引导</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题2详细解决方法"><span class="toc-number">3.</span> <span class="toc-text"> 问题2详细解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#双硬盘安装双系统ssd-windows-hdd-ubuntu"><span class="toc-number">4.</span> <span class="toc-text"> 双硬盘安装双系统（SSD-Windows / HDD-Ubuntu）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#处理try-hd00-ext2问题"><span class="toc-number">4.1.</span> <span class="toc-text"> 处理try (hd0,0) ext2问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#解决方案"><span class="toc-number">4.1.1.</span> <span class="toc-text"> 解决方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#遗憾"><span class="toc-number">4.1.2.</span> <span class="toc-text"> 遗憾</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双硬盘双系统最佳解决方案"><span class="toc-number">4.2.</span> <span class="toc-text"> 双硬盘双系统最佳解决方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重要参考文献"><span class="toc-number">5.</span> <span class="toc-text"> 重要参考文献</span></a></li></ol>
  
   </div>
 
@@ -476,7 +513,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共33.8k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共34.6k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
