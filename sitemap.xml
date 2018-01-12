@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mzz.pub/2018/01/05/JustPlay/googlecloud/</loc>
+    
+    <lastmod>2018-01-12T04:55:59.705Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2017/12/31/JAVA/SpringMVC/</loc>
+    
+    <lastmod>2018-01-11T17:27:07.241Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2017/08/06/blog/</loc>
+    
+    <lastmod>2017-12-30T08:49:27.809Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mzz.pub/2017/12/22/MobileUbuntu/</loc>
     
-    <lastmod>2017-12-30T07:52:11.406Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/2017/12/20/JAVA/SpringMVC%E6%9E%B6%E6%9E%84%E6%90%AD%E5%BB%BA/</loc>
-    
-    <lastmod>2017-12-29T05:37:47.687Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/2017/12/27/algorithm/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8Dkmp%E7%AE%97%E6%B3%95/</loc>
-    
-    <lastmod>2017-12-27T05:23:05.545Z</lastmod>
+    <lastmod>2017-12-30T08:19:21.884Z</lastmod>
     
   </url>
   
@@ -156,13 +163,6 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/08/06/blog/</loc>
-    
-    <lastmod>2017-08-10T11:11:18.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://mzz.pub/2017/08/07/algorithm/%E6%8E%92%E5%BA%8F%E7%AB%A0%E8%8A%82/</loc>
     
     <lastmod>2017-08-10T11:09:10.000Z</lastmod>
@@ -177,7 +177,14 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/baidu_verify_XXAMxs3m8F.html</loc>
+    <loc>http://mzz.pub/neteasemusic.html</loc>
+    
+    <lastmod>2017-08-10T09:22:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/about/index.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     
@@ -191,14 +198,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/neteasemusic.html</loc>
-    
-    <lastmod>2017-08-10T09:22:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/about/index.html</loc>
+    <loc>http://mzz.pub/baidu_verify_XXAMxs3m8F.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     
