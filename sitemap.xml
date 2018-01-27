@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://mzz.pub/2018/01/05/JustPlay/googlecloud/</loc>
+    <loc>http://mzz.pub/2018/01/27/JustPlay/ownCloud/</loc>
     
-    <lastmod>2018-01-13T13:10:05.745Z</lastmod>
+    <lastmod>2018-01-27T11:05:24.089Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://mzz.pub/2017/12/31/JAVA/SpringMVC/</loc>
     
-    <lastmod>2018-01-11T17:27:07.241Z</lastmod>
+    <lastmod>2018-01-23T11:19:48.326Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/about/index.html</loc>
+    
+    <lastmod>2018-01-16T15:05:06.260Z</lastmod>
     
   </url>
   
@@ -184,7 +191,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/about/index.html</loc>
+    <loc>http://mzz.pub/google902a41086ff81836.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     
@@ -199,13 +206,6 @@
   
   <url>
     <loc>http://mzz.pub/search/index.html</loc>
-    
-    <lastmod>2017-08-10T09:22:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/google902a41086ff81836.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     
