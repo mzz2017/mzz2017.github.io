@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mzz.pub/2018/03/05/algorithm/%E6%89%87%E5%BD%A2%E6%B6%82%E8%89%B2/</loc>
+    
+    <lastmod>2018-03-05T10:56:52.866Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2017/12/22/JustPlay/MobileUbuntu/</loc>
+    
+    <lastmod>2018-01-29T18:05:52.001Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2018/01/05/JustPlay/googlecloud/</loc>
+    
+    <lastmod>2018-01-28T17:15:41.454Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mzz.pub/2018/01/27/JustPlay/ownCloud/</loc>
     
-    <lastmod>2018-01-27T11:52:46.236Z</lastmod>
+    <lastmod>2018-01-27T12:00:46.861Z</lastmod>
     
   </url>
   
@@ -23,16 +44,9 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/08/06/blog/</loc>
+    <loc>http://mzz.pub/2017/08/06/JustPlay/blog/</loc>
     
     <lastmod>2017-12-30T08:49:27.809Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/2017/12/22/MobileUbuntu/</loc>
-    
-    <lastmod>2017-12-30T08:19:21.884Z</lastmod>
     
   </url>
   

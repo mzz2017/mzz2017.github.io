@@ -129,14 +129,14 @@
 <h3 id="为什么我不能将11的g值设为0"><a class="markdownIt-Anchor" href="#为什么我不能将11的g值设为0"></a> 为什么我不能将(1,1)的G值设为0？</h3>
 <ul>
 <li>
-<p>首先，肯定不能把这么直观的点，比如题目告诉你什么时候你获胜的点的G值设为0。就像我不能直接把<a href="https://vjudge.net/problem/32209/origin" target="_blank" rel="external">UVA10561 - Treblecross</a> 题中XXX的G值设为0一样，这样的话你把计算机想得太聪明了。</p>
+<p>首先，肯定不能把这么直观的点，比如题目告诉你什么时候你获胜的点的G值设为0。就像我不能直接把<a href="https://vjudge.net/problem/32209/origin" target="_blank" rel="noopener">UVA10561 - Treblecross</a> 题中XXX的G值设为0一样，这样的话你把计算机想得太聪明了。</p>
 </li>
 <li>
 <p>那么，我该将什么情况的G值设为0？</p>
 <ul>
 <li><strong>我们应该把避免在某种局面下棋的局面的G值设为0</strong>。
 <ul>
-<li>什么意思呢？举个比较容易理解的例子。比如 <a href="https://vjudge.net/problem/32209/origin" target="_blank" rel="external">UVA10561 - Treblecross</a> ，我们设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>X</mi><mo separator="true">,</mo><mi>X</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>X</mi><mo separator="true">,</mo><mi>X</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">X..X,X...X,X....X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span>的G值为0，因为我们避免在这种局面下棋。</li>
+<li>什么意思呢？举个比较容易理解的例子。比如 <a href="https://vjudge.net/problem/32209/origin" target="_blank" rel="noopener">UVA10561 - Treblecross</a> ，我们设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>X</mi><mo separator="true">,</mo><mi>X</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>X</mi><mo separator="true">,</mo><mi>X</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>X</mi></mrow><annotation encoding="application/x-tex">X..X,X...X,X....X</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathit" style="margin-right:0.07847em;">X</span></span></span></span>的G值为0，因为我们避免在这种局面下棋。</li>
 <li>回到本题，我们无法找到这样一个确切的局面。所以抽象一下，变成了我们必须避免在不得不走到<code>w==1</code>或<code>h==1</code>的局面开始下棋，因此我们将拆不成w且h至少为2的局面G值返回0。</li>
 <li>再举例有N个石子，每人轮流拾取1~N个，最先取完石子的胜。则我们一定避免出现轮到我的时候，还剩N+1个棋子，那就很杯具了。因此我把N+1的G值设为0，则 N+2 ～ 2N+1的G值肯定都是大于0的，而可推N+2的G值等于0，然后推得x%(N+1)==0的点G值都为0。</li>
 </ul>
@@ -247,7 +247,15 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
+			<li><a href="/categories/Cloud/" title="Cloud">Cloud<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		  
 		
 		  
@@ -255,15 +263,11 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
-			<li><a href="/categories/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
-		  
-		
-		  
 			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/算法/" title="算法">算法<sup>9</sup></a></li>
+			<li><a href="/categories/算法/" title="算法">算法<sup>10</sup></a></li>
 		  
 		
 		  
@@ -278,7 +282,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -377,7 +381,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共37.5k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共39.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>

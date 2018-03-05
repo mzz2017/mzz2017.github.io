@@ -160,7 +160,7 @@
 <p>裸的最长非升子序列</p>
 </li>
 <li>
-<p>传送门：<a href="https://vjudge.net/problem/315252/origin" target="_blank" rel="external">OpenJ_Bailian - 2945</a></p>
+<p>传送门：<a href="https://vjudge.net/problem/315252/origin" target="_blank" rel="noopener">OpenJ_Bailian - 2945</a></p>
 </li>
 <li>
 <p>AC代码</p>
@@ -170,21 +170,21 @@
 <h3 id="例题2最少拦截系统"><a class="markdownIt-Anchor" href="#例题2最少拦截系统"></a> 例题2：最少拦截系统</h3>
 <ul>
 <li>这是一道性质的应用</li>
-<li>传送门：<a href="https://vjudge.net/problem/25970/origin" target="_blank" rel="external">HDU - 1257</a></li>
+<li>传送门：<a href="https://vjudge.net/problem/25970/origin" target="_blank" rel="noopener">HDU - 1257</a></li>
 <li>AC代码</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;limits.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> max(x,y) ((x)&gt;(y)?(x):(y))</span></div><div class="line"><span class="keyword">int</span> dp[<span class="number">10000</span>];</div><div class="line"><span class="keyword">int</span> a[<span class="number">10001</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">LIS</span><span class="params">(<span class="keyword">int</span> *a,<span class="keyword">int</span> n)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> maxn=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">	&#123;</div><div class="line">		dp[i]=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">if</span>(a[i]&gt;a[j])</div><div class="line">				dp[i]=max(dp[i],dp[j]+<span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">		maxn=max(maxn,dp[i]);</div><div class="line">	&#125;</div><div class="line">    <span class="keyword">return</span> maxn;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)==<span class="number">1</span>)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,LIS(a,n));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="例题3wooden-sticks"><a class="markdownIt-Anchor" href="#例题3wooden-sticks"></a> 例题3：Wooden Sticks</h3>
 <ul>
 <li>这是一道性质的应用，如果用二分优化复杂度可以优化到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>。当然也可以贪心去做。</li>
-<li>传送门：<a href="https://vjudge.net/problem/19567/origin" target="_blank" rel="external">HDU - 1051</a></li>
+<li>传送门：<a href="https://vjudge.net/problem/19567/origin" target="_blank" rel="noopener">HDU - 1051</a></li>
 <li>AC代码：</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> a=<span class="number">0</span>, f=<span class="number">1</span>; <span class="keyword">char</span> c=getchar();</div><div class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123;<span class="keyword">if</span>(c==<span class="string">'-'</span>) f=<span class="number">-1</span>; c=getchar();&#125;</div><div class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) (a*=<span class="number">10</span>)+=c-<span class="string">'0'</span>, c=getchar();</div><div class="line">    <span class="keyword">return</span> a*f;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">s</span></span></div><div class="line"><span class="class">&#123;</span></div><div class="line">    <span class="keyword">int</span> a,b;</div><div class="line">&#125;st[<span class="number">10010</span>];</div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(s a,s b)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">if</span>(a.a==b.a)</div><div class="line">        <span class="keyword">return</span> a.b&lt;b.b;</div><div class="line">    <span class="keyword">return</span> a.a&lt;b.a;</div><div class="line">&#125;</div><div class="line"><span class="keyword">int</span> dp[<span class="number">10010</span>],n;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">LDS</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        dp[i]=<span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;i;j++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">if</span>(st[j].b&gt;st[i].b)</div><div class="line">                dp[i]=max(dp[i],dp[j]+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> m=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        m=max(dp[i],m);</div><div class="line">    <span class="keyword">return</span> m;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> T=read();</div><div class="line">    <span class="keyword">while</span>(T--)</div><div class="line">    &#123;</div><div class="line">        n=read();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)</div><div class="line">        &#123;</div><div class="line">            st[i].a=read();</div><div class="line">            st[i].b=read();</div><div class="line">        &#125;</div><div class="line">        sort(st,st+n,cmp);</div><div class="line">        <span class="comment">/*for(int i=0;i&lt;n;i++)</span></div><div class="line"><span class="comment">            printf("%d,%d\n",st[i].a,st[i].b);*/</span></div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,LDS());</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="最长公共子串dp-on2"><a class="markdownIt-Anchor" href="#最长公共子串dp-on2"></a> 最长公共子串(dp) O(n^2)</h2>
 <ul>
 <li>我DP弱到连这种基础的东西都想不明白的地步了……</li>
-<li><a href="http://www.cnblogs.com/ider/p/longest-common-substring-problem-optimization.html" target="_blank" rel="external"> 《从优化到再优化，最长公共子串》 </a> 这篇博文讲的十分好，特别这个图一看就懂了。</li>
+<li><a href="http://www.cnblogs.com/ider/p/longest-common-substring-problem-optimization.html" target="_blank" rel="noopener"> 《从优化到再优化，最长公共子串》 </a> 这篇博文讲的十分好，特别这个图一看就懂了。</li>
 </ul>
 <p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-8-5/19542022.jpg" alt=""></p>
 <ul>
@@ -203,7 +203,7 @@
 <p>这个无疑是最长公共子串的升级版了，可以对比来学习。</p>
 </li>
 <li>
-<p>参考博文：<a href="http://blog.chinaunix.net/uid-26548237-id-3374211.html" target="_blank" rel="external">最长公共子序列（LCS）问题</a> ，先上这个很经典的图：</p>
+<p>参考博文：<a href="http://blog.chinaunix.net/uid-26548237-id-3374211.html" target="_blank" rel="noopener">最长公共子序列（LCS）问题</a> ，先上这个很经典的图：</p>
 <p>​</p>
 <p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-8-4/71450175.jpg" alt=""></p>
 </li>
@@ -311,7 +311,7 @@
 <ul>
 <li>
 <p>简直是本专题完美的究极奥义啊，它帮我进一步完善了我蒟蒻的DP脑残思想，动态规划是指，通过一个正确的动态转移方程求得解，不管dp数组是一维还是二维还是三维的，只要在方程里ijk是变的，那就没错了。</p>
-<p>经典例题： <a href="https://vjudge.net/problem/HDU-1024" target="_blank" rel="external">A - Max Sum Plus Plus</a> <a href="https://vjudge.net/problem/16215/origin" target="_blank" rel="external">HDU - 1024</a></p>
+<p>经典例题： <a href="https://vjudge.net/problem/HDU-1024" target="_blank" rel="noopener">A - Max Sum Plus Plus</a> <a href="https://vjudge.net/problem/16215/origin" target="_blank" rel="noopener">HDU - 1024</a></p>
 </li>
 <li>
 <p>看了题你大概就知道最大M子段和是啥意思了。</p>
@@ -434,7 +434,15 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
+			<li><a href="/categories/Cloud/" title="Cloud">Cloud<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		  
 		
 		  
@@ -442,15 +450,11 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
-			<li><a href="/categories/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
-		  
-		
-		  
 			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/算法/" title="算法">算法<sup>9</sup></a></li>
+			<li><a href="/categories/算法/" title="算法">算法<sup>10</sup></a></li>
 		  
 		
 		  
@@ -465,7 +469,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -564,7 +568,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共37.5k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共39.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>

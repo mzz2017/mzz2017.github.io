@@ -4,8 +4,68 @@
 
     
   <url>
+    <loc>http://mzz.pub/2018/03/05/algorithm/%E6%89%87%E5%BD%A2%E6%B6%82%E8%89%B2/</loc>
+    <lastmod>2018-03-05T10:56:52.866Z</lastmod>
+    <data>
+        <display>
+        <title>扇形涂色问题</title>
+        <pubTime>2018-03-05T10:40:32.000Z</pubTime>
+        
+        <tag>排列组合</tag>
+         
+         
+           
+             
+              <breadCrumb title="算法" url="http://mzz.pub/categories/%E7%AE%97%E6%B3%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://mzz.pub/2017/12/22/JustPlay/MobileUbuntu/</loc>
+    <lastmod>2018-01-29T18:05:52.001Z</lastmod>
+    <data>
+        <display>
+        <title>把Ubuntu16.04装进移动硬盘的惨痛实战</title>
+        <pubTime>2017-12-22T11:20:00.000Z</pubTime>
+        
+        <tag>ubuntu</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux" url="http://mzz.pub/categories/Linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://mzz.pub/2018/01/05/JustPlay/googlecloud/</loc>
+    <lastmod>2018-01-28T17:15:41.454Z</lastmod>
+    <data>
+        <display>
+        <title>如何分别空手套得Google Cloud和阿里云国际版的300美金</title>
+        <pubTime>2018-01-05T14:18:00.000Z</pubTime>
+        
+        <tag>Cloud</tag>
+         
+         
+           
+             
+              <breadCrumb title="Cloud" url="http://mzz.pub/categories/Cloud/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://mzz.pub/2018/01/27/JustPlay/ownCloud/</loc>
-    <lastmod>2018-01-27T11:52:46.236Z</lastmod>
+    <lastmod>2018-01-27T12:00:46.861Z</lastmod>
     <data>
         <display>
         <title>在梅林路由器搭建ownCloud/NextCloud网盘</title>
@@ -47,7 +107,7 @@
     
     
   <url>
-    <loc>http://mzz.pub/2017/08/06/blog/</loc>
+    <loc>http://mzz.pub/2017/08/06/JustPlay/blog/</loc>
     <lastmod>2017-12-30T08:49:27.809Z</lastmod>
     <data>
         <display>
@@ -58,26 +118,6 @@
            
              
               <breadCrumb title="博客搭建指南" url="http://mzz.pub/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://mzz.pub/2017/12/22/MobileUbuntu/</loc>
-    <lastmod>2017-12-30T08:19:21.884Z</lastmod>
-    <data>
-        <display>
-        <title>把Ubuntu16.04装进移动硬盘的惨痛实战</title>
-        <pubTime>2017-12-22T11:20:00.000Z</pubTime>
-        
-        <tag>ubuntu</tag>
-         
-         
-           
-             
-              <breadCrumb title="ubuntu" url="http://mzz.pub/categories/ubuntu/"/>
           
         </display>
     </data>

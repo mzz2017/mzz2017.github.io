@@ -126,7 +126,7 @@
 <p>JAVA是存在指针的，但它的用法被极大的限制了，以至于我们察觉不到它的存在。但我认为如果因此不去了解JAVA的指针，是无法学好JAVA的。</p>
 </li>
 <li>
-<p>代码转自知乎<a href="https://www.zhihu.com/question/31203609" target="_blank" rel="external">java到底是值传递还是引用传递？</a>Intopass的回答。</p>
+<p>代码转自知乎<a href="https://www.zhihu.com/question/31203609" target="_blank" rel="noopener">java到底是值传递还是引用传递？</a>Intopass的回答。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//第一个例子：基本类型</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">    value = <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line">foo(num); <span class="comment">// num 没有被改变</span></div><div class="line"></div><div class="line"><span class="comment">//第二个例子：没有提供改变自身方法的引用类型</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(String text)</span> </span>&#123;</div><div class="line">    text = <span class="string">"windows"</span>;</div><div class="line">&#125;</div><div class="line">foo(str); <span class="comment">// str 也没有被改变</span></div><div class="line"></div><div class="line"><span class="comment">//第三个例子：提供了改变自身方法的引用类型</span></div><div class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"iphone"</span>);</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(StringBuilder builder)</span> </span>&#123;</div><div class="line">    builder.append(<span class="string">"4"</span>);</div><div class="line">&#125;</div><div class="line">foo(sb); <span class="comment">// sb 被改变了，变成了"iphone4"。</span></div><div class="line"></div><div class="line"><span class="comment">//第四个例子：提供了改变自身方法的引用类型，但是不使用，而是使用赋值运算符。</span></div><div class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"iphone"</span>);</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(StringBuilder builder)</span> </span>&#123;</div><div class="line">    builder = <span class="keyword">new</span> StringBuilder(<span class="string">"ipad"</span>);</div><div class="line">&#125;</div><div class="line">foo(sb); <span class="comment">// sb 没有被改变，还是 "iphone"。</span></div></pre></td></tr></table></figure>
 <blockquote>
 <ul>
@@ -256,7 +256,15 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
+			<li><a href="/categories/Cloud/" title="Cloud">Cloud<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 		  
 		
 		  
@@ -264,15 +272,11 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
-			<li><a href="/categories/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
-		  
-		
-		  
 			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/算法/" title="算法">算法<sup>9</sup></a></li>
+			<li><a href="/categories/算法/" title="算法">算法<sup>10</sup></a></li>
 		  
 		
 		  
@@ -287,7 +291,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 10px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -386,7 +390,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共37.5k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共39.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
