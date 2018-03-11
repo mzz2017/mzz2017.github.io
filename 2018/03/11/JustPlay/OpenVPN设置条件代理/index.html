@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-11T12:04:05.118Z">
+<meta property="og:updated_time" content="2018-03-11T12:59:43.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenVPN设置条件代理的方法">
 <meta name="twitter:description" content="引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。">
@@ -153,7 +153,7 @@
 <h2 id="linux下添加开机自启"><a class="markdownIt-Anchor" href="#linux下添加开机自启"></a> Linux下添加开机自启</h2>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo openvpn --daemon --config ~/shu.ovpn --auth-user-pass ~/pass.txt</div></pre></td></tr></table></figure>
 <p>使用上述命令可以启动OpenVPN的守护进程，其中pass.txt文件保存了连接所需的账号密码，第一行为账号，第二行为密码，两处文件路径均需完整路径。</p>
-<p>linux版本不同方法也不同，有的linux版本自启时没有su权限，使用sudo会无法进入图形界面（Fedora），下面仅以deepin为例（debian系）：</p>
+<p>linux版本不同方法也不同，有的linux版本自启时没有su权限，使用sudo会无法进入图形界面（好像是Fedora），下面仅以deepin为例（debian系）：</p>
 <blockquote>
 <p><a href="https://wiki.deepin.org/index.php?title=%E8%87%AA%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F" target="_blank" rel="noopener"><strong><em>使用systemd执行rc.local</em></strong></a></p>
 <p>在使用了systemd作为启动器的系统（如较新版的deepin）中，默认不包含rc.local文件。此时请在/etc目录下以管理员权限创建一个名为rc.local的纯文本文件，并写入如下内容：</p>
@@ -162,7 +162,7 @@
 <blockquote>
 <p>保存后，赋予该文件可执行权限：<code>sudo chmod +x /etc/rc.local</code>。下次重启时，systemd就会自动执行rc.local里面的命令了</p>
 </blockquote>
-<p>因此我们如法炮制，把<code>openvpn --daemon --config ~/shu.ovpn --auth-user-pass ~/pass.txt</code>写入即可(deepin自启有su权限)。</p>
+<p>因此我们如法炮制，把<code>sudo openvpn --daemon --config ~/shu.ovpn --auth-user-pass ~/pass.txt</code>写入即可(deepin自启有su权限，故可以加sudo)。</p>
 <p>Terminal敲入reboot回车，一切明朗。</p>
   
 	</div>
