@@ -4,23 +4,25 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>mzz&#39;s blog</title>
+    <title>在Ubuntu安装和配置Jenkins | mzz&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="莫之章">
     
 
     
-    <meta name="description" content="莫之章的个人博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="mzz&#39;s blog">
-<meta property="og:url" content="http://mzz.pub/page/3/index.html">
+    <meta name="description" content="引言： 网上关于Jenkins安装配置的教程要么就是CentOS的，要么就感觉部署很全，不能一次性解决我过程中的全部问题，所以还是自己写一篇吧。">
+<meta name="keywords" content="Cloud">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Ubuntu安装和配置Jenkins">
+<meta property="og:url" content="http://mzz.pub/2018/05/14/JustPlay/jenkins/index.html">
 <meta property="og:site_name" content="mzz&#39;s blog">
-<meta property="og:description" content="莫之章的个人博客">
+<meta property="og:description" content="引言： 网上关于Jenkins安装配置的教程要么就是CentOS的，要么就感觉部署很全，不能一次性解决我过程中的全部问题，所以还是自己写一篇吧。">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-14T15:35:21.573Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mzz&#39;s blog">
-<meta name="twitter:description" content="莫之章的个人博客">
+<meta name="twitter:title" content="在Ubuntu安装和配置Jenkins">
+<meta name="twitter:description" content="引言： 网上关于Jenkins安装配置的教程要么就是CentOS的，要么就感觉部署很全，不能一次性解决我过程中的全部问题，所以还是自己写一篇吧。">
 
     
     
@@ -91,509 +93,162 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/08/07/algorithm/排序章节/" title="排序章节总结" itemprop="url">排序章节总结</a>
+      <a href="/2018/05/14/JustPlay/jenkins/" title="在Ubuntu安装和配置Jenkins" itemprop="url">在Ubuntu安装和配置Jenkins</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
   <p class="article-time">
-    <time datetime="2017-08-07T12:34:15.000Z" itemprop="datePublished"> 发表于 2017-08-07</time>
+    <time datetime="2018-05-14T14:25:00.000Z" itemprop="datePublished"> 发表于 2018-05-14</time>
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p>引言：前面的还没补，排序又来了。本文B题将介绍几个有趣的做法，还有一个一直很想学的拓扑排序。</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-number">1.</span> <span class="toc-text"> 准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装java-jdk并配置环境变量"><span class="toc-number">1.1.</span> <span class="toc-text"> 安装Java JDK并配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关键一步"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 关键一步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装jenkins"><span class="toc-number">2.</span> <span class="toc-text"> 安装Jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改jenkins配置"><span class="toc-number">3.</span> <span class="toc-text"> 修改Jenkins配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶"><span class="toc-number">4.</span> <span class="toc-text"> 进阶</span></a></li></ol>
+		
+		</div>
+		
+		<p>引言： 网上关于Jenkins安装配置的教程要么就是CentOS的，要么就感觉部署很全，不能一次性解决我过程中的全部问题，所以还是自己写一篇吧。</p>
 <hr>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/08/07/algorithm/排序章节/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+<a id="more"></a>
+<h2 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h2>
+<h3 id="安装java-jdk并配置环境变量"><a class="markdownIt-Anchor" href="#安装java-jdk并配置环境变量"></a> 安装Java JDK并配置环境变量</h3>
+<ul>
+<li>
+<p>下载jdk8的tar.gz包<code>jdk-8u171-linux-x64.tar.gz</code></p>
+</li>
+<li>
+<p><code>mkdir /usr/lib/jvm &amp;&amp; tar xzvf jdk-8u171-linux-x64.tar.gz &amp;&amp; mv jdk1.8.0_171 /usr/lib/jvm/jdk</code></p>
+</li>
+<li>
+<p><code>sudo gedit ~/.bashrc</code>在尾部添加</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export JAVA_HOME=/usr/lib/jvm/jdk</div><div class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</div><div class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</div><div class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</div></pre></td></tr></table></figure>
+</li>
+<li>
+<p>使配置生效<code>source ~/.bashrc</code></p>
+</li>
+</ul>
+<h4 id="关键一步"><a class="markdownIt-Anchor" href="#关键一步"></a> 关键一步</h4>
+<ul>
+<li><strong><code>ln -s $(type -p java) /usr/bin/java</code></strong> 将java链接到<code>/usr/bin/java</code></li>
+</ul>
+<h2 id="安装jenkins"><a class="markdownIt-Anchor" href="#安装jenkins"></a> 安装Jenkins</h2>
+<ul>
+<li>
+<p>将秘钥添加到系统：<code>wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -</code></p>
+</li>
+<li>
+<p>将Debian包存储库地址附加到服务器的<code>sources.list</code> ：<code>echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list</code></p>
+</li>
+<li>
+<p>更新源<code>sudo apt-get update</code></p>
+</li>
+<li>
+<p>安装Jenkins<code>sudo apt-get install jenkins</code></p>
+</li>
+</ul>
+<h2 id="修改jenkins配置"><a class="markdownIt-Anchor" href="#修改jenkins配置"></a> 修改Jenkins配置</h2>
+<ul>
+<li><code>sudo vim /etc/default/jenkins</code>修改：
+<ul>
+<li><code>HTTP_PORT=8081</code></li>
+</ul>
+</li>
+<li>启动Jenkins<code>sudo systemctl start jenkins</code></li>
+<li>如果Jenkins在服务器，修改安全组规则，开放<code>8081端口</code>，并且用浏览器访问<code>IP:8081</code>。否则直接访问<code>localhost:8081</code></li>
+<li>至此完成Jenkins安装。</li>
+</ul>
+<h2 id="进阶"><a class="markdownIt-Anchor" href="#进阶"></a> 进阶</h2>
+<p><a href="https://www.jianshu.com/p/b524b151d35f" target="_blank" rel="noopener"><strong>Jenkins使用简易教程</strong></a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/算法/">算法</a>
+  <a class="article-category-link" href="/categories/Cloud/">Cloud</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/排序/">排序</a><a href="/tags/拓扑排序/">拓扑排序</a>
+  <span></span> <a href="/tags/Cloud/">Cloud</a>
   </div>
 
 </div>
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://mzz.pub/2018/05/14/JustPlay/jenkins/" data-title="在Ubuntu安装和配置Jenkins | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/08/06/JustPlay/blog/" title="GITHUB+HEXO博客搭建" itemprop="url">GITHUB+HEXO博客搭建</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
-		
-  <p class="article-time">
-    <time datetime="2017-08-06T08:14:00.000Z" itemprop="datePublished"> 发表于 2017-08-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>引言：本文总结从博客搭建到现在遇到的一系列问题。我搭建的博客建立在Jacman主题之上，但本文尽量避免与主题相关的内容，尽量保留普遍适用性。</p>
-<hr>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/08/06/JustPlay/blog/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/博客搭建指南/">博客搭建指南</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2018/05/12/cpp/【20分钟自学C语言】指针与数组/"  title="【20分钟自学C语言】指针与数组（指针第二弹）">
+ <strong>下一篇：</strong><br/> 
+ <span>【20分钟自学C语言】指针与数组（指针第二弹）
+</span>
+</a>
 </div>
 
-</footer>
+</nav>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/08/05/algorithm/51Nod1714/" title="51Nod1714 - B君的游戏 (SG博弈)" itemprop="url">51Nod1714 - B君的游戏 (SG博弈)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
-		
-  <p class="article-time">
-    <time datetime="2017-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-08-05</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>引言：问题越积越多，感觉自己药丸。</p>
-<hr>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/08/05/algorithm/51Nod1714/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/2017暑期集训/">2017暑期集训</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/博弈/">博弈</a><a href="/tags/SG博弈/">SG博弈</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
 	
-</div>
 
-</footer>
 
 
-    </article>
 
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/08/04/algorithm/SG博弈笔记/" title="SG博弈笔记" itemprop="url">SG博弈笔记</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
-		
-  <p class="article-time">
-    <time datetime="2017-08-04T02:03:38.000Z" itemprop="datePublished"> 发表于 2017-08-04</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>引言：这是一篇zz兄学习了一天博弈之后一头雾水，第二天上午听学长讲了博弈后茅塞顿开，奋笔疾书记录下来的SG博弈笔记。</p>
-<hr>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/08/04/algorithm/SG博弈笔记/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/算法/">算法</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/博弈/">博弈</a><a href="/tags/SG博弈/">SG博弈</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/08/02/algorithm/POJ2349/" title="POJ2349 - Arctic Network (最小生成树)" itemprop="url">POJ2349 - Arctic Network (最小生成树)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
-		
-  <p class="article-time">
-    <time datetime="2017-08-01T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-08-02</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>引言：这道题虽然是简单的最小生成树问题，但实在很有意思，比较考验思考与猜想能力。我在一开始也确实没搞明白这其中的奥妙。</p>
-<hr>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/08/02/algorithm/POJ2349/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/2017暑期集训/">2017暑期集训</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/图论/">图论</a><a href="/tags/最小生成树/">最小生成树</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/08/01/algorithm/POJ1789/" title="POJ1789 - Truck History (最小生成树)" itemprop="url">POJ1789 - Truck History (最小生成树)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
-		
-  <p class="article-time">
-    <time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-08-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>引言：这道题是很基础的最小生成树问题，我一开始在题意理解上出现了很大的问题，从而用了最短路去做，浪费很多时间。</p>
-<hr>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/08/01/algorithm/POJ1789/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/2017暑期集训/">2017暑期集训</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/图论/">图论</a><a href="/tags/最小生成树/">最小生成树</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/08/01/algorithm/快速阶乘/" title="快速阶乘的几种算法" itemprop="url">快速阶乘的几种算法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
-		
-  <p class="article-time">
-    <time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-08-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>引言：计算阶乘是O(n)的，本文介绍几种比较有趣的阶乘算法。</p>
-<hr>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/08/01/algorithm/快速阶乘/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/算法/">算法</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/数论/">数论</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2017/07/31/algorithm/快排/" title="快速排序算法" itemprop="url">快速排序算法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
-		
-  <p class="article-time">
-    <time datetime="2017-07-30T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-07-31</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>引言：本文介绍快排的思想、代码实现及最基础的优化</p>
-<hr>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2017/07/31/algorithm/快排/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/算法/">算法</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/排序/">排序</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-  <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
-</div>
+<div id="hypercomments_widget"></div>
+<script type="text/javascript">
+_hcwp = window._hcwp || [];
+_hcwp.push({widget:"Stream", widget_id: 94148});
+(function() {
+if("HC_LOAD_INIT" in window)return;
+HC_LOAD_INIT = true;
+var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
+var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
+hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/94148/"+lang+"/widget.js";
+var s = document.getElementsByTagName("script")[0];
+s.parentNode.insertBefore(hcc, s.nextSibling);
+})();
+</script>
+<a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 
 
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-number">1.</span> <span class="toc-text"> 准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装java-jdk并配置环境变量"><span class="toc-number">1.1.</span> <span class="toc-text"> 安装Java JDK并配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关键一步"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 关键一步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装jenkins"><span class="toc-number">2.</span> <span class="toc-text"> 安装Jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改jenkins配置"><span class="toc-number">3.</span> <span class="toc-text"> 修改Jenkins配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶"><span class="toc-number">4.</span> <span class="toc-text"> 进阶</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -792,6 +447,11 @@ $(document).ready(function(){
     o.css("right",30);
   });
   
+        getSize();
+        if (myWidth >= 1024) {
+            c.click();
+        }
+  
   $(window).resize(function(){
     getSize(); 
     if (myWidth >= 1024) {
@@ -801,12 +461,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(50,295-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -868,4 +605,4 @@ $(document).ready(function(){
 
 <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   </body>
- </html>
+</html>
