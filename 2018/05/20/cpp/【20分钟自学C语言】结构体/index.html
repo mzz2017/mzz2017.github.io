@@ -4,25 +4,25 @@
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>素数筛 | mzz&#39;s blog</title>
+    <title>【20分钟自学C语言】结构体 | mzz&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="莫之章">
     
 
     
-    <meta name="description" content="引言：总是会忘记素数筛的写法，在这里写一下加强记忆。">
-<meta name="keywords" content="数论">
+    <meta name="description" content="引言：自录20分钟自学C语言系列视频，这次的主题是指针与数组。">
+<meta name="keywords" content="c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="素数筛">
-<meta property="og:url" content="http://mzz.pub/2017/08/12/algorithm/素数筛/index.html">
+<meta property="og:title" content="【20分钟自学C语言】结构体">
+<meta property="og:url" content="http://mzz.pub/2018/05/20/cpp/【20分钟自学C语言】结构体/index.html">
 <meta property="og:site_name" content="mzz&#39;s blog">
-<meta property="og:description" content="引言：总是会忘记素数筛的写法，在这里写一下加强记忆。">
+<meta property="og:description" content="引言：自录20分钟自学C语言系列视频，这次的主题是指针与数组。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-12T10:47:58.000Z">
+<meta property="og:updated_time" content="2018-05-21T13:43:02.336Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="素数筛">
-<meta name="twitter:description" content="引言：总是会忘记素数筛的写法，在这里写一下加强记忆。">
+<meta name="twitter:title" content="【20分钟自学C语言】结构体">
+<meta name="twitter:description" content="引言：自录20分钟自学C语言系列视频，这次的主题是指针与数组。">
 
     
     
@@ -50,7 +50,7 @@
         border-top-color: #1E92FB;    /*上边框颜色*/
         border-left-color: #1E92FB;    /*左边框颜色*/
     }
-</style><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 
@@ -99,14 +99,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2017/08/12/algorithm/素数筛/" title="素数筛" itemprop="url">素数筛</a>
+      <a href="/2018/05/20/cpp/【20分钟自学C语言】结构体/" title="【20分钟自学C语言】结构体" itemprop="url">【20分钟自学C语言】结构体</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
   <p class="article-time">
-    <time datetime="2017-08-12T09:40:32.000Z" itemprop="datePublished"> 发表于 2017-08-12</time>
+    <time datetime="2018-05-19T17:30:52.000Z" itemprop="datePublished"> 发表于 2018-05-20</time>
     
   </p>
 </header>
@@ -115,24 +115,16 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#埃拉托斯特尼筛法"><span class="toc-number">1.</span> <span class="toc-text"> 埃拉托斯特尼筛法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#欧拉筛法"><span class="toc-number">2.</span> <span class="toc-text"> 欧拉筛法</span></a></li></ol>
+			
 		
 		</div>
 		
-		<p>引言：总是会忘记素数筛的写法，在这里写一下加强记忆。</p>
+		<p>引言：自录20分钟自学C语言系列视频，这次的主题是指针与数组。</p>
 <hr>
 <a id="more"></a>
-<p>这个素数筛的时间复杂度是接近<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>的，叫做<code>埃拉托斯特尼筛法</code>，怎么样，是不是被这个牛逼名字震撼到了？实际上它的复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlog(log(n)))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>，嗯复杂度也很牛逼。但还有更牛逼的筛法叫欧拉筛，复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，巧了，我不会。传送门：<a href="http://wiki.gyh.me/Math/%E7%BA%BF%E6%80%A7%E7%AD%9B%E4%B8%8E%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0/" target="_blank" rel="noopener"><strong>线性筛和积性函数</strong></a></p>
-<h2 id="埃拉托斯特尼筛法"><a class="markdownIt-Anchor" href="#埃拉托斯特尼筛法"></a> 埃拉托斯特尼筛法</h2>
-<ul>
-<li>这个埃氏筛，就是将2~n中，从小到大挑一个数，比方说2吧，把2放进素数数组里，把2及2的倍数都标记为已访问，表示它们除了2都是非素数，这些数我已经确认身份了。然后挑个3，把3放进素数数组里，把3及3的倍数都标记为已访问。然后是4，4已访问跳过，再看5，5未访问，把5放进素数数组里，将5和5的倍数标记为已访问。一直到n。</li>
-<li>下面这个代码将vis数组和prime数组合并了，条件是：筛到某素数时，一定有素数值大于已得到的素数个数。</li>
-</ul>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">int</span> prime[<span class="number">1000</span>];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;<span class="number">1000</span>;i++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(!prime[i])<span class="comment">//充当vis数组</span></div><div class="line">        &#123;</div><div class="line">            prime[cnt++]=i;<span class="comment">//这里是prime数组</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+i;j&lt;<span class="number">1000</span>;j+=i)</div><div class="line">                prime[j]=<span class="number">1</span>;<span class="comment">//充当vis数组</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,prime[i]);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="欧拉筛法"><a class="markdownIt-Anchor" href="#欧拉筛法"></a> 欧拉筛法</h2>
-<ul>
-<li>不会做</li>
-</ul>
+<iframe src="//player.bilibili.com/player.html?aid=23657839&cid=39512022&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+<p>这次是结构体。</p>
+<p><a href="https://space.bilibili.com/172343204/#/video" target="_blank" rel="noopener">去B站看看</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -140,13 +132,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/算法/">算法</a>
+  <a class="article-category-link" href="/categories/20分钟自学C语言/">20分钟自学C语言</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/数论/">数论</a>
+  <span></span> <a href="/tags/c/">c</a>
   </div>
 
 </div>
@@ -155,7 +147,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2017/08/12/algorithm/素数筛/" data-title="素数筛 | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://mzz.pub/2018/05/20/cpp/【20分钟自学C语言】结构体/" data-title="【20分钟自学C语言】结构体 | mzz&#39;s blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -168,19 +160,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2017/08/12/algorithm/2017 SHU 8.12 个人赛/" title="2017SHU8.12个人赛 已做题目总结">
-  <strong>上一篇：</strong><br/>
-  <span>
-  2017SHU8.12个人赛 已做题目总结</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2017/08/10/algorithm/SG博弈的特点 - 丢史蒂芬妮回顾/"  title="SG博弈的特点 - 丢史蒂芬妮回顾">
+<a href="/2018/05/14/JustPlay/jenkins/"  title="在Ubuntu安装和配置Jenkins">
  <strong>下一篇：</strong><br/> 
- <span>SG博弈的特点 - 丢史蒂芬妮回顾
+ <span>在Ubuntu安装和配置Jenkins
 </span>
 </a>
 </div>
@@ -216,7 +200,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#埃拉托斯特尼筛法"><span class="toc-number">1.</span> <span class="toc-text"> 埃拉托斯特尼筛法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#欧拉筛法"><span class="toc-number">2.</span> <span class="toc-text"> 欧拉筛法</span></a></li></ol>
+ 
  
   </div>
 
