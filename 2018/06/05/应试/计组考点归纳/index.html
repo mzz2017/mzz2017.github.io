@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：计组考前考点归纳。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-06-06T15:42:11.888Z">
+<meta property="og:updated_time" content="2018-06-07T02:37:00.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《计算机组成原理》下 - 考点归纳">
 <meta name="twitter:description" content="引言：计组考前考点归纳。">
@@ -198,6 +198,7 @@
 <ol>
 <li>
 <p>解决了什么？</p>
+<p>是为了解决CPU和主存之间速度不匹配的问题。</p>
 <p>从CPU来看，增加一个cache的目的，就是在性能上使主存的平均读出时间尽可能接近cache的读出时间。</p>
 </li>
 <li>
@@ -239,6 +240,19 @@
 <p><strong>虚拟存储器：</strong></p>
 <p>类型：分为页式、段式、段页式三种。</p>
 <p>重点看考页式和段式的区别。</p>
+<p>分页：</p>
+<ol>
+<li>优点：页长固定，便于构造页表，易于管理，且不存在外碎片。</li>
+<li>缺点：页长与程序的逻辑大小不相关。</li>
+</ol>
+<p>分段：</p>
+<ol>
+<li>优点：段的逻辑独立性使它易于编译、管理、修改和保护，也便于多道程序共享。</li>
+<li>优点：段长可以根据需要动态改变，允许自由调度，以便有效利用主存空间。</li>
+<li>缺点：主存空间内存分配比较麻烦。</li>
+<li>缺点：容易在段间留下许多外碎片，造成存储空间利用率降低。</li>
+<li>缺点：段长不一定是2的整数次幂，需要更多硬件支持。</li>
+</ol>
 <p>3.37，3.39这张表。TLB是干嘛用的。</p>
 <h2 id="第六章-总线系统"><a class="markdownIt-Anchor" href="#第六章-总线系统"></a> 第六章 总线系统</h2>
 <h3 id="p185-基本概念"><a class="markdownIt-Anchor" href="#p185-基本概念"></a> P185 基本概念</h3>
@@ -279,7 +293,6 @@
 <p><strong>总线占用期：</strong> 主方持续控制总线的时间叫做总线占用期。</p>
 <p><strong>仲裁方式：</strong> 集中式仲裁、分布式仲裁。其中集中式仲裁分为三种：链式查询方式、计数器定时查询方式、独立请求方式。集中式仲裁的特征是有总线仲裁器。</p>
 <h4 id="三种集中式仲裁"><a class="markdownIt-Anchor" href="#三种集中式仲裁"></a> 三种集中式仲裁</h4>
-<p>P194</p>
 <ol>
 <li>
 <p>均有总线仲裁器参与，总线仲裁器是CPU的一部分，一般是一个单独的功能模块。</p>
@@ -288,12 +301,12 @@
 <p>图中的BS和BR是什么要搞清楚。</p>
 </li>
 </ol>
-<p>BS(bus state)：BS线为1，代表总线正在被某外设使用，该外设拥有总线的使用权。</p>
+<p>BS(busy)：BS线为1，代表总线正在被某外设使用，该外设拥有总线的使用权。</p>
 <p>BR(bus request)：总线请求信号线。总线上任一设备要求使用总线时，通过BR线发出总线请求（在第八章单级中断P243中，中断响应信号IR相当于总线请求信号BR）。</p>
 <h5 id="优缺点考大题的几率大"><a class="markdownIt-Anchor" href="#优缺点考大题的几率大"></a> 优缺点（考大题的几率大）</h5>
 <p><strong>链式查询方式：</strong></p>
 <p>​	优点：只用很少几根线就能按一定优先次序实现总线仲裁，且容易扩充设备。</p>
-<p>​	缺点：对询问链的电路故障很敏感。</p>
+<p>​	缺点：①对询问链的电路故障很敏感。②如果优先级高的设备出现频繁的请求时，那么优先级较低的设备可能长期不能使用总线。</p>
 <p><strong>计数器定时查询方式：</strong></p>
 <p>​	优点：方便地改变优先次序</p>
 <p>​	缺点：线数较多</p>
@@ -422,12 +435,12 @@
 </li>
 </ol>
 </li>
-<li>DMA的组成（按照图8.14弄清楚每一部分的作用）：
+<li>DMA控制器的基本组成（按照图8.14弄清楚每一部分的作用）：
 <ol>
 <li>内存地址计数器：用于存放内存中要交换的数据地址，传送前预置。</li>
 <li>字计数器：用于记录传送数据块的长度（字），传送前预置。</li>
 <li>数据缓冲寄存器：用于暂存每次传送的数据（一个字）。</li>
-<li>DMA请求标志：每当设备准备好一个数据字后给出一个控制信号，使”DMA请求“标志置”1“。该标志置位后向”控制/状态“逻辑发出DMA请求，后者又向CPU发出总线使用权的请求（HOLD），CPUI响应此请求后发回响应信号HLDA，”控制/状态“逻辑接收此信号后发出DMA响应信号，使”DMA请求“标志复位，为交换下一个字做好准备。</li>
+<li>DMA请求标志：每当设备准备好一个数据字后给出一个控制信号，使”DMA请求“标志置”1“。该标志置位后向”控制/状态“逻辑发出DMA请求，后者又向CPU发出总线使用权的请求（HOLD），CPU响应此请求后发回响应信号HLDA，”控制/状态“逻辑接收此信号后发出DMA响应信号，使”DMA请求“标志复位，为交换下一个字做好准备。</li>
 <li>控制/状态逻辑：由控制和时序电路以及状态标志等组成，用于修改内存地址计数器和字计数器，指定传送类型（输入或输出），并对”DMA“请求信号和CPU响应信号进行协调和同步。</li>
 <li>中断机构：当字计数器溢出时（全0），意味着一组数据交换完毕，由溢出信号触发中断机构，向CPU提出中断报告。</li>
 </ol>
@@ -437,14 +450,14 @@
 </ul>
 <h3 id="p258-通道随便看看"><a class="markdownIt-Anchor" href="#p258-通道随便看看"></a> P258 通道（随便看看）</h3>
 <p>概念：通道是一种特殊功能的处理器。</p>
-<p>类型：选择通道（高速通道）、多路通道（多路转换通道）</p>
+<p>类型：选择通道、多路通道（细分为数组多路通道，字节多路通道）</p>
 <h2 id="附言"><a class="markdownIt-Anchor" href="#附言"></a> 附言</h2>
 <ul>
 <li>
 <p>关于“传输”还是“传送”：所有<code>传输</code>只和<code>率</code>一起出现，如数据传输率、数据传输速率，其余的一律用<code>传送</code></p>
 </li>
 <li>
-<p>压题：接口电路设计和总线设计有什么区别各自侧重点？</p>
+<p>押题：接口电路设计和总线设计有什么区别各自侧重点？</p>
 <p>猜测是从P242的图8.6的接口电路和P195的图6.10入手</p>
 </li>
 </ul>
@@ -484,6 +497,14 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2018/06/15/tools/rpx/" title="让webstorm编写微信小程序时支持rpx">
+  <strong>上一篇：</strong><br/>
+  <span>
+  让webstorm编写微信小程序时支持rpx</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/2018/05/29/JustPlay/mysqld/"  title="把mysql数据库挂在服务器上">
@@ -574,6 +595,10 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
+			<li><a href="/categories/微信小程序/" title="微信小程序">微信小程序<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/算法/" title="算法">算法<sup>11</sup></a></li>
 		  
 		
@@ -589,7 +614,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 16.67px;">Cloud</a> <a href="/tags/DP/" style="font-size: 13.33px;">DP</a> <a href="/tags/JAVA/" style="font-size: 16.67px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 16.67px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/c/" style="font-size: 20px;">c</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/博弈/" style="font-size: 16.67px;">博弈</a> <a href="/tags/图论/" style="font-size: 16.67px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 13.33px;">排序</a> <a href="/tags/数论/" style="font-size: 13.33px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 13.33px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 16.67px;">Cloud</a> <a href="/tags/DP/" style="font-size: 13.33px;">DP</a> <a href="/tags/JAVA/" style="font-size: 16.67px;">JAVA</a> <a href="/tags/SG博弈/" style="font-size: 16.67px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/c/" style="font-size: 20px;">c</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/博弈/" style="font-size: 16.67px;">博弈</a> <a href="/tags/图论/" style="font-size: 16.67px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 13.33px;">排序</a> <a href="/tags/数论/" style="font-size: 13.33px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 13.33px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -688,7 +713,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共48.2k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共48.9k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
