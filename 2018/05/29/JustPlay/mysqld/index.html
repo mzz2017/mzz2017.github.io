@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：2018.5.29 上午10点，服务器配置mysql遇到了几个坑，这个仇先记下。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-29T02:53:03.263Z">
+<meta property="og:updated_time" content="2018-06-20T05:53:37.148Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="把mysql数据库挂在服务器上">
 <meta name="twitter:description" content="引言：2018.5.29 上午10点，服务器配置mysql遇到了几个坑，这个仇先记下。">
@@ -140,6 +140,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -tulpen</div></pre></td></tr></table></figure>
 <p>这里如果没有监听3306端口或者只监听了<code>localhost</code>（0.0.0.0表示监听所有），则在<code>/etc/mysql/my.cnf</code>的<code>[mysqld]</code>下添加配置（如果没有[mysqld]就自己加一个）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bind-address = 0.0.0.0</div></pre></td></tr></table></figure>
+<p>重启mysql服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service mysql restart</div></pre></td></tr></table></figure>
 <h3 id="更改云服务器商的安全组"><a class="markdownIt-Anchor" href="#更改云服务器商的安全组"></a> 更改云服务器商的安全组</h3>
 <p>我是阿里云，默认是有安全组的，也就是说他们会有个防火墙限制我服务器的端口开放性。</p>
 <p>于是登入控制台，给3306开放入方向的端口。</p>

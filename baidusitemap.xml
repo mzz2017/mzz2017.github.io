@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://mzz.pub/2018/05/29/JustPlay/mysqld/</loc>
+    <lastmod>2018-06-20T05:53:37.148Z</lastmod>
+    <data>
+        <display>
+        <title>把mysql数据库挂在服务器上</title>
+        <pubTime>2018-05-29T02:48:00.000Z</pubTime>
+        
+        <tag>Cloud</tag>
+         
+         
+           
+             
+              <breadCrumb title="Cloud" url="http://mzz.pub/categories/Cloud/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://mzz.pub/2018/06/15/tools/rpx/</loc>
     <lastmod>2018-06-15T05:47:50.350Z</lastmod>
     <data>
@@ -37,26 +57,6 @@
            
              
               <breadCrumb title="应试" url="http://mzz.pub/categories/%E5%BA%94%E8%AF%95/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://mzz.pub/2018/05/29/JustPlay/mysqld/</loc>
-    <lastmod>2018-05-29T02:53:03.263Z</lastmod>
-    <data>
-        <display>
-        <title>把mysql数据库挂在服务器上</title>
-        <pubTime>2018-05-29T02:48:00.000Z</pubTime>
-        
-        <tag>Cloud</tag>
-         
-         
-           
-             
-              <breadCrumb title="Cloud" url="http://mzz.pub/categories/Cloud/"/>
           
         </display>
     </data>
