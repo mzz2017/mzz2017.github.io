@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mzz.pub/about/index.html</loc>
+    
+    <lastmod>2018-09-15T03:58:40.132Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mzz.pub/2018/09/10/JustPlay/EasyConnect/</loc>
     
-    <lastmod>2018-09-10T10:28:23.105Z</lastmod>
+    <lastmod>2018-09-15T03:46:36.288Z</lastmod>
     
   </url>
   
@@ -138,13 +145,6 @@
     <loc>http://mzz.pub/2017/12/31/JAVA/SpringMVC/</loc>
     
     <lastmod>2018-01-23T11:19:48.326Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/about/index.html</loc>
-    
-    <lastmod>2018-01-16T15:05:06.260Z</lastmod>
     
   </url>
   
@@ -303,14 +303,14 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/neteasemusic.html</loc>
+    <loc>http://mzz.pub/baidu_verify_XXAMxs3m8F.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://mzz.pub/search/index.html</loc>
+    <loc>http://mzz.pub/neteasemusic.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     
@@ -324,7 +324,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/baidu_verify_XXAMxs3m8F.html</loc>
+    <loc>http://mzz.pub/search/index.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     

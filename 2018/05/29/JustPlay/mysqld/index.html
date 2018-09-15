@@ -133,21 +133,21 @@
 </blockquote>
 <h3 id="改表法修改访问host"><a class="markdownIt-Anchor" href="#改表法修改访问host"></a> 改表法修改访问host</h3>
 <p>首先我们要把mysql某用户的可访问host改为%，这里以root为例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql -u root -p</div><div class="line">mysql&gt;use mysql;</div><div class="line">mysql&gt;update user set host = &apos;%&apos; where user = &apos;root&apos;;</div><div class="line">mysql&gt;select host, user from user;</div><div class="line">mysql&gt;flush privileges; #刷新使生效</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">mysql&gt;use mysql;</span><br><span class="line">mysql&gt;update user set host = &apos;%&apos; where user = &apos;root&apos;;</span><br><span class="line">mysql&gt;select host, user from user;</span><br><span class="line">mysql&gt;flush privileges; #刷新使生效</span><br></pre></td></tr></table></figure>
 <h3 id="修改mysql配置文件"><a class="markdownIt-Anchor" href="#修改mysql配置文件"></a> 修改mysql配置文件</h3>
 <p>mysql可能监听的是127.0.0.1:3306，我们要给它改成0.0.0.0:3306。</p>
 <p>执行命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">netstat -tulpen</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tulpen</span><br></pre></td></tr></table></figure>
 <p>这里如果没有监听3306端口或者只监听了<code>localhost</code>（0.0.0.0表示监听所有），则在<code>/etc/mysql/my.cnf</code>的<code>[mysqld]</code>下添加配置（如果没有[mysqld]就自己加一个）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bind-address = 0.0.0.0</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind-address = 0.0.0.0</span><br></pre></td></tr></table></figure>
 <p>重启mysql服务</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service mysql restart</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql restart</span><br></pre></td></tr></table></figure>
 <h3 id="更改云服务器商的安全组"><a class="markdownIt-Anchor" href="#更改云服务器商的安全组"></a> 更改云服务器商的安全组</h3>
 <p>我是阿里云，默认是有安全组的，也就是说他们会有个防火墙限制我服务器的端口开放性。</p>
 <p>于是登入控制台，给3306开放入方向的端口。</p>
 <h3 id="修改本地防火墙规则"><a class="markdownIt-Anchor" href="#修改本地防火墙规则"></a> 修改本地防火墙规则</h3>
 <p>在terminal输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -I INPUT -p tcp --destination-port 3306 -j ACCEPT</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --destination-port 3306 -j ACCEPT</span><br></pre></td></tr></table></figure>
 <hr style="margin: 2rem 0">
 <div align="center" style="font-weight: bold; font-size: 2rem; margin-bottom: 2rem">至此通关！</div>  
 	</div>
@@ -404,7 +404,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共49.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共52.9k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>

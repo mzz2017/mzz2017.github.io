@@ -128,19 +128,19 @@
 <h2 id="创建数组"><a class="markdownIt-Anchor" href="#创建数组"></a> 创建数组</h2>
 <h3 id="创建对象数组"><a class="markdownIt-Anchor" href="#创建对象数组"></a> 创建对象数组</h3>
 <p>Dog[] dogs=new Dog[8];仅仅是创建（声明）一个数组（指针），并没有为对象分配空间，也就是说并没有创建对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Dog[] dogs=<span class="keyword">new</span> Dog[<span class="number">8</span>];</div><div class="line">dogs[<span class="number">0</span>].name=<span class="string">"Stephon"</span>;</div><div class="line">dogs[<span class="number">0</span>].dark();</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog[] dogs=<span class="keyword">new</span> Dog[<span class="number">8</span>];</span><br><span class="line">dogs[<span class="number">0</span>].name=<span class="string">"Stephon"</span>;</span><br><span class="line">dogs[<span class="number">0</span>].dark();</span><br></pre></td></tr></table></figure>
 <p>上述代码是错误的，编译不通过，因为dogs[0]对象还不存在。</p>
 <p>我们必须要进行的是Dog[0]=new Dog();等操作来给指针分配空间（创建对象）。<br>
 如：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)</div><div class="line">    dogs[i]=<span class="keyword">new</span> Dog();</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)</span><br><span class="line">    dogs[i]=<span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
 <p>天哪，使用循环来创建数组对象，贼JB恶心。</p>
 <p>而使用foreach的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span>(Dog x:dogs)</div><div class="line">    x=<span class="keyword">new</span> Dog();</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Dog x:dogs)</span><br><span class="line">    x=<span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
 <p>是不合规的……我知道这里不该写Dog x，但是我不知道怎么写指针Dog……</p>
 <p>没有指针的JAVA真难用……怀念C一秒钟……</p>
 <h3 id="string对象是异类吗"><a class="markdownIt-Anchor" href="#string对象是异类吗"></a> String对象是异类吗？</h3>
 <p>先贴代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">String[] strArrays=<span class="keyword">new</span> String[<span class="number">3</span>];</div><div class="line">strArrays[<span class="number">0</span>]=<span class="string">"hello"</span>;</div><div class="line">System.out.println(strArrays[<span class="number">0</span>]);</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String[] strArrays=<span class="keyword">new</span> String[<span class="number">3</span>];</span><br><span class="line">strArrays[<span class="number">0</span>]=<span class="string">"hello"</span>;</span><br><span class="line">System.out.println(strArrays[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
 <p>这样的代码居然是正确的！！！</p>
 <p>别急，我们平下心来分析一波，String真的是异类吗？</p>
 <p>实际上不是的。String的&quot;=&quot;运算符被重载了，也就是说strArrays[0]=&quot;hello&quot;相当于strArrays[0]=new String(“hello”)，清楚了这一点就明白了。</p>
@@ -399,7 +399,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共49.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共52.9k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>

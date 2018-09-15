@@ -140,21 +140,21 @@
 <ol>
 <li>
 <p>SSH客户端输入命令</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">entware-setup.sh</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">entware-setup.sh</span><br></pre></td></tr></table></figure>
 <p>选择U盘的序号，回车，等待安装完成（如果输入opkg显示命令不存在，则用gpart给u盘分配新UUID再试）</p>
 </li>
 <li>
 <p><s>更换软件源</s>（不需要更换了，想尝试php5的可以更换一波）</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /opt/etc/opkg.conf</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/etc/opkg.conf</span><br></pre></td></tr></table></figure>
 <p>将官方软件源换为<code>src/gz packages http://qnapware.zyxmon.org/binaries-armv7</code></p>
 </li>
 <li>
 <p>更新</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">opkg update</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>安装环境</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">opkg install \</div><div class="line">sudo \</div><div class="line">bzip2 \</div><div class="line">php7-cli \</div><div class="line">php7-cgi \</div><div class="line">php7-mod-ctype \</div><div class="line">php7-mod-curl \</div><div class="line">php7-mod-dom \</div><div class="line">php7-mod-fileinfo \</div><div class="line">php7-mod-gd \</div><div class="line">php7-mod-hash \</div><div class="line">php7-mod-iconv \</div><div class="line">php7-mod-json \</div><div class="line">php7-mod-mbstring \</div><div class="line">php7-mod-pdo \</div><div class="line">php7-mod-session \</div><div class="line">php7-mod-simplexml \</div><div class="line">php7-mod-xml \</div><div class="line">php7-mod-xmlwriter \</div><div class="line">php7-mod-xmlreader \</div><div class="line">php7-mod-zip \</div><div class="line">php7-fpm \</div><div class="line">php7-mod-pgsql \</div><div class="line">php7-mod-pdo-pgsql \</div><div class="line">php7-mod-intl \</div><div class="line">php7-mod-openssl \</div><div class="line">pgsql-server \</div><div class="line">pgsql-cli-extra</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">opkg install \</span><br><span class="line">sudo \</span><br><span class="line">bzip2 \</span><br><span class="line">php7-cli \</span><br><span class="line">php7-cgi \</span><br><span class="line">php7-mod-ctype \</span><br><span class="line">php7-mod-curl \</span><br><span class="line">php7-mod-dom \</span><br><span class="line">php7-mod-fileinfo \</span><br><span class="line">php7-mod-gd \</span><br><span class="line">php7-mod-hash \</span><br><span class="line">php7-mod-iconv \</span><br><span class="line">php7-mod-json \</span><br><span class="line">php7-mod-mbstring \</span><br><span class="line">php7-mod-pdo \</span><br><span class="line">php7-mod-session \</span><br><span class="line">php7-mod-simplexml \</span><br><span class="line">php7-mod-xml \</span><br><span class="line">php7-mod-xmlwriter \</span><br><span class="line">php7-mod-xmlreader \</span><br><span class="line">php7-mod-zip \</span><br><span class="line">php7-fpm \</span><br><span class="line">php7-mod-pgsql \</span><br><span class="line">php7-mod-pdo-pgsql \</span><br><span class="line">php7-mod-intl \</span><br><span class="line">php7-mod-openssl \</span><br><span class="line">pgsql-server \</span><br><span class="line">pgsql-cli-extra</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="配置postgresql"><a class="markdownIt-Anchor" href="#配置postgresql"></a> 配置PostgreSQL</h4>
@@ -167,22 +167,22 @@
 <p>配置sudoers</p>
 <p>root无法启动pgsql，故在/etc/passwd发现有用户tor，借壳。</p>
 <p>给admin加入superusers</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /opt/etc/sudoers</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/etc/sudoers</span><br></pre></td></tr></table></figure>
 <p>在<code>root ALL=(ALL) ALL</code>行下添加一行<code>admin ALL=(ALL) ALL</code> ，保存</p>
 </li>
 <li>
 <p>建立存储点并更改所有权</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir /opt/usr/pgdata</div><div class="line">chown tor /opt/usr/pgdata</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/usr/pgdata</span><br><span class="line">chown tor /opt/usr/pgdata</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>初始化数据库</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u tor initdb -D /opt/usr/pgdata</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u tor initdb -D /opt/usr/pgdata</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>启动PostgreSQL服务</p>
 <p>如1.2步骤新建一个SSH连接，因为启动PostgreSQL服务将挂起线程！（不要关闭之前的SSH连接）</p>
 <p>在新的SSH命令行中输入下列命令</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u tor postgres -D /opt/usr/pgdata/</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u tor postgres -D /opt/usr/pgdata/</span><br></pre></td></tr></table></figure>
 <p>服务正常启动后，可以关闭窗口不管它了，也可以不关看看日志。</p>
 </li>
 <li>
@@ -191,24 +191,24 @@
 <li>
 <p>使用tor用户（推荐）</p>
 <p>回到之前的SSH连接，输入以下命令创建tor同名数据库</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u tor createdb tor</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u tor createdb tor</span><br></pre></td></tr></table></figure>
 <p>进入PostgreSQL-Client</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">psql -U tor</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U tor</span><br></pre></td></tr></table></figure>
 <p>在SQL命令行下输入以下命令设置密码并退出</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ALTER USER <span class="string">"tor"</span> WITH PASSWORD <span class="string">'123456'</span>;</div><div class="line">\q</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER <span class="string">"tor"</span> WITH PASSWORD <span class="string">'123456'</span>;</span><br><span class="line">\q</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>你也可以创建一个新用户（貌似有点问题）</p>
 <p>回到之前的SSH连接，输入以下命令创建一个名为ownCloud的用户</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u tor createuser --interactive</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u tor createuser --interactive</span><br></pre></td></tr></table></figure>
 <p><code>ownCloud</code></p>
 <p><code>y</code></p>
 <p>创建同名数据库</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo -u tor createdb ownCloud</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u tor createdb ownCloud</span><br></pre></td></tr></table></figure>
 <p>进入PostgreSQL-Client</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">psql -U ownCloud</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U ownCloud</span><br></pre></td></tr></table></figure>
 <p>在SQL命令行下输入以下命令设置密码并退出</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ALTER USER <span class="string">"ownCloud"</span> WITH PASSWORD <span class="string">'123456'</span>;</div><div class="line">\q</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER <span class="string">"ownCloud"</span> WITH PASSWORD <span class="string">'123456'</span>;</span><br><span class="line">\q</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
@@ -217,14 +217,14 @@
 <ol>
 <li>
 <p>下载ownCloud包</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - https://download.owncloud.org/community/owncloud-<span class="number">10.0</span>.<span class="number">4</span>.tar.bz2 | bzip2 -cd | tar -xvC /opt/share/www/</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O - https://download.owncloud.org/community/owncloud-<span class="number">10.0</span>.<span class="number">4</span>.tar.bz2 | bzip2 -cd | tar -xvC /opt/share/www/</span><br></pre></td></tr></table></figure>
 <p>or NextCloud</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -O - https://download.nextcloud.com/server/releases/nextcloud-<span class="number">12.0</span>.<span class="number">5</span>.tar.bz2 | bzip2 -cd | tar -xvC /opt/share/www/</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O - https://download.nextcloud.com/server/releases/nextcloud-<span class="number">12.0</span>.<span class="number">5</span>.tar.bz2 | bzip2 -cd | tar -xvC /opt/share/www/</span><br></pre></td></tr></table></figure>
 <p>其中的版本号请根据<a href="https://owncloud.org/download/#owncloud-server-tar-ball" target="_blank" rel="noopener"><strong>官网</strong></a>版本进行修改，下文以ownCloud为例，但本文同样适用于Nextcloud</p>
 </li>
 <li>
 <p>修改php相关配置</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">"/upload_max_filesize =*/cupload_max_filesize = 100M"</span> <span class="string">"/opt/etc/php.ini"</span></div><div class="line">sed -i <span class="string">"/post_max_size =*/cpost_max_size = 100M"</span> <span class="string">"/opt/etc/php.aini"</span></div><div class="line">sed -i <span class="string">"/memory_limit =*/cmemory_limit = 32M"</span> <span class="string">"/opt/etc/php.ini"</span></div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">"/upload_max_filesize =*/cupload_max_filesize = 100M"</span> <span class="string">"/opt/etc/php.ini"</span></span><br><span class="line">sed -i <span class="string">"/post_max_size =*/cpost_max_size = 100M"</span> <span class="string">"/opt/etc/php.aini"</span></span><br><span class="line">sed -i <span class="string">"/memory_limit =*/cmemory_limit = 32M"</span> <span class="string">"/opt/etc/php.ini"</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="web服务器二选一"><a class="markdownIt-Anchor" href="#web服务器二选一"></a> Web服务器二选一</h4>
@@ -232,11 +232,11 @@
 <ol>
 <li>
 <p>SSH客户端输入命令</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">opkg install apache</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg install apache</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>修改apache配置文件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /opt/etc/apache/httpd.conf</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/etc/apache/httpd.conf</span><br></pre></td></tr></table></figure>
 <ul>
 <li>
 <p>将<code>DocumentRoot</code>的值改为<code>/opt/share/www</code></p>
@@ -254,7 +254,7 @@
 </li>
 <li>
 <p>将<code>&lt;Directory /&gt;...&lt;/Directory&gt;</code>修改如下</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;Directory /&gt;</div><div class="line">    Options FollowSymLinks</div><div class="line">    AllowOverride None</div><div class="line">    Order deny,allow</div><div class="line">    Allow from all</div><div class="line">&lt;<span class="regexp">/Directory&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /&gt;</span><br><span class="line">    Options FollowSymLinks</span><br><span class="line">    AllowOverride None</span><br><span class="line">    Order deny,allow</span><br><span class="line">    Allow from all</span><br><span class="line">&lt;<span class="regexp">/Directory&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>修改<code>DocumentRoot &quot;/opt/share/htdocs&quot;</code>为<code>DocumentRoot &quot;/opt/share/www/owncloud&quot;</code></p>
@@ -263,12 +263,12 @@
 <li>
 <p>增加虚拟路径映射</p>
 <p>在<code>&lt;IfModule alias_module&gt;</code>下增加</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ScriptAlias /php/ <span class="string">"/opt/bin/"</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ScriptAlias /php/ <span class="string">"/opt/bin/"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>添加php解析</p>
 <p>在<code>&lt;IfModule mime_module&gt;</code>下增加</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">AddType application/x-httpd-php .php</div><div class="line">Action application/x-httpd-php <span class="string">"/php/php-cgi"</span></div></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddType application/x-httpd-php .php</span><br><span class="line">Action application/x-httpd-php <span class="string">"/php/php-cgi"</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>最后保存即可</p>
@@ -276,45 +276,45 @@
 <li>
 <p>修改防火墙规则，使外网可以访问81端口</p>
 <p>在SSH命令行输入</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -I INPUT -p tcp --destination-port <span class="number">81</span> -j ACCEPT</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --destination-port <span class="number">81</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>重启apache服务</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/etc/init.d/S80apache restart</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/etc/init.d/S80apache restart</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h5 id="option-2-安装lighttpd我在使用过程中经常遇到500错误"><a class="markdownIt-Anchor" href="#option-2-安装lighttpd我在使用过程中经常遇到500错误"></a> Option 2: 安装lighttpd（我在使用过程中经常遇到500错误）</h5>
 <ol>
 <li>SSH客户端输入命令</li>
 </ol>
-  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">opkg install lighttpd</div></pre></td></tr></table></figure>
+  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg install lighttpd</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>
 <p>安装支持模块</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">opkg install \</div><div class="line">lighttpd-mod-fastcgi \</div><div class="line">lighttpd-mod-access \</div><div class="line">lighttpd-mod-rewrite</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">opkg install \</span><br><span class="line">lighttpd-mod-fastcgi \</span><br><span class="line">lighttpd-mod-access \</span><br><span class="line">lighttpd-mod-rewrite</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>选择81端口作为lighttpd服务器端口并修复uploads目录，输入命令（中间的空格也要复制）</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">'s/#server.port                 = 81/server.port                 = 81/g'</span> <span class="string">"/opt/etc/lighttpd/lighttpd.conf"</span></div></pre></td></tr></table></figure>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sed -i <span class="string">"/server.upload-dirs*/cserver.upload-dirs          = ( \"</span>/opt/tmp\<span class="string">" )"</span> <span class="string">"/opt/etc/lighttpd/lighttpd.conf"</span></div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">'s/#server.port                 = 81/server.port                 = 81/g'</span> <span class="string">"/opt/etc/lighttpd/lighttpd.conf"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">"/server.upload-dirs*/cserver.upload-dirs          = ( \"</span>/opt/tmp\<span class="string">" )"</span> <span class="string">"/opt/etc/lighttpd/lighttpd.conf"</span></span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>修改防火墙规则，使其通过81端口</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">iptables -I INPUT -p tcp --destination-port <span class="number">81</span> -j ACCEPT</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --destination-port <span class="number">81</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>更改lighttpd配置文件，启用PHP及SSL证书</p>
 <p>SSH客户端输入命令<code>vi /opt/etc/lighttpd/lighttpd.conf</code>，在文件末尾加入下列内容：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">server.modules += ( <span class="string">"mod_fastcgi"</span>,</div><div class="line">                    <span class="string">"mod_access"</span>,</div><div class="line">                    <span class="string">"mod_rewrite"</span></div><div class="line">)</div><div class="line"></div><div class="line">fastcgi.server = (</div><div class="line">  <span class="string">".php"</span> =&gt;</div><div class="line">    ( <span class="string">"localhost"</span> =&gt;</div><div class="line">      ( <span class="string">"socket"</span> =&gt; <span class="string">"/opt/tmp/php-fcgi.sock"</span>,</div><div class="line">        <span class="string">"bin-path"</span> =&gt; <span class="string">"/opt/bin/php-fcgi"</span>,</div><div class="line">        <span class="string">"max-procs"</span> =&gt; <span class="number">10</span>,</div><div class="line">        <span class="string">"min-procs"</span> =&gt; <span class="number">10</span>,</div><div class="line">        <span class="string">"bin-environment"</span> =&gt;</div><div class="line">          ( <span class="string">"PHP_FCGI_CHILDREN"</span> =&gt; <span class="string">"2"</span>,</div><div class="line">            <span class="string">"PHP_FCGI_MAX_REQUESTS"</span> =&gt; <span class="string">"1000"</span></div><div class="line">          )</div><div class="line">        )</div><div class="line">     )</div><div class="line"> )</div><div class="line"></div><div class="line"><span class="variable">$HTTP</span>[<span class="string">"url"</span>] =~ <span class="string">"^/owncloud/data/"</span> &#123;</div><div class="line">  url.access-deny = (<span class="string">""</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="variable">$HTTP</span>[<span class="string">"url"</span>] =~ <span class="string">"^/owncloud($|/)"</span> &#123;</div><div class="line">  dir-listing.activate = <span class="string">"disable"</span></div><div class="line">&#125;</div><div class="line"><span class="variable">$SERVER</span>[<span class="string">"socket"</span>] == <span class="string">":443"</span> &#123;</div><div class="line">ssl.engine = <span class="string">"enable"</span></div><div class="line">ssl.pemfile = <span class="string">"/opt/etc/lighttpd/certs/lighttpd.pem"</span></div><div class="line">ssl.use-sslv2 = <span class="string">"disable"</span></div><div class="line">ssl.cipher-list = <span class="string">"TLSv1+HIGH !SSLv2 RC4+MEDIUM !aNULL !eNULL !3DES @STRENGTH"</span></div><div class="line">&#125;</div><div class="line"><span class="variable">$HTTP</span>[<span class="string">"scheme"</span>] == <span class="string">"http"</span> &#123;</div><div class="line"><span class="variable">$HTTP</span>[<span class="string">"host"</span>] == <span class="string">"OwnCloud"</span> &#123;url.redirect = (<span class="string">".*"</span> =&gt; <span class="string">"https://%0<span class="variable">$0</span>"</span>)&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">server.modules += ( <span class="string">"mod_fastcgi"</span>,</span><br><span class="line">                    <span class="string">"mod_access"</span>,</span><br><span class="line">                    <span class="string">"mod_rewrite"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">fastcgi.server = (</span><br><span class="line">  <span class="string">".php"</span> =&gt;</span><br><span class="line">    ( <span class="string">"localhost"</span> =&gt;</span><br><span class="line">      ( <span class="string">"socket"</span> =&gt; <span class="string">"/opt/tmp/php-fcgi.sock"</span>,</span><br><span class="line">        <span class="string">"bin-path"</span> =&gt; <span class="string">"/opt/bin/php-fcgi"</span>,</span><br><span class="line">        <span class="string">"max-procs"</span> =&gt; <span class="number">10</span>,</span><br><span class="line">        <span class="string">"min-procs"</span> =&gt; <span class="number">10</span>,</span><br><span class="line">        <span class="string">"bin-environment"</span> =&gt;</span><br><span class="line">          ( <span class="string">"PHP_FCGI_CHILDREN"</span> =&gt; <span class="string">"2"</span>,</span><br><span class="line">            <span class="string">"PHP_FCGI_MAX_REQUESTS"</span> =&gt; <span class="string">"1000"</span></span><br><span class="line">          )</span><br><span class="line">        )</span><br><span class="line">     )</span><br><span class="line"> )</span><br><span class="line"></span><br><span class="line"><span class="variable">$HTTP</span>[<span class="string">"url"</span>] =~ <span class="string">"^/owncloud/data/"</span> &#123;</span><br><span class="line">  url.access-deny = (<span class="string">""</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$HTTP</span>[<span class="string">"url"</span>] =~ <span class="string">"^/owncloud($|/)"</span> &#123;</span><br><span class="line">  dir-listing.activate = <span class="string">"disable"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$SERVER</span>[<span class="string">"socket"</span>] == <span class="string">":443"</span> &#123;</span><br><span class="line">ssl.engine = <span class="string">"enable"</span></span><br><span class="line">ssl.pemfile = <span class="string">"/opt/etc/lighttpd/certs/lighttpd.pem"</span></span><br><span class="line">ssl.use-sslv2 = <span class="string">"disable"</span></span><br><span class="line">ssl.cipher-list = <span class="string">"TLSv1+HIGH !SSLv2 RC4+MEDIUM !aNULL !eNULL !3DES @STRENGTH"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$HTTP</span>[<span class="string">"scheme"</span>] == <span class="string">"http"</span> &#123;</span><br><span class="line"><span class="variable">$HTTP</span>[<span class="string">"host"</span>] == <span class="string">"OwnCloud"</span> &#123;url.redirect = (<span class="string">".*"</span> =&gt; <span class="string">"https://%0<span class="variable">$0</span>"</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>创建SSL证书（下面的方法不好使。需要的请自己解决SSL证书问题 - <a href="https://www.logcg.com/archives/2007.html" target="_blank" rel="noopener"><strong>参考文献</strong></a>）</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">mkdir -p /opt/etc/lighttpd/certs</div><div class="line">cd /opt/etc/lighttpd/certs</div><div class="line"></div><div class="line">openssl req -new -x509 -days <span class="number">1095</span> -nodes \</div><div class="line">-subj <span class="string">"/C=CN/ST=xxxxxx/L=xxxxxx/O=xxxxxx/CN=xxx.xxxxxx.com"</span> \</div><div class="line">-keyout lighttpd.pem -out lighttpd.pem</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/etc/lighttpd/certs</span><br><span class="line">cd /opt/etc/lighttpd/certs</span><br><span class="line"></span><br><span class="line">openssl req -new -x509 -days <span class="number">1095</span> -nodes \</span><br><span class="line">-subj <span class="string">"/C=CN/ST=xxxxxx/L=xxxxxx/O=xxxxxx/CN=xxx.xxxxxx.com"</span> \</span><br><span class="line">-keyout lighttpd.pem -out lighttpd.pem</span><br></pre></td></tr></table></figure>
 <p>把xxxxxx换成你的公司名，后面的一串换成你的域名</p>
 </li>
 <li>
 <p>重启lighttpd服务</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/etc/init.d/S80lighttpd restart</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/etc/init.d/S80lighttpd restart</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <h4 id="配置owncloud-nextcloud"><a class="markdownIt-Anchor" href="#配置owncloud-nextcloud"></a> 配置ownCloud / Nextcloud</h4>
@@ -355,11 +355,11 @@
 <ol>
 <li>
 <p>打开配置文件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /opt/share/www/owncloud/.htaccess</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/share/www/owncloud/.htaccess</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>找到这两行代码</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">php_value upload_max_filesize <span class="number">513</span>M</div><div class="line">php_value post_max_size <span class="number">513</span>M</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php_value upload_max_filesize <span class="number">513</span>M</span><br><span class="line">php_value post_max_size <span class="number">513</span>M</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>改成你需要的大小，如10240M**（配置文件分为php5和php7，需要将两处都修改，总共是4个地方）**</p>
@@ -379,22 +379,22 @@
 <ol>
 <li>
 <p>修改lighttpd.conf</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /opt/etc/lighttpd/lighttpd.conf</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/etc/lighttpd/lighttpd.conf</span><br></pre></td></tr></table></figure>
 <p>将其中的<code>server.document-root = &quot;/opt/share/www/&quot;</code>改为<code>server.document-root = &quot;/opt/share/www/owncloud/&quot;</code><strong>（最后的/不能漏）</strong></p>
 </li>
 <li>
 <p>修改php.ini</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /opt/etc/php.ini</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/etc/php.ini</span><br></pre></td></tr></table></figure>
 <p>将其中的<code>doc_root = &quot;/opt/share/www&quot;</code>改为<code>doc_root = &quot;/opt/share/www/owncloud&quot;</code> <strong>（最后不能加/）</strong></p>
 </li>
 <li>
 <p>修改config.php</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vi /opt/share/www/owncloud/config/config.php</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/share/www/owncloud/config/config.php</span><br></pre></td></tr></table></figure>
 <p>假设你的路由器管理地址为192.168.50.1，则将<code>'overwrite.cli.url' =&gt; 'http://192.168.xx.x:81/owncloud/',</code>改为<code>'overwrite.cli.url' =&gt; 'http://192.168.xx.x:81/',</code><strong>（最后的/不能漏）</strong></p>
 </li>
 <li>
 <p>重启lighttpd</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/opt/etc/init.d/S80lighttpd restart</div></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/etc/init.d/S80lighttpd restart</span><br></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 </ol>
@@ -719,7 +719,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共49.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共52.9k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
