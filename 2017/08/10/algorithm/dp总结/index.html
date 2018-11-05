@@ -19,13 +19,13 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：打了一场DP赛才发现自己的DP是如此的蒟蒻。 本文涉及：  最长上升子序列，二分优化及变形 最长公共子串 最长公共子序列 最长公共上升子串 最长公共上升子序列 最大子段和 最大M子段和  写完这些只是帮助我记背的，本蒟蒻还是不会DP。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-8-5/19542022.jpg">
-<meta property="og:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-8-4/71450175.jpg">
-<meta property="og:updated_time" content="2017-08-14T03:30:02.000Z">
+<meta property="og:image" content="http://mzzeast.0ggmr0.cn/18-11-5/64560417.jpg">
+<meta property="og:image" content="http://mzzeast.0ggmr0.cn/17-8-4/71450175.jpg">
+<meta property="og:updated_time" content="2018-11-05T03:01:08.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DP一系列基础问题">
 <meta name="twitter:description" content="引言：打了一场DP赛才发现自己的DP是如此的蒟蒻。 本文涉及：  最长上升子序列，二分优化及变形 最长公共子串 最长公共子序列 最长公共上升子串 最长公共上升子序列 最大子段和 最大M子段和  写完这些只是帮助我记背的，本蒟蒻还是不会DP。">
-<meta name="twitter:image" content="http://ou5w6nhm5.bkt.gdipper.com/17-8-5/19542022.jpg">
+<meta name="twitter:image" content="http://mzzeast.0ggmr0.cn/18-11-5/64560417.jpg">
 
     
     
@@ -191,7 +191,7 @@
 <li>我DP弱到连这种基础的东西都想不明白的地步了……</li>
 <li><a href="http://www.cnblogs.com/ider/p/longest-common-substring-problem-optimization.html" target="_blank" rel="noopener"> 《从优化到再优化，最长公共子串》 </a> 这篇博文讲的十分好，特别这个图一看就懂了。</li>
 </ul>
-<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-8-5/19542022.jpg" alt=""></p>
+<p><img src="http://mzzeast.0ggmr0.cn/18-11-5/64560417.jpg" alt=""></p>
 <ul>
 <li>
 <p>对了，这个做法是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>的，但是用后缀数组+高度数组可以降到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><msup><mi>g</mi><mn>2</mn></msup><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlog^2 n )</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>这里不提。</p>
@@ -210,7 +210,7 @@
 <li>
 <p>参考博文：<a href="http://blog.chinaunix.net/uid-26548237-id-3374211.html" target="_blank" rel="noopener">最长公共子序列（LCS）问题</a> ，先上这个很经典的图：</p>
 <p>​</p>
-<p><img src="http://ou5w6nhm5.bkt.gdipper.com/17-8-4/71450175.jpg" alt=""></p>
+<p><img src="http://mzzeast.0ggmr0.cn/17-8-4/71450175.jpg" alt=""></p>
 </li>
 <li>
 <p>从图中很清楚可以看到和最长公共子串的区别在于，它是：</p>
