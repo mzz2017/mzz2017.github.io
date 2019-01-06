@@ -20,7 +20,7 @@
 <meta property="og:description" content="引言：今天又开始了寻找EasyConnect for linux的解决方案，尝试了武大EasyConnect for linux、北大Pulse Secure、openfortivpn、nxBender、crossover/wine/play on linux等解决办法，无一不以失败告终，最后终于搞定了，含辛茹苦啊！">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://mzzeast.0ggmr0.cn/18-9-10/48163867.jpg">
-<meta property="og:updated_time" content="2018-11-05T03:10:10.351Z">
+<meta property="og:updated_time" content="2019-01-06T06:23:02.453Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EasyConnect for Linux">
 <meta name="twitter:description" content="引言：今天又开始了寻找EasyConnect for linux的解决方案，尝试了武大EasyConnect for linux、北大Pulse Secure、openfortivpn、nxBender、crossover/wine/play on linux等解决办法，无一不以失败告终，最后终于搞定了，含辛茹苦啊！">
@@ -166,15 +166,19 @@
 <h2 id="遇到的问题及对应方案"><a class="markdownIt-Anchor" href="#遇到的问题及对应方案"></a> 遇到的问题及对应方案</h2>
 <ol>
 <li>
+<p>第一次可以使用，但是再次打开的时候又不能用了。</p>
+<p>这是因为firefox进行了自动更新，在首选项-高级-更新里面把更新策略改为不检查更新，然后删除firefox重新解压使用即可。</p>
+</li>
+<li>
 <p>运行firefox的时候出现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">XPCOMGlueLoad error for file /home/mzz/Downloads/firefox/libmozgtk.so:</span><br><span class="line">libgtk-3.so.0: cannot open shared object file: No such file or directory</span><br><span class="line">Couldn&apos;t load XPCOM.</span><br></pre></td></tr></table></figure>
-<p>执行：</p>
+<p>执行（总之就是gtk的库需要更新，如果你没有下列的库，你可以在apt-get update之后使用apt-cache search来检索你可以下载哪些包含libgtk的库）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y libgtk-3-0 libgtk-3-bin libgtk-3-0:i386 libgtk3-common</span><br></pre></td></tr></table></figure>
 </li>
 <li>
 <p>运行firefox的时候出现</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">XPCOMGlueLoad error for file /home/mzz/Downloads/firefox/libxul.so:</span><br><span class="line">libdbus-glib-1.so.2: cannot open shared object file: No such file or directory</span><br><span class="line">Couldn&apos;t load XPCOM.</span><br></pre></td></tr></table></figure>
-<p>执行：</p>
+<p>执行（如果你没有下列的库，同理）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y libdbus-glib-1-2 libdbus-glib-1-2:i386</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
@@ -406,7 +410,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo" style="color: #fff;">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman" style="color: #fff;">Jacman</a> © 2018 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo" style="color: #fff;">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman" style="color: #fff;">Jacman</a> © 2019 
 		
 		<a href="/about" target="_blank" title="莫之章" style="color: #fff">莫之章</a>
 		
@@ -424,7 +428,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共52.6k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共52.8k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
