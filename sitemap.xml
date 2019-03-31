@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mzz.pub/2019/03/31/JustPlay/OAuth/</loc>
+    
+    <lastmod>2019-03-31T10:36:48.062Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mzz.pub/2017/12/22/JustPlay/MobileUbuntu/</loc>
     
     <lastmod>2019-01-11T09:29:31.787Z</lastmod>
@@ -23,13 +30,6 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/08/26/algorithm/%E5%B9%B3%E9%9D%A2%E6%9C%80%E8%BF%9C%E7%82%B9%E5%AF%B9/</loc>
-    
-    <lastmod>2019-01-11T09:29:31.503Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://mzz.pub/2017/12/31/JAVA/SpringMVC/</loc>
     
     <lastmod>2019-01-11T09:29:31.503Z</lastmod>
@@ -37,7 +37,14 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2018/09/10/JustPlay/EasyConnect/</loc>
+    <loc>http://mzz.pub/2017/08/26/algorithm/%E5%B9%B3%E9%9D%A2%E6%9C%80%E8%BF%9C%E7%82%B9%E5%AF%B9/</loc>
+    
+    <lastmod>2019-01-11T09:29:31.503Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2017/08/10/algorithm/dp%E6%80%BB%E7%BB%93/</loc>
     
     <lastmod>2019-01-11T09:29:31.503Z</lastmod>
     
@@ -51,7 +58,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/08/10/algorithm/dp%E6%80%BB%E7%BB%93/</loc>
+    <loc>http://mzz.pub/2018/09/10/JustPlay/EasyConnect/</loc>
     
     <lastmod>2019-01-11T09:29:31.503Z</lastmod>
     
@@ -254,13 +261,6 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/google902a41086ff81836.html</loc>
-    
-    <lastmod>2017-08-10T09:22:26.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://mzz.pub/baidu_verify_XXAMxs3m8F.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
@@ -268,7 +268,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/search/index.html</loc>
+    <loc>http://mzz.pub/google902a41086ff81836.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     
@@ -276,6 +276,13 @@
   
   <url>
     <loc>http://mzz.pub/neteasemusic.html</loc>
+    
+    <lastmod>2017-08-10T09:22:26.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/search/index.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     
