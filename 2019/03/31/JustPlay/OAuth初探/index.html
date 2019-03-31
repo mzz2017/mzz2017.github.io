@@ -15,11 +15,11 @@
 <meta name="keywords" content="OAuth 网络 安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OAuth2初探">
-<meta property="og:url" content="http://mzz.pub/2019/03/31/JustPlay/OAuth/index.html">
+<meta property="og:url" content="http://mzz.pub/2019/03/31/JustPlay/OAuth初探/index.html">
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：最近在SHUhelper的Roadmap里看到OAUTH2的TODO，想起前几天才主动向朱老师提出帮学校重构性能和安全性不高的上海大学统一身份认证的事情，于是决定了解了解。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-31T10:44:07.441Z">
+<meta property="og:updated_time" content="2019-03-31T10:48:22.570Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OAuth2初探">
 <meta name="twitter:description" content="引言：最近在SHUhelper的Roadmap里看到OAUTH2的TODO，想起前几天才主动向朱老师提出帮学校重构性能和安全性不高的上海大学统一身份认证的事情，于是决定了解了解。">
@@ -102,7 +102,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2019/03/31/JustPlay/OAuth/" title="OAuth2初探" itemprop="url">OAuth2初探</a>
+      <a href="/2019/03/31/JustPlay/OAuth初探/" title="OAuth2初探" itemprop="url">OAuth2初探</a>
   </h1>
   <p class="article-author">By
        
@@ -167,6 +167,10 @@
 <p>答：不是所有站点都支持https，如果在http下直接传回access_token，该access_token可能会被窃取。因此传回code，后端使用code+client_id+client_secret(或其他认证方式如jwt)才可获取到资源。这是一种双重认证。</p>
 </li>
 <li>
+<p>为什么步骤C中不要忽略state参数？</p>
+<p>见参考文献3。</p>
+</li>
+<li>
 <p>为什么步骤D中要发出redirect_uri，有client_id不够吗？</p>
 <p>假设我不传入redirect_uri，并且假设受害client app有一个state漏洞【见参考文献4】。那么我现在有个网站，是做CSRF攻击的，我现在要攻击受害client app的A站账号绑定认证服务。现在用户Tom访问我网站的时候，我做一个跳转到A站认证服务器，参数中client_id是受害client app的client_id，redirect_uri是我自己设置的redirect_uri。用户Tom登录了，当我在redirect_uri收到code的时候，我使用我自己在受害client app的账号的cookie，访问这个redirect_uri，那么由于受害client app没有做state认证，只用code来标识一条A站信息，用户Tom的A站账号就会绑定到我的client app账号上去。</p>
 <p>甚至如果在用户跳转到A站认证服务器时，认证服务器由于发现用户已登录而自动认证成功，那么就可以自动完成这些步骤。</p>
@@ -201,7 +205,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2019/03/31/JustPlay/OAuth/" data-title="OAuth2初探 | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://mzz.pub/2019/03/31/JustPlay/OAuth初探/" data-title="OAuth2初探 | mzz&#39;s blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -426,7 +430,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共54.0k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共54.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
