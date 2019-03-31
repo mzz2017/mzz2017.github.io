@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：最近在SHUhelper的Roadmap里看到OAUTH2的TODO，想起前几天才主动向朱老师提出帮学校重构性能和安全性不高的上海大学统一身份认证的事情，于是决定了解了解。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-31T10:36:48.062Z">
+<meta property="og:updated_time" content="2019-03-31T10:40:15.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OAuth2初探">
 <meta name="twitter:description" content="引言：最近在SHUhelper的Roadmap里看到OAUTH2的TODO，想起前几天才主动向朱老师提出帮学校重构性能和安全性不高的上海大学统一身份认证的事情，于是决定了解了解。">
@@ -138,7 +138,7 @@
 <p>本文只关注授权码模式（authorization code），这里假设你理解什么是前端和后端。下文按自己的理解组织。</p>
 <h3 id="用户及客户端视角"><a class="markdownIt-Anchor" href="#用户及客户端视角"></a> 用户及客户端视角</h3>
 <p>在阮老师的文献【记为原文】中，客户端即云冲印网站的后端，认证服务器即谷歌登录OAuth授权服务器。</p>
-<p>用户首先访问云冲印网站[请求1]，云冲印后端收到前端的token，判断token无效，则开始准备OAuth认证。【对应原文步骤A】</p>
+<p>用户首先访问云冲印网站，点击获取谷歌相册照片，向后端发送该请求[请求1]，云冲印后端检测用户未授权谷歌信息，身份无效，则开始准备OAuth认证。【对应原文步骤A】</p>
 <p>在该请求1中，首先后端生成随机的字符串序列state，以及redirect_uri，redirect_uri通常为后端接口地址。随后后端返回302重定向，重定向到OAuth认证地址，query参数为<code>response_type</code> <code>client_id</code> <code>redirect_uri</code> <code>scope</code> <code>state</code>，其中client_id即云冲印这个客户端标识，redirect_uri和scope可选，请求1结束。</p>
 <p>客户端在OAuth页面输入用户名密码或其他认证方式登录，以同意授权。【对应原文步骤B】</p>
 <p>认证服务器确认用户身份无误后，为用户302重定向至redirect_uri[请求2]，并且返回授权码code，以及请求1中提到的相同的state。【步骤C】</p>
