@@ -20,7 +20,7 @@
 <meta property="og:description" content="引言：今天又开始了寻找EasyConnect for linux的解决方案，尝试了武大EasyConnect for linux、北大Pulse Secure、openfortivpn、nxBender、crossover/wine/play on linux等解决办法，无一不以失败告终，最后终于搞定了，含辛茹苦啊！">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://mzzeast.shumsg.cn/18-9-10/48163867.jpg">
-<meta property="og:updated_time" content="2019-01-11T09:29:31.503Z">
+<meta property="og:updated_time" content="2019-04-04T21:16:00.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="EasyConnect for Linux">
 <meta name="twitter:description" content="引言：今天又开始了寻找EasyConnect for linux的解决方案，尝试了武大EasyConnect for linux、北大Pulse Secure、openfortivpn、nxBender、crossover/wine/play on linux等解决办法，无一不以失败告终，最后终于搞定了，含辛茹苦啊！">
@@ -120,14 +120,18 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">1.</span> <span class="toc-text"> 开始吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题及对应方案"><span class="toc-number">2.</span> <span class="toc-text"> 遇到的问题及对应方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考博客"><span class="toc-number">3.</span> <span class="toc-text"> 参考博客</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1linux客户端"><span class="toc-number">1.</span> <span class="toc-text"> 方法1：Linux客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2低版本firefox"><span class="toc-number">2.</span> <span class="toc-text"> 方法2：低版本Firefox</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题及对应方案"><span class="toc-number">2.1.</span> <span class="toc-text"> 遇到的问题及对应方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">3.</span> <span class="toc-text"> 参考文献</span></a></li></ol>
 		
 		</div>
 		
 		<p>引言：今天又开始了寻找EasyConnect for linux的解决方案，尝试了武大EasyConnect for linux、北大Pulse Secure、openfortivpn、nxBender、crossover/wine/play on linux等解决办法，无一不以失败告终，最后终于搞定了，含辛茹苦啊！</p>
 <hr>
 <a id="more"></a>
-<h2 id="开始吧"><a class="markdownIt-Anchor" href="#开始吧"></a> 开始吧</h2>
+<h2 id="方法1linux客户端"><a class="markdownIt-Anchor" href="#方法1linux客户端"></a> 方法1：Linux客户端</h2>
+<ul>
+<li><a href="https://vpnstu.zjgsu.edu.cn/com/installClient.html" target="_blank" rel="noopener">下载EasyConnect</a></li>
+</ul>
+<h2 id="方法2低版本firefox"><a class="markdownIt-Anchor" href="#方法2低版本firefox"></a> 方法2：低版本Firefox</h2>
 <blockquote>
 <p>系统环境：Deepin15.7 （debian系）</p>
 <p>博主尚未在其他系统环境进行可行性测试</p>
@@ -163,7 +167,7 @@
 <p>当vpn开启后，关闭firefox不会影响vpn的运行，vpn的进程名为svpnservice，可手动杀死即可断开连接。</p>
 </li>
 </ol>
-<h2 id="遇到的问题及对应方案"><a class="markdownIt-Anchor" href="#遇到的问题及对应方案"></a> 遇到的问题及对应方案</h2>
+<h3 id="遇到的问题及对应方案"><a class="markdownIt-Anchor" href="#遇到的问题及对应方案"></a> 遇到的问题及对应方案</h3>
 <ol>
 <li>
 <p>第一次可以使用，但是再次打开的时候又不能用了。</p>
@@ -182,8 +186,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y libdbus-glib-1-2 libdbus-glib-1-2:i386</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="参考博客"><a class="markdownIt-Anchor" href="#参考博客"></a> 参考博客</h2>
+<h2 id="参考文献"><a class="markdownIt-Anchor" href="#参考文献"></a> 参考文献</h2>
 <p>https://blog.csdn.net/songtao542/article/details/78104853</p>
+<p>https://bbs.deepin.org/forum.php?mod=viewthread&amp;tid=169414</p>
 <hr style="margin: 4rem 0 1rem 0; background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);height:.1rem;border:none">
 <div align="center" style="font-weight: bold; font-size: 2rem; margin-bottom: 2rem">至此通关！</div>  
 	</div>
@@ -268,7 +273,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">1.</span> <span class="toc-text"> 开始吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#遇到的问题及对应方案"><span class="toc-number">2.</span> <span class="toc-text"> 遇到的问题及对应方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考博客"><span class="toc-number">3.</span> <span class="toc-text"> 参考博客</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1linux客户端"><span class="toc-number">1.</span> <span class="toc-text"> 方法1：Linux客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2低版本firefox"><span class="toc-number">2.</span> <span class="toc-text"> 方法2：低版本Firefox</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#遇到的问题及对应方案"><span class="toc-number">2.1.</span> <span class="toc-text"> 遇到的问题及对应方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">3.</span> <span class="toc-text"> 参考文献</span></a></li></ol>
  
   </div>
 
@@ -440,7 +445,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共54.0k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共54.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
