@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：计算机系统结构试验，要做centos上的ssh和rsh的免密互连，几个小时终于踩完坑了。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-07T18:44:10.657Z">
+<meta property="og:updated_time" content="2019-04-07T18:49:42.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rsh踩坑记">
 <meta name="twitter:description" content="引言：计算机系统结构试验，要做centos上的ssh和rsh的免密互连，几个小时终于踩完坑了。">
@@ -145,8 +145,8 @@
 <p>这个问题的一看就是因为没有在<code>$HOME/.rhosts</code>或<code>/etc/hosts.equiv</code>上面设置受信赖的客户端。</p>
 <p>关于这两个文件的区别，见 <a href="https://blog.csdn.net/xysoul/article/details/44956817" target="_blank" rel="noopener"><strong>【关于/etc/hosts.equiv和$HOME/.rhosts的区别】</strong></a></p>
 <p>如果你已经正确配置了上述两个文件，还是出现该问题，那么：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 授予文件755权限</span></span><br><span class="line">chmod 755 ~/.rhosts</span><br><span class="line">chmod 755 /etc/hosts.equiv</span><br></pre></td></tr></table></figure>
-<p>你没有看出错，也没有听错，确实是755，假如你授权了777，那么不好意思，权限过大，该文件将失效。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 授予文件644权限</span></span><br><span class="line">chmod 644 ~/.rhosts</span><br><span class="line">chmod 644 /etc/hosts.equiv</span><br></pre></td></tr></table></figure>
+<p>你没有看出错，也没有听错，确实是644，假如你授权了777，那么不好意思，权限过大，该文件将失效。</p>
 <p>不要问我是怎么发现的。</p>
 <h2 id="上述问题的对策"><a class="markdownIt-Anchor" href="#上述问题的对策"></a> 上述问题的对策</h2>
 <h3 id="关闭防火墙"><a class="markdownIt-Anchor" href="#关闭防火墙"></a> 关闭防火墙</h3>
