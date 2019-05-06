@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
     <title>让webstorm编写微信小程序时支持rpx | mzz&#39;s blog</title>
@@ -56,7 +56,7 @@
 </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-
+</html>
   <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
       
@@ -88,13 +88,13 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
 						<input type="hidden" name="q" value="site:mzz.pub">
 					</form>
 					
 					</li>
 				</ul>
-			</nav>			
+			</ul></nav>			
 			
 </div>
     </header>
@@ -111,7 +111,7 @@
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
-  <p class="article-time">
+  </p><p class="article-time">
     <time datetime="2018-06-15T05:34:00.000Z" itemprop="datePublished"> 发表于 2018-06-15</time>
     
   </p>
@@ -121,7 +121,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">1.</span> <span class="toc-text"> 解决方案</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">1.</span> <span class="toc-text">解决方案</span></a></li></ol>
 		
 		</div>
 		
@@ -134,29 +134,26 @@
 <p>在这篇文章里面提供了思路，通过Webstorm中自带的File Watcher工具监视文件变化，自动替换所有的<code>空格rpx</code>为<code>rpx</code>，但sed-windows在我的windows上总是无法正常工作，有如下报错：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\sed.exe: cannot rename ./sedzdKik7: Improper link</span><br></pre></td></tr></table></figure>
 <p>这样的报错在webstorm的Terminal中是不会出现的，但在cmd和powershell以及日常使用的时候就会报错，折腾了很久觉得应该是sed-windows的问题，于是换了个sed，解决！</p>
-<h2 id="解决方案"><a class="markdownIt-Anchor" href="#解决方案"></a> 解决方案</h2>
-<p>以Windows下添加vue文件的支持为例（如果是Linux可以直接使用sed）：</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>以Windows下添加vue文件的支持为例（如果是Linux可以直接使用sed）：</p>
 <ol>
-<li>
-<p>去sourceforge.net下载sed for windows：<a href="http://gnuwin32.sourceforge.net/packages/sed.htm" target="_blank" rel="noopener">我是链接</a></p>
+<li><p>去sourceforge.net下载sed for windows：<a href="http://gnuwin32.sourceforge.net/packages/sed.htm" target="_blank" rel="noopener">我是链接</a></p>
 <p>注意，点击<code>Complete package, except sources</code>右边的Setup下载即可，其他的大多需要自行编译。</p>
 </li>
-<li>
-<p>安装完毕后（4.2.1版本），sed.exe默认位于<code>C:\Program Files (x86)\GnuWin32\bin\sed.exe</code>，记住这个路径。</p>
+<li><p>安装完毕后（4.2.1版本），sed.exe默认位于<code>C:\Program Files (x86)\GnuWin32\bin\sed.exe</code>，记住这个路径。</p>
 </li>
-<li>
-<p>在Webstorm设置中，在File Watchers添加一个Watcher，针对<code>css</code> <code>scss</code>还是<code>vue</code> 看你日常需求，这里以*.vue为例，参数为<code>-i &quot;s/\ rpx/rpx/g&quot; $FilePath$</code>，表示将所有<code>空格rpx</code>替换为<code>rpx</code>：</p>
-<p><img src="http://mzzeast.shumsg.cn/18-6-15/1738235.jpg" alt=""></p>
+<li><p>在Webstorm设置中，在File Watchers添加一个Watcher，针对<code>css</code> <code>scss</code>还是<code>vue</code> 看你日常需求，这里以*.vue为例，参数为<code>-i &quot;s/\ rpx/rpx/g&quot; $FilePath$</code>，表示将所有<code>空格rpx</code>替换为<code>rpx</code>：</p>
+<p><img src="http://mzzeast.shumsg.cn/18-6-15/1738235.jpg" alt></p>
 </li>
-<li>
-<p>到了这一步，保存后就已经可以敬请使用代码格式化了，但还有一个问题没解决那就是飘红。</p>
+<li><p>到了这一步，保存后就已经可以敬请使用代码格式化了，但还有一个问题没解决那就是飘红。</p>
 <p>无他，我们只能修改ws的配置来搞定了……</p>
-<p><img src="http://mzzeast.shumsg.cn/18-6-15/16463631.jpg" alt=""></p>
+<p><img src="http://mzzeast.shumsg.cn/18-6-15/16463631.jpg" alt></p>
 <p>保存即可。</p>
 </li>
 </ol>
 <hr style="margin: 4rem 0 1rem 0; background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);height:.1rem;border:none">
+
 <div align="center" style="font-weight: bold; font-size: 2rem; margin-bottom: 2rem">至此通关！</div>
+
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -179,7 +176,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2018/06/15/tools/rpx/" data-title="让webstorm编写微信小程序时支持rpx | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://mzz.pub/2018/06/15/tools/rpx/" data-title="让webstorm编写微信小程序时支持rpx | mzz&#39;s blog" data-tsina class="share clearfix">
 	  </div>
 	
 	</div>
@@ -192,9 +189,9 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
+ <div class="prev">
  <a href="/2018/09/01/JustPlay/PWA初探/" title="PWA初探 - 快速将已有webpack项目升级到PWA">
-  <strong>上一篇：</strong><br/>
+  <strong>上一篇：</strong><br>
   <span>
   PWA初探 - 快速将已有webpack项目升级到PWA</span>
 </a>
@@ -202,8 +199,8 @@
 
 
 <div class="next">
-<a href="/2018/06/05/应试/计组考点归纳/"  title="《计算机组成原理》下 - 考点归纳">
- <strong>下一篇：</strong><br/> 
+<a href="/2018/06/05/应试/计组考点归纳/" title="《计算机组成原理》下 - 考点归纳">
+ <strong>下一篇：</strong><br> 
  <span>《计算机组成原理》下 - 考点归纳
 </span>
 </a>
@@ -230,7 +227,7 @@ var s = document.getElementsByTagName("script")[0];
 s.parentNode.insertBefore(hcc, s.nextSibling);
 })();
 </script>
-<a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+<a href="http://hypercomments.com" rel="nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
@@ -240,7 +237,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">1.</span> <span class="toc-text"> 解决方案</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">1.</span> <span class="toc-text">解决方案</span></a></li></ol>
  
   </div>
 
@@ -275,6 +272,10 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		
 		  
 			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linear-algebra/" title="linear algebra">linear algebra<sup>1</sup></a></li>
 		  
 		
 		  
@@ -321,7 +322,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linear-algebra/" style="font-size: 10px;">linear algebra</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -367,7 +368,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
     </div>
-    <footer><div id="footer" >
+    <footer><div id="footer">
 	
 	<div class="line">
 		<span></span>
@@ -376,11 +377,11 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 	
 	
 	<section class="info">
-		<p> I am with little well content, And a little from thee sent <br/>
+		<p> I am with little well content, And a little from thee sent <br>
 			Is enough, with true intent. To be steadfast friend.</p>
 	</section>
 	 
-	<div class="social-font" class="clearfix">
+	<div class="social-font">
 		
 		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
 		
@@ -420,8 +421,8 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共57.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
-</div>
+博客全站共56.4k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+</span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
@@ -584,7 +585,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

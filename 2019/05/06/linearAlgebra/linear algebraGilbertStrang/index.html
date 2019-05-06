@@ -4,27 +4,25 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>OAuth2初探 | mzz&#39;s blog</title>
+    <title>Notes about linear algebra - Gilbert Strang | mzz&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="莫之章">
     
 
     
-    <meta name="description" content="引言：最近在SHUhelper的Roadmap里看到OAUTH2的TODO，想起前几天才主动向朱老师提出帮学校重构统一身份认证的事情，于是决定了解了解。">
-<meta name="keywords" content="OAuth 网络 安全">
+    <meta name="description" content="Here are some notes which I think is wonderful in lectures.">
+<meta name="keywords" content="linear algebra">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OAuth2初探">
-<meta property="og:url" content="http://mzz.pub/2019/03/31/JustPlay/OAuth初探/index.html">
+<meta property="og:title" content="Notes about linear algebra - Gilbert Strang">
+<meta property="og:url" content="http://mzz.pub/2019/05/06/linearAlgebra/linear algebraGilbertStrang/index.html">
 <meta property="og:site_name" content="mzz&#39;s blog">
-<meta property="og:description" content="引言：最近在SHUhelper的Roadmap里看到OAUTH2的TODO，想起前几天才主动向朱老师提出帮学校重构统一身份认证的事情，于是决定了解了解。">
+<meta property="og:description" content="Here are some notes which I think is wonderful in lectures.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://ws1.sinaimg.cn/large/006P5HMAgy1g1m6ysaenfj30er0e9q40.jpg">
-<meta property="og:updated_time" content="2019-04-01T05:57:17.128Z">
+<meta property="og:updated_time" content="2019-05-06T15:48:32.976Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OAuth2初探">
-<meta name="twitter:description" content="引言：最近在SHUhelper的Roadmap里看到OAUTH2的TODO，想起前几天才主动向朱老师提出帮学校重构统一身份认证的事情，于是决定了解了解。">
-<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006P5HMAgy1g1m6ysaenfj30er0e9q40.jpg">
+<meta name="twitter:title" content="Notes about linear algebra - Gilbert Strang">
+<meta name="twitter:description" content="Here are some notes which I think is wonderful in lectures.">
 
     
     
@@ -104,14 +102,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2019/03/31/JustPlay/OAuth初探/" title="OAuth2初探" itemprop="url">OAuth2初探</a>
+      <a href="/2019/05/06/linearAlgebra/linear algebraGilbertStrang/" title="Notes about linear algebra - Gilbert Strang" itemprop="url">Notes about linear algebra - Gilbert Strang</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
   </p><p class="article-time">
-    <time datetime="2019-03-31T10:00:00.000Z" itemprop="datePublished"> 发表于 2019-03-31</time>
+    <time datetime="2019-05-06T15:34:00.000Z" itemprop="datePublished"> 发表于 2019-05-06</time>
     
   </p>
 </header>
@@ -120,74 +118,40 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">1.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解体会"><span class="toc-number">2.</span> <span class="toc-text">理解体会</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户及客户端视角"><span class="toc-number">2.1.</span> <span class="toc-text">用户及客户端视角</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他问题"><span class="toc-number">2.2.</span> <span class="toc-text">其他问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶"><span class="toc-number">3.</span> <span class="toc-text">进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户服务器如何取得资源"><span class="toc-number">3.1.</span> <span class="toc-text">客户服务器如何取得资源</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-The-Geometry-of-Linear-Equations"><span class="toc-number">1.</span> <span class="toc-text">01#The Geometry of Linear Equations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-tip-and-enlightenment"><span class="toc-number">1.1.</span> <span class="toc-text">a tip and enlightenment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elimination"><span class="toc-number">1.2.</span> <span class="toc-text">elimination</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-Elimination-with-Matrices"><span class="toc-number">2.</span> <span class="toc-text">02#Elimination with Matrices</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-row-vector-times-a-matrix"><span class="toc-number">2.1.</span> <span class="toc-text">a row vector times a matrix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-matrix-times-another-matrix"><span class="toc-number">2.2.</span> <span class="toc-text">a matrix times another matrix</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>引言：最近在SHUhelper的Roadmap里看到OAUTH2的TODO，想起前几天才主动向朱老师提出帮学校重构统一身份认证的事情，于是决定了解了解。</p>
+		<p>Here are some notes which I think is wonderful in lectures.</p>
 <hr>
 <a id="more"></a>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><ol>
-<li><a href="http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html" target="_blank" rel="noopener">理解OAuth 2.0 - 阮一峰</a></li>
-<li><a href="https://www.cnblogs.com/Wddpct/p/8976480.html" target="_blank" rel="noopener">OAuth 2 深入介绍</a></li>
-<li><a href="https://www.ibm.com/developerworks/cn/web/1102_niugang_csrf/index.htmll" target="_blank" rel="noopener">CSRF背景与介绍</a></li>
-<li><a href="https://blog.csdn.net/gjb724332682/article/details/54428808" target="_blank" rel="noopener">OAuth2.0忽略state参数引发的CSRF漏洞</a></li>
-<li><a href="http://tutorials.jenkov.com/oauth2/index.html" target="_blank" rel="noopener">OAuth 2.0 - jenkov.com</a></li>
-<li><a href="https://tools.ietf.org/html/rfc6749" target="_blank" rel="noopener">rfc6749 - IETF</a></li>
-</ol>
-<h2 id="理解体会"><a href="#理解体会" class="headerlink" title="理解体会"></a>理解体会</h2><p>本文只关注授权码模式（authorization code），这里假设你理解什么是前端和后端，并且有一定的网络知识基础。下文按我自己的理解组织。</p>
-<h3 id="用户及客户端视角"><a href="#用户及客户端视角" class="headerlink" title="用户及客户端视角"></a>用户及客户端视角</h3><p>在阮老师的文献【记为原文】中，客户端即云冲印网站的后端，认证服务器即谷歌登录OAuth授权服务器。</p>
-<ol>
-<li><p>用户首先访问云冲印网站，点击获取谷歌相册照片，向后端发送该请求 <strong>[请求1]</strong> ，云冲印后端检测用户未授权谷歌信息，身份无效，则开始准备OAuth认证。【对应原文步骤A】</p>
-<p>在该请求1中，首先后端生成随机的字符串序列state，以及redirect_uri，redirect_uri通常为后端接口地址。随后后端返回302重定向，重定向到OAuth认证地址，query参数为<code>response_type</code> <code>client_id</code> <code>redirect_uri</code> <code>scope</code> <code>state</code>，其中client_id即云冲印这个客户端标识，redirect_uri和scope可选，请求1结束。</p>
-</li>
-<li><p>客户端在OAuth页面输入用户名密码或其他认证方式登录，以同意授权。【对应原文步骤B】</p>
-</li>
-<li><p>认证服务器确认用户身份无误后，为用户302重定向至redirect_uri <strong>[请求2]</strong> ，并且返回授权码code，以及请求1中提到的相同的state。【步骤C】</p>
-<p>在该请求2中，云冲印后端拿到认证服务器颁发的授权码code，以及回执的state，对比之前随机生成的state，判断是否一致，以防CSRF攻击 <strong>[CSRF介绍见参考文献3，state如何防止CSRF见参考文献4]</strong> 。</p>
-</li>
-<li><p>在该请求2中，后端向认证服务器发送申请令牌的HTTP请求 <strong>[请求3]</strong> ，包含参数<code>grant_type</code> <code>code</code> <code>redirect_uri</code> <code>client_id</code> <code>client_secret</code>，其中<code>client_id</code>和<code>client_secret</code>可被其他Authorization认证方式代替（如jwt）。在这一步中，后端向认证服务器发出的请求必须是https的，否则有client_id和client_secret被拦截的风险。【步骤D】</p>
-</li>
-<li><p>当认证服务器收到请求3后，验证code、client_id以及client_secret，颁发access_token。【步骤E】 <strong>[注：为什么传入redirect_uri见下面的其他问题3]</strong></p>
-</li>
-</ol>
-<p>拿到请求3的response后，后端可使用获得的access_token调用资源服务器的API。</p>
-<p>如果OAuth是用来做第三方登录或注册，那么在请求2的结束，需要给用户签发一个cookie，并且重定向到云冲印网站登录成功的页面。其实这一步的最后怎么做，完全取决于你要用这波OAuth做什么。</p>
-<p><strong>[注：上面所述的请求1、请求2、…、请求n只阐明了比较重要的请求，而非所有请求]</strong></p>
-<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><ol>
-<li><p>为什么步骤C中，认证服务器要传回code，而不是直接传回access_token？</p>
-<p>答：不是所有站点都支持https，如果在http下直接传回access_token，该access_token可能会被窃取。因此传回code，后端使用code+client_id+client_secret(或其他认证方式如jwt)才可获取到资源。这是一种双重认证。</p>
-</li>
-<li><p>为什么步骤C中不要忽略state参数？</p>
-<p>见参考文献3。</p>
-</li>
-<li><p>为什么步骤D中要发出redirect_uri，有client_id不够吗？</p>
-<p>假设我不传入redirect_uri，并且假设受害client app有一个state漏洞【见参考文献4】。那么我现在有个网站，是做CSRF攻击的，我现在要攻击受害client app的A站账号绑定认证服务。现在用户Tom访问我网站的时候，我做一个跳转到A站认证服务器，参数中client_id是受害client app的client_id，redirect_uri是我自己设置的redirect_uri。用户Tom登录了，当我在redirect_uri收到code的时候，我使用我自己在受害client app的账号的cookie，访问这个redirect_uri，那么由于受害client app没有做state认证，只用code来标识一条A站信息，用户Tom的A站账号就会绑定到我的client app账号上去。</p>
-<p>甚至如果在用户跳转到A站认证服务器时，认证服务器由于发现用户已登录而自动认证成功，那么就可以自动完成这些步骤。</p>
-<p>但是当我在access_token request中传入redirect_uri后，认证服务器核实redirect_uri和code，发现不一致，则驳回access_token request，拒绝掉这种攻击。</p>
-<p>但不意味着有redirect_uri的限制，就可以杜绝所有的CSRF攻击，防止CSRF攻击还是得使用随机state。</p>
-</li>
-</ol>
-<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p>参考文献5讲述了client application、resource server、autorhization server之间具体的工作流程。</p>
-<h3 id="客户服务器如何取得资源"><a href="#客户服务器如何取得资源" class="headerlink" title="客户服务器如何取得资源"></a>客户服务器如何取得资源</h3><p>Whenever the client application requests access to resources stored on that same resource server, the client application needs to authenticate itself by sending along the client ID and the client secret to the autorhization server.</p>
-<p><img src="https://ws1.sinaimg.cn/large/006P5HMAgy1g1m6ysaenfj30er0e9q40.jpg" alt></p>
-<p>上图来源见水印。</p>
-<hr style="margin: 4rem 0 1rem 0; background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);height:.1rem;border:none">
-
-<div align="center" style="font-weight: bold; font-size: 2rem; margin-bottom: 2rem">至此通关！</div>  
+<h2 id="01-The-Geometry-of-Linear-Equations"><a href="#01-The-Geometry-of-Linear-Equations" class="headerlink" title="01#The Geometry of Linear Equations"></a>01#The Geometry of Linear Equations</h2><h3 id="a-tip-and-enlightenment"><a href="#a-tip-and-enlightenment" class="headerlink" title="a tip and enlightenment"></a>a tip and enlightenment</h3><p>there are two methods to calculate the result of matrix A multiply vector x, but I suggest you think as following:</p>
+<p>$Ax$ is a combination of columns of A.</p>
+<p>For example</p>
+<p>A equals<br>$$<br>\begin {bmatrix}<br>2 &amp; 5\<br>1 &amp; 3<br>\end {bmatrix}<br>$$</p>
+<p>x equals<br>$$<br>\begin {bmatrix}<br>1\<br>2<br>\end {bmatrix}<br>$$<br>then we can get<br>$$<br>1<br>\begin {bmatrix}<br>2\<br>1<br>\end{bmatrix}<br>+2\begin{bmatrix}<br>5\<br>3<br>\end{bmatrix}=<br>\begin{bmatrix}<br>12\<br>7<br>\end{bmatrix}<br>$$<br>so, it’s just like a column picture.</p>
+<p>just image it.</p>
+<h3 id="elimination"><a href="#elimination" class="headerlink" title="elimination"></a>elimination</h3><p>we can use elimination to find the solution if there is one. we can find the solution to a system of any size and find out there is no solution if elimination fails.</p>
+<h2 id="02-Elimination-with-Matrices"><a href="#02-Elimination-with-Matrices" class="headerlink" title="02#Elimination with Matrices"></a>02#Elimination with Matrices</h2><h3 id="a-row-vector-times-a-matrix"><a href="#a-row-vector-times-a-matrix" class="headerlink" title="a row vector times a matrix"></a>a row vector times a matrix</h3><p>what will happen if we use a row vector times a matrix?</p>
+<p>like<br>$$<br>\begin {bmatrix}<br>1 &amp; 2 &amp;4<br>\end {bmatrix}<br>\begin {bmatrix}<br>3&amp;4&amp;5\<br>1&amp;-2&amp;6\<br>0&amp;1&amp;2<br>\end {bmatrix}<br>$$<br>okey. we will try to solve it.</p>
+<p>it gives<br>$$<br>1\begin {bmatrix}<br>3&amp;4&amp;5<br>\end {bmatrix}<br>+2\begin {bmatrix}<br>1&amp;-2&amp;6<br>\end {bmatrix}<br>+4\begin {bmatrix}<br>0&amp;1&amp;2<br>\end {bmatrix}<br>=\begin {bmatrix}<br>5&amp;4&amp;25<br>\end {bmatrix}<br>$$<br>the result is still a row vector, isn’t it?</p>
+<p>so fantastic!</p>
+<h3 id="a-matrix-times-another-matrix"><a href="#a-matrix-times-another-matrix" class="headerlink" title="a matrix times another matrix"></a>a matrix times another matrix</h3><p>how about a matrix times another matrix?</p>
+<p>like<br>$$<br>\begin {bmatrix}<br>?<br>\end {bmatrix}<br>\begin {bmatrix}<br>1&amp;2&amp;1\<br>0&amp;2&amp;-2\<br>0&amp;4&amp;1<br>\end {bmatrix}<br>=\begin {bmatrix}<br>1&amp;2&amp;1\<br>0&amp;2&amp;-2\<br>0&amp;0&amp;5<br>\end {bmatrix}<br>$$<br>maybe you have thought out.<br>$$<br>\begin {bmatrix}<br>1&amp;0&amp;0\<br>0&amp;1&amp;0\<br>0&amp;-2&amp;1<br>\end {bmatrix}<br>\begin {bmatrix}<br>1&amp;2&amp;1\<br>0&amp;2&amp;-2\<br>0&amp;4&amp;1<br>\end {bmatrix}<br>=\begin {bmatrix}<br>1&amp;2&amp;1\<br>0&amp;2&amp;-2\<br>0&amp;0&amp;5<br>\end {bmatrix}<br>$$</p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/安全/">安全</a>
+  <a class="article-category-link" href="/categories/linear-algebra/">linear algebra</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/OAuth-网络-安全/">OAuth 网络 安全</a>
+  <span></span> <a href="/tags/linear-algebra/">linear algebra</a>
   </div>
 
 </div>
@@ -196,7 +160,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2019/03/31/JustPlay/OAuth初探/" data-title="OAuth2初探 | mzz&#39;s blog" data-tsina class="share clearfix">
+	  <div data-url="http://mzz.pub/2019/05/06/linearAlgebra/linear algebraGilbertStrang/" data-title="Notes about linear algebra - Gilbert Strang | mzz&#39;s blog" data-tsina class="share clearfix">
 	  </div>
 	
 	</div>
@@ -209,19 +173,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev">
- <a href="/2019/04/08/JustPlay/rsh/" title="rsh踩坑记">
-  <strong>上一篇：</strong><br>
-  <span>
-  rsh踩坑记</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/09/10/JustPlay/EasyConnect/" title="EasyConnect for Linux">
+<a href="/2019/05/01/数据挖掘/数据挖掘理论与算法笔记/" title="《数据挖掘：理论与算法》笔记">
  <strong>下一篇：</strong><br> 
- <span>EasyConnect for Linux
+ <span>《数据挖掘：理论与算法》笔记
 </span>
 </a>
 </div>
@@ -257,7 +213,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">1.</span> <span class="toc-text">参考文献</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解体会"><span class="toc-number">2.</span> <span class="toc-text">理解体会</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#用户及客户端视角"><span class="toc-number">2.1.</span> <span class="toc-text">用户及客户端视角</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他问题"><span class="toc-number">2.2.</span> <span class="toc-text">其他问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶"><span class="toc-number">3.</span> <span class="toc-text">进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#客户服务器如何取得资源"><span class="toc-number">3.1.</span> <span class="toc-text">客户服务器如何取得资源</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-The-Geometry-of-Linear-Equations"><span class="toc-number">1.</span> <span class="toc-text">01#The Geometry of Linear Equations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-tip-and-enlightenment"><span class="toc-number">1.1.</span> <span class="toc-text">a tip and enlightenment</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elimination"><span class="toc-number">1.2.</span> <span class="toc-text">elimination</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-Elimination-with-Matrices"><span class="toc-number">2.</span> <span class="toc-text">02#Elimination with Matrices</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#a-row-vector-times-a-matrix"><span class="toc-number">2.1.</span> <span class="toc-text">a row vector times a matrix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a-matrix-times-another-matrix"><span class="toc-number">2.2.</span> <span class="toc-text">a matrix times another matrix</span></a></li></ol></li></ol>
  
   </div>
 

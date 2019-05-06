@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
     <title>素数筛 | mzz&#39;s blog</title>
@@ -50,10 +50,10 @@
         border-top-color: #1E92FB;    /*上边框颜色*/
         border-left-color: #1E92FB;    /*左边框颜色*/
     }
-</style><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-
+</html>
   <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
       
@@ -85,13 +85,13 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
 						<input type="hidden" name="q" value="site:mzz.pub">
 					</form>
 					
 					</li>
 				</ul>
-			</nav>			
+			</ul></nav>			
 			
 </div>
     </header>
@@ -108,7 +108,7 @@
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
-  <p class="article-time">
+  </p><p class="article-time">
     <time datetime="2017-08-12T09:40:32.000Z" itemprop="datePublished"> 发表于 2017-08-12</time>
     
   </p>
@@ -118,22 +118,20 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#埃拉托斯特尼筛法"><span class="toc-number">1.</span> <span class="toc-text"> 埃拉托斯特尼筛法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#欧拉筛法"><span class="toc-number">2.</span> <span class="toc-text"> 欧拉筛法</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#埃拉托斯特尼筛法"><span class="toc-number">1.</span> <span class="toc-text">埃拉托斯特尼筛法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#欧拉筛法"><span class="toc-number">2.</span> <span class="toc-text">欧拉筛法</span></a></li></ol>
 		
 		</div>
 		
 		<p>引言：总是会忘记素数筛的写法，在这里写一下加强记忆。</p>
 <hr>
 <a id="more"></a>
-<p>这个素数筛的时间复杂度是接近<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>的，叫做<code>埃拉托斯特尼筛法</code>，怎么样，是不是被这个牛逼名字震撼到了？实际上它的复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlog(log(n)))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>，嗯复杂度也很牛逼。但还有更牛逼的筛法叫欧拉筛，复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>，巧了，我不会。传送门：<a href="http://wiki.gyh.me/Math/%E7%BA%BF%E6%80%A7%E7%AD%9B%E4%B8%8E%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0/" target="_blank" rel="noopener"><strong>线性筛和积性函数</strong></a></p>
-<h2 id="埃拉托斯特尼筛法"><a class="markdownIt-Anchor" href="#埃拉托斯特尼筛法"></a> 埃拉托斯特尼筛法</h2>
-<ul>
+<p>这个素数筛的时间复杂度是接近$O(n)$的，叫做<code>埃拉托斯特尼筛法</code>，怎么样，是不是被这个牛逼名字震撼到了？实际上它的复杂度是$O(nlog(log(n)))$，嗯复杂度也很牛逼。但还有更牛逼的筛法叫欧拉筛，复杂度是$O(n)$，巧了，我不会。传送门：<a href="http://wiki.gyh.me/Math/%E7%BA%BF%E6%80%A7%E7%AD%9B%E4%B8%8E%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0/" target="_blank" rel="noopener"><strong>线性筛和积性函数</strong></a></p>
+<h2 id="埃拉托斯特尼筛法"><a href="#埃拉托斯特尼筛法" class="headerlink" title="埃拉托斯特尼筛法"></a>埃拉托斯特尼筛法</h2><ul>
 <li>这个埃氏筛，就是将2~n中，从小到大挑一个数，比方说2吧，把2放进素数数组里，把2及2的倍数都标记为已访问，表示它们除了2都是非素数，这些数我已经确认身份了。然后挑个3，把3放进素数数组里，把3及3的倍数都标记为已访问。然后是4，4已访问跳过，再看5，5未访问，把5放进素数数组里，将5和5的倍数标记为已访问。一直到n。</li>
 <li>下面这个代码将vis数组和prime数组合并了，条件是：筛到某素数时，一定有素数值大于已得到的素数个数。</li>
 </ul>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> prime[<span class="number">1000</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;<span class="number">1000</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(!prime[i])<span class="comment">//充当vis数组</span></span><br><span class="line">        &#123;</span><br><span class="line">            prime[cnt++]=i;<span class="comment">//这里是prime数组</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i+i;j&lt;<span class="number">1000</span>;j+=i)</span><br><span class="line">                prime[j]=<span class="number">1</span>;<span class="comment">//充当vis数组</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>,prime[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="欧拉筛法"><a class="markdownIt-Anchor" href="#欧拉筛法"></a> 欧拉筛法</h2>
-<ul>
+<h2 id="欧拉筛法"><a href="#欧拉筛法" class="headerlink" title="欧拉筛法"></a>欧拉筛法</h2><ul>
 <li>不会做</li>
 </ul>
   
@@ -158,7 +156,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2017/08/12/algorithm/素数筛/" data-title="素数筛 | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://mzz.pub/2017/08/12/algorithm/素数筛/" data-title="素数筛 | mzz&#39;s blog" data-tsina class="share clearfix">
 	  </div>
 	
 	</div>
@@ -171,9 +169,9 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
+ <div class="prev">
  <a href="/2017/08/12/algorithm/2017 SHU 8.12 个人赛/" title="2017SHU8.12个人赛 已做题目总结">
-  <strong>上一篇：</strong><br/>
+  <strong>上一篇：</strong><br>
   <span>
   2017SHU8.12个人赛 已做题目总结</span>
 </a>
@@ -181,8 +179,8 @@
 
 
 <div class="next">
-<a href="/2017/08/10/algorithm/SG博弈的特点 - 丢史蒂芬妮回顾/"  title="SG博弈的特点 - 丢史蒂芬妮回顾">
- <strong>下一篇：</strong><br/> 
+<a href="/2017/08/10/algorithm/SG博弈的特点 - 丢史蒂芬妮回顾/" title="SG博弈的特点 - 丢史蒂芬妮回顾">
+ <strong>下一篇：</strong><br> 
  <span>SG博弈的特点 - 丢史蒂芬妮回顾
 </span>
 </a>
@@ -209,7 +207,7 @@ var s = document.getElementsByTagName("script")[0];
 s.parentNode.insertBefore(hcc, s.nextSibling);
 })();
 </script>
-<a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+<a href="http://hypercomments.com" rel="nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
@@ -219,7 +217,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#埃拉托斯特尼筛法"><span class="toc-number">1.</span> <span class="toc-text"> 埃拉托斯特尼筛法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#欧拉筛法"><span class="toc-number">2.</span> <span class="toc-text"> 欧拉筛法</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#埃拉托斯特尼筛法"><span class="toc-number">1.</span> <span class="toc-text">埃拉托斯特尼筛法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#欧拉筛法"><span class="toc-number">2.</span> <span class="toc-text">欧拉筛法</span></a></li></ol>
  
   </div>
 
@@ -254,6 +252,10 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		
 		  
 			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linear-algebra/" title="linear algebra">linear algebra<sup>1</sup></a></li>
 		  
 		
 		  
@@ -300,7 +302,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linear-algebra/" style="font-size: 10px;">linear algebra</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -346,7 +348,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
     </div>
-    <footer><div id="footer" >
+    <footer><div id="footer">
 	
 	<div class="line">
 		<span></span>
@@ -355,11 +357,11 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 	
 	
 	<section class="info">
-		<p> I am with little well content, And a little from thee sent <br/>
+		<p> I am with little well content, And a little from thee sent <br>
 			Is enough, with true intent. To be steadfast friend.</p>
 	</section>
 	 
-	<div class="social-font" class="clearfix">
+	<div class="social-font">
 		
 		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
 		
@@ -399,8 +401,8 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共57.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
-</div>
+博客全站共56.4k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+</span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
@@ -563,7 +565,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

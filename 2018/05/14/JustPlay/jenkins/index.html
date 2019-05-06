@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
     <title>在Ubuntu安装和配置Jenkins | mzz&#39;s blog</title>
@@ -53,7 +53,7 @@
 </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-
+</html>
   <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
       
@@ -85,13 +85,13 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
 						<input type="hidden" name="q" value="site:mzz.pub">
 					</form>
 					
 					</li>
 				</ul>
-			</nav>			
+			</ul></nav>			
 			
 </div>
     </header>
@@ -108,7 +108,7 @@
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
-  <p class="article-time">
+  </p><p class="article-time">
     <time datetime="2018-05-14T14:25:00.000Z" itemprop="datePublished"> 发表于 2018-05-14</time>
     
   </p>
@@ -118,62 +118,46 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-number">1.</span> <span class="toc-text"> 准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装java-jdk并配置环境变量"><span class="toc-number">1.1.</span> <span class="toc-text"> 安装Java JDK并配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关键一步"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 关键一步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装jenkins"><span class="toc-number">2.</span> <span class="toc-text"> 安装Jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改jenkins配置"><span class="toc-number">3.</span> <span class="toc-text"> 修改Jenkins配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶"><span class="toc-number">4.</span> <span class="toc-text"> 进阶</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Java-JDK并配置环境变量"><span class="toc-number">1.1.</span> <span class="toc-text">安装Java JDK并配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关键一步"><span class="toc-number">1.1.1.</span> <span class="toc-text">关键一步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Jenkins"><span class="toc-number">2.</span> <span class="toc-text">安装Jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改Jenkins配置"><span class="toc-number">3.</span> <span class="toc-text">修改Jenkins配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶"><span class="toc-number">4.</span> <span class="toc-text">进阶</span></a></li></ol>
 		
 		</div>
 		
 		<p>引言： 网上关于Jenkins安装配置的教程要么就是CentOS的，要么就感觉不是很全，不能一次性解决我过程中的全部问题，所以还是自己聚一篇吧。</p>
 <hr>
 <a id="more"></a>
-<h2 id="准备工作"><a class="markdownIt-Anchor" href="#准备工作"></a> 准备工作</h2>
-<h3 id="安装java-jdk并配置环境变量"><a class="markdownIt-Anchor" href="#安装java-jdk并配置环境变量"></a> 安装Java JDK并配置环境变量</h3>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="安装Java-JDK并配置环境变量"><a href="#安装Java-JDK并配置环境变量" class="headerlink" title="安装Java JDK并配置环境变量"></a>安装Java JDK并配置环境变量</h3><ul>
+<li>下载jdk8的tar.gz包<code>jdk-8u171-linux-x64.tar.gz</code></li>
+</ul>
 <ul>
-<li>
-<p>下载jdk8的tar.gz包<code>jdk-8u171-linux-x64.tar.gz</code></p>
+<li><p><code>mkdir /usr/lib/jvm &amp;&amp; tar xzvf jdk-8u171-linux-x64.tar.gz &amp;&amp; mv jdk1.8.0_171 /usr/lib/jvm/jdk</code></p>
 </li>
-<li>
-<p><code>mkdir /usr/lib/jvm &amp;&amp; tar xzvf jdk-8u171-linux-x64.tar.gz &amp;&amp; mv jdk1.8.0_171 /usr/lib/jvm/jdk</code></p>
-</li>
-<li>
-<p><code>sudo gedit ~/.bashrc</code>在尾部添加</p>
+<li><p><code>sudo gedit ~/.bashrc</code>在尾部添加</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/lib/jvm/jdk</span><br><span class="line">export JRE_HOME=$&#123;JAVA_HOME&#125;/jre</span><br><span class="line">export CLASSPATH=.:$&#123;JAVA_HOME&#125;/lib:$&#123;JRE_HOME&#125;/lib</span><br><span class="line">export PATH=$&#123;JAVA_HOME&#125;/bin:$PATH</span><br></pre></td></tr></table></figure>
 </li>
-<li>
-<p>使配置生效<code>source ~/.bashrc</code></p>
+<li><p>使配置生效<code>source ~/.bashrc</code></p>
 </li>
 </ul>
-<h4 id="关键一步"><a class="markdownIt-Anchor" href="#关键一步"></a> 关键一步</h4>
-<ul>
+<h4 id="关键一步"><a href="#关键一步" class="headerlink" title="关键一步"></a>关键一步</h4><ul>
 <li><strong><code>ln -s $(type -p java) /usr/bin/java</code></strong> 将java链接到<code>/usr/bin/java</code></li>
 </ul>
-<h2 id="安装jenkins"><a class="markdownIt-Anchor" href="#安装jenkins"></a> 安装Jenkins</h2>
-<ul>
-<li>
-<p>将秘钥添加到系统：<code>wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -</code></p>
-</li>
-<li>
-<p>将Debian包存储库地址附加到服务器的<code>sources.list</code> ：<code>echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list</code></p>
-</li>
-<li>
-<p>更新源<code>sudo apt-get update</code></p>
-</li>
-<li>
-<p>安装Jenkins<code>sudo apt-get install jenkins</code></p>
-</li>
+<h2 id="安装Jenkins"><a href="#安装Jenkins" class="headerlink" title="安装Jenkins"></a>安装Jenkins</h2><ul>
+<li>将秘钥添加到系统：<code>wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -</code></li>
 </ul>
-<h2 id="修改jenkins配置"><a class="markdownIt-Anchor" href="#修改jenkins配置"></a> 修改Jenkins配置</h2>
 <ul>
-<li><s><code>sudo vim /etc/default/jenkins</code>修改：</s>
-<ul>
-<li><s><code>HTTP_PORT=8081</code></s></li>
+<li>将Debian包存储库地址附加到服务器的<code>sources.list</code> ：<code>echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list</code></li>
+<li>更新源<code>sudo apt-get update</code></li>
+<li>安装Jenkins<code>sudo apt-get install jenkins</code></li>
+</ul>
+<h2 id="修改Jenkins配置"><a href="#修改Jenkins配置" class="headerlink" title="修改Jenkins配置"></a>修改Jenkins配置</h2><ul>
+<li><del><code>sudo vim /etc/default/jenkins</code>修改：</del><ul>
+<li><del><code>HTTP_PORT=8081</code></del></li>
 </ul>
 </li>
-<li><s>启动Jenkins<code>sudo systemctl start jenkins</code></s></li>
-<li><s>如果Jenkins在服务器，修改安全组规则，开放<code>8081端口</code>，并且用浏览器访问<code>IP:8081</code>。否则直接访问<code>localhost:8081</code></s></li>
+<li><del>启动Jenkins<code>sudo systemctl start jenkins</code></del></li>
+<li><del>如果Jenkins在服务器，修改安全组规则，开放<code>8081端口</code>，并且用浏览器访问<code>IP:8081</code>。否则直接访问<code>localhost:8081</code></del></li>
 <li>至此完成Jenkins安装。通过<code>IP:8080</code>访问。</li>
 </ul>
-<h2 id="进阶"><a class="markdownIt-Anchor" href="#进阶"></a> 进阶</h2>
-<p><a href="https://www.jianshu.com/p/b524b151d35f" target="_blank" rel="noopener"><strong>Jenkins使用简易教程</strong></a></p>
+<h2 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h2><p><a href="https://www.jianshu.com/p/b524b151d35f" target="_blank" rel="noopener"><strong>Jenkins使用简易教程</strong></a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -196,7 +180,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2018/05/14/JustPlay/jenkins/" data-title="在Ubuntu安装和配置Jenkins | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://mzz.pub/2018/05/14/JustPlay/jenkins/" data-title="在Ubuntu安装和配置Jenkins | mzz&#39;s blog" data-tsina class="share clearfix">
 	  </div>
 	
 	</div>
@@ -209,9 +193,9 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
+ <div class="prev">
  <a href="/2018/05/29/JustPlay/mysqld/" title="把mysql数据库挂在服务器上">
-  <strong>上一篇：</strong><br/>
+  <strong>上一篇：</strong><br>
   <span>
   把mysql数据库挂在服务器上</span>
 </a>
@@ -219,8 +203,8 @@
 
 
 <div class="next">
-<a href="/2018/04/17/algorithm/最短路径归纳/"  title="最短路径算法归纳">
- <strong>下一篇：</strong><br/> 
+<a href="/2018/04/17/algorithm/最短路径归纳/" title="最短路径算法归纳">
+ <strong>下一篇：</strong><br> 
  <span>最短路径算法归纳
 </span>
 </a>
@@ -247,7 +231,7 @@ var s = document.getElementsByTagName("script")[0];
 s.parentNode.insertBefore(hcc, s.nextSibling);
 })();
 </script>
-<a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+<a href="http://hypercomments.com" rel="nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
@@ -257,7 +241,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-number">1.</span> <span class="toc-text"> 准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装java-jdk并配置环境变量"><span class="toc-number">1.1.</span> <span class="toc-text"> 安装Java JDK并配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关键一步"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 关键一步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装jenkins"><span class="toc-number">2.</span> <span class="toc-text"> 安装Jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改jenkins配置"><span class="toc-number">3.</span> <span class="toc-text"> 修改Jenkins配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶"><span class="toc-number">4.</span> <span class="toc-text"> 进阶</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-number">1.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装Java-JDK并配置环境变量"><span class="toc-number">1.1.</span> <span class="toc-text">安装Java JDK并配置环境变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#关键一步"><span class="toc-number">1.1.1.</span> <span class="toc-text">关键一步</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装Jenkins"><span class="toc-number">2.</span> <span class="toc-text">安装Jenkins</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改Jenkins配置"><span class="toc-number">3.</span> <span class="toc-text">修改Jenkins配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶"><span class="toc-number">4.</span> <span class="toc-text">进阶</span></a></li></ol>
  
   </div>
 
@@ -292,6 +276,10 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		
 		  
 			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linear-algebra/" title="linear algebra">linear algebra<sup>1</sup></a></li>
 		  
 		
 		  
@@ -338,7 +326,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linear-algebra/" style="font-size: 10px;">linear algebra</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -384,7 +372,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
     </div>
-    <footer><div id="footer" >
+    <footer><div id="footer">
 	
 	<div class="line">
 		<span></span>
@@ -393,11 +381,11 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 	
 	
 	<section class="info">
-		<p> I am with little well content, And a little from thee sent <br/>
+		<p> I am with little well content, And a little from thee sent <br>
 			Is enough, with true intent. To be steadfast friend.</p>
 	</section>
 	 
-	<div class="social-font" class="clearfix">
+	<div class="social-font">
 		
 		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
 		
@@ -437,8 +425,8 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共57.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
-</div>
+博客全站共56.4k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+</span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
@@ -601,7 +589,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

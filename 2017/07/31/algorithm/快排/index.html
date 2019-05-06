@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
+<head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
     <title>快速排序算法 | mzz&#39;s blog</title>
@@ -53,7 +53,7 @@
 </style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
-
+</html>
   <body>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
       
@@ -85,13 +85,13 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
 						<input type="hidden" name="q" value="site:mzz.pub">
 					</form>
 					
 					</li>
 				</ul>
-			</nav>			
+			</ul></nav>			
 			
 </div>
     </header>
@@ -108,7 +108,7 @@
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
-  <p class="article-time">
+  </p><p class="article-time">
     <time datetime="2017-07-30T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-07-31</time>
     
   </p>
@@ -118,27 +118,21 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简言"><span class="toc-number">1.</span> <span class="toc-text"> 简言：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度"><span class="toc-number">1.1.</span> <span class="toc-text"> 复杂度：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思想"><span class="toc-number">1.2.</span> <span class="toc-text"> 思想：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理实现"><span class="toc-number">2.</span> <span class="toc-text"> 原理实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现"><span class="toc-number">2.1.</span> <span class="toc-text"> 基本实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化实现"><span class="toc-number">2.2.</span> <span class="toc-text"> 优化实现:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text"> 代码实现：</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简言："><span class="toc-number">1.</span> <span class="toc-text">简言：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度："><span class="toc-number">1.1.</span> <span class="toc-text">复杂度：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思想："><span class="toc-number">1.2.</span> <span class="toc-text">思想：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理实现："><span class="toc-number">2.</span> <span class="toc-text">原理实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现："><span class="toc-number">2.1.</span> <span class="toc-text">基本实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化实现"><span class="toc-number">2.2.</span> <span class="toc-text">优化实现:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现："><span class="toc-number">3.</span> <span class="toc-text">代码实现：</span></a></li></ol>
 		
 		</div>
 		
 		<p>引言：本文介绍快排的思想、代码实现及最基础的优化</p>
 <hr>
 <a id="more"></a>
-<h2 id="简言"><a class="markdownIt-Anchor" href="#简言"></a> 简言：</h2>
-<h3 id="复杂度"><a class="markdownIt-Anchor" href="#复杂度"></a> 复杂度：</h3>
-<ul>
+<h2 id="简言："><a href="#简言：" class="headerlink" title="简言："></a>简言：</h2><h3 id="复杂度："><a href="#复杂度：" class="headerlink" title="复杂度："></a>复杂度：</h3><ul>
 <li>快排最坏情况复杂度O(n²)，平均复杂度O(nlogn)，是一种不稳定算法。</li>
 </ul>
-<h3 id="思想"><a class="markdownIt-Anchor" href="#思想"></a> 思想：</h3>
-<ul>
-<li>快排的思想是：设定序列中一个数（尽量重心）为k，将比k大的数与比k小的数分别放于k的两侧，此时k即归位。<br>
-<em>注：归位是指该元素已在应在的位置，即该元素已排好序</em></li>
+<h3 id="思想："><a href="#思想：" class="headerlink" title="思想："></a>思想：</h3><ul>
+<li>快排的思想是：设定序列中一个数（尽量重心）为k，将比k大的数与比k小的数分别放于k的两侧，此时k即归位。<br>  <em>注：归位是指该元素已在应在的位置，即该元素已排好序</em></li>
 </ul>
 <hr>
-<h2 id="原理实现"><a class="markdownIt-Anchor" href="#原理实现"></a> 原理实现：</h2>
-<h3 id="基本实现"><a class="markdownIt-Anchor" href="#基本实现"></a> 基本实现：</h3>
-<p>根据《啊哈算法》我们很快就能明白快排是怎么实现的：</p>
+<h2 id="原理实现："><a href="#原理实现：" class="headerlink" title="原理实现："></a>原理实现：</h2><h3 id="基本实现："><a href="#基本实现：" class="headerlink" title="基本实现："></a>基本实现：</h3><p>根据《啊哈算法》我们很快就能明白快排是怎么实现的：</p>
 <ol>
 <li>若将一个序列从小到大排序。那么从右往左找比k（通常取a[left]）小的（下标记为j），左向右找比k大的（下标记为i），找到就交换a[i]与a[j]。这样保证了让比k小的到左边去，比k大的到右边去。然后进行下一次寻找，再交换。直到i和j碰面（i==j），结束寻找。</li>
 <li>因此推到最后碰面之后，应该让k与a[i]交换，因为此时a[i]比k小（记住我们取a[left]为k），秉承小的放左边的原则，k与a[i]交换。</li>
@@ -146,8 +140,7 @@
 <li><strong>注意：根据上述推理，先从右往左找还是从左往右找，取决于我取的k位于左边还是右边。</strong></li>
 </ol>
 <p>但难点在于如何进行优化。上述代码慢就慢在交换i和j需要3次赋值。</p>
-<h3 id="优化实现"><a class="markdownIt-Anchor" href="#优化实现"></a> 优化实现:</h3>
-<ol>
+<h3 id="优化实现"><a href="#优化实现" class="headerlink" title="优化实现:"></a>优化实现:</h3><ol>
 <li>依旧假设从小到大排序。我们从右往左找，找到一个比k小的，我们的目的就是将这个值移到左边去。</li>
 <li>我们的思想是“空缺可填”思想，记住这个思想你将很快理解我在说什么。</li>
 <li>一开始a[left]即a[i]的值已经被装到k里面去了，那么i这个位置就是可填的。一开始，我们从右往左找，找到第一个比k大的，称作a[j]，我们把这个数a[j]赋值给a[i]，这样j的位置空出来了，j是可填的。然后我们从左往右找，找到第一个比k小的a[i]，将a[i]填到j去，现在是i可填了。</li>
@@ -157,9 +150,8 @@
 <li>如此反复几轮，便完成了排序。</li>
 </ol>
 <hr>
-<h2 id="代码实现"><a class="markdownIt-Anchor" href="#代码实现"></a> 代码实现：</h2>
-<p>优化后代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">10</span>] = &#123; <span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">8</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"><span class="comment">//每一轮将满足条件的a[j]移到左边，将满足条件的a[i]移动右边，最终i==j时将a[i]归位为key</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left &gt;= right)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> key = a[left], t, i = left, j = right;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i&lt;j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (a[j] &gt;= key &amp;&amp; j&gt;i)</span><br><span class="line">            j--;</span><br><span class="line">        a[i] = a[j];</span><br><span class="line">        <span class="keyword">while</span> (a[i] &lt;= key &amp;&amp; j&gt;i)</span><br><span class="line">            i++;</span><br><span class="line">        a[j] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    a[i] = key;</span><br><span class="line">    quicksort(left, i - <span class="number">1</span>);，</span><br><span class="line">    quicksort(i + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    quicksort(<span class="number">0</span>, <span class="number">9</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">10</span>; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>  
+<h2 id="代码实现："><a href="#代码实现：" class="headerlink" title="代码实现："></a>代码实现：</h2><p>优化后代码：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctype.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdbool.h&gt;</span></span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">10</span>] = &#123; <span class="number">6</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">8</span> &#125;;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quicksort</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span></span><br><span class="line"><span class="function"><span class="comment">//每一轮将满足条件的a[j]移到左边，将满足条件的a[i]移动右边，最终i==j时将a[i]归位为key</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (left &gt;= right)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> key = a[left], t, i = left, j = right;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i&lt;j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span> (a[j] &gt;= key &amp;&amp; j&gt;i)</span><br><span class="line">            j--;</span><br><span class="line">        a[i] = a[j];</span><br><span class="line">        <span class="keyword">while</span> (a[i] &lt;= key &amp;&amp; j&gt;i)</span><br><span class="line">            i++;</span><br><span class="line">        a[j] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">    a[i] = key;</span><br><span class="line">    quicksort(left, i - <span class="number">1</span>);，</span><br><span class="line">    quicksort(i + <span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    quicksort(<span class="number">0</span>, <span class="number">9</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i&lt;<span class="number">10</span>; i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, a[i]);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -181,7 +173,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2017/07/31/algorithm/快排/" data-title="快速排序算法 | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  <div data-url="http://mzz.pub/2017/07/31/algorithm/快排/" data-title="快速排序算法 | mzz&#39;s blog" data-tsina class="share clearfix">
 	  </div>
 	
 	</div>
@@ -194,9 +186,9 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
+ <div class="prev">
  <a href="/2017/08/01/algorithm/POJ1789/" title="POJ1789 - Truck History (最小生成树)">
-  <strong>上一篇：</strong><br/>
+  <strong>上一篇：</strong><br>
   <span>
   POJ1789 - Truck History (最小生成树)</span>
 </a>
@@ -224,7 +216,7 @@ var s = document.getElementsByTagName("script")[0];
 s.parentNode.insertBefore(hcc, s.nextSibling);
 })();
 </script>
-<a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+<a href="http://hypercomments.com" rel="nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
@@ -234,7 +226,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简言"><span class="toc-number">1.</span> <span class="toc-text"> 简言：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度"><span class="toc-number">1.1.</span> <span class="toc-text"> 复杂度：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思想"><span class="toc-number">1.2.</span> <span class="toc-text"> 思想：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理实现"><span class="toc-number">2.</span> <span class="toc-text"> 原理实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现"><span class="toc-number">2.1.</span> <span class="toc-text"> 基本实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化实现"><span class="toc-number">2.2.</span> <span class="toc-text"> 优化实现:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">3.</span> <span class="toc-text"> 代码实现：</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简言："><span class="toc-number">1.</span> <span class="toc-text">简言：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂度："><span class="toc-number">1.1.</span> <span class="toc-text">复杂度：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思想："><span class="toc-number">1.2.</span> <span class="toc-text">思想：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理实现："><span class="toc-number">2.</span> <span class="toc-text">原理实现：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现："><span class="toc-number">2.1.</span> <span class="toc-text">基本实现：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优化实现"><span class="toc-number">2.2.</span> <span class="toc-text">优化实现:</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现："><span class="toc-number">3.</span> <span class="toc-text">代码实现：</span></a></li></ol>
  
   </div>
 
@@ -269,6 +261,10 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		
 		  
 			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linear-algebra/" title="linear algebra">linear algebra<sup>1</sup></a></li>
 		  
 		
 		  
@@ -315,7 +311,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linear-algebra/" style="font-size: 10px;">linear algebra</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -361,7 +357,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
     </div>
-    <footer><div id="footer" >
+    <footer><div id="footer">
 	
 	<div class="line">
 		<span></span>
@@ -370,11 +366,11 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 	
 	
 	<section class="info">
-		<p> I am with little well content, And a little from thee sent <br/>
+		<p> I am with little well content, And a little from thee sent <br>
 			Is enough, with true intent. To be steadfast friend.</p>
 	</section>
 	 
-	<div class="social-font" class="clearfix">
+	<div class="social-font">
 		
 		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
 		
@@ -414,8 +410,8 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共57.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
-</div>
+博客全站共56.4k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+</span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
@@ -578,7 +574,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
