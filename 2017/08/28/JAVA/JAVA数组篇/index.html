@@ -118,28 +118,32 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数组"><span class="toc-number">1.</span> <span class="toc-text">创建数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建对象数组"><span class="toc-number">1.1.</span> <span class="toc-text">创建对象数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String对象是异类吗？"><span class="toc-number">1.2.</span> <span class="toc-text">String对象是异类吗？</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数组"><span class="toc-number">1.</span> <span class="toc-text"> 创建数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建对象数组"><span class="toc-number">1.1.</span> <span class="toc-text"> 创建对象数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string对象是异类吗"><span class="toc-number">1.2.</span> <span class="toc-text"> String对象是异类吗？</span></a></li></ol></li></ol>
 		
 		</div>
 		
 		<p>引言：没有指针真难过。</p>
 <hr>
 <a id="more"></a>
-<h2 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h2><h3 id="创建对象数组"><a href="#创建对象数组" class="headerlink" title="创建对象数组"></a>创建对象数组</h3><p>Dog[] dogs=new Dog[8];仅仅是创建（声明）一个数组（指针），并没有为对象分配空间，也就是说并没有创建对象。</p>
+<h2 id="创建数组"><a class="markdownIt-Anchor" href="#创建数组"></a> 创建数组</h2>
+<h3 id="创建对象数组"><a class="markdownIt-Anchor" href="#创建对象数组"></a> 创建对象数组</h3>
+<p>Dog[] dogs=new Dog[8];仅仅是创建（声明）一个数组（指针），并没有为对象分配空间，也就是说并没有创建对象。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog[] dogs=<span class="keyword">new</span> Dog[<span class="number">8</span>];</span><br><span class="line">dogs[<span class="number">0</span>].name=<span class="string">"Stephon"</span>;</span><br><span class="line">dogs[<span class="number">0</span>].dark();</span><br></pre></td></tr></table></figure>
 <p>上述代码是错误的，编译不通过，因为dogs[0]对象还不存在。</p>
-<p>我们必须要进行的是Dog[0]=new Dog();等操作来给指针分配空间（创建对象）。<br>如：</p>
+<p>我们必须要进行的是Dog[0]=new Dog();等操作来给指针分配空间（创建对象）。<br>
+如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)</span><br><span class="line">    dogs[i]=<span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
 <p>天哪，使用循环来创建数组对象，贼JB恶心。</p>
 <p>而使用foreach的</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(Dog x:dogs)</span><br><span class="line">    x=<span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
 <p>是不合规的……我知道这里不该写Dog x，但是我不知道怎么写指针Dog……</p>
 <p>没有指针的JAVA真难用……怀念C一秒钟……</p>
-<h3 id="String对象是异类吗？"><a href="#String对象是异类吗？" class="headerlink" title="String对象是异类吗？"></a>String对象是异类吗？</h3><p>先贴代码：</p>
+<h3 id="string对象是异类吗"><a class="markdownIt-Anchor" href="#string对象是异类吗"></a> String对象是异类吗？</h3>
+<p>先贴代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String[] strArrays=<span class="keyword">new</span> String[<span class="number">3</span>];</span><br><span class="line">strArrays[<span class="number">0</span>]=<span class="string">"hello"</span>;</span><br><span class="line">System.out.println(strArrays[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure>
 <p>这样的代码居然是正确的！！！</p>
 <p>别急，我们平下心来分析一波，String真的是异类吗？</p>
-<p>实际上不是的。String的”=”运算符被重载了，也就是说strArrays[0]=”hello”相当于strArrays[0]=new String(“hello”)，清楚了这一点就明白了。</p>
+<p>实际上不是的。String的&quot;=&quot;运算符被重载了，也就是说strArrays[0]=&quot;hello&quot;相当于strArrays[0]=new String(“hello”)，清楚了这一点就明白了。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -223,7 +227,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数组"><span class="toc-number">1.</span> <span class="toc-text">创建数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建对象数组"><span class="toc-number">1.1.</span> <span class="toc-text">创建对象数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String对象是异类吗？"><span class="toc-number">1.2.</span> <span class="toc-text">String对象是异类吗？</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建数组"><span class="toc-number">1.</span> <span class="toc-text"> 创建数组</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建对象数组"><span class="toc-number">1.1.</span> <span class="toc-text"> 创建对象数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#string对象是异类吗"><span class="toc-number">1.2.</span> <span class="toc-text"> String对象是异类吗？</span></a></li></ol></li></ol>
  
   </div>
 
@@ -261,7 +265,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
-			<li><a href="/categories/linear-algebra/" title="linear algebra">linear algebra<sup>1</sup></a></li>
+			<li><a href="/categories/linearAlgebra/" title="linearAlgebra">linearAlgebra<sup>1</sup></a></li>
 		  
 		
 		  
@@ -308,7 +312,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linear-algebra/" style="font-size: 10px;">linear algebra</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linearAlgebra/" style="font-size: 10px;">linearAlgebra</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -405,9 +409,9 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  _st('install','KARTphmFVqNf53QQL7QN','2.0.0');
 		</script>
 </div>
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共56.4k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共58.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>

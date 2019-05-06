@@ -118,17 +118,20 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#将指针藏起来的JAVA"><span class="toc-number">1.</span> <span class="toc-text">将指针藏起来的JAVA</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#将指针藏起来的java"><span class="toc-number">1.</span> <span class="toc-text"> 将指针藏起来的JAVA</span></a></li></ol>
 		
 		</div>
 		
 		<p>引言：将指针扼杀掉的JAVA到底能不能传引用？或者说，传入的实参能否被函数修改？</p>
 <hr>
 <a id="more"></a>
-<h2 id="将指针藏起来的JAVA"><a href="#将指针藏起来的JAVA" class="headerlink" title="将指针藏起来的JAVA"></a>将指针藏起来的JAVA</h2><ul>
-<li><p>JAVA是存在指针的，但它的用法被极大的限制了，以至于我们察觉不到它的存在。但我认为如果因此不去了解JAVA的指针，是无法学好JAVA的。</p>
+<h2 id="将指针藏起来的java"><a class="markdownIt-Anchor" href="#将指针藏起来的java"></a> 将指针藏起来的JAVA</h2>
+<ul>
+<li>
+<p>JAVA是存在指针的，但它的用法被极大的限制了，以至于我们察觉不到它的存在。但我认为如果因此不去了解JAVA的指针，是无法学好JAVA的。</p>
 </li>
-<li><p>代码转自知乎<a href="https://www.zhihu.com/question/31203609" target="_blank" rel="noopener">java到底是值传递还是引用传递？</a>Intopass的回答。</p>
+<li>
+<p>代码转自知乎<a href="https://www.zhihu.com/question/31203609" target="_blank" rel="noopener">java到底是值传递还是引用传递？</a>Intopass的回答。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//第一个例子：基本类型</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    value = <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line">foo(num); <span class="comment">// num 没有被改变</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//第二个例子：没有提供改变自身方法的引用类型</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(String text)</span> </span>&#123;</span><br><span class="line">    text = <span class="string">"windows"</span>;</span><br><span class="line">&#125;</span><br><span class="line">foo(str); <span class="comment">// str 也没有被改变</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//第三个例子：提供了改变自身方法的引用类型</span></span><br><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"iphone"</span>);</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(StringBuilder builder)</span> </span>&#123;</span><br><span class="line">    builder.append(<span class="string">"4"</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo(sb); <span class="comment">// sb 被改变了，变成了"iphone4"。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//第四个例子：提供了改变自身方法的引用类型，但是不使用，而是使用赋值运算符。</span></span><br><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(<span class="string">"iphone"</span>);</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">foo</span><span class="params">(StringBuilder builder)</span> </span>&#123;</span><br><span class="line">    builder = <span class="keyword">new</span> StringBuilder(<span class="string">"ipad"</span>);</span><br><span class="line">&#125;</span><br><span class="line">foo(sb); <span class="comment">// sb 没有被改变，还是 "iphone"。</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
@@ -138,19 +141,23 @@
 </blockquote>
 <p>也就是说，当我传参传入的是int的话，其实是将值复制了一份，形参和实参它们两个只有值是一样的，而我传入的是String的话，是将String的指针复制了一份，形参和实参（都指的是指向对象的指针）指向的对象是一样的。</p>
 </li>
-<li><p>提问：那是不是意味着传对象就相当于传引用了呢？</p>
+<li>
+<p>提问：那是不是意味着传对象就相当于传引用了呢？</p>
 <p>没错。但你也要考虑清楚，如同上述代码第二个例子，<code>text=&quot;windows&quot;;</code>，你要理解这究竟是什么意思，它实际上是重载运算符，等价于<code>text=new String(&quot;windows&quot;);</code>，说到这里你应该明白了，这只是给text指针分配了一个新的地址空间而已，原空间的str没有任何改变。</p>
 </li>
-<li><p>提问：如果我写<code>int[] iArray={1,3,5,7,9};</code> 将其传入函数，为什么可以修改？</p>
+<li>
+<p>提问：如果我写<code>int[] iArray={1,3,5,7,9};</code> 将其传入函数，为什么可以修改？</p>
 <p>很好理解，你可以按照JAVA的理解，数组也是对象，因此可以成功将引用传入函数，而由于数组元素类型都是int，不存在重载赋值运算符为new之类的操作，因此是可以修改的。</p>
 <p>你也可以按照C语言的理解，传入的是数组首元素的地址，因此可以进行修改。</p>
 </li>
-<li><p>提问：如果我想传int引用怎么办？</p>
+<li>
+<p>提问：如果我想传int引用怎么办？</p>
 <p>实测Integer对象是无法达到传引用的目的的，因此我能想到的方法就是封装一个int类。因为目前水平有限，还不会重载运算符，因此我简单的进行了一个封装，看官明白一下意思就行了：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(Intege a)</span></span>&#123;</span><br><span class="line">    a.setValue(<span class="number">123</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">    Intege a=<span class="keyword">new</span> Intege();</span><br><span class="line">    test(a);</span><br><span class="line">    System.out.println(a.getValue());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//……省略若干代码</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Intege</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> a;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.a=a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样将Intege型的变量传入后，即可通过setValue方法对值进行修改。</p>
 </li>
-<li><p>不管怎样，我觉得没有指针的日子很难过……</p>
+<li>
+<p>不管怎样，我觉得没有指针的日子很难过……</p>
 </li>
 </ul>
   
@@ -236,7 +243,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#将指针藏起来的JAVA"><span class="toc-number">1.</span> <span class="toc-text">将指针藏起来的JAVA</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#将指针藏起来的java"><span class="toc-number">1.</span> <span class="toc-text"> 将指针藏起来的JAVA</span></a></li></ol>
  
   </div>
 
@@ -274,7 +281,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
-			<li><a href="/categories/linear-algebra/" title="linear algebra">linear algebra<sup>1</sup></a></li>
+			<li><a href="/categories/linearAlgebra/" title="linearAlgebra">linearAlgebra<sup>1</sup></a></li>
 		  
 		
 		  
@@ -321,7 +328,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linear-algebra/" style="font-size: 10px;">linear algebra</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linearAlgebra/" style="font-size: 10px;">linearAlgebra</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -418,9 +425,9 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  _st('install','KARTphmFVqNf53QQL7QN','2.0.0');
 		</script>
 </div>
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共56.4k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共58.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>

@@ -118,7 +118,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">2.</span> <span class="toc-text">开始吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题1：no-route-to-host"><span class="toc-number">2.1.</span> <span class="toc-text">问题1：no route to host</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题2：poll-protocol-failure-in-circuit-setup"><span class="toc-number">2.2.</span> <span class="toc-text">问题2：poll: protocol failure in circuit setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题3：Permission-Denied"><span class="toc-number">2.3.</span> <span class="toc-text">问题3：Permission Denied</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上述问题的对策"><span class="toc-number">3.</span> <span class="toc-text">上述问题的对策</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭防火墙"><span class="toc-number">3.1.</span> <span class="toc-text">关闭防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭SELINUX"><span class="toc-number">3.2.</span> <span class="toc-text">关闭SELINUX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写securetty"><span class="toc-number">3.3.</span> <span class="toc-text">写securetty</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 开始吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题1no-route-to-host"><span class="toc-number">2.1.</span> <span class="toc-text"> 问题1：no route to host</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题2poll-protocol-failure-in-circuit-setup"><span class="toc-number">2.2.</span> <span class="toc-text"> 问题2：poll: protocol failure in circuit setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题3permission-denied"><span class="toc-number">2.3.</span> <span class="toc-text"> 问题3：Permission Denied</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上述问题的对策"><span class="toc-number">3.</span> <span class="toc-text"> 上述问题的对策</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭防火墙"><span class="toc-number">3.1.</span> <span class="toc-text"> 关闭防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭selinux"><span class="toc-number">3.2.</span> <span class="toc-text"> 关闭SELINUX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写securetty"><span class="toc-number">3.3.</span> <span class="toc-text"> 写securetty</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -128,30 +128,38 @@
 <blockquote>
 <p>系统环境：CentOS 7</p>
 </blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>对于rsh具体怎么装，网上遍地教程，就不讲了。</p>
+<h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
+<p>对于rsh具体怎么装，网上遍地教程，就不讲了。</p>
 <p>下面主要关注各种问题的解决方案。</p>
 <p><strong>注意，本博文建立在实验环境，因此对策比较极端，在真实环境中请自行考虑安全性因素。</strong></p>
-<h2 id="开始吧"><a href="#开始吧" class="headerlink" title="开始吧"></a>开始吧</h2><h3 id="问题1：no-route-to-host"><a href="#问题1：no-route-to-host" class="headerlink" title="问题1：no route to host"></a>问题1：no route to host</h3><p>首先判断hostname是否正确，网络是否连通</p>
+<h2 id="开始吧"><a class="markdownIt-Anchor" href="#开始吧"></a> 开始吧</h2>
+<h3 id="问题1no-route-to-host"><a class="markdownIt-Anchor" href="#问题1no-route-to-host"></a> 问题1：no route to host</h3>
+<p>首先判断hostname是否正确，网络是否连通</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping hostname</span><br></pre></td></tr></table></figure>
 <p>如果不连通，用<code>ip address</code>看看地址是不是变了（我还真的遇到过这种事情）</p>
 <p>如果连通，<span style="color:#de0080"><strong>按下文对策在服务端关闭防火墙和SELINUX</strong></span>，然后重启服务端</p>
-<h3 id="问题2：poll-protocol-failure-in-circuit-setup"><a href="#问题2：poll-protocol-failure-in-circuit-setup" class="headerlink" title="问题2：poll: protocol failure in circuit setup"></a>问题2：poll: protocol failure in circuit setup</h3><p>这个问题是查了日志才知道的，具体方法在服务端<code>tail -f 10 /var/log/messages</code>，发现是客户端的端口连不通，于是：</p>
+<h3 id="问题2poll-protocol-failure-in-circuit-setup"><a class="markdownIt-Anchor" href="#问题2poll-protocol-failure-in-circuit-setup"></a> 问题2：poll: protocol failure in circuit setup</h3>
+<p>这个问题是查了日志才知道的，具体方法在服务端<code>tail -f 10 /var/log/messages</code>，发现是客户端的端口连不通，于是：</p>
 <p><span style="color:#de0080"><strong>按下文对策在客户端关闭防火墙和SELINUX</strong></span></p>
-<h3 id="问题3：Permission-Denied"><a href="#问题3：Permission-Denied" class="headerlink" title="问题3：Permission Denied"></a>问题3：Permission Denied</h3><p>这个问题的一看就是因为没有在<code>$HOME/.rhosts</code>或<code>/etc/hosts.equiv</code>上面设置受信赖的客户端。</p>
+<h3 id="问题3permission-denied"><a class="markdownIt-Anchor" href="#问题3permission-denied"></a> 问题3：Permission Denied</h3>
+<p>这个问题的一看就是因为没有在<code>$HOME/.rhosts</code>或<code>/etc/hosts.equiv</code>上面设置受信赖的客户端。</p>
 <p>关于这两个文件的区别，见 <a href="https://blog.csdn.net/xysoul/article/details/44956817" target="_blank" rel="noopener"><strong>【关于/etc/hosts.equiv和$HOME/.rhosts的区别】</strong></a></p>
 <p>如果你已经正确配置了上述两个文件，还是出现该问题，那么：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 授予文件644权限</span></span><br><span class="line">chmod 644 ~/.rhosts</span><br><span class="line">chmod 644 /etc/hosts.equiv</span><br></pre></td></tr></table></figure>
 <p>你没有看出错，也没有听错，确实是644，假如你授权了777，那么不好意思，权限过大，该文件将失效。</p>
 <p>不要问我是怎么发现的。</p>
-<h2 id="上述问题的对策"><a href="#上述问题的对策" class="headerlink" title="上述问题的对策"></a>上述问题的对策</h2><h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><p>啥也不说了，直接贴代码</p>
+<h2 id="上述问题的对策"><a class="markdownIt-Anchor" href="#上述问题的对策"></a> 上述问题的对策</h2>
+<h3 id="关闭防火墙"><a class="markdownIt-Anchor" href="#关闭防火墙"></a> 关闭防火墙</h3>
+<p>啥也不说了，直接贴代码</p>
 <p>在server端和client端：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 中止服务</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"><span class="comment"># 删除开机自启</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld</span><br></pre></td></tr></table></figure>
-<h3 id="关闭SELINUX"><a href="#关闭SELINUX" class="headerlink" title="关闭SELINUX"></a>关闭SELINUX</h3><p>在server端：</p>
+<h3 id="关闭selinux"><a class="markdownIt-Anchor" href="#关闭selinux"></a> 关闭SELINUX</h3>
+<p>在server端：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 中止服务</span></span><br><span class="line">setenforce 0</span><br><span class="line"><span class="comment"># 删除开机自启</span></span><br><span class="line">sed -i <span class="string">'s/SELINUX=.*/SELINUX=disabled/g'</span> /etc/sysconfig/selinux</span><br></pre></td></tr></table></figure>
-<h3 id="写securetty"><a href="#写securetty" class="headerlink" title="写securetty"></a>写securetty</h3><p>如果你防火墙也关了，SELINUX也关了，还是出现问题，那么你可以尝试在server端和client端：</p>
+<h3 id="写securetty"><a class="markdownIt-Anchor" href="#写securetty"></a> 写securetty</h3>
+<p>如果你防火墙也关了，SELINUX也关了，还是出现问题，那么你可以尝试在server端和client端：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> rsh &gt;&gt; /etc/securetty</span><br><span class="line"><span class="built_in">echo</span> rlogin &gt;&gt; /etc/securetty</span><br><span class="line"><span class="built_in">echo</span> rexec &gt;&gt; /etc/securetty</span><br></pre></td></tr></table></figure>
 <hr style="margin: 4rem 0 1rem 0; background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);height:.1rem;border:none">
-
 <div align="center" style="font-weight: bold; font-size: 2rem; margin-bottom: 2rem">大功告成！</div>  
 	</div>
 		<footer class="article-footer clearfix">
@@ -235,7 +243,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">2.</span> <span class="toc-text">开始吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题1：no-route-to-host"><span class="toc-number">2.1.</span> <span class="toc-text">问题1：no route to host</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题2：poll-protocol-failure-in-circuit-setup"><span class="toc-number">2.2.</span> <span class="toc-text">问题2：poll: protocol failure in circuit setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题3：Permission-Denied"><span class="toc-number">2.3.</span> <span class="toc-text">问题3：Permission Denied</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上述问题的对策"><span class="toc-number">3.</span> <span class="toc-text">上述问题的对策</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭防火墙"><span class="toc-number">3.1.</span> <span class="toc-text">关闭防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭SELINUX"><span class="toc-number">3.2.</span> <span class="toc-text">关闭SELINUX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写securetty"><span class="toc-number">3.3.</span> <span class="toc-text">写securetty</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text"> 前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 开始吧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题1no-route-to-host"><span class="toc-number">2.1.</span> <span class="toc-text"> 问题1：no route to host</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题2poll-protocol-failure-in-circuit-setup"><span class="toc-number">2.2.</span> <span class="toc-text"> 问题2：poll: protocol failure in circuit setup</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#问题3permission-denied"><span class="toc-number">2.3.</span> <span class="toc-text"> 问题3：Permission Denied</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上述问题的对策"><span class="toc-number">3.</span> <span class="toc-text"> 上述问题的对策</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭防火墙"><span class="toc-number">3.1.</span> <span class="toc-text"> 关闭防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭selinux"><span class="toc-number">3.2.</span> <span class="toc-text"> 关闭SELINUX</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#写securetty"><span class="toc-number">3.3.</span> <span class="toc-text"> 写securetty</span></a></li></ol></li></ol>
  
   </div>
 
@@ -273,7 +281,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  
 		
 		  
-			<li><a href="/categories/linear-algebra/" title="linear algebra">linear algebra<sup>1</sup></a></li>
+			<li><a href="/categories/linearAlgebra/" title="linearAlgebra">linearAlgebra<sup>1</sup></a></li>
 		  
 		
 		  
@@ -320,7 +328,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linear-algebra/" style="font-size: 10px;">linear algebra</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linearAlgebra/" style="font-size: 10px;">linearAlgebra</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
 
@@ -417,9 +425,9 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		  _st('install','KARTphmFVqNf53QQL7QN','2.0.0');
 		</script>
 </div>
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共56.4k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共58.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
