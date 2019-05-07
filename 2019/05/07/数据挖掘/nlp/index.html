@@ -4,25 +4,25 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>OpenVPN设置条件代理的方法 | mzz&#39;s blog</title>
+    <title>nlp笔记 | mzz&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="莫之章">
     
 
     
-    <meta name="description" content="引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。">
-<meta name="keywords" content="VPN">
+    <meta name="description" content="记录了一些学习nlp时的笔记。">
+<meta name="keywords" content="nlp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OpenVPN设置条件代理的方法">
-<meta property="og:url" content="http://mzz.pub/2018/03/11/JustPlay/OpenVPN设置条件代理/index.html">
+<meta property="og:title" content="nlp笔记">
+<meta property="og:url" content="http://mzz.pub/2019/05/07/数据挖掘/nlp/index.html">
 <meta property="og:site_name" content="mzz&#39;s blog">
-<meta property="og:description" content="引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。">
+<meta property="og:description" content="记录了一些学习nlp时的笔记。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-06T06:24:49.477Z">
+<meta property="og:updated_time" content="2019-05-07T11:42:55.221Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OpenVPN设置条件代理的方法">
-<meta name="twitter:description" content="引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。">
+<meta name="twitter:title" content="nlp笔记">
+<meta name="twitter:description" content="记录了一些学习nlp时的笔记。">
 
     
     
@@ -102,14 +102,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/03/11/JustPlay/OpenVPN设置条件代理/" title="OpenVPN设置条件代理的方法" itemprop="url">OpenVPN设置条件代理的方法</a>
+      <a href="/2019/05/07/数据挖掘/nlp/" title="nlp笔记" itemprop="url">nlp笔记</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
   </p><p class="article-time">
-    <time datetime="2018-03-11T11:18:00.000Z" itemprop="datePublished"> 发表于 2018-03-11</time>
+    <time datetime="2019-05-07T11:00:00.000Z" itemprop="datePublished"> 发表于 2019-05-07</time>
     
   </p>
 </header>
@@ -118,58 +118,422 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#openvpn设置条件代理的方法"><span class="toc-number">1.</span> <span class="toc-text"> OpenVPN设置条件代理的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何设置条件代理"><span class="toc-number">1.1.</span> <span class="toc-text"> 如何设置条件代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何设置代理例外"><span class="toc-number">1.2.</span> <span class="toc-text"> 如何设置代理例外</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个shuvpn的条件代理demo"><span class="toc-number">2.</span> <span class="toc-text"> 一个SHUVPN的条件代理demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux下添加开机自启"><span class="toc-number">3.</span> <span class="toc-text"> Linux下添加开机自启</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#词性"><span class="toc-number">1.</span> <span class="toc-text"> 词性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crf-hmm-viterbi"><span class="toc-number">2.</span> <span class="toc-text"> CRF, HMM, Viterbi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发射矩阵"><span class="toc-number">2.1.</span> <span class="toc-text"> 发射矩阵</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。</p>
+		<p>记录了一些学习nlp时的笔记。</p>
 <hr>
 <a id="more"></a>
-<h2 id="openvpn设置条件代理的方法"><a class="markdownIt-Anchor" href="#openvpn设置条件代理的方法"></a> OpenVPN设置条件代理的方法</h2>
-<p>route命令第一参数为IP地址，第二地址为网子掩码，位与得到网段。</p>
-<p>下面我们以SHUVPN为例：</p>
-<h3 id="如何设置条件代理"><a class="markdownIt-Anchor" href="#如何设置条件代理"></a> 如何设置条件代理</h3>
+<h2 id="词性"><a class="markdownIt-Anchor" href="#词性"></a> 词性</h2>
+<p>词的分类</p>
 <ul>
-<li>假设我们在vpn.shu.edu.cn下载了一个ovpn文件，并且修改ovpn文件添加如下一行：</li>
+<li>实词：名词、动词、形容词、状态词、区别词、数词、量词、代词</li>
+<li>虚词：副词、介词、连词、助词、拟声词、叹词。</li>
 </ul>
+<p>ICTPOS3.0 词性标记集</p>
+<pre><code>n 名词
+	nr 人名
+		nr1 汉语姓氏
+		nr2 汉语名字
+		nrj 日语人名
+		nrf 音译人名
+	ns 地名
+	　nsf 音译地名
+	nt 机构团体名
+	nz 其它专名
+	nl 名词性惯用语
+	ng 名词性语素
+
+t 时间词
+　　tg 时间词性语素
+
+s 处所词
+
+f 方位词
+
+v 动词
+	vd 副动词
+	vn 名动词
+	vshi 动词“是”
+	vyou 动词“有”
+	vf 趋向动词
+	vx 形式动词
+	vi 不及物动词（内动词）
+	vl 动词性惯用语
+	vg 动词性语素
+a 形容词
+	ad 副形词
+	an 名形词
+	ag 形容词性语素
+	al 形容词性惯用语
+b 区别词
+	bl 区别词性惯用语
+z 状态词
+r 代词
+	rr 人称代词
+	rz 指示代词
+		rzt 时间指示代词
+		rzs 处所指示代词
+		rzv 谓词性指示代词
+	ry 疑问代词
+		ryt 时间疑问代词
+		rys 处所疑问代词
+		ryv 谓词性疑问代词
+	rg 代词性语素
+m 数词
+	mq 数量词
+q 量词
+	qv 动量词
+	qt 时量词
+</code></pre>
+<p>虚词</p>
+<pre><code>d 副词
+p 介词
+	pba 介词“把”
+	pbei 介词“被”
+c 连词
+	cc 并列连词
+u 助词
+	uzhe 着
+	ule 了 喽
+	uguo 过
+	ude1 的 底
+	ude2 地
+	ude3 得
+	usuo 所
+	udeng 等 等等 云云
+	uyy 一样 一般 似的 般
+	udh 的话
+	uls 来讲 来说 而言 说来
+
+	uzhi 之
+	ulian 连 （“连小学生都会”）
+
+e 叹词
+y 语气词(delete yg)
+o 拟声词
+h 前缀
+k 后缀
+x 字符串
+	xx 非语素字
+	xu 网址URL
+w 标点符号
+	wkz 左括号，全角：（ 〔  ［  ｛  《 【  〖 〈   半角：( [ { &lt;
+	wky 右括号，全角：） 〕  ］ ｝ 》  】 〗 〉 半角： ) ] { &gt;
+	wyz 左引号，全角：“ ‘ 『
+	wyy 右引号，全角：” ’ 』
+	wj 句号，全角：。
+	ww 问号，全角：？ 半角：?
+	wt 叹号，全角：！ 半角：!
+	wd 逗号，全角：， 半角：,
+	wf 分号，全角：； 半角： ;
+	wn 顿号，全角：、
+	wm 冒号，全角：： 半角： :
+	ws 省略号，全角：……  …
+	wp 破折号，全角：——   －－   ——－   半角：---  ----
+	wb 百分号千分号，全角：％ ‰   半角：%
+	wh 单位符号，全角：￥ ＄ ￡  °  ℃  半角：$
+</code></pre>
+<p>ICTCLAS 汉语词性标注集</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>名称</th>
+<th>帮助记忆的诠释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ag</td>
+<td>形语素</td>
+<td>形容词性语素。形容词代码为 a，语素代码ｇ前面置以 A。</td>
+</tr>
+<tr>
+<td>a</td>
+<td>形容词</td>
+<td>取英语形容词 adjective 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>ad</td>
+<td>副形词</td>
+<td>直接作状语的形容词。形容词代码 a 和副词代码 d 并在一起。</td>
+</tr>
+<tr>
+<td>an</td>
+<td>名形词</td>
+<td>具有名词功能的形容词。形容词代码 a 和名词代码 n 并在一起。</td>
+</tr>
+<tr>
+<td>b</td>
+<td>区别词</td>
+<td>取汉字“别”的声母。</td>
+</tr>
+<tr>
+<td>c</td>
+<td>连词</td>
+<td>取英语连词 conjunction 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>Dg</td>
+<td>副语素</td>
+<td>副词性语素。副词代码为 d，语素代码ｇ前面置以 D。</td>
+</tr>
+<tr>
+<td>d</td>
+<td>副词</td>
+<td>取 adverb 的第 2 个字母，因其第 1 个字母已用于形容词。</td>
+</tr>
+<tr>
+<td>e</td>
+<td>叹词</td>
+<td>取英语叹词 exclamation 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>f</td>
+<td>方位词</td>
+<td>取汉字“方” 的声母。</td>
+</tr>
+<tr>
+<td>g</td>
+<td>语素</td>
+<td>绝大多数语素都能作为合成词的“词根”，取汉字“根”的声母。</td>
+</tr>
+<tr>
+<td>h</td>
+<td>前接成分</td>
+<td>取英语 head 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>i</td>
+<td>成语</td>
+<td>取英语成语 idiom 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>j</td>
+<td>简称略语</td>
+<td>取汉字“简”的声母。</td>
+</tr>
+<tr>
+<td>k</td>
+<td>后接成分</td>
+<td></td>
+</tr>
+<tr>
+<td>l</td>
+<td>习用语</td>
+<td>习用语尚未成为成语，有点“临时性”，取“临”的声母。</td>
+</tr>
+<tr>
+<td>m</td>
+<td>数词</td>
+<td>取英语 numeral 的第 3 个字母，n，u 已有他用。</td>
+</tr>
+<tr>
+<td>Ng</td>
+<td>名语素</td>
+<td>名词性语素。名词代码为 n，语素代码ｇ前面置以 N。</td>
+</tr>
+<tr>
+<td>n</td>
+<td>名词</td>
+<td>取英语名词 noun 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>nr</td>
+<td>人名</td>
+<td>名词代码 n 和“人(ren)”的声母并在一起。</td>
+</tr>
+<tr>
+<td>ns</td>
+<td>地名</td>
+<td>名词代码 n 和处所词代码 s 并在一起。</td>
+</tr>
+<tr>
+<td>nt</td>
+<td>机构团体</td>
+<td>“团”的声母为 t，名词代码 n 和 t 并在一起。</td>
+</tr>
+<tr>
+<td>nz</td>
+<td>其他专名</td>
+<td>“专”的声母的第 1 个字母为 z，名词代码 n 和 z 并在一起。</td>
+</tr>
+<tr>
+<td>o</td>
+<td>拟声词</td>
+<td>取英语拟声词 onomatopoeia 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>p</td>
+<td>介词</td>
+<td>取英语介词 prepositional 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>q</td>
+<td>量词</td>
+<td>取英语 quantity 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>r</td>
+<td>代词</td>
+<td>取英语代词 pronoun 的第 2 个字母,因 p 已用于介词。</td>
+</tr>
+<tr>
+<td>s</td>
+<td>处所词</td>
+<td>取英语 space 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>Tg</td>
+<td>时语素</td>
+<td>时间词性语素。时间词代码为 t,在语素的代码 g 前面置以 T。</td>
+</tr>
+<tr>
+<td>t</td>
+<td>时间词</td>
+<td>取英语 time 的第 1 个字母。</td>
+</tr>
+<tr>
+<td>u</td>
+<td>助词</td>
+<td>取英语助词 auxiliary 的第 2 个字母,因 a 已用于形容词。</td>
+</tr>
+<tr>
+<td>Vg</td>
+<td>动语素</td>
+<td>动词性语素。动词代码为 v。在语素的代码 g 前面置以 V。</td>
+</tr>
+<tr>
+<td>v</td>
+<td>动词</td>
+<td>取英语动词 verb 的第一个字母。</td>
+</tr>
+<tr>
+<td>vd</td>
+<td>副动词</td>
+<td>直接作状语的动词。动词和副词的代码并在一起。</td>
+</tr>
+<tr>
+<td>vn</td>
+<td>名动词</td>
+<td>指具有名词功能的动词。动词和名词的代码并在一起。</td>
+</tr>
+<tr>
+<td>w</td>
+<td>标点符号</td>
+<td></td>
+</tr>
+<tr>
+<td>x</td>
+<td>非语素字</td>
+<td>非语素字只是一个符号，字母 x 通常用于代表未知数、符号。</td>
+</tr>
+<tr>
+<td>y</td>
+<td>语气词</td>
+<td>取汉字“语”的声母。</td>
+</tr>
+<tr>
+<td>z</td>
+<td>状态词</td>
+<td>取汉字“状”的声母的前一个字母。</td>
+</tr>
+</tbody>
+</table>
+<p>jieba 字典中出现的类型</p>
+<pre><code>a
+	ad
+	ag
+	an
+b
+c
+d
+	df
+	dg
+e
+f
+g
+h
+i
+j
+k
+l
+m
+	mg
+	mq
+n
+	ng
+	nr
+	nrfg
+	nrt
+	ns
+	nt
+	nz
+o
+p
+q
+r
+	rg
+	rr
+	rz
+s
+t
+	tg
+u
+	ud
+	ug
+	uj
+	ul
+	uv
+	uz
+v
+	vd
+	vg
+	vi
+	vn
+	vq
+x
+y
+z
+	zg
+</code></pre>
+<p>simhash 过滤的掉的词汇</p>
+<pre><code>c
+e
+h
+k
+o
+p
+u
+	ud
+	ug
+	uj
+	ul
+	uv
+	uz
+x
+y
+</code></pre>
+<h2 id="crf-hmm-viterbi"><a class="markdownIt-Anchor" href="#crf-hmm-viterbi"></a> CRF, HMM, Viterbi</h2>
 <blockquote>
-<p>route-nopull</p>
+<p>命名实体提取用了一下HanLP试了试效果，CRF和perceptor都不错，但perceptor不知道它的传播算法是用的什么，我只会最基础的BackPropagation算法，听说CRF是传统的命名实体提取算法，所以打算用CRF。</p>
+<p>CRF：<a href="https://www.cnblogs.com/en-heng/p/6214023.html" target="_blank" rel="noopener">https://www.cnblogs.com/en-heng/p/6214023.html</a></p>
+<p>CRF提到了HMM</p>
+<p>HMM：<a href="http://www.cnblogs.com/en-heng/p/6164145.html" target="_blank" rel="noopener">http://www.cnblogs.com/en-heng/p/6164145.html</a></p>
+<p>HMM提到了Viterbi</p>
+<p>Viterbi：</p>
+<p><a href="https://www.cnblogs.com/zhibei/p/9391014.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhibei/p/9391014.html</a></p>
+<p><a href="https://blog.csdn.net/RangerWolf/article/details/84733911" target="_blank" rel="noopener">https://blog.csdn.net/RangerWolf/article/details/84733911</a></p>
+<p>HMM和Viterbi提到了马尔可夫链Markov chain：</p>
+<p><a href="https://blog.csdn.net/bitcarmanlee/article/details/82819860" target="_blank" rel="noopener">https://blog.csdn.net/bitcarmanlee/article/details/82819860</a></p>
+<p>扩展<a href="https://blog.csdn.net/u011251225/article/details/44421853" target="_blank" rel="noopener">https://blog.csdn.net/u011251225/article/details/44421853</a></p>
+<p>扩展<a href="https://blog.csdn.net/zhaozhn5/article/details/79776163" target="_blank" rel="noopener">https://blog.csdn.net/zhaozhn5/article/details/79776163</a></p>
 </blockquote>
-<p>​	命令解释：不从服务端拉取代理配置。</p>
-<br>
-<ul>
-<li><strong>如果</strong>我们修改ovpn文件添加如下一行：</li>
-</ul>
-<blockquote>
-<p>route 202.120.127.0 255.255.255.0 vpn_gateway</p>
-</blockquote>
-<p>​	命令解释：将202.120.127.*设置为使用OpenVPN代理。</p>
-<h3 id="如何设置代理例外"><a class="markdownIt-Anchor" href="#如何设置代理例外"></a> 如何设置代理例外</h3>
-<ul>
-<li><strong>如果</strong>我们修改ovpn文件添加如下第二行：</li>
-</ul>
-<blockquote>
-<p>route 202.120.127.0 255.255.255.0 vpn_gateway</p>
-<p>route 202.120.127.105 255.255.255.255 net_gateway</p>
-</blockquote>
-<p>​	命令解释：将202.120.127.*设置为OpenVPN代理，但202.120.127.105走本地网络（202.120.127.105是我们VPN连接的目标服务器的IP地址，应该加入例外）。</p>
-<h2 id="一个shuvpn的条件代理demo"><a class="markdownIt-Anchor" href="#一个shuvpn的条件代理demo"></a> 一个SHUVPN的条件代理demo</h2>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">client</span><br><span class="line">dev tun</span><br><span class="line">proto tcp</span><br><span class="line"></span><br><span class="line">remote <span class="number">202.120</span>.<span class="number">127.105</span> <span class="number">80</span></span><br><span class="line"></span><br><span class="line">comp-lzo</span><br><span class="line">resolv-retry infinite</span><br><span class="line">nobind</span><br><span class="line">persist-key</span><br><span class="line">persist-tun</span><br><span class="line">setenv CLIENT_CERT <span class="number">0</span></span><br><span class="line">auth-user-pass</span><br><span class="line">remote-cert-tls server</span><br><span class="line">verb <span class="number">3</span></span><br><span class="line"></span><br><span class="line">sndbuf <span class="number">0</span></span><br><span class="line">rcvbuf <span class="number">0</span></span><br><span class="line">cipher none</span><br><span class="line"></span><br><span class="line">route-nopull</span><br><span class="line">route <span class="number">10.95</span>.<span class="number">192.1</span> <span class="number">255.255</span>.<span class="number">255.255</span> vpn_gateway</span><br><span class="line">route <span class="number">9.9</span>.<span class="number">9.2</span>  <span class="number">255.255</span>.<span class="number">255.255</span> vpn_gateway</span><br><span class="line">route <span class="number">10.105</span>.<span class="number">3.129</span> <span class="number">255.255</span>.<span class="number">255.255</span> vpn_gateway</span><br><span class="line">route <span class="number">172.16</span>.<span class="number">255.253</span> <span class="number">255.255</span>.<span class="number">255.255</span> vpn_gateway</span><br><span class="line"><span class="comment">#route 172.31.0.0 255.255.0.0 vpn_gateway</span></span><br><span class="line">route <span class="number">202.120</span>.<span class="number">0.0</span> <span class="number">255.255</span>.<span class="number">0.0</span> vpn_gateway</span><br><span class="line">route <span class="number">202.121</span>.<span class="number">0.0</span> <span class="number">255.255</span>.<span class="number">0.0</span> vpn_gateway</span><br><span class="line">route <span class="number">202.120</span>.<span class="number">127.105</span> <span class="number">255.255</span>.<span class="number">255.255</span> net_gateway</span><br><span class="line"></span><br><span class="line">&lt;ca&gt;</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">MIIEoTCCA4mgAwIBAgIJAMW52H83M9JAMA0GCSqGSIb3DQEBCwUAMIGRMQswCQYD</span><br><span class="line">VQQGEwJDTjELMAkGA1UECBMCU0gxETAPBgNVBAcTCFNoYW5nSGFpMQwwCgYDVQQK</span><br><span class="line">EwNTSFUxDDAKBgNVBAsTA1NIVTEPMA0GA1UEAxMGU0hVIENBMRAwDgYDVQQpEwdF</span><br><span class="line">YXN5UlNBMSMwIQYJKoZIhvcNAQkBFhRyb2RkeTE5ODZAc2h1LmVkdS5jbjAeFw0x</span><br><span class="line">NzA2MjEwOTQwMjlaFw0yNzA2MTkwOTQwMjlaMIGRMQswCQYDVQQGEwJDTjELMAkG</span><br><span class="line">A1UECBMCU0gxETAPBgNVBAcTCFNoYW5nSGFpMQwwCgYDVQQKEwNTSFUxDDAKBgNV</span><br><span class="line">BAsTA1NIVTEPMA0GA1UEAxMGU0hVIENBMRAwDgYDVQQpEwdFYXN5UlNBMSMwIQYJ</span><br><span class="line">KoZIhvcNAQkBFhRyb2RkeTE5ODZAc2h1LmVkdS5jbjCCASIwDQYJKoZIhvcNAQEB</span><br><span class="line">BQADggEPADCCAQoCggEBAJ17qOLBJgX7DKsBxVhqpfYkZcPwy8DggDiwRHNLLP3h</span><br><span class="line">aEWRcS5NViqGthWh4mWvVkD9RypYlUywbYewoSkuLyllsFuw+iZUR93cWGMjccq/</span><br><span class="line"><span class="number">9</span>ZdhVPpYCGRJrtkTNeVtU9XTXEjZ3vWEwAMpOcVdhLQz6kxCVTt2qrB4ClhIAdPh</span><br><span class="line">jaz5tusNlwVGzaM7EMIr3O08Y8gYlAe78tkD+<span class="number">18</span>uCMYIyKPORs9H31UHbreLcONv</span><br><span class="line"><span class="number">4</span>Lc3dOz/g4KOQTkuwqcRnTJN1AVVfpjFUQeabyxFV/u4BkSvU33HWxLzYiyDGZkU</span><br><span class="line">W8PLr1mouNEXWGHxfhooZb9wozk+jfuLYk3KhKh9+ZMCAwEAAaOB+TCB9jAdBgNV</span><br><span class="line">HQ4EFgQU2sjeWJZf5o/<span class="number">1</span>eL1Ke5PyE7K1nw4wgcYGA1UdIwSBvjCBu4AU2sjeWJZf</span><br><span class="line"><span class="number">5</span>o/<span class="number">1</span>eL1Ke5PyE7K1nw6hgZekgZQwgZExCzAJBgNVBAYTAkNOMQswCQYDVQQIEwJT</span><br><span class="line">SDERMA8GA1UEBxMIU2hhbmdIYWkxDDAKBgNVBAoTA1NIVTEMMAoGA1UECxMDU0hV</span><br><span class="line">MQ8wDQYDVQQDEwZTSFUgQ0ExEDAOBgNVBCkTB0Vhc3lSU0ExIzAhBgkqhkiG9w0B</span><br><span class="line">CQEWFHJvZGR5MTk4NkBzaHUuZWR1LmNuggkAxbnYfzcz0kAwDAYDVR0TBAUwAwEB</span><br><span class="line">/zANBgkqhkiG9w0BAQsFAAOCAQEATqu24naX9L6jyzXt+mBJAS5IWr7gfh5Ymi7X</span><br><span class="line">Tl+uSXS+H0w7VYqSGsrQsd17U9RfcAxglhGx2FtYvuYVWHQ4InaUjbrzxDrFO+ZG</span><br><span class="line">rN471ASybovHR97rHfPOnqigAbDaKLynb8JoFYkzAxRAclPh/jZFXpG06KC+fkW/</span><br><span class="line">ox+<span class="number">1</span>WKF/<span class="number">6</span>d5gXOZOTf0GuJi4JHRojDzb5p/Z6/<span class="number">8</span>gxE9krVsQmfiR3HnaegyTVMle</span><br><span class="line">KzpCQRuEx5rn/uDvV6joYCwy4q0BkQTKGBeUofR2ETlTeC7t6l+GKRPwCQ8BeBvL</span><br><span class="line">e0+RSP6QWl/+flS0qdmtSswuZF98OqAuu6wW2PHXB3auUn77nw==</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">&lt;/ca&gt;</span><br></pre></td></tr></table></figure>
-<p>思路：linux下挂上全局OpenVPN，使用traceroute命令访问被教育网墙掉的几个网站，记录经过的几个IP地址，逐一添加到条件代理中去。经查询，202.120.112~202.120.127段与202.121.192~202.121.199是SHU的公网段。由于202.120.127.105是目标服务器IP地址，因此加入例外，否则OpenVPN将无法正常工作。</p>
-<h2 id="linux下添加开机自启"><a class="markdownIt-Anchor" href="#linux下添加开机自启"></a> Linux下添加开机自启</h2>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openvpn --daemon --config ~/shu.ovpn --auth-user-pass ~/pass.txt</span><br></pre></td></tr></table></figure>
-<p>使用上述命令可以启动OpenVPN的守护进程，其中pass.txt文件保存了连接所需的账号密码，第一行为账号，第二行为密码，两处文件路径均需完整路径。</p>
-<p>linux版本不同方法也不同，有的linux版本自启时没有su权限，使用sudo会无法进入图形界面（好像是Fedora），下面仅以deepin为例（debian系）：</p>
-<blockquote>
-<p><a href="https://wiki.deepin.org/index.php?title=%E8%87%AA%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F" target="_blank" rel="noopener"><em><strong>使用systemd执行rc.local</strong></em></a></p>
-<p>在使用了systemd作为启动器的系统（如较新版的deepin）中，默认不包含rc.local文件。此时请在/etc目录下以管理员权限创建一个名为rc.local的纯文本文件，并写入如下内容：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="comment"># rc.local config file created by use</span></span><br><span class="line">&gt;</span><br><span class="line">&gt; 把你需要执行的命令写在这里 </span><br><span class="line">&gt;</span><br><span class="line">&gt; <span class="keyword">exit</span> <span class="number">0</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>保存后，赋予该文件可执行权限：<code>sudo chmod +x /etc/rc.local</code>。下次重启时，systemd就会自动执行rc.local里面的命令了</p>
-</blockquote>
-<p>因此我们如法炮制，把<code>sudo openvpn --daemon --config ~/shu.ovpn --auth-user-pass ~/pass.txt</code>写入即可(deepin自启有su权限，故可以加sudo)。</p>
-<p>Shell中敲入reboot回车，一切明朗。</p>
+<h3 id="发射矩阵"><a class="markdownIt-Anchor" href="#发射矩阵"></a> 发射矩阵</h3>
+<p>发射矩阵就是某个状态下，得到各个观测值的概率</p>
+<p>比方说，发烧时{正常、发热、头晕}的概率，健康时{正常、发热、头晕}的概率。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -177,13 +541,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/VPN/">VPN</a>
+  <a class="article-category-link" href="/categories/nlp/">nlp</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/VPN/">VPN</a>
+  <span></span> <a href="/tags/nlp/">nlp</a>
   </div>
 
 </div>
@@ -192,7 +556,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2018/03/11/JustPlay/OpenVPN设置条件代理/" data-title="OpenVPN设置条件代理的方法 | mzz&#39;s blog" data-tsina class="share clearfix">
+	  <div data-url="http://mzz.pub/2019/05/07/数据挖掘/nlp/" data-title="nlp笔记 | mzz&#39;s blog" data-tsina class="share clearfix">
 	  </div>
 	
 	</div>
@@ -205,19 +569,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev">
- <a href="/2018/04/17/algorithm/最短路径归纳/" title="最短路径算法归纳">
-  <strong>上一篇：</strong><br>
-  <span>
-  最短路径算法归纳</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2018/03/05/algorithm/扇形涂色/" title="扇形涂色问题">
+<a href="/2019/05/06/linearAlgebra/linearAlgebra/" title="linear algebra - Gilbert Strang">
  <strong>下一篇：</strong><br> 
- <span>扇形涂色问题
+ <span>linear algebra - Gilbert Strang
 </span>
 </a>
 </div>
@@ -253,7 +609,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#openvpn设置条件代理的方法"><span class="toc-number">1.</span> <span class="toc-text"> OpenVPN设置条件代理的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何设置条件代理"><span class="toc-number">1.1.</span> <span class="toc-text"> 如何设置条件代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何设置代理例外"><span class="toc-number">1.2.</span> <span class="toc-text"> 如何设置代理例外</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一个shuvpn的条件代理demo"><span class="toc-number">2.</span> <span class="toc-text"> 一个SHUVPN的条件代理demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux下添加开机自启"><span class="toc-number">3.</span> <span class="toc-text"> Linux下添加开机自启</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#词性"><span class="toc-number">1.</span> <span class="toc-text"> 词性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crf-hmm-viterbi"><span class="toc-number">2.</span> <span class="toc-text"> CRF, HMM, Viterbi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发射矩阵"><span class="toc-number">2.1.</span> <span class="toc-text"> 发射矩阵</span></a></li></ol></li></ol>
  
   </div>
 
