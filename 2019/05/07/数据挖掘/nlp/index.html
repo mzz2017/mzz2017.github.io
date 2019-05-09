@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="记录了一些学习nlp时的笔记。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-07T11:42:55.221Z">
+<meta property="og:updated_time" content="2019-05-09T19:35:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nlp笔记">
 <meta name="twitter:description" content="记录了一些学习nlp时的笔记。">
@@ -50,7 +50,7 @@
         border-top-color: #1E92FB;    /*上边框颜色*/
         border-left-color: #1E92FB;    /*左边框颜色*/
     }
-</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</style><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
 </head>
 
 </html>
@@ -118,7 +118,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#词性"><span class="toc-number">1.</span> <span class="toc-text"> 词性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crf-hmm-viterbi"><span class="toc-number">2.</span> <span class="toc-text"> CRF, HMM, Viterbi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发射矩阵"><span class="toc-number">2.1.</span> <span class="toc-text"> 发射矩阵</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#词性"><span class="toc-number">1.</span> <span class="toc-text"> 词性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crf-hmm-viterbi"><span class="toc-number">2.</span> <span class="toc-text"> CRF, HMM, Viterbi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发射矩阵"><span class="toc-number">2.1.</span> <span class="toc-text"> 发射矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#softmax回归-logistic回归"><span class="toc-number">2.2.</span> <span class="toc-text"> Softmax回归、Logistic回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拉格朗日乘子法"><span class="toc-number">2.3.</span> <span class="toc-text"> 拉格朗日乘子法</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -534,6 +534,60 @@ y
 <h3 id="发射矩阵"><a class="markdownIt-Anchor" href="#发射矩阵"></a> 发射矩阵</h3>
 <p>发射矩阵就是某个状态下，得到各个观测值的概率</p>
 <p>比方说，发烧时{正常、发热、头晕}的概率，健康时{正常、发热、头晕}的概率。</p>
+<h3 id="softmax回归-logistic回归"><a class="markdownIt-Anchor" href="#softmax回归-logistic回归"></a> Softmax回归、Logistic回归</h3>
+<p>logistic函数就是sigmoid函数</p>
+<p>softmax回归是logistic在多分类问题上的推广，logistic是softmax在二分类问题上的特例，二者在代价函数上形成统一</p>
+<blockquote>
+<p>文章：</p>
+<p><a href="https://blog.csdn.net/meilikafei/article/details/80577765" target="_blank" rel="noopener">logistic回归</a></p>
+<p><a href="http://ufldl.stanford.edu/wiki/index.php/Softmax%E5%9B%9E%E5%BD%92" target="_blank" rel="noopener">softmax回归</a></p>
+<p>温习：</p>
+<p><a href="https://blog.csdn.net/u014182497/article/details/82252456" target="_blank" rel="noopener">最大似然估计</a></p>
+<p>扩展：</p>
+<p><a href="https://blog.csdn.net/lyl771857509/article/details/79428475" target="_blank" rel="noopener">代价函数，损失函数，目标函数区别</a></p>
+</blockquote>
+<p>softmax和logistic的代价函数最小值目前还没有闭式解法，一般用梯度下降等方法求解。</p>
+<p>在softmax参数求解中，加入权重衰减项使代价函数变为严格凸函数，可保证得到唯一解。</p>
+<h3 id="拉格朗日乘子法"><a class="markdownIt-Anchor" href="#拉格朗日乘子法"></a> 拉格朗日乘子法</h3>
+<p>拉格朗日乘子法最终的表达式很简单，但想真正理解还是需要下点功夫。</p>
+<blockquote>
+<p>基本概念解释：</p>
+<p>如何理解拉格朗日乘子法？ - 马同学的回答 - 知乎<br>
+https://www.zhihu.com/question/38586401/answer/457058079</p>
+</blockquote>
+<blockquote>
+<p>深入解释：</p>
+<p>如何理解拉格朗日乘子法？ - 陆zz的回答 - 知乎<br>
+https://www.zhihu.com/question/38586401/answer/105400458</p>
+<p>注意，该回答中海拔<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo>)</mo><mo>=</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">h=f(x,y,z)=z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">h</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.04398em;">z</span></span></span></span>，优化h的最大值，即是说</p>
+<p>在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>F</mi><mo>=</mo><mo>(</mo><msub><mi>F</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>F</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>F</mi><mi>k</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">F=(F_1,F_2,...,F_k)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="mrel">=</span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.13889em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mpunct">,</span><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.13889em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mpunct">,</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mpunct">,</span><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.13889em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>这样的山的约束下，优化海拔h的最大值。</p>
+<p>即\nabla f=(0,0,1)​与各约束形成的流形切空间垂直，即与各约束的法向量的合向量方向相同（或者说该点天空流形切空间和山的流形切空间平行）。</p>
+<p>那么在一般的例子中，天空的形状没有那么平了，可以想象成任意的波澜起伏，那么同样的，极值点即该点山的流形切空间和天空的流形切空间平行，即他们的法线（梯度向量）平行。</p>
+<p>法线和梯度的关系<a href="http://www.cnblogs.com/LeslieForever/p/9226581.html" target="_blank" rel="noopener">http://www.cnblogs.com/LeslieForever/p/9226581.html</a></p>
+<p>结论：某点梯度与该点等高线的法线方向一致。</p>
+<p><a href="https://www.jianshu.com/p/23b4e4d63cea" target="_blank" rel="noopener">https://www.jianshu.com/p/23b4e4d63cea</a></p>
+<p>结论：方向导数是梯度在向量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mover accent="true"><mi>l</mi><mo>⃗</mo></mover></mrow><annotation encoding="application/x-tex">\vec l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.9778799999999999em;"></span><span class="strut bottom" style="height:0.9778799999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord accent"><span class="vlist"><span style="top:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord mathit" style="margin-right:0.01968em;">l</span></span><span style="top:-0.26343999999999995em;margin-left:0.16668em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="accent-body accent-vec"><span>⃗</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>上的投影，因此求方向导数最简单的方法是用该点grand点乘该方向的单位向量。</p>
+</blockquote>
+<blockquote>
+<p>不容易理解的点：</p>
+<ol>
+<li>
+<p>h=f(x,y,z)=1​的梯度是\nabla f=(0,0,1)​，它刚好表示在任意的天空空间的等值线的法线都是(0,0,1)​，因为我们定义天空是平的，即f(x,y,z)=z​。</p>
+</li>
+<li>
+<p>天空空间的抽象仅仅是为了说明在山的不同位置上，其要满足平行条件的梯度也是不同的，我所有的解空间都在约束条件所形成的山上，而与我的优化函数无关，毕竟山上随便取个解都能在优化函数里带出个值来。</p>
+</li>
+<li>
+<p>约束形如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo>)</mo><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">F_1(x,y,z)=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.13889em;">F</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.13889em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">3</span></span></span></span>，梯度从二维的与等值线法线方向相同引申到了与三维的法线方向相同。</p>
+</li>
+<li>
+<p>如何理解拉格朗日乘子法？ - 戏言玩家的回答 - 知乎<br>
+https://www.zhihu.com/question/38586401/answer/105588901<br>
+这个回答中将优化函数比喻成一座山，而约束比喻做一条线，这实际上是另一种方式的抽象。它将<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>z</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">z=f(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span>的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.04398em;">z</span></span></span></span>也放进去画了一个三维函数图像（山），和我们的抽象方式不同，注意区分。</p>
+</li>
+</ol>
+<p>而我们的这种抽象，注意我们的优化函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>h</mi><mo>=</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo separator="true">,</mo><mi>z</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">h=f(x,y,z)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">h</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="mclose">)</span></span></span></span>，它在<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><msub><mi>x</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>y</mi><mn>0</mn></msub><mo separator="true">,</mo><msub><mi>z</mi><mn>0</mn></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">(x_0,y_0,z_0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mpunct">,</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mpunct">,</span><span class="mord"><span class="mord mathit" style="margin-right:0.04398em;">z</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.04398em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">0</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>的梯度方向为h取某一定值时，函数图像（三维）在该点的法线方向。而我们要做的就是在定义域空间（由各种约束形成的）找到一个点，在该点邻域范围内，在给定优化函数对应的法线方向上无法更优，那么这个点就是我们要找的极值。</p>
+</blockquote>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -609,7 +663,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#词性"><span class="toc-number">1.</span> <span class="toc-text"> 词性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crf-hmm-viterbi"><span class="toc-number">2.</span> <span class="toc-text"> CRF, HMM, Viterbi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发射矩阵"><span class="toc-number">2.1.</span> <span class="toc-text"> 发射矩阵</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#词性"><span class="toc-number">1.</span> <span class="toc-text"> 词性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#crf-hmm-viterbi"><span class="toc-number">2.</span> <span class="toc-text"> CRF, HMM, Viterbi</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#发射矩阵"><span class="toc-number">2.1.</span> <span class="toc-text"> 发射矩阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#softmax回归-logistic回归"><span class="toc-number">2.2.</span> <span class="toc-text"> Softmax回归、Logistic回归</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拉格朗日乘子法"><span class="toc-number">2.3.</span> <span class="toc-text"> 拉格朗日乘子法</span></a></li></ol></li></ol>
  
   </div>
 
@@ -797,7 +851,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 </div>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共59.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共60.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
