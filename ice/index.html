@@ -235,15 +235,27 @@
    	       
 	</article>
 	
-	
+	  
 
-<section id="comments" class="comment">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+<!-- gitalk -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "3352072f2ad84717407d",
+    clientSecret: "8ea01d206f36234ab857d6d90f16b85a865e79e3",
+    repo: "mzz2017.github.io",
+    owner: "mzz2017",
+    admin: ["mzz2017"],
+    id: location.pathname, // Ensure uniqueness and length less than 50
+    distractionFreeMode: false, // Facebook-like distraction free mode
+    title: document.title.split(" | ")[0]
+  });
 
-
+  gitalk.render("gitalk-container");
+</script>
+<!-- gitalk -->
 
 <!-- 
 <div id="hypercomments_widget"></div>
@@ -261,6 +273,7 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 })();
 </script>
 <a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a> -->
+
 </div>  
         </div>
         <footer><div id="footer">
@@ -424,26 +437,6 @@ $(document).ready(function(){
 
 
 
-
-<script type="text/javascript">
-
-var disqus_shortname = 'mzz-1';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
 
 
 

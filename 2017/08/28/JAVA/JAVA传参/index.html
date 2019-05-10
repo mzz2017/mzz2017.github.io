@@ -214,15 +214,27 @@
 
 </nav>
 
-	
+	  
 
-<section id="comments" class="comment">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+<!-- gitalk -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "3352072f2ad84717407d",
+    clientSecret: "8ea01d206f36234ab857d6d90f16b85a865e79e3",
+    repo: "mzz2017.github.io",
+    owner: "mzz2017",
+    admin: ["mzz2017"],
+    id: location.pathname, // Ensure uniqueness and length less than 50
+    distractionFreeMode: false, // Facebook-like distraction free mode
+    title: document.title.split(" | ")[0]
+  });
 
-
+  gitalk.render("gitalk-container");
+</script>
+<!-- gitalk -->
 
 <!-- 
 <div id="hypercomments_widget"></div>
@@ -240,24 +252,24 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 })();
 </script>
 <a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a> -->
+
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside">
+  <a class="navbutton" href="#" title="显示侧边栏"></a>
+</div>
 
-
-
-
-  <div id="toc" class="toc-aside">
+ 
+<div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#将指针藏起来的java"><span class="toc-number">1.</span> <span class="toc-text"> 将指针藏起来的JAVA</span></a></li></ol>
- 
-  </div>
+   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#将指针藏起来的java"><span class="toc-number">1.</span> <span class="toc-text"> 将指针藏起来的JAVA</span></a></li></ol> 
+</div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
-
-  
+  <div class="closeaside">
+    <a class="closebutton" href="#" title="隐藏侧边栏"></a>
+  </div>
+  <aside class="clearfix">
+     
 <div class="categorieslist">
 	<p class="asidetitle">分类</p>
 		<ul>
@@ -332,8 +344,6 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		
 		</ul>
 </div>
-
-
   
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
@@ -341,8 +351,6 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
        <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linearAlgebra/" style="font-size: 10px;">linearAlgebra</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
-
-
   <div class="linkslist">
   <p class="asidetitle">友情链接</p>
     <ul>
@@ -378,11 +386,15 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
           </li>
         
     </ul>
-</div>
-
-</aside>
+</div> 
+  </aside>
 </div>
 <iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
+<style type="text/css" rel="stylesheet">
+  .moveMain ~ #neteasemusic {
+    display: none;
+  }
+</style>
     </div>
     <footer><div id="footer">
 	
@@ -578,26 +590,6 @@ $(document).ready(function(){
 
 
 
-
-<script type="text/javascript">
-
-var disqus_shortname = 'mzz-1';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
 
 
 

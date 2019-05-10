@@ -516,15 +516,27 @@
 
 </nav>
 
-	
+	  
 
-<section id="comments" class="comment">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+<!-- gitalk -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "3352072f2ad84717407d",
+    clientSecret: "8ea01d206f36234ab857d6d90f16b85a865e79e3",
+    repo: "mzz2017.github.io",
+    owner: "mzz2017",
+    admin: ["mzz2017"],
+    id: location.pathname, // Ensure uniqueness and length less than 50
+    distractionFreeMode: false, // Facebook-like distraction free mode
+    title: document.title.split(" | ")[0]
+  });
 
-
+  gitalk.render("gitalk-container");
+</script>
+<!-- gitalk -->
 
 <!-- 
 <div id="hypercomments_widget"></div>
@@ -542,24 +554,24 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 })();
 </script>
 <a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a> -->
+
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside">
+  <a class="navbutton" href="#" title="显示侧边栏"></a>
+</div>
 
-
-
-
-  <div id="toc" class="toc-aside">
+ 
+<div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第三章-存储器"><span class="toc-number">1.</span> <span class="toc-text"> 第三章 存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见存储器"><span class="toc-number">1.1.</span> <span class="toc-text"> 常见存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#p64-存储器的分类要考"><span class="toc-number">1.1.1.</span> <span class="toc-text"> P64 存储器的分类（要考）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p66-主存储器的性能指标"><span class="toc-number">1.1.2.</span> <span class="toc-text"> P66 主存储器的性能指标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p66-sramstatic-random-memory"><span class="toc-number">1.1.3.</span> <span class="toc-text"> P66 SRAM（static random memory）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p69-dramdynamic-random-memory"><span class="toc-number">1.1.4.</span> <span class="toc-text"> P69 DRAM（dynamic random memory）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p72-存储器容量的扩充重要考点和难点"><span class="toc-number">1.1.5.</span> <span class="toc-text"> P72 存储器容量的扩充（重要考点和难点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p78-只读存储器rom-read-only-memory的分类"><span class="toc-number">1.1.6.</span> <span class="toc-text"> P78 只读存储器（ROM: read only memory）的分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p82-flash存储器"><span class="toc-number">1.1.7.</span> <span class="toc-text"> P82 FLASH存储器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并行存储器"><span class="toc-number">1.2.</span> <span class="toc-text"> 并行存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#p84-双端口存储器"><span class="toc-number">1.2.1.</span> <span class="toc-text"> P84 双端口存储器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p87-多模块交叉存储器"><span class="toc-number">1.2.2.</span> <span class="toc-text"> P87 多模块交叉存储器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p90-cache"><span class="toc-number">1.3.</span> <span class="toc-text"> P90 Cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p92-几种映射方式"><span class="toc-number">1.4.</span> <span class="toc-text"> P92 几种映射方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p100-虚存"><span class="toc-number">1.5.</span> <span class="toc-text"> P100 虚存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第六章-总线系统"><span class="toc-number">2.</span> <span class="toc-text"> 第六章 总线系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p185-基本概念"><span class="toc-number">2.1.</span> <span class="toc-text"> P185 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p190-总线接口"><span class="toc-number">2.2.</span> <span class="toc-text"> P190 总线接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p195-总线的仲裁"><span class="toc-number">2.3.</span> <span class="toc-text"> P195 总线的仲裁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#三种集中式仲裁"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 三种集中式仲裁</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#优缺点考大题的几率大"><span class="toc-number">2.3.1.1.</span> <span class="toc-text"> 优缺点（考大题的几率大）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分布式仲裁"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 分布式仲裁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p196-总线的定时"><span class="toc-number">2.4.</span> <span class="toc-text"> P196 总线的定时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p199-pci总线"><span class="toc-number">2.5.</span> <span class="toc-text"> P199 PCI总线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第七章-外存与io设备计算大章"><span class="toc-number">3.</span> <span class="toc-text"> 第七章 外存与I/O设备（计算大章）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p209-外围设备"><span class="toc-number">3.1.</span> <span class="toc-text"> P209 外围设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p216-磁盘重点"><span class="toc-number">3.2.</span> <span class="toc-text"> P216 磁盘（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#存储密度"><span class="toc-number">3.2.1.</span> <span class="toc-text"> 存储密度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#存储容量"><span class="toc-number">3.2.2.</span> <span class="toc-text"> 存储容量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#平均存取时间"><span class="toc-number">3.2.3.</span> <span class="toc-text"> 平均存取时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据传输率"><span class="toc-number">3.2.4.</span> <span class="toc-text"> 数据传输率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件长度超出解决方案"><span class="toc-number">3.2.5.</span> <span class="toc-text"> 文件长度超出解决方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第八章-输入输出系统"><span class="toc-number">4.</span> <span class="toc-text"> 第八章 输入输出系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p236-信息交换方式"><span class="toc-number">4.1.</span> <span class="toc-text"> P236 信息交换方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p237-程序查询方式"><span class="toc-number">4.2.</span> <span class="toc-text"> P237 程序查询方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p240-程序中断方式重中之重"><span class="toc-number">4.3.</span> <span class="toc-text"> P240 程序中断方式（重中之重）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p251-dma方式"><span class="toc-number">4.4.</span> <span class="toc-text"> P251 DMA方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p258-通道随便看看"><span class="toc-number">4.5.</span> <span class="toc-text"> P258 通道（随便看看）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附言"><span class="toc-number">5.</span> <span class="toc-text"> 附言</span></a></li></ol>
- 
-  </div>
+   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#第三章-存储器"><span class="toc-number">1.</span> <span class="toc-text"> 第三章 存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常见存储器"><span class="toc-number">1.1.</span> <span class="toc-text"> 常见存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#p64-存储器的分类要考"><span class="toc-number">1.1.1.</span> <span class="toc-text"> P64 存储器的分类（要考）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p66-主存储器的性能指标"><span class="toc-number">1.1.2.</span> <span class="toc-text"> P66 主存储器的性能指标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p66-sramstatic-random-memory"><span class="toc-number">1.1.3.</span> <span class="toc-text"> P66 SRAM（static random memory）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p69-dramdynamic-random-memory"><span class="toc-number">1.1.4.</span> <span class="toc-text"> P69 DRAM（dynamic random memory）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p72-存储器容量的扩充重要考点和难点"><span class="toc-number">1.1.5.</span> <span class="toc-text"> P72 存储器容量的扩充（重要考点和难点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p78-只读存储器rom-read-only-memory的分类"><span class="toc-number">1.1.6.</span> <span class="toc-text"> P78 只读存储器（ROM: read only memory）的分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p82-flash存储器"><span class="toc-number">1.1.7.</span> <span class="toc-text"> P82 FLASH存储器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#并行存储器"><span class="toc-number">1.2.</span> <span class="toc-text"> 并行存储器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#p84-双端口存储器"><span class="toc-number">1.2.1.</span> <span class="toc-text"> P84 双端口存储器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#p87-多模块交叉存储器"><span class="toc-number">1.2.2.</span> <span class="toc-text"> P87 多模块交叉存储器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p90-cache"><span class="toc-number">1.3.</span> <span class="toc-text"> P90 Cache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p92-几种映射方式"><span class="toc-number">1.4.</span> <span class="toc-text"> P92 几种映射方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p100-虚存"><span class="toc-number">1.5.</span> <span class="toc-text"> P100 虚存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第六章-总线系统"><span class="toc-number">2.</span> <span class="toc-text"> 第六章 总线系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p185-基本概念"><span class="toc-number">2.1.</span> <span class="toc-text"> P185 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p190-总线接口"><span class="toc-number">2.2.</span> <span class="toc-text"> P190 总线接口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p195-总线的仲裁"><span class="toc-number">2.3.</span> <span class="toc-text"> P195 总线的仲裁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#三种集中式仲裁"><span class="toc-number">2.3.1.</span> <span class="toc-text"> 三种集中式仲裁</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#优缺点考大题的几率大"><span class="toc-number">2.3.1.1.</span> <span class="toc-text"> 优缺点（考大题的几率大）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分布式仲裁"><span class="toc-number">2.3.2.</span> <span class="toc-text"> 分布式仲裁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p196-总线的定时"><span class="toc-number">2.4.</span> <span class="toc-text"> P196 总线的定时</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p199-pci总线"><span class="toc-number">2.5.</span> <span class="toc-text"> P199 PCI总线</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第七章-外存与io设备计算大章"><span class="toc-number">3.</span> <span class="toc-text"> 第七章 外存与I/O设备（计算大章）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p209-外围设备"><span class="toc-number">3.1.</span> <span class="toc-text"> P209 外围设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p216-磁盘重点"><span class="toc-number">3.2.</span> <span class="toc-text"> P216 磁盘（重点）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#存储密度"><span class="toc-number">3.2.1.</span> <span class="toc-text"> 存储密度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#存储容量"><span class="toc-number">3.2.2.</span> <span class="toc-text"> 存储容量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#平均存取时间"><span class="toc-number">3.2.3.</span> <span class="toc-text"> 平均存取时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据传输率"><span class="toc-number">3.2.4.</span> <span class="toc-text"> 数据传输率</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件长度超出解决方案"><span class="toc-number">3.2.5.</span> <span class="toc-text"> 文件长度超出解决方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第八章-输入输出系统"><span class="toc-number">4.</span> <span class="toc-text"> 第八章 输入输出系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#p236-信息交换方式"><span class="toc-number">4.1.</span> <span class="toc-text"> P236 信息交换方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p237-程序查询方式"><span class="toc-number">4.2.</span> <span class="toc-text"> P237 程序查询方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p240-程序中断方式重中之重"><span class="toc-number">4.3.</span> <span class="toc-text"> P240 程序中断方式（重中之重）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p251-dma方式"><span class="toc-number">4.4.</span> <span class="toc-text"> P251 DMA方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#p258-通道随便看看"><span class="toc-number">4.5.</span> <span class="toc-text"> P258 通道（随便看看）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附言"><span class="toc-number">5.</span> <span class="toc-text"> 附言</span></a></li></ol> 
+</div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
-
-  
+  <div class="closeaside">
+    <a class="closebutton" href="#" title="隐藏侧边栏"></a>
+  </div>
+  <aside class="clearfix">
+     
 <div class="categorieslist">
 	<p class="asidetitle">分类</p>
 		<ul>
@@ -634,8 +646,6 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
 		
 		</ul>
 </div>
-
-
   
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
@@ -643,8 +653,6 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
        <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linearAlgebra/" style="font-size: 10px;">linearAlgebra</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
-
-
   <div class="linkslist">
   <p class="asidetitle">友情链接</p>
     <ul>
@@ -680,11 +688,15 @@ s.parentNode.insertBefore(hcc, s.nextSibling);
           </li>
         
     </ul>
-</div>
-
-</aside>
+</div> 
+  </aside>
 </div>
 <iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
+<style type="text/css" rel="stylesheet">
+  .moveMain ~ #neteasemusic {
+    display: none;
+  }
+</style>
     </div>
     <footer><div id="footer">
 	
@@ -880,26 +892,6 @@ $(document).ready(function(){
 
 
 
-
-<script type="text/javascript">
-
-var disqus_shortname = 'mzz-1';
-
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-(function(){
-  var dsq = document.createElement('script');
-  dsq.type = 'text/javascript';
-  dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-}());
-</script>
 
 
 
