@@ -405,6 +405,7 @@
     repo: "mzz2017.github.io",
     owner: "mzz2017",
     admin: ["mzz2017"],
+    labels: ["Gitalk"],
     id: location.pathname, // Ensure uniqueness and length less than 50
     distractionFreeMode: false, // Facebook-like distraction free mode
     title: document.title.split(" | ")[0]
@@ -412,25 +413,12 @@
 
   gitalk.render("gitalk-container");
 </script>
+<style type="text/css" rel="stylesheet">
+  #gitalk-container {
+    padding: 10px 20px 50px;
+  }
+</style>
 <!-- gitalk -->
-
-<!-- 
-<div id="hypercomments_widget"></div>
-<script type="text/javascript">
-_hcwp = window._hcwp || [];
-_hcwp.push({widget:"Stream", widget_id: 94148});
-(function() {
-if("HC_LOAD_INIT" in window)return;
-HC_LOAD_INIT = true;
-var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(0, 2).toLowerCase();
-var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true;
-hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://w.hypercomments.com/widget/hc/94148/"+lang+"/widget.js";
-var s = document.getElementsByTagName("script")[0];
-s.parentNode.insertBefore(hcc, s.nextSibling);
-})();
-</script>
-<a href="http://hypercomments.com" rel = "nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a> -->
-
 </div>  
       <div class="openaside">
   <a class="navbutton" href="#" title="显示侧边栏"></a>
