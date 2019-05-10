@@ -366,8 +366,7 @@ G未使用。用<a href="https://www.pendrivelinux.com/universal-usb-installer-e
     repo: "mzz2017.github.io",
     owner: "mzz2017",
     admin: ["mzz2017"],
-    labels: ["Gitalk"],
-    id: location.pathname, // Ensure uniqueness and length less than 50
+    id: decodeURIComponent(location.pathname), // Ensure uniqueness and length less than 50
     distractionFreeMode: false, // Facebook-like distraction free mode
     title: document.title.split(" | ")[0]
   });
@@ -380,6 +379,7 @@ G未使用。用<a href="https://www.pendrivelinux.com/universal-usb-installer-e
   }
 </style>
 <!-- gitalk -->
+
 </div>  
       <div class="openaside">
   <a class="navbutton" href="#" title="显示侧边栏"></a>

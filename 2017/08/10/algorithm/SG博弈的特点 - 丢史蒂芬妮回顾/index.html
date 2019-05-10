@@ -240,8 +240,7 @@
     repo: "mzz2017.github.io",
     owner: "mzz2017",
     admin: ["mzz2017"],
-    labels: ["Gitalk"],
-    id: location.pathname, // Ensure uniqueness and length less than 50
+    id: decodeURIComponent(location.pathname), // Ensure uniqueness and length less than 50
     distractionFreeMode: false, // Facebook-like distraction free mode
     title: document.title.split(" | ")[0]
   });
@@ -254,6 +253,7 @@
   }
 </style>
 <!-- gitalk -->
+
 </div>  
       <div class="openaside">
   <a class="navbutton" href="#" title="显示侧边栏"></a>
