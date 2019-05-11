@@ -48,7 +48,7 @@
         border-top-color: #1E92FB;    /*上边框颜色*/
         border-left-color: #1E92FB;    /*左边框颜色*/
     }
-</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</style><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
 </head>
 
 </html>
@@ -95,6 +95,330 @@
     </header>
     <div id="container">
       <div id="main">
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/05/12/数据挖掘/数据挖掘理论与算法笔记/" title itemprop="url"></a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
+		
+  </p><p class="article-time">
+    <time datetime="2019-05-11T18:13:28.780Z" itemprop="datePublished"> 发表于 2019-05-12</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="数据预处理"><a class="markdownIt-Anchor" href="#数据预处理"></a> 数据预处理</h1>
+<h2 id="采样"><a class="markdownIt-Anchor" href="#采样"></a> 采样</h2>
+<h3 id="smote算法"><a class="markdownIt-Anchor" href="#smote算法"></a> smote算法</h3>
+<p>解决非平衡数据问题，即某类数据扩充，类似插值</p>
+<h2 id="描述和可视化"><a class="markdownIt-Anchor" href="#描述和可视化"></a> 描述和可视化</h2>
+<p>线性代数要学好，比如说均值、中位数、方差的表示公式</p>
+<p>数据相关性使用皮尔逊相关系数描述</p>
+<p><a href="https://www.zhihu.com/question/19734616" target="_blank" rel="noopener">https://www.zhihu.com/question/19734616</a></p>
+<p>高维数据用box plots，parallel coordinates</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190429220406.png" alt="DeepinScreenshot_select-area_20190429220406.png"></p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190429221241.png" alt="DeepinScreenshot_select-area_20190429221241.png"></p>
+<p><a href="http://cluster.cis.drexel.edu/~cchen/citespace/" target="_blank" rel="noopener">CiteSpace: visualizing patterns and trends in scientific literature</a></p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190429221504.png" alt="DeepinScreenshot_select-area_20190429221504.png"></p>
+<p><strong>Gephi is the leading visualization and exploration software for all kinds of graphs and networks. Gephi is open-source and free.</strong></p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190429221636.png" alt="DeepinScreenshot_select-area_20190429221636.png"></p>
+<h2 id="特征选择-feature-selection"><a class="markdownIt-Anchor" href="#特征选择-feature-selection"></a> 特征选择 Feature Selection</h2>
+<h3 id="熵与信息增益"><a class="markdownIt-Anchor" href="#熵与信息增益"></a> 熵与信息增益</h3>
+<p>entropy，熵，用来描述数据的不确定性。比方说一堆数据一半是男一半是女，则熵为1；全男全女，熵为0.</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mo>(</mo><mi>X</mi><mo>)</mo><mo>=</mo><mo>−</mo><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mi>p</mi><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mi>b</mi></msub><mi>p</mi><mo>(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">H(X)=-\sum_{i=1}^np(x_i)log_bp(x_i)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.6513970000000002em;"></span><span class="strut bottom" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord">−</span><span class="mop op-limits"><span class="vlist"><span style="top:1.1776689999999999em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">i</span><span class="mrel">=</span><span class="mord mathrm">1</span></span></span></span><span style="top:-0.000005000000000143778em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span><span class="op-symbol large-op mop">∑</span></span></span><span style="top:-1.2500050000000003em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">b</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">p</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190429234841.png" alt="DeepinScreenshot_select-area_20190429234841.png"></p>
+<p>我们假定相信这组数据的正确性，则直接判断一个人是男是女概率为0.5，熵是1.0：</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mo>(</mo><mi>X</mi><mo>)</mo><mo>=</mo><mo>−</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>5</mn><mo>∗</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mn>0</mn><mi mathvariant="normal">.</mi><mn>5</mn><mo>−</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>5</mn><mo>∗</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mn>0</mn><mi mathvariant="normal">.</mi><mn>5</mn><mo>=</mo><mn>1</mn><mi mathvariant="normal">.</mi><mn>0</mn></mrow><annotation encoding="application/x-tex">H(X)=-0.5*log_20.5-0.5*log_20.5=1.0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord">−</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span><span class="mbin">−</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mord mathrm">.</span><span class="mord mathrm">0</span></span></span></span></p>
+<p>假设现在获知其抽不抽烟，那么X分为两个群体</p>
+<p>X: \{a=\text{“Non-Smoker”}; \text{b=“Smoker”}\}</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mo>(</mo><mi>S</mi><mi mathvariant="normal">∣</mi><mi>X</mi><mo>=</mo><mi>a</mi><mo>)</mo><mo>=</mo><mo>−</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>8</mn><mo>∗</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mn>0</mn><mi mathvariant="normal">.</mi><mn>8</mn><mo>−</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>2</mn><mo>∗</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mn>0</mn><mi mathvariant="normal">.</mi><mn>2</mn><mo>=</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>7</mn><mn>2</mn><mn>1</mn><mn>9</mn></mrow><annotation encoding="application/x-tex">H(S|X=a) = -0.8*log_20.8-0.2*log_20.2=0.7219</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mord mathrm">∣</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mrel">=</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord">−</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">8</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">8</span><span class="mbin">−</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">2</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">2</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">7</span><span class="mord mathrm">2</span><span class="mord mathrm">1</span><span class="mord mathrm">9</span></span></span></span></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mo>(</mo><mi>S</mi><mi mathvariant="normal">∣</mi><mi>X</mi><mo>=</mo><mi>b</mi><mo>)</mo><mo>=</mo><mo>−</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>0</mn><mn>5</mn><mo>∗</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mn>0</mn><mi mathvariant="normal">.</mi><mn>0</mn><mn>5</mn><mo>−</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>9</mn><mn>5</mn><mo>∗</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mn>0</mn><mi mathvariant="normal">.</mi><mn>9</mn><mn>5</mn><mo>=</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>2</mn><mn>8</mn><mn>6</mn><mn>4</mn></mrow><annotation encoding="application/x-tex">H(S|X=b) = -0.05*log_20.05-0.95*log_20.95=0.2864</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mord mathrm">∣</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mrel">=</span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord">−</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">0</span><span class="mord mathrm">5</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">0</span><span class="mord mathrm">5</span><span class="mbin">−</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">9</span><span class="mord mathrm">5</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">9</span><span class="mord mathrm">5</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">2</span><span class="mord mathrm">8</span><span class="mord mathrm">6</span><span class="mord mathrm">4</span></span></span></span></p>
+<p>已知不抽烟的人占60%，抽烟的人占40%</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>H</mi><mo>(</mo><mi>S</mi><mi mathvariant="normal">∣</mi><mi>X</mi><mo>)</mo><mo>=</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>6</mn><mo>∗</mo><mi>H</mi><mo>(</mo><mi>S</mi><mi mathvariant="normal">∣</mi><mi>X</mi><mo>=</mo><mi>a</mi><mo>)</mo><mo>+</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>4</mn><mo>∗</mo><mi>H</mi><mo>(</mo><mi>S</mi><mi mathvariant="normal">∣</mi><mi>X</mi><mo>=</mo><mi>b</mi><mo>)</mo><mo>=</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>5</mn><mn>4</mn><mn>7</mn><mn>7</mn></mrow><annotation encoding="application/x-tex">H(S|X)=0.6*H(S|X=a)+0.4*H(S|X=b)=0.5477</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mord mathrm">∣</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">6</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mord mathrm">∣</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mrel">=</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mbin">+</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">4</span><span class="mbin">∗</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mord mathrm">∣</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mrel">=</span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span><span class="mord mathrm">4</span><span class="mord mathrm">7</span><span class="mord mathrm">7</span></span></span></span></p>
+<p>那么信息增益<strong>Information Gain</strong>为：</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><mi>a</mi><mi>i</mi><mi>n</mi><mo>(</mo><mi>S</mi><mo separator="true">,</mo><mi>X</mi><mo>)</mo><mo>=</mo><mi>H</mi><mo>(</mo><mi>S</mi><mo>)</mo><mo>−</mo><mi>H</mi><mo>(</mo><mi>S</mi><mi mathvariant="normal">∣</mi><mi>X</mi><mo>)</mo><mo>=</mo><mn>0</mn><mi mathvariant="normal">.</mi><mn>4</mn><mn>5</mn><mn>2</mn><mn>3</mn></mrow><annotation encoding="application/x-tex">Gain(S,X)=H(S)-H(S|X)=0.4523</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">G</span><span class="mord mathit">a</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mclose">)</span><span class="mbin">−</span><span class="mord mathit" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05764em;">S</span><span class="mord mathrm">∣</span><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathrm">0</span><span class="mord mathrm">.</span><span class="mord mathrm">4</span><span class="mord mathrm">5</span><span class="mord mathrm">2</span><span class="mord mathrm">3</span></span></span></span></p>
+<blockquote>
+<p>信息增益(Information Gain)：当你知道一个额外的属性时，系统的熵降低的值。也就是这个属性的价值，做决策树的时候要用。</p>
+</blockquote>
+<h3 id="最优subset"><a class="markdownIt-Anchor" href="#最优subset"></a> 最优subset</h3>
+<ul>
+<li>
+<p>分支限界法</p>
+<p>准确的最优subset</p>
+</li>
+</ul>
+<p>下面是三种较优subset解法</p>
+<ul>
+<li>
+<p>Top K Individual Features</p>
+<p>分别K个最优属性组成一个K元组</p>
+</li>
+<li>
+<p>Sequential Forward Selection</p>
+<p>一个属性一个属性加</p>
+</li>
+<li>
+<p>Sequential Backward Selection</p>
+<p>一个属性一个属性减</p>
+</li>
+</ul>
+<p>最优subset实际上是个优化问题，也可以用模拟退火等算法</p>
+<h2 id="主成分分析pca"><a class="markdownIt-Anchor" href="#主成分分析pca"></a> 主成分分析（PCA）</h2>
+<p>###特征提取 Feature Extraction</p>
+<p>例如三维投射到二维，不同的投射角度造成的信息损失不同。投射即是一种特征提取。</p>
+<h4 id="特征提取与特征选择"><a class="markdownIt-Anchor" href="#特征提取与特征选择"></a> 特征提取与特征选择</h4>
+<p>特征提取和特征选择是DimensionalityReduction（降维）的两种方法，针对于the curse of dimensionality(维灾难)，都可以达到降维的目的。但是这两个有所不同。</p>
+<p>特征提取后的新特征是原来特征的一个映射。</p>
+<p>特征选择后的特征是原来特征的一个子集。</p>
+<blockquote>
+<p>袁博教授说特征提取包括特征选择，也就是说特征选择是特征提取的一种。综合来看我持保持意见。</p>
+</blockquote>
+<p>###根据Variance选择主成分</p>
+<p>Variance（方差）：Variance越大代表Information越多，比方说一组身高数据都是170，那么这组身高数据就是没有太多信息的。</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430122303.png" alt="DeepinScreenshot_select-area_20190430122303.png"></p>
+<p>很显然如果要从X1和X2中选一个属性的话，就选X1</p>
+<h3 id="正文"><a class="markdownIt-Anchor" href="#正文"></a> 正文</h3>
+<p>如果是下面这个例子，可以平移和旋转坐标轴：</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430122442.png" alt="DeepinScreenshot_select-area_20190430122442.png"></p>
+<p>去均值，于是中心与O重合。然后旋转，此时显然选y1作为主属性。</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430122746.png" alt="DeepinScreenshot_select-area_20190430122746.png"></p>
+<p>如何使得S(Y)为对角阵：</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430123054.png" alt="DeepinScreenshot_select-area_20190430123054.png"></p>
+<p>而Q是个正交矩阵，所以它的转置等于它的逆矩阵。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi><mi>D</mi><msup><mi>Q</mi><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">QDQ^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:1.035771em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit">Q</span><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mord"><span class="mord mathit">Q</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi><msup><mi>X</mi><mi>T</mi></msup></mrow><annotation encoding="application/x-tex">XX^T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mord"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>矩阵的一个特征分解。</p>
+<p>所以PCA就是做一个坐标轴旋转，把数据之间的correlation去除。经过数学推导，得知所需要的旋转矩阵P就是Q的一个转置。</p>
+<p>另一种证明方法：</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430124631.png" alt="DeepinScreenshot_select-area_20190430124631.png"></p>
+<p>用拉格朗日乘数法解决：</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430124809.png" alt="DeepinScreenshot_select-area_20190430124809.png"></p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430125126.png" alt="DeepinScreenshot_select-area_20190430125126.png"></p>
+<p>可以看到最大化的是特征值<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>λ</mi></mrow><annotation encoding="application/x-tex">\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">λ</span></span></span></span>，选择特征值最大的1到N-1个特征，即可降维到1到N-1维。</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430125448.png" alt="DeepinScreenshot_select-area_20190430125448.png"></p>
+<p>用matlab挑选特征值最大的一个，即1.8，画出在该维度的histogram。</p>
+<h3 id="问题"><a class="markdownIt-Anchor" href="#问题"></a> 问题</h3>
+<p>PCA是个unsupervision learning，不考虑label，因此在做分类的时候会不好受</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430131950.png" alt="DeepinScreenshot_select-area_20190430131950.png"></p>
+<h2 id="线性判别分析lda"><a class="markdownIt-Anchor" href="#线性判别分析lda"></a> 线性判别分析（LDA）</h2>
+<p>针对有标签的数据，应当用LDA。</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430132217.png" alt="DeepinScreenshot_select-area_20190430132217.png"></p>
+<p>投射方向不同，得到的结果差异很大。LDA基本思路是将不同类别的数据尽可能地分开。形象来说，不同class之间距离尽可能远，同一个class数据尽可能紧凑。</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430132344.png" alt="DeepinScreenshot_select-area_20190430132344.png"></p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430132532.png" alt="DeepinScreenshot_select-area_20190430132532.png"></p>
+<p>推导：</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430175646.png" alt="DeepinScreenshot_select-area_20190430175646.png"></p>
+<blockquote>
+<p>因为只有方阵才可能有特征值<br>
+所以面对长方阵的时候，使用原矩阵转置成原矩阵，两者相乘就变成了方阵，就可以求特征值了<br>
+这样得到的矩阵是一个对称矩阵</p>
+<p><a href="https://blog.csdn.net/weixin_36149892/article/details/86774553" target="_blank" rel="noopener">https://blog.csdn.net/weixin_36149892/article/details/86774553</a></p>
+</blockquote>
+<blockquote>
+<p>特征值和特征向量的物理意义</p>
+<p><a href="https://baijiahao.baidu.com/s?id=1595375146698848604&amp;wfr=spider&amp;for=pc" target="_blank" rel="noopener">https://baijiahao.baidu.com/s?id=1595375146698848604&amp;wfr=spider&amp;for=pc</a></p>
+<p>顾名思义，特征值和特征向量表达了一个线性变换的特征。在物理意义上，一个高维空间的线性变换可以想象是在对一个向量在各个方向上进行了不同程度的变换，而特征向量之间是线性无关的，它们对应了最主要的变换方向，同时特征值表达了相应的变换程度。</p>
+<p>具体的说，求特征向量，就是把矩阵A所代表的空间进行正交分解，使得A的向量集合可以表示为每个向量a在各个特征向量上的投影长度。<strong>我们通常求特征值和特征向量即为求出这个矩阵能使哪些向量只发生拉伸，而方向不发生变化，观察其发生拉伸的程度。这样做的意义在于，看清一个矩阵在哪些方面能产生最大的分散度（scatter），减少重叠，意味着更多的信息被保留下来。</strong></p>
+</blockquote>
+<blockquote>
+<p>二阶矩阵和向量的乘法（其实就是矩阵和矩阵相乘）</p>
+<p><a href="https://wenku.baidu.com/view/c4b49f0e24c52cc58bd63186bceb19e8b9f6ec61.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/c4b49f0e24c52cc58bd63186bceb19e8b9f6ec61.html</a></p>
+</blockquote>
+<blockquote>
+<p>w和x都是向量，那么<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>w</mi><mi>T</mi></msup><mi>x</mi></mrow><annotation encoding="application/x-tex">w^Tx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8413309999999999em;"></span><span class="strut bottom" style="height:0.8413309999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">T</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathit">x</span></span></span></span>即为x向量在w向量上的投影点到O点的距离×|w|</p>
+<p>其中w即P64的那条投影直线</p>
+</blockquote>
+<p>下面求最大值。</p>
+<p>先求导：</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430211601.png" alt="DeepinScreenshot_select-area_20190430211601.png"></p>
+<p>那么w是特征向量，J是特征值。问题转化为求使得特征值最大的特征向量。</p>
+<p>当然这个问题有另一个解法：</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190430211605.png" alt="DeepinScreenshot_select-area_20190430211605.png"></p>
+<h1 id="从贝叶斯到决策树classification"><a class="markdownIt-Anchor" href="#从贝叶斯到决策树classification"></a> 从贝叶斯到决策树（classification）</h1>
+<p>分类（有监督）</p>
+<h2 id="贝叶斯"><a class="markdownIt-Anchor" href="#贝叶斯"></a> 贝叶斯</h2>
+<p>有两个耳熟能详的式子：</p>
+P(A\cup B)=P(A)+P(B)-P(A\cap B)\\
+P(A\cap B)=P(A|B)P(B)=P(B|A)P(A)
+
+<p>贝叶斯定理：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>(</mo><mi>A</mi><mi mathvariant="normal">∣</mi><mi>B</mi><mo>)</mo><mo>=</mo><mfrac><mrow><mi>P</mi><mo>(</mo><mi>B</mi><mi mathvariant="normal">∣</mi><mi>A</mi><mo>)</mo><mi>P</mi><mo>(</mo><mi>A</mi><mo>)</mo></mrow><mrow><mi>P</mi><mo>(</mo><mi>B</mi><mo>)</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">P(A|B)=\frac {P(B|A)P(A)}{P(B)}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.427em;"></span><span class="strut bottom" style="height:2.363em;vertical-align:-0.936em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mord mathrm">∣</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mclose">)</span></span></span></span><span style="top:-0.2300000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mord mathrm">∣</span><span class="mord mathit">A</span><span class="mclose">)</span><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span></span></p>
+<h2 id="朴素贝叶斯"><a class="markdownIt-Anchor" href="#朴素贝叶斯"></a> 朴素贝叶斯</h2>
+<blockquote>
+<p>联合概率分布，边缘概率，条件概率等</p>
+<p><a href="https://blog.csdn.net/tick_tock97/article/details/79885868" target="_blank" rel="noopener">https://blog.csdn.net/tick_tock97/article/details/79885868</a></p>
+</blockquote>
+<p>朴素（naïve），假定联合概率分布的各变量均条件独立，即当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>ω</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">\omega_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">ω</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>发生时，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>α</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\alpha_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.0037em;">α</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.0037em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>发生与否是独立的，不会相互影响。这是一个很强的假设，所以说它naïve</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501111209.png" alt="DeepinScreenshot_select-area_20190501111209.png"></p>
+<h3 id="独立"><a class="markdownIt-Anchor" href="#独立"></a> 独立</h3>
+本身有P(A\cap B)=P(A)P(B|A)\\
+加上条件P(B|A)=P(B)\\
+于是P(A\cap B)=P(A)P(B)
+
+<h3 id="条件独立"><a class="markdownIt-Anchor" href="#条件独立"></a> 条件独立</h3>
+<p>G发生时AB独立，<strong>G不发生时A和B可能不独立</strong></p>
+P(A,B|G)=P(A|G)P(B|G)\\
+P(A|G,B)=P(A|G)\\
+P(A,B|G)=P(A,B,G)/P(G)=P(A|B,G)\times P(B,G)/P(G)=P(A|B,G)\times P(B|G)
+
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501112548.png" alt="DeepinScreenshot_select-area_20190501112548.png"></p>
+<p>看似cancer和male/female是不独立的，但是他们其实是条件独立的。加入了smoking后，Cancer和Male/Female独立。</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501113518.png" alt="DeepinScreenshot_select-area_20190501113518.png"></p>
+<p>可以看出A和B不独立，但加入了先验C后AB独立。</p>
+<h3 id="独立independent和不相关incorrelated"><a class="markdownIt-Anchor" href="#独立independent和不相关incorrelated"></a> 独立(independent)和不相关(incorrelated)</h3>
+<p><strong>不相关</strong>指的是<strong>不线性相关</strong>，也就是协方差或者Pearson的线性相关系数为0</p>
+<p><img src="http://mzzeast.shumsg.cn/2.png" alt="2.png"></p>
+<p>图示：XY不相关</p>
+<p>但独立一定不相关。</p>
+<h3 id="拉普拉斯平滑"><a class="markdownIt-Anchor" href="#拉普拉斯平滑"></a> 拉普拉斯平滑</h3>
+<blockquote>
+<p>为了防止分子分母同时为0</p>
+</blockquote>
+<p>离散情况：</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501114612.png" alt="DeepinScreenshot_select-area_20190501114612.png"></p>
+<p>分子加1，分母加这个属性可能取几种值。比方说该属性描述头发长短，有长发短发，则加2。</p>
+<h3 id="tennis-example"><a class="markdownIt-Anchor" href="#tennis-example"></a> Tennis Example</h3>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501121024.png" alt></p>
+<p>用到了</p>
+P(yes|sunny,cool,high,strong)\\=\frac{P(yes,sunny,cool,high,strong)}{P(sunny,cool,high,strong)}\\=\frac{P(yes,sunny,cool,high,strong)}{P(yes,sunny,cool,high,strong)+P(no,sunny,cool,high,strong)}
+
+<h3 id="text-classification-example"><a class="markdownIt-Anchor" href="#text-classification-example"></a> Text Classification Example</h3>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501122458.png" alt="DeepinScreenshot_select-area_20190501122458.png"></p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo>(</mo><msub><mi>V</mi><mi>K</mi></msub><mi mathvariant="normal">∣</mi><mi>ω</mi><mo>=</mo><msub><mi>ω</mi><mi>i</mi></msub><mo>)</mo><mo>=</mo><mfrac><mrow><msub><mi>n</mi><mi>k</mi></msub><mo>+</mo><mn>1</mn></mrow><mrow><mi>n</mi><mo>+</mo><mi mathvariant="normal">∣</mi><mi>V</mi><mi>o</mi><mi>c</mi><mi>a</mi><mi>b</mi><mi>u</mi><mi>l</mi><mi>a</mi><mi>r</mi><mi>y</mi><mi mathvariant="normal">∣</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">P(V_K|\omega=\omega_i)=\frac{n_k+1}{n+|Vocabulary|}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.866968em;"></span><span class="strut bottom" style="height:1.386968em;vertical-align:-0.52em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">V</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.07153em;">K</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">∣</span><span class="mord mathit" style="margin-right:0.03588em;">ω</span><span class="mrel">=</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">ω</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03588em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span><span class="mrel">=</span><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.34500000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">n</span><span class="mbin">+</span><span class="mord mathrm">∣</span><span class="mord mathit" style="margin-right:0.22222em;">V</span><span class="mord mathit">o</span><span class="mord mathit">c</span><span class="mord mathit">a</span><span class="mord mathit">b</span><span class="mord mathit">u</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mord mathrm">∣</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.41585999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:0.15122857142857138em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">+</span><span class="mord mathrm">1</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span></span></span></span>即词汇<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>V</mi><mi>K</mi></msub></mrow><annotation encoding="application/x-tex">V_K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.22222em;">V</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.22222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.07153em;">K</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>在我感兴趣或不感兴趣时，（在这篇文章中）频率是多少</p>
+<h2 id="决策树数据-规则和树"><a class="markdownIt-Anchor" href="#决策树数据-规则和树"></a> 决策树——数据、规则和树</h2>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501131918.png" alt="DeepinScreenshot_select-area_20190501131918.png"></p>
+<h3 id="id3算法"><a class="markdownIt-Anchor" href="#id3算法"></a> ID3算法</h3>
+<p>为了使得整棵树的高度最小，使用贪心算法，将强属性放在接近树根的位置。</p>
+<p>这里涉及到了前面提到的entropy，熵。</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501134947.png" alt="DeepinScreenshot_select-area_20190501134947.png"></p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501135030.png" alt="DeepinScreenshot_select-area_20190501135030.png"></p>
+<p>发现District更有效，信息增益更大</p>
+<h3 id="overfitting-过学习"><a class="markdownIt-Anchor" href="#overfitting-过学习"></a> Overfitting 过学习</h3>
+<p>如果有两个分类器A和B，A在训练集中的误差比B小，但在测试集中B的误差比A小，那么表明A是过学习的。</p>
+<h3 id="pruning-剪枝"><a class="markdownIt-Anchor" href="#pruning-剪枝"></a> pruning 剪枝</h3>
+<p>合并树梢。</p>
+<p>在完整学习后，进行剪枝，看着validation的误差，在误差出现拐点时（前）收手。</p>
+<h3 id="不合适的分类属性"><a class="markdownIt-Anchor" href="#不合适的分类属性"></a> 不合适的分类属性</h3>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501141034.png" alt="DeepinScreenshot_select-area_20190501141034.png"></p>
+<p>引入惩罚，加入SplitInformation来防止分得过于“碎”（一个结点的分支过多）</p>
+<h3 id="对于连续型的属性"><a class="markdownIt-Anchor" href="#对于连续型的属性"></a> 对于连续型的属性</h3>
+<p>将其离散化，选择若干threshold，将其分为n部分。</p>
+<p>那么这种threshold好不好，也要用entropy计算。比方说</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501141446.png" alt="DeepinScreenshot_select-area_20190501141446.png"></p>
+<p>因此在A这个地方切一刀。</p>
+<h2 id="神经网络"><a class="markdownIt-Anchor" href="#神经网络"></a> 神经网络</h2>
+<h3 id="perceptrons-感知机"><a class="markdownIt-Anchor" href="#perceptrons-感知机"></a> Perceptrons 感知机</h3>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501171611.png" alt="DeepinScreenshot_select-area_20190501171611.png"></p>
+<p>注意，n个输入有n+1个权重</p>
+<p>这个判决其实是一个超平面，对输入进行区分。</p>
+<h4 id="gradient-descent-梯度下降"><a class="markdownIt-Anchor" href="#gradient-descent-梯度下降"></a> Gradient Descent 梯度下降</h4>
+<h5 id="batch-learning"><a class="markdownIt-Anchor" href="#batch-learning"></a> batch learning</h5>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501192444.png" alt="DeepinScreenshot_select-area_20190501192444.png"></p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501192447.png" alt="DeepinScreenshot_select-area_20190501192447.png"></p>
+<p>在这里做了假设，o(x)=wx，即输出和输入相等（这里的输入指的是net, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>e</mi><msub><mi>t</mi><mi>j</mi></msub><mo>=</mo><mi mathvariant="normal">Σ</mi><msub><mi>w</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><msub><mi>x</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub></mrow><annotation encoding="application/x-tex">net_j=\Sigma w_{ji}x_{ji}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.969438em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mord mathit">e</span><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord mathrm">Σ</span><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02691em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mord mathit">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mord mathit">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>），来取代性质不是很好的阈值函数。</p>
+<h5 id="stochastic-learning"><a class="markdownIt-Anchor" href="#stochastic-learning"></a> stochastic learning</h5>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501192845.png" alt="DeepinScreenshot_select-area_20190501192845.png"></p>
+<h4 id="问题-2"><a class="markdownIt-Anchor" href="#问题-2"></a> 问题</h4>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501193046.png" alt="DeepinScreenshot_select-area_20190501193046.png"></p>
+<p>perceptrons无法解决线性不可分问题</p>
+<h3 id="mutilayer-perceptron-多层感知机-artificial-neural-network-ann"><a class="markdownIt-Anchor" href="#mutilayer-perceptron-多层感知机-artificial-neural-network-ann"></a> Mutilayer Perceptron 多层感知机 —— artificial neural network （ANN）</h3>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501200144.png" alt="DeepinScreenshot_select-area_20190501200144.png"></p>
+<p>增加一个隐含层，隐含层的功能是做一个映射。</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501200327.png" alt="DeepinScreenshot_select-area_20190501200327.png"></p>
+<p>如XOR问题</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501200412.png" alt="DeepinScreenshot_select-area_20190501200412.png"></p>
+<p>输入经隐含层映射后，用一个简单的perceptron分开即可。</p>
+<h4 id="sigmoid-threshold-unit"><a class="markdownIt-Anchor" href="#sigmoid-threshold-unit"></a> Sigmoid Threshold Unit</h4>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501201036.png" alt="DeepinScreenshot_select-area_20190501201036.png"></p>
+<p>ANN没有使用像阈值开关一样的函数，而是使用了性质很好的sigmoid函数【它是<a href="https://blog.csdn.net/meilikafei/article/details/80577765" target="_blank" rel="noopener">Logistic回归</a>的激活函数，Logistic函数又叫Sigmoid函数】，它的值域是(0,1)，导数在0时最大，且导数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>σ</mi><mo>(</mo><mi>y</mi><mo>)</mo><mo>⋅</mo><mo>(</mo><mn>1</mn><mo>−</mo><mi>σ</mi><mo>(</mo><mi>y</mi><mo>)</mo><mo>)</mo></mrow><annotation encoding="application/x-tex">\sigma(y)\cdot(1-\sigma(y))</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mbin">⋅</span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mclose">)</span></span></span></span>，可以很方便地计算出来。下面的算法用到了这个导数性质。</p>
+<h3 id="backpropagation-rule-逆传播算法bp算法"><a class="markdownIt-Anchor" href="#backpropagation-rule-逆传播算法bp算法"></a> Backpropagation Rule (逆传播算法，BP算法)</h3>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501201812.png" alt="DeepinScreenshot_select-area_20190501201812.png"></p>
+<h4 id="对于输出神经元"><a class="markdownIt-Anchor" href="#对于输出神经元"></a> 对于输出神经元</h4>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501203505.png" alt="DeepinScreenshot_select-area_20190501203505.png"></p>
+<p>第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span>个神经元的sigmoid函数的输入是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>e</mi><msub><mi>t</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">net_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.9011879999999999em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mord mathit">e</span><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>而不是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub></mrow><annotation encoding="application/x-tex">x_{ji}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mord mathit">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>。很容易理解，因为第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span>个神经元的工作是输入多个值，输出一个值。</p>
+<p>所以说根据sigmoid导数的性质，有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi mathvariant="normal">∂</mi><mi>σ</mi><mo>(</mo><mi>n</mi><mi>e</mi><msub><mi>t</mi><mi>j</mi></msub><mo>)</mo></mrow><mrow><mi mathvariant="normal">∂</mi><mi>n</mi><mi>e</mi><msub><mi>t</mi><mi>j</mi></msub></mrow></mfrac><mo>=</mo><mi>σ</mi><mo>(</mo><mi>n</mi><mi>e</mi><msub><mi>t</mi><mi>j</mi></msub><mo>)</mo><mo>(</mo><mi>σ</mi><mo>(</mo><mi>n</mi><mi>e</mi><msub><mi>t</mi><mi>j</mi></msub><mo>)</mo><mo>)</mo><mo>=</mo><msub><mi>o</mi><mi>j</mi></msub><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi>o</mi><mi>j</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">\frac {\partial \sigma(net_j)}{\partial net_j}=\sigma(net_j)(\sigma(net_j))=o_j(1-o_j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.03722em;"></span><span class="strut bottom" style="height:1.58444em;vertical-align:-0.54722em;"></span><span class="base textstyle uncramped"><span class="mord reset-textstyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.34500000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm" style="margin-right:0.05556em;">∂</span><span class="mord mathit">n</span><span class="mord mathit">e</span><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.51222em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm" style="margin-right:0.05556em;">∂</span><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit">e</span><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15000000000000002em;margin-right:0.07142857142857144em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-scriptstyle scriptscriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit">e</span><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.03588em;">σ</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit">e</span><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord"><span class="mord mathit">o</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord"><span class="mord mathit">o</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span></p>
+<p>看到红框圈起的公式了吗，它和感知机的公式很像，多了一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>o</mi><mi>j</mi></msub><mo>(</mo><mn>1</mn><mo>−</mo><msub><mi>o</mi><mi>j</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">o_j(1-o_j)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">o</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord"><span class="mord mathit">o</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>，这恰恰也是sigmoid函数的导数。</p>
+<p>说回来，感知机中为什么没有，是因为我们假设输入等于输出，即o(x)=wx</p>
+<h4 id="对于隐含层神经元"><a class="markdownIt-Anchor" href="#对于隐含层神经元"></a> 对于隐含层神经元</h4>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501210038.png" alt="DeepinScreenshot_select-area_20190501210038.png"></p>
+<p>注意，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>o</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">o_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">o</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>x</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">x_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>相等，而不是说<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>o</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">o_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.716668em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">o</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi>e</mi><msub><mi>t</mi><mi>k</mi></msub></mrow><annotation encoding="application/x-tex">net_k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.61508em;"></span><span class="strut bottom" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mord mathit">e</span><span class="mord"><span class="mord mathit">t</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.03148em;">k</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>相等。</p>
+<p>至于为什么最后红框里的公式没有负号，因为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>δ</mi><mi>j</mi></msub></mrow><annotation encoding="application/x-tex">\delta_j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.03785em;">δ</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03785em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>已经自带负号了。</p>
+<p>所以，BP算法应该先算输出神经元的误差，然后再算隐含层神经元的误差，这就叫误差逆传播。</p>
+<h4 id="编程实现"><a class="markdownIt-Anchor" href="#编程实现"></a> 编程实现</h4>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501210904.png" alt="DeepinScreenshot_select-area_20190501210904.png"></p>
+<p>三个公式套一套就好了。</p>
+<h4 id="问题-3"><a class="markdownIt-Anchor" href="#问题-3"></a> 问题</h4>
+<ul>
+<li>
+<p>BP算法需要求导，使用梯度下降算法去做，很容易掉到局部最优点。或者当某一段的导数为0时，也会停下来。</p>
+<p>解决方法：</p>
+<ol>
+<li>可以重新训练，换一个起始点再来一次。一般训练神经网络都需要尝试很多次。</li>
+<li>使用进化计算等方法训练神经网络。可以参见文章：Xin Yao (1999) “Evolving Artificial Neural Networks”, Proceedings of the IEEE, pp. 1423-1447.</li>
+<li>对于“平地”问题，提出momentum(冲量)的概念：坐着小车往下滑，遇到平地就不知道方向了，如果有冲量，还要往前划一段时间，那么或许就会离开平地继续往下滑了。如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">Δ</mi><msub><mi>w</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>η</mi><msub><mi>δ</mi><mi>j</mi></msub><msub><mi>x</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>+</mo><mi>α</mi><mi mathvariant="normal">Δ</mi><msub><mi>w</mi><mrow><mi>j</mi><mi>i</mi></mrow></msub><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">\Delta w_{ji}(n)=\eta \delta_jx_{ji}+\alpha \Delta w_{ji}(n-1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1.036108em;vertical-align:-0.286108em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">Δ</span><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02691em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mord mathit">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.03588em;">η</span><span class="mord"><span class="mord mathit" style="margin-right:0.03785em;">δ</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.03785em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord"><span class="mord mathit">x</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mord mathit">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.0037em;">α</span><span class="mord mathrm">Δ</span><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02691em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mord mathit">i</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mclose">)</span></span></span></span>，可以看到n时刻的delta还受影响于n-1时刻的delta值。</li>
+</ol>
+</li>
+<li>
+<p>深度学习其实就是指mutiplayer perceptron，层数更多，多达几十层。传统BP算法在反向传播过程中导数信息衰减较快，很容易就衰减到0了，但深度学习的这些算法可以使用一些技巧绕过这一点。</p>
+</li>
+<li>
+<p>overfitting</p>
+<p>解决方法：分为训练集(training)和校验集(validation)</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501215501.png" alt="DeepinScreenshot_select-area_20190501215501.png"></p>
+<p>在validation的拐点处停下，此时训练集和校验集上的误差都比较小。</p>
+</li>
+<li>
+<p>关于learning rate，不能太小也不能太大</p>
+<ul>
+<li>
+<p>太小则easy to get stuck</p>
+</li>
+<li>
+<p>太大则fast convergence, unstable</p>
+<p><img src="http://mzzeast.shumsg.cn/DeepinScreenshot_select-area_20190501220207.png" alt="DeepinScreenshot_select-area_20190501220207.png"></p>
+<p>容易产生振荡。</p>
+<p>有一种优化是动态调整学习率，在产生振荡时缩小学习率，解决这个问题。</p>
+</li>
+</ul>
+</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
 
    
     
@@ -199,68 +523,6 @@
   <div class="article-tags">
   
   <span></span> <a href="/tags/linearAlgebra/">linearAlgebra</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/05/01/数据挖掘/数据挖掘理论与算法笔记/" title="《数据挖掘：理论与算法》笔记" itemprop="url">《数据挖掘：理论与算法》笔记</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
-		
-  </p><p class="article-time">
-    <time datetime="2019-05-01T13:00:00.000Z" itemprop="datePublished"> 发表于 2019-05-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>引言：最近在看袁博男神的数据挖掘网课，整理一些看课程的时候的笔记，先供自己参考。</p>
-<hr>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2019/05/01/数据挖掘/数据挖掘理论与算法笔记/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/数据挖掘/">数据挖掘</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/数据挖掘/">数据挖掘</a>
   </div>
 
 </div>
@@ -794,8 +1056,6 @@
 		  
 		
 		  
-			<li><a href="/categories/数据挖掘/" title="数据挖掘">数据挖掘<sup>1</sup></a></li>
-		  
 		
 		  
 			<li><a href="/categories/算法/" title="算法">算法<sup>11</sup></a></li>
@@ -811,7 +1071,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linearAlgebra/" style="font-size: 10px;">linearAlgebra</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linearAlgebra/" style="font-size: 10px;">linearAlgebra</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
     </div>
   </div>
   <div class="linkslist">
@@ -912,7 +1172,7 @@
 </div>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共60.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共63.9k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
