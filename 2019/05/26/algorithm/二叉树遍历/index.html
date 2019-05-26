@@ -1,28 +1,30 @@
 
-  
-    <!DOCTYPE HTML>
+ <!DOCTYPE HTML>
 <html lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
-    <title>导生计划总览 - Part 4（素拓） | mzz&#39;s blog</title>
+    <title>二叉树遍历推导 | mzz&#39;s blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="莫之章">
     
 
     
-    <meta name="description" content="引言：董爸爸班级导生计划。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="导生计划总览 - Part 4（素拓）">
-<meta property="og:url" content="http://mzz.pub/ice4/index.html">
+    <meta name="description" content="引言：我想到一个绝妙的方法，在已知前序遍历和中序遍历或已知中序遍历和后序遍历时推得二叉树。">
+<meta name="keywords" content="树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树遍历推导">
+<meta property="og:url" content="http://mzz.pub/2019/05/26/algorithm/二叉树遍历/index.html">
 <meta property="og:site_name" content="mzz&#39;s blog">
-<meta property="og:description" content="引言：董爸爸班级导生计划。">
+<meta property="og:description" content="引言：我想到一个绝妙的方法，在已知前序遍历和中序遍历或已知中序遍历和后序遍历时推得二叉树。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-08-10T13:30:12.000Z">
+<meta property="og:image" content="http://mzzeast.shumsg.cn/FhFZzoUBes-C6UlbwHi4PrSZ8Wif">
+<meta property="og:updated_time" content="2019-05-26T15:21:59.033Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="导生计划总览 - Part 4（素拓）">
-<meta name="twitter:description" content="引言：董爸爸班级导生计划。">
+<meta name="twitter:title" content="二叉树遍历推导">
+<meta name="twitter:description" content="引言：我想到一个绝妙的方法，在已知前序遍历和中序遍历或已知中序遍历和后序遍历时推得二叉树。">
+<meta name="twitter:image" content="http://mzzeast.shumsg.cn/FhFZzoUBes-C6UlbwHi4PrSZ8Wif">
 
     
     
@@ -54,9 +56,9 @@
 </head>
 
 </html>
-      <body>
-        <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
-          
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
 <div>
 		
 			<div id="textlogo">
@@ -94,84 +96,71 @@
 			</ul></nav>			
 			
 </div>
-        </header>
-        <div id="container">
-          <div id="main" class="page" itemscope itemprop="blogPost">
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
 	<article itemprop="articleBody"> 
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/ice4/index.html" title="导生计划总览 - Part 4（素拓）" itemprop="url">导生计划总览 - Part 4（素拓）</a>
+      <a href="/2019/05/26/algorithm/二叉树遍历/" title="二叉树遍历推导" itemprop="url">二叉树遍历推导</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
 		
   </p><p class="article-time">
-    <time datetime="2000-01-09T16:00:00.000Z" itemprop="datePublished"> 发表于 2000-01-10</time>
+    <time datetime="2019-05-26T13:45:32.000Z" itemprop="datePublished"> 发表于 2019-05-26</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
-		<p>引言：董爸爸班级导生计划。</p>
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>引言：我想到一个绝妙的方法，在已知前序遍历和中序遍历或已知中序遍历和后序遍历时推得二叉树。</p>
 <hr>
 <a id="more"></a>
-<h2 id="part-4素拓"><a class="markdownIt-Anchor" href="#part-4素拓"></a> Part 4（素拓）</h2>
-<h3 id="一-活动主题"><a class="markdownIt-Anchor" href="#一-活动主题"></a> 一、活动主题</h3>
-<p>2017年新生素拓活动。</p>
-<h3 id="二-活动目的"><a class="markdownIt-Anchor" href="#二-活动目的"></a> 二、活动目的</h3>
-<p>进入大一的学习，17级新生将加入校内各种组织或者参加各种活动，这就需要新生具备各种更好地融入各种活动中去的能力。为此，我们为17级新生策划一场素拓活动，一定程度上提升新生的某些方面的能力，以至于在往后更为重大的活动中能够得心应手，甚至成为策划活动中的leader。</p>
-<h3 id="三-时间地点及对象"><a class="markdownIt-Anchor" href="#三-时间地点及对象"></a> 三、时间地点及对象</h3>
-<p>活动时间：待定</p>
-<p>活动地点：宝山校区及顾村公园</p>
-<p>活动对象：董爸爸班大一新生</p>
-<p>预计人数：70人</p>
-<h3 id="四-活动细则"><a class="markdownIt-Anchor" href="#四-活动细则"></a> 四、活动细则</h3>
-<h5 id="组织者计划"><a class="markdownIt-Anchor" href="#组织者计划"></a> 组织者计划</h5>
-<blockquote>
-<p>任务说明：活动当天负责在地铁站集合之前的集合方式的策划以及人员的协调安排。</p>
-<p>活动要求：尽量有创意，保证安全与参与度，需要包括早餐的设定。时间在一个小时二十分钟以内。</p>
-</blockquote>
-<h5 id="导览者计划"><a class="markdownIt-Anchor" href="#导览者计划"></a> 导览者计划</h5>
-<blockquote>
-<p>任务说明：活动当天负责在到达顾村时活动地点的提前确定，以及路线安排、路途游戏或任务设置。</p>
-<p>活动要求：导览时间限制灵活。</p>
-</blockquote>
-<h5 id="暖场者计划"><a class="markdownIt-Anchor" href="#暖场者计划"></a> 暖场者计划</h5>
-<blockquote>
-<p>任务说明：活动当天负责在到达顾村活动地点时的开场游戏计划。</p>
-<p>活动要求：需要多个有暖场效果且好玩创新的游戏，时长共计30~50分钟。</p>
-</blockquote>
-<h5 id="表演者计划"><a class="markdownIt-Anchor" href="#表演者计划"></a> 表演者计划</h5>
-<blockquote>
-<p>任务说明：在暖场游戏结束后组织一场由班内同学作为表演者的艺术专场。</p>
-<p>活动要求：根据对周围同学的了解以及导生提供的信息确定整个活动的策划，包括挑选表演者、确定主持人、场务（不限组别），确定活动流程等。</p>
-</blockquote>
-<blockquote>
-<p>提示：所需道具等可与后勤组协调商量。</p>
-</blockquote>
-<h5 id="撕牌者计划注徐文补充搞定"><a class="markdownIt-Anchor" href="#撕牌者计划注徐文补充搞定"></a> 撕牌者计划（注：徐文补充搞定）</h5>
-<blockquote>
-<p>任务说明：撕名牌游戏将是本次素拓的高潮，如何设计适合70人人次玩的撕名牌游戏，需要策划的小组绞尽脑汁的。</p>
-<p>活动要求： 如何设计适合70人次玩撕名牌游戏的游戏规则、应该找什么样的场地进行游戏、如何设计游戏中各环节时间节点安排、如何设置NPC……都需要策划小组进行详细地思考。</p>
-</blockquote>
-<h5 id="后勤者计划"><a class="markdownIt-Anchor" href="#后勤者计划"></a> 后勤者计划</h5>
-<blockquote>
-<p>任务说明：地铁票、顾村公园门票的购置，午餐问题的处理，水、药物等必要物资的购买，突发情况的处理，以及负责组织场地的清理。与其他组合作完成一些环节。</p>
-<p>活动要求：需要有完备的策划书（包括物资清单、账单、突发情况的预想等）。</p>
-</blockquote>
-<ul>
-<li><strong>附1 :新生工作总体时间推进表（待导生工作表公布后完善）</strong></li>
-<li><strong>附2：新生兴趣信息调查表</strong></li>
-<li><strong>附3：新生素拓任务书</strong></li>
-</ul>
+<p>灵光来自：<a href="https://blog.csdn.net/mercy_ps/article/details/82530278" target="_blank" rel="noopener">https://blog.csdn.net/mercy_ps/article/details/82530278</a></p>
+<p>已知前序或后序，其实是得知各个结点的层序关系。先序遍历中，先得到的结点的高度必定大于后得到的结点的高度，或分处不同分支；后序遍历中，后得到的结点的高度必定大于先得到的结点的高度，或分处不同分支。</p>
+<p>如中序遍历：DCBGEAHFIJK</p>
+<p>后序遍历：DCEGBFHKJIA</p>
+<p>则先找到根A，由于中序遍历先打印左节点，再打印根节点。在中序遍历中用A将结点分为DCBGE|HFIJK。</p>
+<p>再找到I，将右树分为HF|JK</p>
+<p>再找到J，因此K在右边，且J是K父亲。</p>
+<p>再找到K，已经分好了，略过。</p>
+<p>再找到H，所以F在右边，H是F的父亲。</p>
+<p>再找到F，已经分好了，略过。</p>
+<p>再找到B，将DCBGE分为DC|GE</p>
+<p>再找到G，G是E的父亲且E在右边。</p>
+<p>再找到E，略过。</p>
+<p>再找到C，C是父亲且在D右边。</p>
+<p>好，再填上作分割的结点，上图：</p>
+<p><img src="http://mzzeast.shumsg.cn/FhFZzoUBes-C6UlbwHi4PrSZ8Wif" alt></p>
+<p>已知前序遍历和中序遍历时同理。</p>
+<p>好吧其实上述不是我的绝妙的方法，但我发现上述法子大家都会，而且貌似比我那个法子要好。</p>
+<p>那么拙计就不放了。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/树/">树</a>
+  </div>
 
 </div>
 
@@ -179,7 +168,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/ice4/index.html" data-title="导生计划总览 - Part 4（素拓） | mzz&#39;s blog" data-tsina class="share clearfix">
+	  <div data-url="http://mzz.pub/2019/05/26/algorithm/二叉树遍历/" data-title="二叉树遍历推导 | mzz&#39;s blog" data-tsina class="share clearfix">
 	  </div>
 	
 	</div>
@@ -190,6 +179,19 @@
    	       
 	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/05/07/数据挖掘/nlp/" title="nlp笔记">
+ <strong>下一篇：</strong><br> 
+ <span>nlp笔记
+</span>
+</a>
+</div>
+
+</nav>
+
 	  
 
 <!-- gitalk -->
@@ -218,8 +220,147 @@
 <!-- gitalk -->
 
 </div>  
-        </div>
-        <footer><div id="footer">
+      <div class="openaside">
+  <a class="navbutton" href="#" title="显示侧边栏"></a>
+</div>
+
+ 
+<div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+    
+</div>
+
+<div id="asidepart">
+  <div class="closeaside">
+    <a class="closebutton" href="#" title="隐藏侧边栏"></a>
+  </div>
+  <aside class="clearfix">
+     
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/2017暑期集训/" title="2017暑期集训">2017暑期集训<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Cloud/" title="Cloud">Cloud<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/VPN/" title="VPN">VPN<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linearAlgebra/" title="linearAlgebra">linearAlgebra<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nlp/" title="nlp">nlp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/rsh/" title="rsh">rsh<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/安全/" title="安全">安全<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/应试/" title="应试">应试<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/微信小程序/" title="微信小程序">微信小程序<sup>1</sup></a></li>
+		  
+		
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/路由器/" title="路由器">路由器<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 20px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 20px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 20px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 15px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/linearAlgebra/" style="font-size: 10px;">linearAlgebra</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/博弈/" style="font-size: 20px;">博弈</a> <a href="/tags/图论/" style="font-size: 20px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 15px;">排序</a> <a href="/tags/数论/" style="font-size: 15px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 15px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/树/" style="font-size: 10px;">树</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a>
+    </div>
+  </div>
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://alphalrx.cn/" target="_blank" title="lrx">lrx</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://psyduck.wang/" target="_blank" title="psyduck">psyduck</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://cubercsl.cn/" target="_blank" title="CSL">CSL</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://ybmj.github.io/" target="_blank" title="ybmj">ybmj</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://0ggmr0.cn/" target="_blank" title="GMR">GMR</a>
+            
+          </li>
+        
+    </ul>
+</div> 
+  </aside>
+</div>
+<iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
+<style type="text/css" rel="stylesheet">
+  .moveMain ~ #neteasemusic {
+    display: none;
+  }
+</style>
+    </div>
+    <footer><div id="footer">
 	
 	<div class="line">
 		<span></span>
@@ -275,7 +416,7 @@
 博客全站共61.8k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </span></div>
 </footer>
-        <script src="/js/jquery-2.0.3.min.js"></script>
+    <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
 <script src="/js/jquery.qrcode-0.12.0.min.js"></script>
@@ -313,6 +454,11 @@ $(document).ready(function(){
     o.css("right",30);
   });
   
+        getSize();
+        if (myWidth >= 1024) {
+            c.click();
+        }
+  
   $(window).resize(function(){
     getSize(); 
     if (myWidth >= 1024) {
@@ -322,8 +468,36 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(50,295-$(this).scrollTop()));
   });
 });
 </script>
@@ -437,6 +611,5 @@ $(document).ready(function(){
 <link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css">
 
 <link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
-      </body>
-     </html>
-     
+  </body>
+</html>

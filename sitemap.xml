@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mzz.pub/2019/05/26/algorithm/%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86/</loc>
+    
+    <lastmod>2019-05-26T15:21:59.033Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mzz.pub/2019/05/07/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/nlp/</loc>
     
-    <lastmod>2019-05-16T07:44:27.000Z</lastmod>
+    <lastmod>2019-05-16T09:10:08.736Z</lastmod>
     
   </url>
   
@@ -58,13 +65,6 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/12/31/JAVA/SpringMVC/</loc>
-    
-    <lastmod>2019-01-11T09:29:31.503Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://mzz.pub/2017/08/05/algorithm/51Nod1714/</loc>
     
     <lastmod>2019-01-11T09:29:31.503Z</lastmod>
@@ -73,6 +73,13 @@
   
   <url>
     <loc>http://mzz.pub/2017/08/26/algorithm/%E5%B9%B3%E9%9D%A2%E6%9C%80%E8%BF%9C%E7%82%B9%E5%AF%B9/</loc>
+    
+    <lastmod>2019-01-11T09:29:31.503Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2017/12/31/JAVA/SpringMVC/</loc>
     
     <lastmod>2019-01-11T09:29:31.503Z</lastmod>
     
