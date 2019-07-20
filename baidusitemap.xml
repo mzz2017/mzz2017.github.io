@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://mzz.pub/2019/07/20/algorithm/%E7%BA%BF%E6%AE%B5%E4%BA%A4%E7%82%B9/</loc>
+    <lastmod>2019-07-20</lastmod>
+  </url>  <url>
     <loc>http://mzz.pub/2019/07/20/algorithm/%E7%BA%A6%E6%95%B0%E6%B1%82%E5%92%8C/</loc>
     <lastmod>2019-07-20</lastmod>
   </url>  <url>
@@ -49,10 +52,10 @@
     <loc>http://mzz.pub/2017/08/15/algorithm/%E5%BC%BA%E8%BF%9E%E9%80%9A/</loc>
     <lastmod>2019-01-11</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2017/12/31/JAVA/SpringMVC/</loc>
+    <loc>http://mzz.pub/2017/08/05/algorithm/51Nod1714/</loc>
     <lastmod>2019-01-11</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2017/08/05/algorithm/51Nod1714/</loc>
+    <loc>http://mzz.pub/2017/12/31/JAVA/SpringMVC/</loc>
     <lastmod>2019-01-11</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2018/06/15/tools/rpx/</loc>
