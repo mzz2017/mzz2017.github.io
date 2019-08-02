@@ -1,0 +1,758 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>计算机算法设计与分析 笔记 | mzz&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="莫之章">
+    
+
+    
+    <meta name="description" content="引言：使用电子工业出版社的《计算机算法设计与分析(第四版)》">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机算法设计与分析 笔记">
+<meta property="og:url" content="http://mzz.pub/2019/08/02/algorithm/算法设计与分析 笔记/index.html">
+<meta property="og:site_name" content="mzz&#39;s blog">
+<meta property="og:description" content="引言：使用电子工业出版社的《计算机算法设计与分析(第四版)》">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-08-02T03:02:52.416Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机算法设计与分析 笔记">
+<meta name="twitter:description" content="引言：使用电子工业出版社的《计算机算法设计与分析(第四版)》">
+
+    
+    
+    <link rel="icon" href="/img/f.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+	
+	
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
+</head>
+
+</html>
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="mzz&#39;s blog">mzz&#39;s blog</a></h1>
+				<h2 class="blog-motto">　　　　　虽千万人，  吾往矣</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="http://music.mzz.pub">Music Man</a></li>
+					
+						<li><a href="http://go.mzz.pub">Go语言圣经</a></li>
+					
+						<li><a href="//g.mzz.pub">Google Mirror</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
+						<input type="hidden" name="q" value="site:mzz.pub">
+					</form>
+					
+					</li>
+				</ul>
+			</ul></nav>			
+			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2019/08/02/algorithm/算法设计与分析 笔记/" title="计算机算法设计与分析 笔记" itemprop="url">计算机算法设计与分析 笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
+		
+  </p><p class="article-time">
+    <time datetime="2019-08-01T16:00:00.000Z" itemprop="datePublished"> 发表于 2019-08-02</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法设计与分析-笔记"><span class="toc-number">1.</span> <span class="toc-text"> 算法设计与分析 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#递归分治和动态规划"><span class="toc-number">1.1.</span> <span class="toc-text"> 递归分治和动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#大整数乘法分治降低复杂度-p19"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 大整数乘法，分治降低复杂度 P19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strassen矩阵乘法-p19"><span class="toc-number">1.1.2.</span> <span class="toc-text"> Strassen矩阵乘法 P19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#棋盘覆盖-p20"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 棋盘覆盖 P20</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#归并算法-p22"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 归并算法 P22</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速排序-p24"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 快速排序 P24</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线性时间选择-p26"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 线性时间选择 P26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最接近点对问题-p30"><span class="toc-number">1.1.7.</span> <span class="toc-text"> 最接近点对问题 P30</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环赛日程表-p35"><span class="toc-number">1.1.8.</span> <span class="toc-text"> 循环赛日程表 P35</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵连乘问题-p45"><span class="toc-number">1.1.9.</span> <span class="toc-text"> 矩阵连乘问题 P45</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最长公共子序列-p52"><span class="toc-number">1.1.10.</span> <span class="toc-text"> 最长公共子序列 P52</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最大字段和-p54"><span class="toc-number">1.1.11.</span> <span class="toc-text"> 最大字段和 P54</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#凸多边形最有三角剖分-p59"><span class="toc-number">1.1.12.</span> <span class="toc-text"> 凸多边形最有三角剖分 P59</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1背包问题-p71"><span class="toc-number">1.1.13.</span> <span class="toc-text"> 0-1背包问题 P71</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完全背包"><span class="toc-number">1.1.14.</span> <span class="toc-text"> 完全背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多重背包"><span class="toc-number">1.1.15.</span> <span class="toc-text"> 多重背包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贪心"><span class="toc-number">1.2.</span> <span class="toc-text"> 贪心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#最优装载问题-p95"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 最优装载问题 P95</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#哈夫曼树-p99"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 哈夫曼树 P99</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最小生成树-p101"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 最小生成树 P101</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回溯法和分支限界法"><span class="toc-number">1.3.</span> <span class="toc-text"> 回溯法和分支限界法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#胜者树-败者树-堆排序"><span class="toc-number">1.4.</span> <span class="toc-text"> 胜者树、败者树、堆排序</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>引言：使用电子工业出版社的《计算机算法设计与分析(第四版)》</p>
+<hr>
+<a id="more"></a>
+<h1 id="算法设计与分析-笔记"><a class="markdownIt-Anchor" href="#算法设计与分析-笔记"></a> 算法设计与分析 笔记</h1>
+<h2 id="递归分治和动态规划"><a class="markdownIt-Anchor" href="#递归分治和动态规划"></a> 递归分治和动态规划</h2>
+<p>一定要保证</p>
+<ol>
+<li>分解后的问题依然是相同结构的规模更小的子问题</li>
+</ol>
+<p>差异：</p>
+<ol>
+<li>递归要求每个子问题相互独立</li>
+<li>动态规划要保证每个子问题相互重叠</li>
+<li>动态规划是最优子结构问题（比相同点的那一条更强）</li>
+<li>动态规划需要无后效性
+<ul>
+<li>第一层含义是，在推导后面阶段状态的时候，我们只关心前面阶段的状态值，不关心这个状态是怎么一步步推导出来的。</li>
+<li>第二层含义是，某阶段状态一旦确定，就不受之后阶段的决策影响。</li>
+<li>无后效性是一个非常“宽松”的要求。只要满足前面提到的动态规划问题模型，其实基本上都会满足无后效性。</li>
+</ul>
+</li>
+</ol>
+<h3 id="大整数乘法分治降低复杂度-p19"><a class="markdownIt-Anchor" href="#大整数乘法分治降低复杂度-p19"></a> 大整数乘法，分治降低复杂度 P19</h3>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi><mi>Y</mi><mo>=</mo><mi>A</mi><mi>C</mi><msup><mn>2</mn><mi>n</mi></msup><mo>+</mo><mo>(</mo><mi>A</mi><mi>D</mi><mo>+</mo><mi>B</mi><mi>C</mi><mo>)</mo><msup><mn>2</mn><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup><mo>+</mo><mi>B</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">XY=AC2^n+(AD+BC)2^{n/2}+BD
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.938em;"></span><span class="strut bottom" style="height:1.188em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">+</span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mclose">)</span><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">n</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mord mathit" style="margin-right:0.02778em;">D</span></span></span></span></span></p>
+<p>需要四次n/2位的乘法（AC、AD、BC、BD），2次位移，3次加法</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>X</mi><mi>Y</mi><mo>=</mo><mi>A</mi><mi>C</mi><msup><mn>2</mn><mi>n</mi></msup><mo>+</mo><mo>(</mo><mo>(</mo><mi>A</mi><mo>−</mo><mi>B</mi><mo>)</mo><mo>(</mo><mi>D</mi><mo>−</mo><mi>C</mi><mo>)</mo><mo>+</mo><mi>A</mi><mi>C</mi><mo>+</mo><mi>B</mi><mi>D</mi><mo>)</mo><msup><mn>2</mn><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow></msup><mo>+</mo><mi>B</mi><mi>D</mi></mrow><annotation encoding="application/x-tex">XY=AC2^n+((A-B)(D-C)+AC+BD)2^{n/2}+BD
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.938em;"></span><span class="strut bottom" style="height:1.188em;vertical-align:-0.25em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit" style="margin-right:0.07847em;">X</span><span class="mord mathit" style="margin-right:0.22222em;">Y</span><span class="mrel">=</span><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">+</span><span class="mopen">(</span><span class="mopen">(</span><span class="mord mathit">A</span><span class="mbin">−</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mbin">−</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mclose">)</span><span class="mbin">+</span><span class="mord mathit">A</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mord mathit" style="margin-right:0.02778em;">D</span><span class="mclose">)</span><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit">n</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">+</span><span class="mord mathit" style="margin-right:0.05017em;">B</span><span class="mord mathit" style="margin-right:0.02778em;">D</span></span></span></span></span></p>
+<p>将AD+BC换为AD-AC-BD+BC+AC+BD，然后再配方为(A-B)(D-C)，这样变成了3次n/2位乘法（AC、(A-B)(D-C)、BD），2次位移，6次加法。</p>
+<p>复杂度从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>降低为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mrow><mn>1</mn><mi mathvariant="normal">.</mi><mn>5</mn><mn>9</mn></mrow></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^{1.59})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">.</span><span class="mord mathrm">5</span><span class="mord mathrm">9</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span></p>
+<h3 id="strassen矩阵乘法-p19"><a class="markdownIt-Anchor" href="#strassen矩阵乘法-p19"></a> Strassen矩阵乘法 P19</h3>
+<p>计算两个nxn的矩阵乘积显然是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>的，strassen通过矩阵分块(2x2的分块矩阵)，再通过因式分解，将乘法从8次变为7次，因此复杂度降低为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mn>7</mn></mrow></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^{log7})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.849108em;"></span><span class="strut bottom" style="height:1.099108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="mord mathrm">7</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span></p>
+<h3 id="棋盘覆盖-p20"><a class="markdownIt-Anchor" href="#棋盘覆盖-p20"></a> 棋盘覆盖 P20</h3>
+<p>给出覆盖1个点的棋盘（记为污染点），4种L形态的骨牌，通过若干次覆盖，给出覆盖方案。</p>
+<p>很显然，将棋盘四切分，必有一个是被污染的棋盘，有三个没被污染的棋盘。将骨牌放在切分点中间，可以使得四个棋盘都被污染，那么将大问题转为相同性质的小问题，用分治可解。</p>
+<p>递归出口是，只剩一个2x2的棋盘，其中有一个污染点，那么覆盖剩下三个点即可。</p>
+<h3 id="归并算法-p22"><a class="markdownIt-Anchor" href="#归并算法-p22"></a> 归并算法 P22</h3>
+<p>没什么好说的</p>
+<h3 id="快速排序-p24"><a class="markdownIt-Anchor" href="#快速排序-p24"></a> 快速排序 P24</h3>
+<p>没什么好说的</p>
+<h3 id="线性时间选择-p26"><a class="markdownIt-Anchor" href="#线性时间选择-p26"></a> 线性时间选择 P26</h3>
+<p>给定n个乱序元素，要求找出第k小的元素。</p>
+<p>第一种方法是使用快排的思想，每轮哨兵所在位置为i，若k&lt;i，则在左边继续递归，否则在右边继续递归（且找第k-i小的元素）。由于每次都舍弃一半，而每轮是O(n)的，根据万能公式，a=1,b=2,k=1，算法平均复杂度O(n)。</p>
+<p>第二种方法见P28，中位数坐标系切分法，精华在于在T(n/5)时间内找到中位数（每次问题规模化为1/5，花费O(nlog5)=O(n)时间）。找到中位数后，每次舍弃掉1/4(坐标系)，算下来复杂度O(n)，但是是最差复杂度O(n)，所以比上一个方法好。</p>
+<h3 id="最接近点对问题-p30"><a class="markdownIt-Anchor" href="#最接近点对问题-p30"></a> 最接近点对问题 P30</h3>
+<p>一维情况：乱序给出n个数，找出数值相差最小的一对。</p>
+<p>二维情况：乱序给出n个点，找出欧氏范数最小的一对。</p>
+<p>显然一维情况的第一种方法是O(nlogn)排序再O(n)找出，但无法推广至二维。</p>
+<p>一维情况另一种方法是分治法，二分之后，找出左边的最接近点对，找出右边的最接近点对，找出分界边缘的一个点对，比较得出总体的最接近点对。根据万能公式，a=b=2,k=1，因此也是O(nlogn)，但易于推广至二维。问题在于分割点的选取应使得两边点数尽量相同，那么可以用上面的O(n)的中位数选取法。</p>
+<p>二维情况：选取x的中位数m将点集分割到两个集合，对左边和右边分别进行递归计算，最后再计算点对分别位于两个集合的情况。</p>
+<p>假设d=min(左边最小距离，右边最小距离)，那么以一个左边的点为中心，以d为半径画半圆，可知右边最多有dx2d的矩形区域的点（实际上精确说是半圆区域，但无妨扩大到矩形）会有可能跟该点连线比d小，经过书上的证明，这个矩形区域最多有6个点。因此对左边点集和右边点集按Y坐标排序即可（由于每次都要排序，很多排序是多余的，因此在最开始进行一次预排序就可以了）。</p>
+<p>递归下去，递归出口是左边和右边恰各有一个点。</p>
+<p>复杂度根据万能公式，a=b=2,k=1。O(nlogn)，而排序也是O(nlogn)的，所以总体还是O(nlogn)。</p>
+<h3 id="循环赛日程表-p35"><a class="markdownIt-Anchor" href="#循环赛日程表-p35"></a> 循环赛日程表 P35</h3>
+<p>12345678八名选手。</p>
+<p>先写出</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">[</mo><mtable><mtr><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\begin{bmatrix}
+1&amp;2\\
+2&amp;1\\
+3&amp;4\\
+4&amp;3\\
+5&amp;6\\
+6&amp;5\\
+7&amp;8\\
+8&amp;7\\
+\end{bmatrix}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:5.6619600000000005em;"></span><span class="strut bottom" style="height:10.81204em;vertical-align:-5.150079999999999em;"></span><span class="base displaystyle textstyle uncramped"><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:4.505059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎣</span></span></span><span style="top:3.350059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:2.749059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:2.148059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:1.5470599999999992em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:0.9460599999999992em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:0.34505999999999926em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-0.2559400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-0.8569400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-1.4579400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-2.0589400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-2.6599400000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-3.2609400000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-4.50696em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎡</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-3.609999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-2.409999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-1.2099999999999989em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-0.009999999999998621em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:1.1900000000000015em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:2.390000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:3.590000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:4.79em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-3.609999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-2.409999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-1.2099999999999989em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-0.009999999999998621em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:1.1900000000000015em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:2.390000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:3.590000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:4.505059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎦</span></span></span><span style="top:3.350059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:2.749059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:2.148059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:1.5470599999999992em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:0.9460599999999992em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:0.34505999999999926em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-0.2559400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-0.8569400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-1.4579400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-2.0589400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-2.6599400000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-3.2609400000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-4.50696em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎤</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></span></span></p>
+<p>然后把2x2</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">[</mo><mtable><mtr><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\begin{bmatrix}
+1&amp;2\\
+2&amp;1\\
+\end{bmatrix}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:2.05002em;"></span><span class="strut bottom" style="height:3.60004em;vertical-align:-1.55002em;"></span><span class="base displaystyle textstyle uncramped"><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:0.9049999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎣</span></span></span><span style="top:-0.89502em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎡</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-1.2099999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-0.00999999999999951em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:1.1900000000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-1.2099999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-0.00999999999999951em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:0.9049999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎦</span></span></span><span style="top:-0.89502em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎤</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></span></span></p>
+<p>抄送到右下角，把</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">[</mo><mtable><mtr><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\begin{bmatrix}
+3&amp;4\\
+4&amp;3\\
+\end{bmatrix}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:2.05002em;"></span><span class="strut bottom" style="height:3.60004em;vertical-align:-1.55002em;"></span><span class="base displaystyle textstyle uncramped"><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:0.9049999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎣</span></span></span><span style="top:-0.89502em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎡</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-1.2099999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-0.00999999999999951em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:1.1900000000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-1.2099999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-0.00999999999999951em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:0.9049999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎦</span></span></span><span style="top:-0.89502em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎤</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></span></span></p>
+<p>抄送到右上角，下同。</p>
+<p>变为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">[</mo><mtable><mtr><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd></mtr><mtr><mtd><mrow></mrow></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\begin{bmatrix}
+1&amp;2&amp;3&amp;4\\
+2&amp;1&amp;4&amp;3\\
+3&amp;4&amp;1&amp;2\\
+4&amp;3&amp;2&amp;1\\
+5&amp;6&amp;7&amp;8\\
+6&amp;5&amp;8&amp;7\\
+7&amp;8&amp;5&amp;6\\
+8&amp;7&amp;6&amp;5\\
+\end{bmatrix}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:5.6619600000000005em;"></span><span class="strut bottom" style="height:10.81204em;vertical-align:-5.150079999999999em;"></span><span class="base displaystyle textstyle uncramped"><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:4.505059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎣</span></span></span><span style="top:3.350059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:2.749059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:2.148059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:1.5470599999999992em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:0.9460599999999992em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:0.34505999999999926em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-0.2559400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-0.8569400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-1.4579400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-2.0589400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-2.6599400000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-3.2609400000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-4.50696em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎡</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-3.609999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-2.409999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-1.2099999999999989em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-0.009999999999998621em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:1.1900000000000015em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:2.390000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:3.590000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:4.79em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-3.609999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-2.409999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-1.2099999999999989em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-0.009999999999998621em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:1.1900000000000015em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:2.390000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:3.590000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-3.609999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-2.409999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-1.2099999999999989em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-0.009999999999998621em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:1.1900000000000015em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:2.390000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:3.590000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.81em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-3.609999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-2.409999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-1.2099999999999989em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-0.009999999999998621em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:1.1900000000000015em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:2.390000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:3.590000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:4.505059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎦</span></span></span><span style="top:3.350059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:2.749059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:2.148059999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:1.5470599999999992em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:0.9460599999999992em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:0.34505999999999926em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-0.2559400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-0.8569400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-1.4579400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-2.0589400000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-2.6599400000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-3.2609400000000006em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-4.50696em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎤</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></span></span></p>
+<p>然后再4x4，最终：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mrow><mo fence="true">[</mo><mtable><mtr><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd></mtr><mtr><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd></mtr></mtable><mo fence="true">]</mo></mrow></mrow><annotation encoding="application/x-tex">\begin{bmatrix}
+1&amp;2&amp;3&amp;4&amp;5&amp;6&amp;7&amp;8\\
+2&amp;1&amp;4&amp;3&amp;6&amp;5&amp;8&amp;7\\
+3&amp;4&amp;1&amp;2&amp;7&amp;8&amp;5&amp;6\\
+4&amp;3&amp;2&amp;1&amp;8&amp;7&amp;6&amp;5\\
+5&amp;6&amp;7&amp;8&amp;1&amp;2&amp;3&amp;4\\
+6&amp;5&amp;8&amp;7&amp;2&amp;1&amp;4&amp;3\\
+7&amp;8&amp;5&amp;6&amp;3&amp;4&amp;1&amp;2\\
+8&amp;7&amp;6&amp;5&amp;4&amp;3&amp;2&amp;1
+\end{bmatrix}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:5.05997em;"></span><span class="strut bottom" style="height:9.61004em;vertical-align:-4.55007em;"></span><span class="base displaystyle textstyle uncramped"><span class="minner displaystyle textstyle uncramped"><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:3.9050499999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎣</span></span></span><span style="top:2.75005em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:2.14905em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:1.54805em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:0.94705em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:0.34604999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-0.25495em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-0.85595em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-1.45695em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-2.05795em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-2.65895em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎢</span></span></span><span style="top:-3.90497em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎡</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-4.21em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-3.0100000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-1.8100000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-0.6100000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:0.5900000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:1.7900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.21em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-3.0100000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-1.8100000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-0.6100000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:0.5900000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:1.7900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.21em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-3.0100000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-1.8100000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-0.6100000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:0.5900000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:1.7900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.21em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-3.0100000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-1.8100000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-0.6100000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:0.5900000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:1.7900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.21em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:-3.0100000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:-1.8100000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:-0.6100000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:0.5900000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:1.7900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.21em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:-3.0100000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:-1.8100000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:-0.6100000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:0.5900000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:1.7900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.21em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:-3.0100000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:-1.8100000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:-0.6100000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:0.5900000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:1.7900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-4.21em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:-3.0100000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:-1.8100000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:-0.6100000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:0.5900000000000001em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:1.7900000000000003em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span><span class="style-wrap reset-textstyle textstyle uncramped"><span class="delimsizing mult"><span class="vlist"><span style="top:3.9050499999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎦</span></span></span><span style="top:2.75005em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:2.14905em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:1.54805em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:0.94705em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:0.34604999999999997em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-0.25495em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-0.85595em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-1.45695em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-2.05795em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-2.65895em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎥</span></span></span><span style="top:-3.90497em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="delimsizinginner delim-size4"><span>⎤</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></span></span></p>
+<h3 id="矩阵连乘问题-p45"><a class="markdownIt-Anchor" href="#矩阵连乘问题-p45"></a> 矩阵连乘问题 P45</h3>
+<p>pxq和qxr的矩阵相乘需要运算pqr次，请给出满足n个矩阵<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>A</mi><mn>1</mn></msub><msub><mi>A</mi><mn>2</mn></msub><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><msub><mi>A</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">A_1A_2...A_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">A</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord"><span class="mord mathit">A</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord"><span class="mord mathit">A</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>连乘次数最短的满足结合律的乘法次序。</p>
+<p>显然是具有最优子结构性质，并且有重叠子问题性质的，可以用动态规划求解。</p>
+<p>求解n个即求解一个分割点，使得左1,右n-1，或左2,右n-2，或……，或左n-1,右1的分法连乘次数最小。然后再递归下去。</p>
+<p>由于有重叠，可以使用记忆递归（备忘录方法）。</p>
+<h3 id="最长公共子序列-p52"><a class="markdownIt-Anchor" href="#最长公共子序列-p52"></a> 最长公共子序列 P52</h3>
+<p>很简单，看书。</p>
+<h3 id="最大字段和-p54"><a class="markdownIt-Anchor" href="#最大字段和-p54"></a> 最大字段和 P54</h3>
+<p>给出一串数字，要求求出使得和最大的数字串。</p>
+<p>以k结尾的最大子段和，即要么等于arr[k]+dp[k-1]，要么等于arr[k]，取决于dp[k-1]是否大于0。</p>
+<p>那么以任意k结尾的最大子段和为max(dp[i]),0&lt;=i&lt;len(dp)</p>
+<p>滚动求解即可，复杂度O(n)。</p>
+<p>分治算法：分为两半，总的最大子段和为左边的最大子段和或右边的最大子段和，或包含中间两个元素的最大子段和。前两种可以递归求解，后一种O(n)求解。最终复杂度由万能公式a=b=2,k=1,最终复杂度O(nlogn)。</p>
+<h3 id="凸多边形最有三角剖分-p59"><a class="markdownIt-Anchor" href="#凸多边形最有三角剖分-p59"></a> 凸多边形最有三角剖分 P59</h3>
+<p>同矩阵连乘问题</p>
+<h3 id="0-1背包问题-p71"><a class="markdownIt-Anchor" href="#0-1背包问题-p71"></a> 0-1背包问题 P71</h3>
+<p>背包容量为c，那么我可设背包容量0~c一共c+1种状态，每个状态表示该容量的背包所能产生价值的最大值。</p>
+<p>可以轻易看出具有最有子结构性质，对每个物品执行“装”和“不装”，都会对某一个状态产生影响，从而优化该状态的最优值。</p>
+<p>再看无后效性，如果我们以状态即容量作为外循环，在该状态下，决定一个物品装或不装，从不同的前驱状态转移过来，这样固然是满足无后效性的，但是会导致一个物品可能会被装多次，不合题意。</p>
+<p>如果以物品的种类作为外循环，内循环为状态，则相当于已获得n个种类下每个状态的最优背包问题的解，现在新增一个物品种类，求新的解。无后效性满足。但这种情况是否最优子结构呢？我们知道当我在所有容量状态中减去新物品种类的重量后得到的状态集合，已经是减掉了一个或若干个比该重量小的物品的价值了（同时去掉了这些物品），剩下的物品的价值一定使得该容量下价值最优，因此要么从这个状态转移过来，要么就不装，还是采用原来的最优解。所以它是具有子问题重叠性质的。</p>
+<p>因此是动态规划问题。</p>
+<p>滚动数组怎么优化：我们可以知道出现新物品后，对每个状态的处理需要引用index小的上一轮状态值，因此我们只能从大的index开始往小的更新。</p>
+<h3 id="完全背包"><a class="markdownIt-Anchor" href="#完全背包"></a> 完全背包</h3>
+<p>完全背包：有N种物品和一个容量为V的背包，每种物品都有无限件可用。第i种物品的费用是c[i]，价值是w[i]。求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大。</p>
+<p>新加一个物品，要么挤掉一些物品，把该物品放进来（这种说法请参考上述01背包），要么就不放。</p>
+<p>和01背包不同的点在于，状态转移是从当前轮转移过来，也就是说有可能引用的某个状态值已经在本轮更新过了（放过该物品了），因此滚动数组的做法是状态也从小的index往大的更新。</p>
+<h3 id="多重背包"><a class="markdownIt-Anchor" href="#多重背包"></a> 多重背包</h3>
+<p>多重背包：有N种物品和一个容量为V的背包。第i种物品最多有n[i]件可用，每件费用是c[i]，价值是w[i]。求解将哪些物品装入背包可使这些物品的费用总和不超过背包容量，且价值总和最大。</p>
+<p>多重背包可以转为01背包问题。</p>
+<p>我把n[i]个某物品单独看做n[i]个不同的物品即可转为01背包问题。</p>
+<p>另外，多重背包可以用二进制优化，比方说把8可转为1000b，那么通过1000b,100b,10b,1b这四个基数可以表示任意的15以下的数，即可把8个物品压缩到4个物品。</p>
+<h2 id="贪心"><a class="markdownIt-Anchor" href="#贪心"></a> 贪心</h2>
+<p>贪心需要满足：</p>
+<ol>
+<li>最优子结构性质</li>
+<li>贪心选择性质</li>
+</ol>
+<h3 id="最优装载问题-p95"><a class="markdownIt-Anchor" href="#最优装载问题-p95"></a> 最优装载问题 P95</h3>
+<p>有一批集装箱要装上一艘载重量为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">c</span></span></span></span>的轮船。其中集装箱<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span>的重量为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>w</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">w_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit" style="margin-right:0.02691em;">w</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:-0.02691em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">i</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>。最优装载问题要求在装载体积不受限制的情况下，将尽可能多的集装箱装上轮船。</p>
+<p>很显然，这是贪心问题，因为假设小一点的都装不上去，那大一点的更装不上去了。</p>
+<h3 id="哈夫曼树-p99"><a class="markdownIt-Anchor" href="#哈夫曼树-p99"></a> 哈夫曼树 P99</h3>
+<p>略</p>
+<p>###单源最短路径 P100</p>
+<p>Dijkstra：扩充点集。</p>
+<p>先计算出原点到各个点的距离，挑距离最短的加入点集，再计算出加入的点相连的边能否使得最短路径更小（原点到该点的最短路径加该点到相连点的距离是否比现存最短路径更小）。</p>
+<p>加入集合时，算出的距离即原点到该点的最短路径。</p>
+<p>反证法，见P102。</p>
+<p>注：要求每条边非负。</p>
+<h3 id="最小生成树-p101"><a class="markdownIt-Anchor" href="#最小生成树-p101"></a> 最小生成树 P101</h3>
+<p>Prim算法：扩充点集。</p>
+<p>每次挑选集合中能接触到的所有不属于集合的点，选择最短的那一条边（区别于Dijkstra最短路），将点加入集合。重复上一步骤直到有n个顶点。</p>
+<p>Kruskal：通过并查集或其他手段，每次连接边的两端不在同一集合的最短的那条边，最终形成n-1条边。</p>
+<p>可由离散数学证明，一张n个结点的图如果大于等于n-1条边，则必定只有一个连通分支，或者有多个连通分支，但是成环。如果我们保证不成环，那么一定只有一个连通分支。</p>
+<h2 id="回溯法和分支限界法"><a class="markdownIt-Anchor" href="#回溯法和分支限界法"></a> 回溯法和分支限界法</h2>
+<p>回溯法使用dfs，分支限界法使用bfs</p>
+<p>回溯法找所有解，分支限界法只找一个解</p>
+<h2 id="胜者树-败者树-堆排序"><a class="markdownIt-Anchor" href="#胜者树-败者树-堆排序"></a> 胜者树、败者树、堆排序</h2>
+<p>堆排序：</p>
+<p>在已有元素上建堆或插入元素是自底而上的，取出元素是自顶而下的。</p>
+<p>在小顶堆中取出最小元素后，需要将最后一个元素赋值给根节点，然后调整整棵树，此时需要比较两个子结点的大小，取出最小的子结点再和父结点比较，每次下降需要比较两次。</p>
+<p>胜者树和败者树：</p>
+<p>胜者树如果使用非顺序结构的二叉树实现，需要先获取父结点，随后才能获取兄弟结点，因此需要访存两次（如果使用顺序存储结构，通过数组下标即可定位兄弟结点，此时只需要访存一次）。</p>
+<p>败者树由于每次将败者下标放在父结点的数据域，因此当叶结点改变时，只需要比较父结点即可。</p>
+<p>在顺序存储结构下，二者优劣性体现在，胜者树需要一路比较一路更新结点，而败者树不一定更新结点，只需要维护一个变量即可，该变量有可能进行寄存器优化。</p>
+<p>每次上升只需要比较一次，因此胜者树和败者树比堆排序在时间复杂度的常数上要小，但由于胜者树和败者树只有叶结点存储数据，因此在空间复杂度的常数上比堆排序多一倍。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/笔记/">笔记</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://mzz.pub/2019/08/02/algorithm/算法设计与分析 笔记/" data-title="计算机算法设计与分析 笔记 | mzz&#39;s blog" data-tsina class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2019/07/24/面试/内存不足产生的若干面试问题/" title="内存不足产生的若干面试问题">
+ <strong>下一篇：</strong><br> 
+ <span>内存不足产生的若干面试问题
+</span>
+</a>
+</div>
+
+</nav>
+
+	  
+
+<!-- gitalk -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "3352072f2ad84717407d",
+    clientSecret: "8ea01d206f36234ab857d6d90f16b85a865e79e3",
+    repo: "mzz2017.github.io",
+    owner: "mzz2017",
+    admin: ["mzz2017"],
+    id: decodeURIComponent(location.pathname), // Ensure uniqueness and length less than 50
+    distractionFreeMode: false, // Facebook-like distraction free mode
+    title: document.title.split(" | ")[0]
+  });
+
+  gitalk.render("gitalk-container");
+</script>
+<style type="text/css" rel="stylesheet">
+  #gitalk-container {
+    padding: 10px 20px 50px;
+  }
+</style>
+<!-- gitalk -->
+
+</div>  
+      <div class="openaside">
+  <a class="navbutton" href="#" title="显示侧边栏"></a>
+</div>
+
+ 
+<div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+   <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#算法设计与分析-笔记"><span class="toc-number">1.</span> <span class="toc-text"> 算法设计与分析 笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#递归分治和动态规划"><span class="toc-number">1.1.</span> <span class="toc-text"> 递归分治和动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#大整数乘法分治降低复杂度-p19"><span class="toc-number">1.1.1.</span> <span class="toc-text"> 大整数乘法，分治降低复杂度 P19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#strassen矩阵乘法-p19"><span class="toc-number">1.1.2.</span> <span class="toc-text"> Strassen矩阵乘法 P19</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#棋盘覆盖-p20"><span class="toc-number">1.1.3.</span> <span class="toc-text"> 棋盘覆盖 P20</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#归并算法-p22"><span class="toc-number">1.1.4.</span> <span class="toc-text"> 归并算法 P22</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#快速排序-p24"><span class="toc-number">1.1.5.</span> <span class="toc-text"> 快速排序 P24</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线性时间选择-p26"><span class="toc-number">1.1.6.</span> <span class="toc-text"> 线性时间选择 P26</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最接近点对问题-p30"><span class="toc-number">1.1.7.</span> <span class="toc-text"> 最接近点对问题 P30</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#循环赛日程表-p35"><span class="toc-number">1.1.8.</span> <span class="toc-text"> 循环赛日程表 P35</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#矩阵连乘问题-p45"><span class="toc-number">1.1.9.</span> <span class="toc-text"> 矩阵连乘问题 P45</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最长公共子序列-p52"><span class="toc-number">1.1.10.</span> <span class="toc-text"> 最长公共子序列 P52</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最大字段和-p54"><span class="toc-number">1.1.11.</span> <span class="toc-text"> 最大字段和 P54</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#凸多边形最有三角剖分-p59"><span class="toc-number">1.1.12.</span> <span class="toc-text"> 凸多边形最有三角剖分 P59</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#0-1背包问题-p71"><span class="toc-number">1.1.13.</span> <span class="toc-text"> 0-1背包问题 P71</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完全背包"><span class="toc-number">1.1.14.</span> <span class="toc-text"> 完全背包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多重背包"><span class="toc-number">1.1.15.</span> <span class="toc-text"> 多重背包</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#贪心"><span class="toc-number">1.2.</span> <span class="toc-text"> 贪心</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#最优装载问题-p95"><span class="toc-number">1.2.1.</span> <span class="toc-text"> 最优装载问题 P95</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#哈夫曼树-p99"><span class="toc-number">1.2.2.</span> <span class="toc-text"> 哈夫曼树 P99</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#最小生成树-p101"><span class="toc-number">1.2.3.</span> <span class="toc-text"> 最小生成树 P101</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回溯法和分支限界法"><span class="toc-number">1.3.</span> <span class="toc-text"> 回溯法和分支限界法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#胜者树-败者树-堆排序"><span class="toc-number">1.4.</span> <span class="toc-text"> 胜者树、败者树、堆排序</span></a></li></ol></li></ol> 
+</div>
+
+<div id="asidepart">
+  <div class="closeaside">
+    <a class="closebutton" href="#" title="隐藏侧边栏"></a>
+  </div>
+  <aside class="clearfix">
+     
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/2017暑期集训/" title="2017暑期集训">2017暑期集训<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Cloud/" title="Cloud">Cloud<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/VPN/" title="VPN">VPN<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linearAlgebra/" title="linearAlgebra">linearAlgebra<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nlp/" title="nlp">nlp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/rsh/" title="rsh">rsh<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/安全/" title="安全">安全<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/应试/" title="应试">应试<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/微信小程序/" title="微信小程序">微信小程序<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>23</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/路由器/" title="路由器">路由器<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 15px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 15px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 12.5px;">VPN</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单调队列/" style="font-size: 10px;">单调队列</a> <a href="/tags/博弈/" style="font-size: 15px;">博弈</a> <a href="/tags/图论/" style="font-size: 17.5px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 12.5px;">排序</a> <a href="/tags/数论/" style="font-size: 20px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/树/" style="font-size: 12.5px;">树</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/笔记-线代/" style="font-size: 10px;">笔记 线代</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 12.5px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/路由器/" style="font-size: 10px;">路由器</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://alphalrx.cn/" target="_blank" title="lrx">lrx</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://psyduck.wang/" target="_blank" title="psyduck">psyduck</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://cubercsl.cn/" target="_blank" title="CSL">CSL</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://ybmj.github.io/" target="_blank" title="ybmj">ybmj</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://0ggmr0.cn/" target="_blank" title="GMR">GMR</a>
+            
+          </li>
+        
+    </ul>
+</div> 
+  </aside>
+</div>
+<iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
+<style type="text/css" rel="stylesheet">
+  .moveMain ~ #neteasemusic {
+    display: none;
+  }
+</style>
+    </div>
+    <footer><div id="footer">
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am with little well content, And a little from thee sent <br>
+			Is enough, with true intent. To be steadfast friend.</p>
+	</section>
+	 
+	<div class="social-font">
+		
+		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/mzz2017" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:m@mzz.pub" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo" style="color: #fff;">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman" style="color: #fff;">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="莫之章" style="color: #fff">莫之章</a>
+		
+		
+		</p>
+		
+		<script type="text/javascript">
+		  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+		  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+		  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+		  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+		  
+		  _st('install','KARTphmFVqNf53QQL7QN','2.0.0');
+		</script>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div style="text-align:center; color:#fff;" class="theme-info">
+博客全站共83.3k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+</span></div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(15,260-$(this).scrollTop()));
+    o.css("right",30);
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+            c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+      c.click();
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(50,295-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1263193610'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263193610%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+<!-- BAIDU_PUSH Begin -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- BAIDU_PUSH End -->
+
+<!-- MathJax Begin -->
+<!-- partial('mathjax') -->
+<!-- MathJax End -->
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css">
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>
