@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mzz.pub/2019/08/10/algorithm/tip/</loc>
+    
+    <lastmod>2019-08-10T06:32:32.035Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mzz.pub/2019/08/02/algorithm/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%20%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2019-08-02T03:02:52.416Z</lastmod>
+    <lastmod>2019-08-02T03:06:30.754Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>http://mzz.pub/2019/07/23/algorithm/HDU%201288/</loc>
     
     <lastmod>2019-07-22T18:52:54.939Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/2019/07/23/algorithm/tip/</loc>
-    
-    <lastmod>2019-07-22T17:10:46.696Z</lastmod>
     
   </url>
   
