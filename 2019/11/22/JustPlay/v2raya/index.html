@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://mzzeast.shumsg.cn/FlF9m8Ze5D24FlS0DfYykKCG0G3-">
 <meta property="og:image" content="http://mzzeast.shumsg.cn/FkOIrdEqCXvqQEgMH166RsugmaSs">
 <meta property="og:image" content="http://mzzeast.shumsg.cn/FiVwkK1H5PqTevGcVAp34GCOuERE">
-<meta property="og:updated_time" content="2019-11-21T23:58:02.869Z">
+<meta property="og:updated_time" content="2019-11-22T12:28:54.172Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="V2RayA - 支持全局透明代理的V2Ray Linux客户端">
 <meta name="twitter:description" content="引言：最直接的感觉就是——肝了这么久的项目总算能用了。">
@@ -240,10 +240,10 @@
 <h2 id="其他话"><a class="markdownIt-Anchor" href="#其他话"></a> 其他话</h2>
 <p>在项目开发的这段时间中，我陆续还发现了一些优秀的V2Ray Linux客户端，在最开始，我最多认为自己的项目顶多是界面更好看一点，而在功能上和他们并无优势（实名感谢美院Jenny同学帮忙调色）。</p>
 <p>让我改变想法的是我尝试将V2Ray的路由功能进行实现，将PAC模式下大陆白名单和GFWList模式开发出来后，我觉得V2RayA开始有点东西了。</p>
-<p>真正让我觉得V2RayA已经有自己特别点的东西的时候，是我将全局透明代理实现了的时候。实际上，全局代理是很多人的需求，也是我的需求，很多软件不支持设置socks代理端口，这时就很期望ss或者v2ray不仅是开放一个socks端口，而是可以用于全局代理。</p>
+<p>真正让我觉得V2RayA稍微没那么黯淡时候，是我将全局透明代理实现了之后。实际上，全局代理是很多人的需求，也是我的需求，很多软件不支持设置socks代理端口，这时就很期望ss或者v2ray不仅是开放一个socks端口，而是可以用于全局代理。</p>
 <p>V2RayA本来是计划完全基于docker的，所以你会看到在代码中单独针对docker环境进行了适配，甚至单独提出了docker方案。而在考虑实现全局透明代理时，我发现docker模式下不可能支持这一模式，于是对重心整改，将本来依赖于redis数据库的部分也改成依赖于文件系统，简化非docker模式下的安装配置。从docker脱离出来，才有后面V2RayA易用性的进一步提升；而docker模式的尝试，也使得V2RayA的适用性更强（<a href="https://github.com/mzz2017/V2RayA/issues/2" target="_blank" rel="noopener">#2</a>）。</p>
 <p>更多方面，我希望V2RayA能更方便得到下载和使用，所以单独肝了两三天的travis，希望它能够通过apt、yum、pacman等包管理器直接下载。而出于money的考虑，我又不希望在自己服务器上建软件源，万一以后火了，流量烧得哗哗的我不得心疼吗。最后虽然我travis配置写得很烂，但至少实现了上述的想法。</p>
-<p>想着法地解决困难或许是我的一个特点吧，这从我的其他博文也可以看得出来，我喜欢我的这个特点。</p>
+<p>上面哪一个点单独拿出来都没办法让V2RayA在Linux客户端里独树一帜，但加起来之后，终于就有那么点味道了。无论怎样，V2RayA始终是一个基于V2Ray的客户端，是一个“小玩意儿”，是在我强迫症的毛病下惯出来的一个小玩意儿。</p>
 <p>好了，我已经连续通宵半个月了，下周该去深圳了，我要好好把时差倒过来了。</p>
 <p>晚安。</p>
 <p>2019年11月22日07:54:28</p>
