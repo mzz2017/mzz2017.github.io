@@ -1,0 +1,683 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>51Nod1714 - B君的游戏 (SG博弈) | mzz&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="莫之章">
+    
+
+    
+    <meta name="description" content="引言：问题越积越多，感觉自己药丸。">
+<meta name="keywords" content="博弈,SG博弈">
+<meta property="og:type" content="article">
+<meta property="og:title" content="51Nod1714 - B君的游戏 (SG博弈)">
+<meta property="og:url" content="http://mzz.pub/2017/08/04/algorithm/51Nod1714/index.html">
+<meta property="og:site_name" content="mzz&#39;s blog">
+<meta property="og:description" content="引言：问题越积越多，感觉自己药丸。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://mzzeast.shumsg.cn/17-8-5/24714450.jpg">
+<meta property="og:updated_time" content="2019-01-11T09:29:31.503Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="51Nod1714 - B君的游戏 (SG博弈)">
+<meta name="twitter:description" content="引言：问题越积越多，感觉自己药丸。">
+<meta name="twitter:image" content="http://mzzeast.shumsg.cn/17-8-5/24714450.jpg">
+
+    
+    
+    <link rel="icon" href="/img/f.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+	
+	
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<script src="/js/inspage.js" type="module"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
+</head>
+
+</html>
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="mzz&#39;s blog">mzz&#39;s blog</a></h1>
+				<h2 class="blog-motto">　　　　　虽千万人，  吾往矣</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="https://v2raya.mzz.pub">V2RayA</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
+						<input type="hidden" name="q" value="site:mzz.pub">
+					</form>
+					
+					</li>
+				</ul>
+			</ul></nav>			
+			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/08/04/algorithm/51Nod1714/" title="51Nod1714 - B君的游戏 (SG博弈)" itemprop="url">51Nod1714 - B君的游戏 (SG博弈)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
+		
+  </p><p class="article-time">
+    <time datetime="2017-08-04T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-08-04</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原题重现"><span class="toc-number">1.</span> <span class="toc-text"> 原题重现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#description"><span class="toc-number">1.1.</span> <span class="toc-text"> Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input"><span class="toc-number">1.2.</span> <span class="toc-text"> Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#output"><span class="toc-number">1.3.</span> <span class="toc-text"> Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sample-input"><span class="toc-number">1.4.</span> <span class="toc-text"> Sample Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sample-output"><span class="toc-number">1.5.</span> <span class="toc-text"> Sample Output</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-number">2.</span> <span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打表器代码"><span class="toc-number">3.</span> <span class="toc-text"> 打表器代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ac代码"><span class="toc-number">4.</span> <span class="toc-text"> AC代码</span></a></li></ol>
+		
+		</div>
+		
+		<p>引言：问题越积越多，感觉自己药丸。</p>
+<hr>
+<a id="more"></a>
+<h2 id="原题重现"><a class="markdownIt-Anchor" href="#原题重现"></a> 原题重现</h2>
+<h3 id="description"><a class="markdownIt-Anchor" href="#description"></a> Description</h3>
+<pre><code>B君和L君要玩一个游戏。刚开始有n个正整数   ai  。 
+
+双方轮流操作。每次操作，选一个正整数 x ，将其移除，再添加7个数字   x1,x2...x7  。要求对于   xi  ，满足   0&lt;=xi&lt;x  且   x&amp;xi=xi 
+
+注意0不能被选取，所以这个游戏一定会结束，而谁无法操作谁就失败。 
+B君根据自己的经验，认为先手胜率高一点，所以B君是先手。 
+B君想知道自己是否必胜。 
+</code></pre>
+<h3 id="input"><a class="markdownIt-Anchor" href="#input"></a> Input</h3>
+<pre><code>第一行一个整数n (1 &lt;= n &lt;= 100000) 
+以下n行n个数ai (0 &lt;= a_i &lt; 2^64)
+</code></pre>
+<h3 id="output"><a class="markdownIt-Anchor" href="#output"></a> Output</h3>
+<pre><code>如果先手必胜，输出&quot;B&quot;，否则输出&quot;L&quot;。
+</code></pre>
+<h3 id="sample-input"><a class="markdownIt-Anchor" href="#sample-input"></a> Sample Input</h3>
+<pre><code>4
+1
+2
+3
+4
+</code></pre>
+<h3 id="sample-output"><a class="markdownIt-Anchor" href="#sample-output"></a> Sample Output</h3>
+<pre><code>B
+</code></pre>
+<h2 id="解题思路"><a class="markdownIt-Anchor" href="#解题思路"></a> 解题思路</h2>
+<ul>
+<li>
+<p>题中新添的数要求是比之前的数小，并且与原数位与后不变。举个例子来讲把，就比如说11，它的二进制是1011，因此它可以转化为1010，1001，1000，0011，0010，0001，0000，其实就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mn>3</mn></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^3-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mbin">−</span><span class="mord mathrm">1</span></span></span></span>种，减的1就是1011，它自己不可取。也就是说其实状态跟这个数是多少无关，只跟这个数的二进制中1的个数有关。根据例子就是说把二进制1的个数为3的数11转化为二进制1的个数为2或1或0的数，新转换的数和原数适用于同一个游戏规则。</p>
+</li>
+<li>
+<p>根据题意，这很像上次的Cutting Game。根据上面的逻辑推理，这个又是一个把一个父游戏转化为若干个子游戏的题目，所以它是SG博弈。</p>
+</li>
+<li>
+<p>我们回顾一下上次SG博弈笔记中所记：</p>
+<hr>
+<ul>
+<li>
+<p>SG博弈中，父游戏可以转若干个子游戏，并且有几种转化子游戏的方式，每种转化方式都对应一个Grundy值，记为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>G</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>G</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>G</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">G_1,G_2,...,G_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">G</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mpunct">,</span><span class="mord"><span class="mord mathit">G</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mpunct">,</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mpunct">,</span><span class="mord"><span class="mord mathit">G</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>，其中任意某个Grundy值的求法是将该种转化方式下的子游戏的Grundy值异或。最终父游戏的Grundy值为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>e</mi><mi>x</mi><mo>{</mo><msub><mi>G</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>G</mi><mn>2</mn></msub><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo separator="true">,</mo><msub><mi>G</mi><mi>n</mi></msub><mo>}</mo></mrow><annotation encoding="application/x-tex">mex \lbrace G_1,G_2,...,G_n \rbrace</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mord mathit">e</span><span class="mord mathit">x</span><span class="mopen">{</span><span class="mord"><span class="mord mathit">G</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mpunct">,</span><span class="mord"><span class="mord mathit">G</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mpunct">,</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mpunct">,</span><span class="mord"><span class="mord mathit">G</span><span class="vlist"><span style="top:0.15em;margin-right:0.05em;margin-left:0em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathit">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">}</span></span></span></span></p>
+</li>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>e</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">mex</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mord mathit">e</span><span class="mord mathit">x</span></span></span></span>是指集合中无法取到的最小的自然数（包括0在内），如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi><mi>e</mi><mi>x</mi><mo>{</mo><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mo separator="true">,</mo><mn>3</mn><mo separator="true">,</mo><mn>5</mn><mo>}</mo><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">mex \lbrace 0,1,3,5 \rbrace = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">m</span><span class="mord mathit">e</span><span class="mord mathit">x</span><span class="mopen">{</span><span class="mord mathrm">0</span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">3</span><span class="mpunct">,</span><span class="mord mathrm">5</span><span class="mclose">}</span><span class="mrel">=</span><span class="mord mathrm">2</span></span></span></span></p>
+</li>
+</ul>
+<hr>
+</li>
+<li>
+<p>我们把避免我下棋的局面找到，很明显是所有数都为0的局面。这和我们上次SG笔记中所讲有点矛盾了，因为所有数为0的局面是很明显的局面。实际上上次SG笔记所写的方法是最保险的选G值为0的方法，但在本题似乎有些困难。本题之所以可以选择这种题目告诉你的胜利局面为G值为0的局面是因为，你必须把所有数都拆成0，而不是单单把某个数拆成0就结束了。Cutting Game因为拆一个1x1就结束，因此将(1,1)作为游戏的基础点是不可靠的，不能通过(1,1)推到整个游戏结果， <strong>基础不稳地动山摇</strong> 嘛。我们这个的游戏就很稳了。</p>
+</li>
+<li>
+<p>本题一个父游戏有很多很多种拆成子游戏的方法，就比如说之前讲的11吧，它可以拆成7个1010，或者6个1010，1个1001，或者1个1000，2个0011，3个0001，1个0000……所有这些情况都是它的子游戏的拆法。因为之前讨论过了，状态只和二进制中1的个数有关。意思是Grundy(11)和Grundy(7)，Grundy(28672)是一样的，那么我们不这么表示，我们把前面的都记为Grundy(3)，意为二进制中1的个数为3的数的Grundy值。我们算Grundy(3)就要算出mex{一个情况的子游戏间的异或得到一个G值，所有G值构成此集合}，求这个集合的mex就是Grundy(3)。</p>
+</li>
+<li>
+<p>一共64种Grundy值，而且算的极其慢，是不可能交上去慢慢算的，所以必须打表。就算是打表我这个辣鸡AMD笔记本也跑了400多秒，用set数据小的时候跑的比数组快，但数据大的时候就很慢很慢了，推荐用数组。数组是稳稳<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span></span></span></span>的，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>o</mi><mi>r</mi><mo>+</mo><mi>s</mi><mi>o</mi><mi>r</mi><mi>t</mi><mo>+</mo><mi>b</mi><mi>i</mi><mi>n</mi><mi>a</mi><mi>r</mi><mi>y</mi><mi mathvariant="normal">_</mi><mi>s</mi><mi>e</mi><mi>a</mi><mi>r</mi><mi>c</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">vector+sort+binary\_search</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:1.00444em;vertical-align:-0.31em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.03588em;">v</span><span class="mord mathit">e</span><span class="mord mathit">c</span><span class="mord mathit">t</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mbin">+</span><span class="mord mathit">s</span><span class="mord mathit">o</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">t</span><span class="mbin">+</span><span class="mord mathit">b</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit" style="margin-right:0.03588em;">y</span><span class="mord mathrm" style="margin-right:0.02778em;">_</span><span class="mord mathit">s</span><span class="mord mathit">e</span><span class="mord mathit">a</span><span class="mord mathit" style="margin-right:0.02778em;">r</span><span class="mord mathit">c</span><span class="mord mathit">h</span></span></span></span>是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>l</mi><mi>o</mi><msubsup><mi>g</mi><mn>2</mn><mi>n</mi></msubsup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nlog_2^n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.24810799999999997em;margin-left:-0.03588em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>的。</p>
+</li>
+<li>
+<p>另外……我试了一下vector结果……<br>
+<img src="http://mzzeast.shumsg.cn/17-8-5/24714450.jpg" alt="悲剧啊！！"></p>
+</li>
+</ul>
+<h2 id="打表器代码"><a class="markdownIt-Anchor" href="#打表器代码"></a> 打表器代码</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment (linker,<span class="meta-string">"/STACK:102400000,102400000"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MOD (ll)(1e9+7)</span></span><br><span class="line"><span class="keyword">int</span> sg[<span class="number">65</span>];</span><br><span class="line"><span class="keyword">int</span> vis[<span class="number">100000000</span>];</span><br><span class="line"><span class="comment">//vector&lt;int&gt; vec;</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> maxn,<span class="keyword">int</span> step,<span class="keyword">int</span> now,<span class="keyword">int</span> ans)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(step==<span class="number">7</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        vis[ans]=<span class="number">1</span>;</span><br><span class="line">        <span class="comment">//vec.push_back(ans);</span></span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=now;i&lt;maxn;i++)</span><br><span class="line">        dfs(maxn,step+<span class="number">1</span>,i,ans^sg[i]);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    sg[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">64</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">        <span class="comment">//vec.clear();</span></span><br><span class="line">        dfs(i, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;;j++)</span><br><span class="line">            <span class="keyword">if</span>(!vis[j])</span><br><span class="line">            &#123;</span><br><span class="line">                sg[i]=j;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="comment">/*sort(vec.begin(),vec.end());</span></span><br><span class="line"><span class="comment">        for(int j=0;;j++)</span></span><br><span class="line"><span class="comment">            if(!binary_search(vec.begin(),vec.end(),j))</span></span><br><span class="line"><span class="comment">            &#123;</span></span><br><span class="line"><span class="comment">                sg[i]=j;</span></span><br><span class="line"><span class="comment">                break;</span></span><br><span class="line"><span class="comment">            &#125;*/</span></span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sg[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"over"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ac代码"><a class="markdownIt-Anchor" href="#ac代码"></a> AC代码</h2>
+打表万岁!!!
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment (linker,<span class="meta-string">"/STACK:102400000,102400000"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MOD (ll)(1e9+7)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a=<span class="number">0</span>, f=<span class="number">1</span>; <span class="keyword">char</span> c=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123;<span class="keyword">if</span>(c==<span class="string">'-'</span>) f=<span class="number">-1</span>; c=getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) (a*=<span class="number">10</span>)+=c-<span class="string">'0'</span>, c=getchar();</span><br><span class="line">    <span class="keyword">return</span> a*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> ll <span class="title">read2</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll a=<span class="number">0</span>, f=<span class="number">1</span>; <span class="keyword">char</span> c=getchar();</span><br><span class="line">    <span class="keyword">while</span>(!<span class="built_in">isdigit</span>(c))&#123;<span class="keyword">if</span>(c==<span class="string">'-'</span>) f=<span class="number">-1</span>; c=getchar();&#125;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">isdigit</span>(c)) (a*=<span class="number">10</span>)+=c-<span class="string">'0'</span>, c=getchar();</span><br><span class="line">    <span class="keyword">return</span> a*f;</span><br><span class="line">&#125;</span><br><span class="line">ll dp[<span class="number">100</span>];</span><br><span class="line">ll sg[]=</span><br><span class="line">&#123;</span><br><span class="line"><span class="number">0</span>,</span><br><span class="line"><span class="number">1</span>,</span><br><span class="line"><span class="number">2</span>,</span><br><span class="line"><span class="number">4</span>,</span><br><span class="line"><span class="number">8</span>,</span><br><span class="line"><span class="number">16</span>,</span><br><span class="line"><span class="number">32</span>,</span><br><span class="line"><span class="number">64</span>,</span><br><span class="line"><span class="number">128</span>,</span><br><span class="line"><span class="number">255</span>,</span><br><span class="line"><span class="number">256</span>,</span><br><span class="line"><span class="number">512</span>,</span><br><span class="line"><span class="number">1024</span>,</span><br><span class="line"><span class="number">2048</span>,</span><br><span class="line"><span class="number">3855</span>,</span><br><span class="line"><span class="number">4096</span>,</span><br><span class="line"><span class="number">8192</span>,</span><br><span class="line"><span class="number">13107</span>,</span><br><span class="line"><span class="number">16384</span>,</span><br><span class="line"><span class="number">21845</span>,</span><br><span class="line"><span class="number">27306</span>,</span><br><span class="line"><span class="number">32768</span>,</span><br><span class="line"><span class="number">38506</span>,</span><br><span class="line"><span class="number">65536</span>,</span><br><span class="line"><span class="number">71576</span>,</span><br><span class="line"><span class="number">92115</span>,</span><br><span class="line"><span class="number">101470</span>,</span><br><span class="line"><span class="number">131072</span>,</span><br><span class="line"><span class="number">138406</span>,</span><br><span class="line"><span class="number">172589</span>,</span><br><span class="line"><span class="number">240014</span>,</span><br><span class="line"><span class="number">262144</span>,</span><br><span class="line"><span class="number">272069</span>,</span><br><span class="line"><span class="number">380556</span>,</span><br><span class="line"><span class="number">524288</span>,</span><br><span class="line"><span class="number">536169</span>,</span><br><span class="line"><span class="number">679601</span>,</span><br><span class="line"><span class="number">847140</span>,</span><br><span class="line"><span class="number">1048576</span>,</span><br><span class="line"><span class="number">1072054</span>,</span><br><span class="line"><span class="number">1258879</span>,</span><br><span class="line"><span class="number">1397519</span>,</span><br><span class="line"><span class="number">2005450</span>,</span><br><span class="line"><span class="number">2097152</span>,</span><br><span class="line"><span class="number">2121415</span>,</span><br><span class="line"><span class="number">2496892</span>,</span><br><span class="line"><span class="number">2738813</span>,</span><br><span class="line"><span class="number">3993667</span>,</span><br><span class="line"><span class="number">4194304</span>,</span><br><span class="line"><span class="number">4241896</span>,</span><br><span class="line"><span class="number">4617503</span>,</span><br><span class="line"><span class="number">5821704</span>,</span><br><span class="line"><span class="number">7559873</span>,</span><br><span class="line"><span class="number">8388608</span>,</span><br><span class="line"><span class="number">8439273</span>,</span><br><span class="line"><span class="number">8861366</span>,</span><br><span class="line"><span class="number">11119275</span>,</span><br><span class="line"><span class="number">11973252</span>,</span><br><span class="line"><span class="number">13280789</span>,</span><br><span class="line"><span class="number">16777216</span>,</span><br><span class="line"><span class="number">16844349</span>,</span><br><span class="line"><span class="number">17102035</span>,</span><br><span class="line"><span class="number">19984054</span>,</span><br><span class="line"><span class="number">21979742</span>,</span><br><span class="line"><span class="number">23734709</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="function">ll <span class="title">c</span><span class="params">(ll n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n)</span><br><span class="line">    &#123;</span><br><span class="line">        n&amp;=n<span class="number">-1</span>;</span><br><span class="line">        cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ll n=read2(),r=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(n--)</span><br><span class="line">    &#123;</span><br><span class="line">        r^=sg[c(read2())];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(r)<span class="built_in">puts</span>(<span class="string">"B"</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">"L"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/2017暑期集训/">2017暑期集训</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/博弈/">博弈</a><a href="/tags/SG博弈/">SG博弈</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://mzz.pub/2017/08/04/algorithm/51Nod1714/" data-title="51Nod1714 - B君的游戏 (SG博弈) | mzz&#39;s blog" data-tsina class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev">
+ <a href="/2017/08/06/JustPlay/blog/" title="GITHUB+HEXO博客搭建">
+  <strong>上一篇：</strong><br>
+  <span>
+  GITHUB+HEXO博客搭建</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/08/03/algorithm/SG博弈笔记/" title="SG博弈笔记">
+ <strong>下一篇：</strong><br> 
+ <span>SG博弈笔记
+</span>
+</a>
+</div>
+
+</nav>
+
+	  
+
+<!-- gitalk -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "3352072f2ad84717407d",
+    clientSecret: "8ea01d206f36234ab857d6d90f16b85a865e79e3",
+    repo: "mzz2017.github.io",
+    owner: "mzz2017",
+    admin: ["mzz2017"],
+    id: decodeURIComponent(location.pathname), // Ensure uniqueness and length less than 50
+    distractionFreeMode: false, // Facebook-like distraction free mode
+    title: document.title.split(" | ")[0]
+  });
+
+  gitalk.render("gitalk-container");
+</script>
+<style type="text/css" rel="stylesheet">
+  #gitalk-container {
+    padding: 10px 20px 50px;
+  }
+</style>
+<!-- gitalk -->
+
+</div>  
+      <div class="openaside">
+  <a class="navbutton" href="#" title="显示侧边栏"></a>
+</div>
+
+ 
+<div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#原题重现"><span class="toc-number">1.</span> <span class="toc-text"> 原题重现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#description"><span class="toc-number">1.1.</span> <span class="toc-text"> Description</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#input"><span class="toc-number">1.2.</span> <span class="toc-text"> Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#output"><span class="toc-number">1.3.</span> <span class="toc-text"> Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sample-input"><span class="toc-number">1.4.</span> <span class="toc-text"> Sample Input</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sample-output"><span class="toc-number">1.5.</span> <span class="toc-text"> Sample Output</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解题思路"><span class="toc-number">2.</span> <span class="toc-text"> 解题思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#打表器代码"><span class="toc-number">3.</span> <span class="toc-text"> 打表器代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ac代码"><span class="toc-number">4.</span> <span class="toc-text"> AC代码</span></a></li></ol> 
+</div>
+
+<div id="asidepart">
+  <div class="closeaside">
+    <a class="closebutton" href="#" title="隐藏侧边栏"></a>
+  </div>
+  <aside class="clearfix">
+     
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/2017暑期集训/" title="2017暑期集训">2017暑期集训<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Cloud/" title="Cloud">Cloud<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/VPN/" title="VPN">VPN<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/data-science/" title="data-science">data-science<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ios/" title="ios">ios<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linearAlgebra/" title="linearAlgebra">linearAlgebra<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nlp/" title="nlp">nlp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/rsh/" title="rsh">rsh<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ssh/" title="ssh">ssh<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/安全/" title="安全">安全<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/应试/" title="应试">应试<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/微信小程序/" title="微信小程序">微信小程序<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>23</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/路由器/" title="路由器">路由器<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/面试/" title="面试">面试<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 15px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 15px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/VPN-网络/" style="font-size: 10px;">VPN 网络</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/data-science/" style="font-size: 12.5px;">data-science</a> <a href="/tags/ios-jailbreak/" style="font-size: 10px;">ios jailbreak</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单调队列/" style="font-size: 10px;">单调队列</a> <a href="/tags/博弈/" style="font-size: 15px;">博弈</a> <a href="/tags/图论/" style="font-size: 17.5px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 12.5px;">排序</a> <a href="/tags/数论/" style="font-size: 20px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/树/" style="font-size: 12.5px;">树</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/笔记-线代/" style="font-size: 10px;">笔记 线代</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 12.5px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/路由器/" style="font-size: 12.5px;">路由器</a> <a href="/tags/面试/" style="font-size: 12.5px;">面试</a>
+    </div>
+  </div>
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://alphalrx.cn/" target="_blank" title="lrx">lrx</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://psyduck.wang/" target="_blank" title="psyduck">psyduck</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://cubercsl.cn/" target="_blank" title="CSL">CSL</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://ybmj.github.io/" target="_blank" title="ybmj">ybmj</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://0ggmr0.cn/" target="_blank" title="GMR">GMR</a>
+            
+          </li>
+        
+    </ul>
+</div> 
+  </aside>
+</div>
+<iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
+<style type="text/css" rel="stylesheet">
+  .moveMain ~ #neteasemusic {
+    display: none;
+  }
+</style>
+    </div>
+    <footer><div id="footer">
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am with little well content, And a little from thee sent <br>
+			Is enough, with true intent. To be steadfast friend.</p>
+	</section>
+	 
+	<div class="social-font">
+		
+		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/mzz2017" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:m@mzz.pub" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo" style="color: #fff;">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman" style="color: #fff;">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="莫之章" style="color: #fff">莫之章</a>
+		
+		
+		</p>
+		
+		<script type="text/javascript">
+		  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+		  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+		  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+		  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+		  
+		  _st('install','KARTphmFVqNf53QQL7QN','2.0.0');
+		</script>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div style="text-align:center; color:#fff;" class="theme-info">
+博客全站共99.3k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+</span></div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(15,260-$(this).scrollTop()));
+    o.css("right",30);
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+            c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+      c.click();
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(50,295-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1263193610'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263193610%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+<!-- BAIDU_PUSH Begin -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- BAIDU_PUSH End -->
+
+<!-- MathJax Begin -->
+<!-- partial('mathjax') -->
+<!-- MathJax End -->
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css">
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>
