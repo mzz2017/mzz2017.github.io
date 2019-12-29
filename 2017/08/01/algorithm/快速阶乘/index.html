@@ -1,0 +1,667 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>快速阶乘的几种算法 | mzz&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="莫之章">
+    
+
+    
+    <meta name="description" content="引言：计算阶乘是O(n)的，本文介绍几种比较有趣的阶乘算法。">
+<meta name="keywords" content="数论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速阶乘的几种算法">
+<meta property="og:url" content="http://mzz.pub/2017/08/01/algorithm/快速阶乘/index.html">
+<meta property="og:site_name" content="mzz&#39;s blog">
+<meta property="og:description" content="引言：计算阶乘是O(n)的，本文介绍几种比较有趣的阶乘算法。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-10T10:33:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="快速阶乘的几种算法">
+<meta name="twitter:description" content="引言：计算阶乘是O(n)的，本文介绍几种比较有趣的阶乘算法。">
+
+    
+    
+    <link rel="icon" href="/img/f.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+	
+	
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<script src="/js/inspage.js" type="module"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style><!-- hexo-inject:begin --><link rel='stylesheet' href='custom_css_source'><!-- hexo-inject:end -->
+</head>
+
+</html>
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="mzz&#39;s blog">mzz&#39;s blog</a></h1>
+				<h2 class="blog-motto">　　　　　虽千万人，  吾往矣</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="https://v2raya.mzz.pub">V2RayA</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
+						<input type="hidden" name="q" value="site:mzz.pub">
+					</form>
+					
+					</li>
+				</ul>
+			</ul></nav>			
+			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/08/01/algorithm/快速阶乘/" title="快速阶乘的几种算法" itemprop="url">快速阶乘的几种算法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="莫之章" target="_blank" itemprop="author">莫之章</a>
+		
+  </p><p class="article-time">
+    <time datetime="2017-07-31T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-08-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算阶乘的另一些有趣的算法"><span class="toc-number">1.</span> <span class="toc-text"> 计算阶乘的另一些有趣的算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更少的乘法运算次数"><span class="toc-number">1.1.</span> <span class="toc-text"> 更少的乘法运算次数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更少的总运算次数"><span class="toc-number">1.2.</span> <span class="toc-text"> 更少的总运算次数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#还能再快一点么"><span class="toc-number">1.3.</span> <span class="toc-text"> 还能再快一点么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#另一种诡异的阶乘算法"><span class="toc-number">1.4.</span> <span class="toc-text"> 另一种诡异的阶乘算法：</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>引言：计算阶乘是O(n)的，本文介绍几种比较有趣的阶乘算法。</p>
+<hr>
+<a id="more"></a>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>KaTeX</mtext></mrow><annotation encoding="application/x-tex">\KaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.68333em;"></span><span class="strut bottom" style="height:1.0302031249999999em;vertical-align:-0.34687312499999995em;"></span><span class="base textstyle uncramped"><span class="katex-logo mord"><span class="k">K</span><span class="a">A</span><span class="t">T</span><span class="e">E</span><span class="x">X</span></span></span></span></span></p>
+<ul>
+<li><a href="http://www.matrix67.com/blog/archives/393" target="_blank" rel="noopener">法1：</a></li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>!</mo><mo>=</mo><mfrac><mrow><mi>n</mi><mo>!</mo></mrow><mrow><mo>[</mo><mo>(</mo><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mo>)</mo><mo>!</mo><mo>∗</mo><mo>(</mo><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mo>)</mo><mo>!</mo><mo>]</mo></mrow></mfrac><mo>∗</mo><mo>[</mo><mo>(</mo><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mo>)</mo><mo>!</mo><msup><mo>]</mo><mn>2</mn></msup><mo>=</mo><mi>C</mi><mo>(</mo><mi>n</mi><mo separator="true">,</mo><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mo>)</mo><mo>∗</mo><mo>[</mo><mo>(</mo><mfrac><mrow><mi>n</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mo>)</mo><mo>!</mo><msup><mo>]</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n! = \frac{n!}{[(\frac{n}{2})!*(\frac{n}{2})!]}*[(\frac{n}{2})!]^2 = C(n,\frac{n}{2})*[(\frac{n}{2})!]^2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:1.37144em;"></span><span class="strut bottom" style="height:2.4024400000000004em;vertical-align:-1.0310000000000001em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord mathit">n</span><span class="mclose">!</span><span class="mrel">=</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.6860000000000002em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mopen">[</span><span class="mopen">(</span><span class="mord reset-textstyle textstyle cramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mclose">)</span><span class="mclose">!</span><span class="mbin">∗</span><span class="mopen">(</span><span class="mord reset-textstyle textstyle cramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.345em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.394em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord scriptstyle cramped"><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mclose">)</span><span class="mclose">!</span><span class="mclose">]</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit">n</span><span class="mclose">!</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mbin">∗</span><span class="mopen">[</span><span class="mopen">(</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mclose">)</span><span class="mclose">!</span><span class="mclose"><span class="mclose">]</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mrel">=</span><span class="mord mathit" style="margin-right:0.07153em;">C</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mclose">)</span><span class="mbin">∗</span><span class="mopen">[</span><span class="mopen">(</span><span class="mord reset-textstyle displaystyle textstyle uncramped"><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span><span class="mfrac"><span class="vlist"><span style="top:0.686em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle cramped"><span class="mord textstyle cramped"><span class="mord mathrm">2</span></span></span></span><span style="top:-0.22999999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped frac-line"></span></span><span style="top:-0.677em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle textstyle uncramped"><span class="mord textstyle uncramped"><span class="mord mathit">n</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="sizing reset-size5 size5 reset-textstyle textstyle uncramped nulldelimiter"></span></span><span class="mclose">)</span><span class="mclose">!</span><span class="mclose"><span class="mclose">]</span><span class="vlist"><span style="top:-0.413em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></p>
+<ul>
+<li>法2 ~ n：转自http://www.matrix67.com/blog/archives/393</li>
+</ul>
+<h2 id="计算阶乘的另一些有趣的算法"><a class="markdownIt-Anchor" href="#计算阶乘的另一些有趣的算法"></a> 计算阶乘的另一些有趣的算法</h2>
+<ul>
+<li>一个正整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>的阶乘就是前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>个正整数的乘积，我们通常需要<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathrm">1</span></span></span></span>次乘法操作来算出精确的值。不像等差数列求和、<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span></span></span></span>的<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>次幂之类的东西，目前求阶乘还没有什么巨牛无比的高效算法，我们所能做的仅仅是做一些小的优化。</li>
+</ul>
+<h3 id="更少的乘法运算次数"><a class="markdownIt-Anchor" href="#更少的乘法运算次数"></a> 更少的乘法运算次数？</h3>
+<ul>
+<li>
+<p>在高精度运算中，乘法计算的速度远远慢于加减法，因此我们有必要减少乘法运算的次数。下面我将做一个非常简单的变换，使得计算阶乘只需要<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">n/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span></span></span></span>次乘法。继续看下去之前，你能自己想到这个算法来吗？</p>
+</li>
+<li>
+<p>我们可以把一个数的阶乘转换为若干个平方差的积。例如，假如我想求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>9</mn><mo>!</mo></mrow><annotation encoding="application/x-tex">9!</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">9</span><span class="mclose">!</span></span></span></span>，我可以把前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">9</span></span></span></span>个正整数的乘积写成这个样子：</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">   1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9</span><br><span class="line">= (5-4) * (5-3) * (5-2) * (5-1) * 5 * (5+1) * (5+2) * (5+3) * (5+4)</span><br><span class="line">= (5-1) * (5+1) * (5-2) * (5+2) * (5-3) * (5+3) * (5-4) * (5+4) * 5</span><br><span class="line">= (5^2 – 1^2) * (5^2 – 2^2) * (5^2 – 3^2) * (5^2 – 4^2) * 5</span><br></pre></td></tr></table></figure>
+<ul>
+<li>注意到一个有趣的事实：上面的四个平方差算出来分别是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mn>4</mn><mo separator="true">,</mo><mn>2</mn><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mn>6</mn><mo separator="true">,</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">24, 21, 16, 9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">4</span><span class="mpunct">,</span><span class="mord mathrm">2</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mord mathrm">6</span><span class="mpunct">,</span><span class="mord mathrm">9</span></span></span></span>，它们之间的差正好是连续的奇数（因为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">n^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>等于前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>个正奇数的和）。因此，我们可以用初始数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn><msup><mo>)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">(n/2)^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mopen">(</span><span class="mord mathit">n</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span><span class="mclose"><span class="mclose">)</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>不断减去一个个的正奇数，求出所有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">n/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span></span></span></span>个平方差，再用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mi mathvariant="normal">/</mi><mn>2</mn></mrow><annotation encoding="application/x-tex">n/2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mord mathrm">/</span><span class="mord mathrm">2</span></span></span></span>次乘法把它们乘起来。这种算法实现起来非常简单，并且（当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>不大时）同样只需要单精度乘高精度，但需要的乘法次数大大减少了。</li>
+</ul>
+<h3 id="更少的总运算次数"><a class="markdownIt-Anchor" href="#更少的总运算次数"></a> 更少的总运算次数？</h3>
+<ul>
+<li>尽量提取阶乘中的因子<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span></span></span></span>，我们可以得到另一种阶乘运算的优化方法。这很可能是不需要分解质因数的阶乘算法中最快的一种。<br>
+假如我们需要计算<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mn>0</mn><mo>!</mo></mrow><annotation encoding="application/x-tex">20!</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mclose">!</span></span></span></span>，我们可以把<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">0</span></span></span></span>拆成若干组正奇数的乘积：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * 10 * 11 * 12 * 13 * 14 * 15 * 16 * 17 * 18 * 19 * 20</span><br><span class="line">= 1 * 3 * 5 * 7 * 9 * 11 * 13 * 15 * 17 * 19 * 2 * 4 * 6 * 8 * 10 * 12 * 14 * 16 * 18 * 20</span><br><span class="line">= 1 * 3 * 5 * 7 * 9 * 11 * 13 * 15 * 17 * 19 * 1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 * 10 * 2^10</span><br><span class="line">= 1 * 3 * 5 * 7 * 9 * 11 * 13 * 15 * 17 * 19 * 1 * 3 * 5 * 7 * 9 * 2 * 4 * 6 * 8 * 10 * 2^10</span><br><span class="line">= 1 * 3 * 5 * 7 * 9 * 11 * 13 * 15 * 17 * 19 * 1 * 3 * 5 * 7 * 9 * 1 * 2 * 3 * 4 * 5 * 2^15</span><br><span class="line">= 1 * 3 * 5 * 7 * 9 * 11 * 13 * 15 * 17 * 19 * 1 * 3 * 5 * 7 * 9 * 1 * 3 * 5 * 2 * 4 * 2^15</span><br><span class="line">= 1 * 3 * 5 * 7 * 9 * 11 * 13 * 15 * 17 * 19 * 1 * 3 * 5 * 7 * 9 * 1 * 3 * 5 * 1 * 2 * 2^17</span><br><span class="line">= 1 * 3 * 5 * 7 * 9 * 11 * 13 * 15 * 17 * 19 * 1 * 3 * 5 * 7 * 9 * 1 * 3 * 5 * 1 * 2^18</span><br></pre></td></tr></table></figure>
+<ul>
+<li>只需要一次累乘就可以求到每一组奇数的乘积，最后再花费<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>o</mi><msubsup><mi>g</mi><mn>2</mn><mi>n</mi></msubsup></mrow><annotation encoding="application/x-tex">log_2^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.9425479999999999em;vertical-align:-0.24810799999999997em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.01968em;">l</span><span class="mord mathit">o</span><span class="mord"><span class="mord mathit" style="margin-right:0.03588em;">g</span><span class="vlist"><span style="top:0.24810799999999997em;margin-left:-0.03588em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle cramped"><span class="mord mathrm">2</span></span></span><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathit">n</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>次乘法把它们全部乘起来。最后的那个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mn>2</mn><mrow><mn>1</mn><mn>8</mn></mrow></msup></mrow><annotation encoding="application/x-tex">2^{18}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord"><span class="mord mathrm">2</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord scriptstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">8</span></span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span>也可以二分计算出来。真正的代码还有很多细节上的优化，另外还借用了递归使得操作变得更加简便。你可以在本文最后附的那个链接里去找Split-Recursive算法。</li>
+</ul>
+<h3 id="还能再快一点么"><a class="markdownIt-Anchor" href="#还能再快一点么"></a> 还能再快一点么？</h3>
+<ul>
+<li>继续扩展上面的算法，我们可以想到，如果把每个数的质因数都分解出来，并且统计每种质因子有多少个，我们就可以多次使用二分求幂，再把它们的结果乘起来。注意这里并不是真的要老老实实地去分解每个数的质因子。对于每个质数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>，我们可以很快算出前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>个正整数一共包含有多少个质因子<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">x</span></span></span></span>（记得如何求<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>!</mo></mrow><annotation encoding="application/x-tex">n!</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mclose">!</span></span></span></span>末尾有多少个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">0</span></span></span></span>么）。这种算法的效率相当高，已经能够满足大多数人的需要了。</li>
+</ul>
+<h3 id="另一种诡异的阶乘算法"><a class="markdownIt-Anchor" href="#另一种诡异的阶乘算法"></a> 另一种诡异的阶乘算法：</h3>
+<ul>
+<li>这个算法可能是所有有名字的阶乘算法中最慢的一个了（Additive Moessner算法），它对一个数列进行重复的累加操作，一次次地计算前缀和，总共将花费<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>次加法操作。但是，令人费解的是，这个简单的程序为什么可以输出前<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>个正整数的阶乘呢？</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a[0]:=1;</span><br><span class="line">for i:=1 to n do</span><br><span class="line">begin</span><br><span class="line">   a[i]:=0;</span><br><span class="line">   for j:=n downto 1 do</span><br><span class="line">   begin</span><br><span class="line">      for k:=1 to j do</span><br><span class="line">         a[k]:=a[k]+a[k-1]</span><br><span class="line">      write(a[i],&apos; &apos;);</span><br><span class="line">   end;</span><br><span class="line">end;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>我在网上搜索相关的东西时找到了另一个有趣的东西。对一个初始时全为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.64444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span></span></span></span>的数列反复进行这两个操作：累加求前缀和，然后以<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>2</mn><mo separator="true">,</mo><mn>3</mn><mo separator="true">,</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">1,2,3,...</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">2</span><span class="mpunct">,</span><span class="mord mathrm">3</span><span class="mpunct">,</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span></span>的间隔划掉其中一部分数（即划去所有位置编号为三角形数的数）形成新的序列。类似的数列操作方法最先由Alfred Moessner提出的，我们这里不妨把它叫做Moessner数列。你会发现，第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.43056em;"></span><span class="strut bottom" style="height:0.43056em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span></span></span></span>轮操作开始前，数列的第一个数恰好是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>!</mo></mrow><annotation encoding="application/x-tex">n!</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.69444em;"></span><span class="strut bottom" style="height:0.69444em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">n</span><span class="mclose">!</span></span></span></span> 。看看下面的例子吧：</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtable><mtr><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>3</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>9</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>0</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>3</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>4</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>5</mn></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>9</mn></mrow></mtd><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mn>1</mn><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>3</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>4</mn></mrow></mtd><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>4</mn></mrow></mtd><mtd><mrow><mn>5</mn></mrow></mtd><mtd><mrow><mn>7</mn></mrow></mtd><mtd><mrow><mn>8</mn></mrow></mtd><mtd><mrow><mn>9</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>2</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>3</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>4</mn></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>1</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>8</mn></mrow></mtd><mtd><mrow><mn>2</mn><mn>6</mn></mrow></mtd><mtd><mrow><mn>3</mn><mn>5</mn></mrow></mtd><mtd><mrow><mn>4</mn><mn>6</mn></mrow></mtd><mtd><mrow><mn>5</mn><mn>8</mn></mrow></mtd><mtd><mrow><mn>7</mn><mn>1</mn></mrow></mtd><mtd><mrow><mn>8</mn><mn>5</mn></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mn>1</mn><mn>8</mn></mrow></mtd><mtd><mrow><mn>2</mn><mn>6</mn></mrow></mtd><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mn>4</mn><mn>6</mn></mrow></mtd><mtd><mrow><mn>5</mn><mn>8</mn></mrow></mtd><mtd><mrow><mn>7</mn><mn>1</mn></mrow></mtd><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>8</mn></mrow></mtd><mtd><mrow><mn>2</mn><mn>6</mn></mrow></mtd><mtd><mrow><mn>4</mn><mn>6</mn></mrow></mtd><mtd><mrow><mn>5</mn><mn>8</mn></mrow></mtd><mtd><mrow><mn>7</mn><mn>1</mn></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mn>6</mn></mrow></mtd><mtd><mrow><mn>2</mn><mn>4</mn></mrow></mtd><mtd><mrow><mn>5</mn><mn>0</mn></mrow></mtd><mtd><mrow><mn>9</mn><mn>6</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>5</mn><mn>4</mn></mrow></mtd><mtd><mrow><mn>2</mn><mn>2</mn><mn>5</mn></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mn>2</mn><mn>4</mn></mrow></mtd><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mn>9</mn><mn>6</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>5</mn><mn>4</mn></mrow></mtd><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn><mn>4</mn></mrow></mtd><mtd><mrow><mn>9</mn><mn>6</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>5</mn><mn>4</mn></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn><mn>4</mn></mrow></mtd><mtd><mrow><mn>1</mn><mn>2</mn><mn>0</mn></mrow></mtd><mtd><mrow><mn>2</mn><mn>7</mn><mn>4</mn></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mn>1</mn><mn>2</mn><mn>0</mn></mrow></mtd><mtd><mrow><mo>∗</mo></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mn>1</mn><mn>2</mn><mn>0</mn></mrow></mtd><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi></mrow></mtd></mtr></mtable></mrow><annotation encoding="application/x-tex">\begin{matrix}
+1&amp;1&amp;1&amp;1&amp;1&amp;1&amp;1&amp;1&amp;1&amp;1&amp;1&amp;1&amp;1&amp;1&amp;1&amp;...\\
+1&amp;2&amp;3&amp;4&amp;5&amp;6&amp;7&amp;8&amp;9&amp;10&amp;11&amp;12&amp;13&amp;14&amp;15&amp;...\\
+*&amp;2&amp;*&amp;4&amp;5&amp;*&amp;7&amp;8&amp;9&amp;*&amp;11&amp;12&amp;13&amp;14&amp;*&amp;...\\
+2&amp;4&amp;5&amp;7&amp;8&amp;9&amp;11&amp;12&amp;13&amp;14&amp;...\\
+2&amp;6&amp;11&amp;18&amp;26&amp;35&amp;46&amp;58&amp;71&amp;85&amp;...\\
+*&amp;6&amp;*&amp;18&amp;26&amp;*&amp;46&amp;58&amp;71&amp;*&amp;...\\
+6&amp;18&amp;26&amp;46&amp;58&amp;71&amp;...\\
+6&amp;24&amp;50&amp;96&amp;154&amp;225&amp;...\\
+*&amp;24&amp;*&amp;96&amp;154&amp;*&amp;...\\
+24&amp;96&amp;154&amp;...\\
+24&amp;120&amp;274&amp;...\\
+*&amp;120&amp;*&amp;...\\
+120&amp;...\\
+.....
+\end{matrix}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:8.649999999999999em;"></span><span class="strut bottom" style="height:16.799999999999997em;vertical-align:-8.149999999999999em;"></span><span class="base displaystyle textstyle uncramped"><span class="mord"><span class="mtable"><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span style="top:-0.6099999999999974em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:0.5900000000000019em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:1.7900000000000011em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">4</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">4</span></span></span><span style="top:5.389999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span style="top:6.589999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span></span></span><span style="top:7.789999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:-0.6099999999999974em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">8</span></span></span><span style="top:0.5900000000000019em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">4</span></span></span><span style="top:1.7900000000000011em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">4</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">9</span><span class="mord mathrm">6</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span></span></span><span style="top:5.389999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span></span></span><span style="top:6.589999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">1</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span style="top:-0.6099999999999974em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">6</span></span></span><span style="top:0.5900000000000019em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span><span class="mord mathrm">0</span></span></span><span style="top:1.7900000000000011em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">5</span><span class="mord mathrm">4</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">7</span><span class="mord mathrm">4</span></span></span><span style="top:5.389999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">8</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">8</span></span></span><span style="top:-0.6099999999999974em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span><span class="mord mathrm">6</span></span></span><span style="top:0.5900000000000019em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">9</span><span class="mord mathrm">6</span></span></span><span style="top:1.7900000000000011em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">9</span><span class="mord mathrm">6</span></span></span><span style="top:2.9900000000000007em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span style="top:4.1899999999999995em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span style="top:5.389999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">6</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">6</span></span></span><span style="top:-0.6099999999999974em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span><span class="mord mathrm">8</span></span></span><span style="top:0.5900000000000019em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">5</span><span class="mord mathrm">4</span></span></span><span style="top:1.7900000000000011em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">5</span><span class="mord mathrm">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">6</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">9</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">3</span><span class="mord mathrm">5</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span style="top:-0.6099999999999974em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span><span class="mord mathrm">1</span></span></span><span style="top:0.5900000000000019em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">2</span><span class="mord mathrm">5</span></span></span><span style="top:1.7900000000000011em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">1</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span><span class="mord mathrm">6</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">4</span><span class="mord mathrm">6</span></span></span><span style="top:-0.6099999999999974em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span style="top:0.5900000000000019em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span style="top:1.7900000000000011em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">2</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span><span class="mord mathrm">8</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">5</span><span class="mord mathrm">8</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">9</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">9</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">3</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span><span class="mord mathrm">1</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">7</span><span class="mord mathrm">1</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">0</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">4</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">8</span><span class="mord mathrm">5</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">1</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">1</span></span></span><span style="top:-4.209999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span style="top:-3.0099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span style="top:-1.8099999999999976em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">2</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">2</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">3</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">4</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">4</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">5</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord">∗</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="arraycolsep" style="width:0.5em;"></span><span class="arraycolsep" style="width:0.5em;"></span><span class="col-align-c"><span class="vlist"><span style="top:-7.809999999999999em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span style="top:-6.6099999999999985em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span style="top:-5.409999999999998em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="mord displaystyle textstyle uncramped"><span class="mord mathrm">.</span><span class="mord mathrm">.</span><span class="mord mathrm">.</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span></span></span></span></span></span></span></p>
+<ul>
+<li>
+<p>当然，发现前面<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>的程序和这个Moessner数列的关联时我很是吃了一惊：在前面的程序里，如果你输出每一次i循环末所得到的数列，你会发现输出的这些数正好就是后面这个问题里被我们划掉的数，而它们其实就是第一类Stirling数！</p>
+</li>
+<li>
+<p>这到底是为什么呢？是什么东西把阶乘、第一类Stirling数、Moessner数列和那个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>的程序联系在一起的呢？昨天，我想这个问题想了一天，最后终于想通了。如果把Moessner数列排列成这个样子，一切就恍然大悟了：</p>
+</li>
+<li>
+<p>仔细观察上图，我们会发现：</p>
+<ol>
+<li>按照Moessner数列的定义，每个数都应该等于它左边的数和左上角的数的和（这个“左边”可以跳过若干空格）。例如，35 = 9 + 26，46 = 11 + 35。排成一系列三角形后，每个三角形最右边一列的数就是被划去的数，它永远不能参与它下面的那些行的运算。</li>
+<li>设<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>[</mo><mi>n</mi><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">a[n,i,j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span><span class="mopen">[</span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>表示左起第n个三角形阵列中的第i行右起第j列上的数，则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>[</mo><mi>n</mi><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>]</mo><mo>=</mo><mi>a</mi><mo>[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>j</mi><mo>]</mo><mo>∗</mo><mi>n</mi><mo>+</mo><mi>a</mi><mo>[</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">a[n,i,j]=a[n-1,i-1,j]*n + a[n-1,i,j]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span><span class="mopen">[</span><span class="mord mathit">n</span><span class="mpunct">,</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathit">a</span><span class="mopen">[</span><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit">i</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mbin">∗</span><span class="mord mathit">n</span><span class="mbin">+</span><span class="mord mathit">a</span><span class="mopen">[</span><span class="mord mathit">n</span><span class="mbin">−</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathit">i</span><span class="mpunct">,</span><span class="mord mathit" style="margin-right:0.05724em;">j</span><span class="mclose">]</span></span></span></span>，例如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mn>7</mn><mn>4</mn><mo>=</mo><mn>5</mn><mn>0</mn><mo>∗</mo><mn>5</mn><mo>+</mo><mn>2</mn><mn>4</mn></mrow><annotation encoding="application/x-tex">274=50*5+24</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">2</span><span class="mord mathrm">7</span><span class="mord mathrm">4</span><span class="mrel">=</span><span class="mord mathrm">5</span><span class="mord mathrm">0</span><span class="mbin">∗</span><span class="mord mathrm">5</span><span class="mbin">+</span><span class="mord mathrm">2</span><span class="mord mathrm">4</span></span></span></span>。如果递推时遇到空白位置而它左边隔若干空格的地方还有数的话，则需要用左边的数来补，例如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mn>8</mn><mo>=</mo><mn>4</mn><mo>∗</mo><mn>4</mn><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">18=4*4+2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mord mathrm">8</span><span class="mrel">=</span><span class="mord mathrm">4</span><span class="mbin">∗</span><span class="mord mathrm">4</span><span class="mbin">+</span><span class="mord mathrm">2</span></span></span></span>。对于每个三角形的最后一列来说，这个性质实际上就是第一类Stirling数的递推关系，因此Moessner数列中才会出现第一类Stirling数。</li>
+<li>在第一类Stirling数中，$s(n,1)=n! ，也即左起第n个三角形最底端的那个数等于n!$。从上面的第二个性质来看，这也是显然的。</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.8141079999999999em;"></span><span class="strut bottom" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">n</span><span class="vlist"><span style="top:-0.363em;margin-right:0.05em;"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span><span class="reset-textstyle scriptstyle uncramped"><span class="mord mathrm">3</span></span></span><span class="baseline-fix"><span class="fontsize-ensurer reset-size5 size5"><span style="font-size:0em;">​</span></span>​</span></span></span><span class="mclose">)</span></span></span></span>的算法实际上就是在绘制上面这个图。每一次<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span>循环末，我们得到的序列是第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.65952em;vertical-align:0em;"></span><span class="base textstyle uncramped"><span class="mord mathit">i</span></span></span></span>个三角形中每一行左起第<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>j</mi></mrow><annotation encoding="application/x-tex">j</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.65952em;"></span><span class="strut bottom" style="height:0.85396em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathit" style="margin-right:0.05724em;">j</span></span></span></span>个数组成的序列。例如，计算第5个三角形内的数时，程序首先累加出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mn>1</mn><mo separator="true">,</mo><mn>4</mn><mn>6</mn><mo separator="true">,</mo><mn>9</mn><mn>6</mn><mo separator="true">,</mo><mn>1</mn><mn>2</mn><mn>0</mn><mo separator="true">,</mo><mn>1</mn><mn>2</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">1, 11, 46, 96, 120, 120</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">4</span><span class="mord mathrm">6</span><span class="mpunct">,</span><span class="mord mathrm">9</span><span class="mord mathrm">6</span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span></span></span></span>，这样便算出了<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>[</mo><mn>5</mn><mo>]</mo><mo>=</mo><mn>1</mn><mn>2</mn><mn>0</mn></mrow><annotation encoding="application/x-tex">a[5]=120</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span><span class="mopen">[</span><span class="mord mathrm">5</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mord mathrm">0</span></span></span></span>，数列的前5个数再次累加即得到<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mn>2</mn><mo separator="true">,</mo><mn>5</mn><mn>8</mn><mo separator="true">,</mo><mn>1</mn><mn>5</mn><mn>4</mn><mo separator="true">,</mo><mn>2</mn><mn>7</mn><mn>4</mn></mrow><annotation encoding="application/x-tex">1, 12, 58, 154, 274</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.64444em;"></span><span class="strut bottom" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="base textstyle uncramped"><span class="mord mathrm">1</span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mpunct">,</span><span class="mord mathrm">5</span><span class="mord mathrm">8</span><span class="mpunct">,</span><span class="mord mathrm">1</span><span class="mord mathrm">5</span><span class="mord mathrm">4</span><span class="mpunct">,</span><span class="mord mathrm">2</span><span class="mord mathrm">7</span><span class="mord mathrm">4</span></span></span></span>，由此算出<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>[</mo><mn>4</mn><mo>]</mo><mo>=</mo><mn>2</mn><mn>7</mn><mn>4</mn></mrow><annotation encoding="application/x-tex">a[4]=274</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="strut" style="height:0.75em;"></span><span class="strut bottom" style="height:1em;vertical-align:-0.25em;"></span><span class="base textstyle uncramped"><span class="mord mathit">a</span><span class="mopen">[</span><span class="mord mathrm">4</span><span class="mclose">]</span><span class="mrel">=</span><span class="mord mathrm">2</span><span class="mord mathrm">7</span><span class="mord mathrm">4</span></span></span></span>。<br>
+第二个性质可以利用第一个性质进行数学归纳法证明，证明很简单，我就不多说了。现在我尽可能少写一些繁琐的细节，节约一些时间用来复习古代汉语。</li>
+</ol>
+</li>
+</ul>
+<p>查看更多：<br>
+http://www.luschny.de/math/factorial/FastFactorialFunctions.htm<br>
+http://www.luschny.de/math/factorial/index.html &lt;—- 巨牛，20多种阶乘算法的代码！</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/算法/">算法</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/数论/">数论</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://mzz.pub/2017/08/01/algorithm/快速阶乘/" data-title="快速阶乘的几种算法 | mzz&#39;s blog" data-tsina class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev">
+ <a href="/2017/08/01/algorithm/POJ1789/" title="POJ1789 - Truck History (最小生成树)">
+  <strong>上一篇：</strong><br>
+  <span>
+  POJ1789 - Truck History (最小生成树)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/07/31/algorithm/快排/" title="快速排序算法">
+ <strong>下一篇：</strong><br> 
+ <span>快速排序算法
+</span>
+</a>
+</div>
+
+</nav>
+
+	  
+
+<!-- gitalk -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "3352072f2ad84717407d",
+    clientSecret: "8ea01d206f36234ab857d6d90f16b85a865e79e3",
+    repo: "mzz2017.github.io",
+    owner: "mzz2017",
+    admin: ["mzz2017"],
+    id: decodeURIComponent(location.pathname), // Ensure uniqueness and length less than 50
+    distractionFreeMode: false, // Facebook-like distraction free mode
+    title: document.title.split(" | ")[0]
+  });
+
+  gitalk.render("gitalk-container");
+</script>
+<style type="text/css" rel="stylesheet">
+  #gitalk-container {
+    padding: 10px 20px 50px;
+  }
+</style>
+<!-- gitalk -->
+
+</div>  
+      <div class="openaside">
+  <a class="navbutton" href="#" title="显示侧边栏"></a>
+</div>
+
+ 
+<div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#计算阶乘的另一些有趣的算法"><span class="toc-number">1.</span> <span class="toc-text"> 计算阶乘的另一些有趣的算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更少的乘法运算次数"><span class="toc-number">1.1.</span> <span class="toc-text"> 更少的乘法运算次数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#更少的总运算次数"><span class="toc-number">1.2.</span> <span class="toc-text"> 更少的总运算次数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#还能再快一点么"><span class="toc-number">1.3.</span> <span class="toc-text"> 还能再快一点么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#另一种诡异的阶乘算法"><span class="toc-number">1.4.</span> <span class="toc-text"> 另一种诡异的阶乘算法：</span></a></li></ol></li></ol> 
+</div>
+
+<div id="asidepart">
+  <div class="closeaside">
+    <a class="closebutton" href="#" title="隐藏侧边栏"></a>
+  </div>
+  <aside class="clearfix">
+     
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/2017暑期集训/" title="2017暑期集训">2017暑期集训<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Cloud/" title="Cloud">Cloud<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/VPN/" title="VPN">VPN<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/data-science/" title="data-science">data-science<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ios/" title="ios">ios<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linearAlgebra/" title="linearAlgebra">linearAlgebra<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nlp/" title="nlp">nlp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/rsh/" title="rsh">rsh<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ssh/" title="ssh">ssh<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/安全/" title="安全">安全<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/应试/" title="应试">应试<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/微信小程序/" title="微信小程序">微信小程序<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>23</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/路由器/" title="路由器">路由器<sup>2</sup></a></li>
+		  
+		
+		  
+		
+		</ul>
+</div>
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 15px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 15px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/VPN-网络/" style="font-size: 10px;">VPN 网络</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/data-science/" style="font-size: 12.5px;">data-science</a> <a href="/tags/ios-jailbreak/" style="font-size: 10px;">ios jailbreak</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单调队列/" style="font-size: 10px;">单调队列</a> <a href="/tags/博弈/" style="font-size: 15px;">博弈</a> <a href="/tags/图论/" style="font-size: 17.5px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 12.5px;">排序</a> <a href="/tags/数论/" style="font-size: 20px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/树/" style="font-size: 12.5px;">树</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/笔记-线代/" style="font-size: 10px;">笔记 线代</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 12.5px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/路由器/" style="font-size: 12.5px;">路由器</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="mzz2017" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+</div>
+
+ 
+  </aside>
+</div>
+<iframe id="neteasemusic" style="position: relative; float:left; margin:2em 0 0 3%" frameborder="no" border="0" marginwidth="0" marginheight="0" height="450px" width="297px" src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"></iframe>
+<style type="text/css" rel="stylesheet">
+  .moveMain ~ #neteasemusic {
+    display: none;
+  }
+</style>
+    </div>
+    <footer><div id="footer">
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am with little well content, And a little from thee sent <br>
+			Is enough, with true intent. To be steadfast friend.</p>
+	</section>
+	 
+	<div class="social-font">
+		
+		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/mzz2017" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:m@mzz.pub" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo" style="color: #fff;">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman" style="color: #fff;">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="莫之章" style="color: #fff">莫之章</a>
+		
+		
+		</p>
+		
+		<script type="text/javascript">
+		  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+		  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+		  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+		  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+		  
+		  _st('install','KARTphmFVqNf53QQL7QN','2.0.0');
+		</script>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div style="text-align:center; color:#fff;" class="theme-info">
+博客全站共96.0k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+</span></div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(15,260-$(this).scrollTop()));
+    o.css("right",30);
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+            c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+      c.click();
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(50,295-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1263193610'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263193610%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+<!-- BAIDU_PUSH Begin -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- BAIDU_PUSH End -->
+
+<!-- MathJax Begin -->
+<!-- partial('mathjax') -->
+<!-- MathJax End -->
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css">
+
+<link rel="stylesheet" href="/css/style.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </body>
+</html>

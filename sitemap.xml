@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://mzz.pub/2019/12/13/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/xgboost/</loc>
+    <loc>http://mzz.pub/404.html</loc>
     
-    <lastmod>2019-12-13T15:08:29.293Z</lastmod>
+    <lastmod>2019-12-29T13:54:53.130Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://mzz.pub/2019/12/06/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/numpy/</loc>
     
-    <lastmod>2019-12-13T07:52:21.766Z</lastmod>
+    <lastmod>2019-12-21T07:37:12.713Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2019/12/13/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/xgboost/</loc>
+    
+    <lastmod>2019-12-13T15:08:29.293Z</lastmod>
     
   </url>
   
@@ -30,14 +37,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2019/09/13/%E9%9D%A2%E8%AF%95/%E5%A4%8F%E4%BB%A4%E8%90%A5%E9%9D%A2%E7%BB%8F/</loc>
-    
-    <lastmod>2019-09-14T06:03:53.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/2019/08/28/JustPlay/ssh_wrong/</loc>
+    <loc>http://mzz.pub/2019/08/29/JustPlay/ssh_wrong/</loc>
     
     <lastmod>2019-08-29T06:30:08.128Z</lastmod>
     
@@ -58,14 +58,14 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2019/08/09/algorithm/tip/</loc>
+    <loc>http://mzz.pub/2019/08/10/algorithm/tip/</loc>
     
     <lastmod>2019-08-10T07:39:27.382Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://mzz.pub/2019/08/01/algorithm/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%20%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://mzz.pub/2019/08/02/algorithm/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%20%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2019-08-02T03:06:30.754Z</lastmod>
     
@@ -86,7 +86,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2019/07/22/algorithm/HDU%201288/</loc>
+    <loc>http://mzz.pub/2019/07/23/algorithm/HDU%201288/</loc>
     
     <lastmod>2019-07-22T18:52:54.939Z</lastmod>
     
@@ -114,7 +114,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2019/07/20/algorithm/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/</loc>
+    <loc>http://mzz.pub/2019/07/21/algorithm/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/</loc>
     
     <lastmod>2019-07-21T06:45:25.288Z</lastmod>
     
@@ -170,7 +170,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2019/04/07/JustPlay/rsh/</loc>
+    <loc>http://mzz.pub/2019/04/08/JustPlay/rsh/</loc>
     
     <lastmod>2019-04-07T18:49:42.380Z</lastmod>
     
@@ -191,7 +191,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2018/08/31/JustPlay/PWA%E5%88%9D%E6%8E%A2/</loc>
+    <loc>http://mzz.pub/2018/09/01/JustPlay/PWA%E5%88%9D%E6%8E%A2/</loc>
     
     <lastmod>2019-01-11T09:29:31.506Z</lastmod>
     
@@ -212,14 +212,14 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/08/04/algorithm/51Nod1714/</loc>
+    <loc>http://mzz.pub/2017/08/05/algorithm/51Nod1714/</loc>
     
     <lastmod>2019-01-11T09:29:31.503Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://mzz.pub/2018/06/14/tools/rpx/</loc>
+    <loc>http://mzz.pub/2018/06/15/tools/rpx/</loc>
     
     <lastmod>2019-01-11T09:29:31.502Z</lastmod>
     
@@ -240,7 +240,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2018/05/28/JustPlay/mysqld/</loc>
+    <loc>http://mzz.pub/2018/05/29/JustPlay/mysqld/</loc>
     
     <lastmod>2018-06-20T05:53:37.148Z</lastmod>
     
@@ -261,7 +261,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2018/04/16/algorithm/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E5%BD%92%E7%BA%B3/</loc>
+    <loc>http://mzz.pub/2018/04/17/algorithm/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E5%BD%92%E7%BA%B3/</loc>
     
     <lastmod>2018-04-17T05:22:11.181Z</lastmod>
     
@@ -310,14 +310,14 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/08/27/JAVA/JAVA%E6%95%B0%E7%BB%84%E7%AF%87/</loc>
+    <loc>http://mzz.pub/2017/08/28/JAVA/JAVA%E6%95%B0%E7%BB%84%E7%AF%87/</loc>
     
     <lastmod>2017-08-28T06:46:31.430Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/07/30/algorithm/%E5%BF%AB%E6%8E%92/</loc>
+    <loc>http://mzz.pub/2017/07/31/algorithm/%E5%BF%AB%E6%8E%92/</loc>
     
     <lastmod>2017-08-14T15:09:00.000Z</lastmod>
     
@@ -359,35 +359,28 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/404.html</loc>
-    
-    <lastmod>2017-08-10T11:43:12.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/2017/08/09/algorithm/SG%E5%8D%9A%E5%BC%88%E7%9A%84%E7%89%B9%E7%82%B9%20-%20%E4%B8%A2%E5%8F%B2%E8%92%82%E8%8A%AC%E5%A6%AE%E5%9B%9E%E9%A1%BE/</loc>
+    <loc>http://mzz.pub/2017/08/10/algorithm/SG%E5%8D%9A%E5%BC%88%E7%9A%84%E7%89%B9%E7%82%B9%20-%20%E4%B8%A2%E5%8F%B2%E8%92%82%E8%8A%AC%E5%A6%AE%E5%9B%9E%E9%A1%BE/</loc>
     
     <lastmod>2017-08-10T11:23:56.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/07/31/algorithm/POJ1789/</loc>
+    <loc>http://mzz.pub/2017/08/01/algorithm/POJ1789/</loc>
     
     <lastmod>2017-08-10T11:20:10.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/08/01/algorithm/POJ2349/</loc>
+    <loc>http://mzz.pub/2017/08/02/algorithm/POJ2349/</loc>
     
     <lastmod>2017-08-10T11:18:22.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/08/03/algorithm/SG%E5%8D%9A%E5%BC%88%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://mzz.pub/2017/08/04/algorithm/SG%E5%8D%9A%E5%BC%88%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2017-08-10T11:16:26.000Z</lastmod>
     
@@ -401,7 +394,7 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/07/31/algorithm/%E5%BF%AB%E9%80%9F%E9%98%B6%E4%B9%98/</loc>
+    <loc>http://mzz.pub/2017/08/01/algorithm/%E5%BF%AB%E9%80%9F%E9%98%B6%E4%B9%98/</loc>
     
     <lastmod>2017-08-10T10:33:58.000Z</lastmod>
     

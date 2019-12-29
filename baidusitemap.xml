@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://mzz.pub/2019/12/13/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/xgboost/</loc>
-    <lastmod>2019-12-13</lastmod>
-  </url>  <url>
     <loc>http://mzz.pub/2019/12/06/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/numpy/</loc>
+    <lastmod>2019-12-21</lastmod>
+  </url>  <url>
+    <loc>http://mzz.pub/2019/12/13/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/xgboost/</loc>
     <lastmod>2019-12-13</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2018/09/10/JustPlay/EasyConnect/</loc>
@@ -13,10 +13,7 @@
     <loc>http://mzz.pub/2019/10/17/JustPlay/R7000_NODE_NPM/</loc>
     <lastmod>2019-10-30</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2019/09/13/%E9%9D%A2%E8%AF%95/%E5%A4%8F%E4%BB%A4%E8%90%A5%E9%9D%A2%E7%BB%8F/</loc>
-    <lastmod>2019-09-14</lastmod>
-  </url>  <url>
-    <loc>http://mzz.pub/2019/08/28/JustPlay/ssh_wrong/</loc>
+    <loc>http://mzz.pub/2019/08/29/JustPlay/ssh_wrong/</loc>
     <lastmod>2019-08-29</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2019/08/23/JustPlay/jailbreak/</loc>
@@ -25,10 +22,10 @@
     <loc>http://mzz.pub/2019/07/20/algorithm/%E7%BA%BF%E6%AE%B5%E4%BA%A4%E7%82%B9/</loc>
     <lastmod>2019-08-10</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2019/08/09/algorithm/tip/</loc>
+    <loc>http://mzz.pub/2019/08/10/algorithm/tip/</loc>
     <lastmod>2019-08-10</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2019/08/01/algorithm/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%20%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://mzz.pub/2019/08/02/algorithm/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90%20%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2019-08-02</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2019/05/06/linearAlgebra/linearAlgebra/</loc>
@@ -37,7 +34,7 @@
     <loc>http://mzz.pub/2019/07/24/%E9%9D%A2%E8%AF%95/%E5%86%85%E5%AD%98%E4%B8%8D%E8%B6%B3%E4%BA%A7%E7%94%9F%E7%9A%84%E8%8B%A5%E5%B9%B2%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/</loc>
     <lastmod>2019-07-24</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2019/07/22/algorithm/HDU%201288/</loc>
+    <loc>http://mzz.pub/2019/07/23/algorithm/HDU%201288/</loc>
     <lastmod>2019-07-22</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2019/07/21/algorithm/dp%E6%80%BB%E7%BB%93/</loc>
@@ -49,7 +46,7 @@
     <loc>http://mzz.pub/2019/07/22/algorithm/OpenJ_Bailian%20-%201062/</loc>
     <lastmod>2019-07-22</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2019/07/20/algorithm/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/</loc>
+    <loc>http://mzz.pub/2019/07/21/algorithm/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/</loc>
     <lastmod>2019-07-21</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2019/07/20/algorithm/%E7%BA%A6%E6%95%B0%E6%B1%82%E5%92%8C/</loc>
@@ -73,7 +70,7 @@
     <loc>http://mzz.pub/2019/05/07/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/nlp/</loc>
     <lastmod>2019-05-16</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2019/04/07/JustPlay/rsh/</loc>
+    <loc>http://mzz.pub/2019/04/08/JustPlay/rsh/</loc>
     <lastmod>2019-04-07</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2019/03/31/JustPlay/OAuth%E5%88%9D%E6%8E%A2/</loc>
@@ -82,7 +79,7 @@
     <loc>http://mzz.pub/2017/12/22/JustPlay/MobileUbuntu/</loc>
     <lastmod>2019-01-11</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2018/08/31/JustPlay/PWA%E5%88%9D%E6%8E%A2/</loc>
+    <loc>http://mzz.pub/2018/09/01/JustPlay/PWA%E5%88%9D%E6%8E%A2/</loc>
     <lastmod>2019-01-11</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2017/08/15/algorithm/%E5%BC%BA%E8%BF%9E%E9%80%9A/</loc>
@@ -91,16 +88,16 @@
     <loc>http://mzz.pub/2017/12/31/JAVA/SpringMVC/</loc>
     <lastmod>2019-01-11</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2017/08/04/algorithm/51Nod1714/</loc>
+    <loc>http://mzz.pub/2017/08/05/algorithm/51Nod1714/</loc>
     <lastmod>2019-01-11</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2018/06/14/tools/rpx/</loc>
+    <loc>http://mzz.pub/2018/06/15/tools/rpx/</loc>
     <lastmod>2019-01-11</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2018/03/11/JustPlay/OpenVPN%E8%AE%BE%E7%BD%AE%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86/</loc>
     <lastmod>2019-01-06</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2018/05/28/JustPlay/mysqld/</loc>
+    <loc>http://mzz.pub/2018/05/29/JustPlay/mysqld/</loc>
     <lastmod>2018-06-20</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2018/06/05/%E5%BA%94%E8%AF%95/%E8%AE%A1%E7%BB%84%E8%80%83%E7%82%B9%E5%BD%92%E7%BA%B3/</loc>
@@ -109,7 +106,7 @@
     <loc>http://mzz.pub/2018/05/14/JustPlay/jenkins/</loc>
     <lastmod>2018-05-16</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2018/04/16/algorithm/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E5%BD%92%E7%BA%B3/</loc>
+    <loc>http://mzz.pub/2018/04/17/algorithm/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E5%BD%92%E7%BA%B3/</loc>
     <lastmod>2018-04-17</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2018/03/05/algorithm/%E6%89%87%E5%BD%A2%E6%B6%82%E8%89%B2/</loc>
@@ -130,31 +127,31 @@
     <loc>http://mzz.pub/2017/08/28/JAVA/JAVA%E4%BC%A0%E5%8F%82/</loc>
     <lastmod>2017-08-28</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2017/08/27/JAVA/JAVA%E6%95%B0%E7%BB%84%E7%AF%87/</loc>
+    <loc>http://mzz.pub/2017/08/28/JAVA/JAVA%E6%95%B0%E7%BB%84%E7%AF%87/</loc>
     <lastmod>2017-08-28</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2017/07/30/algorithm/%E5%BF%AB%E6%8E%92/</loc>
+    <loc>http://mzz.pub/2017/07/31/algorithm/%E5%BF%AB%E6%8E%92/</loc>
     <lastmod>2017-08-14</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2017/08/12/algorithm/2017%20SHU%208.12%20%E4%B8%AA%E4%BA%BA%E8%B5%9B/</loc>
     <lastmod>2017-08-14</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2017/08/09/algorithm/SG%E5%8D%9A%E5%BC%88%E7%9A%84%E7%89%B9%E7%82%B9%20-%20%E4%B8%A2%E5%8F%B2%E8%92%82%E8%8A%AC%E5%A6%AE%E5%9B%9E%E9%A1%BE/</loc>
+    <loc>http://mzz.pub/2017/08/10/algorithm/SG%E5%8D%9A%E5%BC%88%E7%9A%84%E7%89%B9%E7%82%B9%20-%20%E4%B8%A2%E5%8F%B2%E8%92%82%E8%8A%AC%E5%A6%AE%E5%9B%9E%E9%A1%BE/</loc>
     <lastmod>2017-08-10</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2017/07/31/algorithm/POJ1789/</loc>
+    <loc>http://mzz.pub/2017/08/01/algorithm/POJ1789/</loc>
     <lastmod>2017-08-10</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2017/08/01/algorithm/POJ2349/</loc>
+    <loc>http://mzz.pub/2017/08/02/algorithm/POJ2349/</loc>
     <lastmod>2017-08-10</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2017/08/03/algorithm/SG%E5%8D%9A%E5%BC%88%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://mzz.pub/2017/08/04/algorithm/SG%E5%8D%9A%E5%BC%88%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2017-08-10</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2017/08/07/algorithm/%E6%8E%92%E5%BA%8F%E7%AB%A0%E8%8A%82/</loc>
     <lastmod>2017-08-10</lastmod>
   </url>  <url>
-    <loc>http://mzz.pub/2017/07/31/algorithm/%E5%BF%AB%E9%80%9F%E9%98%B6%E4%B9%98/</loc>
+    <loc>http://mzz.pub/2017/08/01/algorithm/%E5%BF%AB%E9%80%9F%E9%98%B6%E4%B9%98/</loc>
     <lastmod>2017-08-10</lastmod>
   </url>
 </urlset>
