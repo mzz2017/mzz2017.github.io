@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://mzz.pub/2017/08/06/JustPlay/blog/</loc>
+    
+    <lastmod>2020-01-14T15:22:32.614Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://mzz.pub/404.html</loc>
     
-    <lastmod>2019-12-29T13:54:53.130Z</lastmod>
+    <lastmod>2020-01-14T15:22:32.604Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://mzz.pub/2019/12/06/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/numpy/</loc>
     
-    <lastmod>2019-12-21T07:37:12.713Z</lastmod>
+    <lastmod>2020-01-09T12:34:20.006Z</lastmod>
     
   </url>
   
@@ -289,13 +296,6 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2017/08/06/JustPlay/blog/</loc>
-    
-    <lastmod>2017-12-30T08:49:27.809Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://mzz.pub/2017/10/25/cpp/cpp%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81%E7%AB%A0%E8%8A%82%E5%B0%8F%E7%BB%93/</loc>
     
     <lastmod>2017-10-25T13:49:53.505Z</lastmod>
@@ -408,14 +408,14 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/neteasemusic.html</loc>
+    <loc>http://mzz.pub/google902a41086ff81836.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://mzz.pub/google902a41086ff81836.html</loc>
+    <loc>http://mzz.pub/neteasemusic.html</loc>
     
     <lastmod>2017-08-10T09:22:26.000Z</lastmod>
     

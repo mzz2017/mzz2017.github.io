@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://mzz.pub/2017/08/06/JustPlay/blog/</loc>
+    <lastmod>2020-01-14</lastmod>
+  </url>  <url>
     <loc>http://mzz.pub/2019/12/06/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/numpy/</loc>
-    <lastmod>2019-12-21</lastmod>
+    <lastmod>2020-01-09</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2019/12/13/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/xgboost/</loc>
     <lastmod>2019-12-13</lastmod>
@@ -117,9 +120,6 @@
   </url>  <url>
     <loc>http://mzz.pub/2018/01/27/JustPlay/ownCloud/</loc>
     <lastmod>2018-01-27</lastmod>
-  </url>  <url>
-    <loc>http://mzz.pub/2017/08/06/JustPlay/blog/</loc>
-    <lastmod>2017-12-30</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2017/10/25/cpp/cpp%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81%E7%AB%A0%E8%8A%82%E5%B0%8F%E7%BB%93/</loc>
     <lastmod>2017-10-25</lastmod>
