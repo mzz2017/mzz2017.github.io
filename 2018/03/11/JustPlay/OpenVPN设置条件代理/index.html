@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-06T06:24:49.477Z">
+<meta property="og:updated_time" content="2020-03-04T16:57:33.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenVPN设置条件代理的方法">
 <meta name="twitter:description" content="引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。">
@@ -160,8 +160,8 @@
 <blockquote>
 <p><a href="https://wiki.deepin.org/index.php?title=%E8%87%AA%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F" target="_blank" rel="noopener"><em><strong>使用systemd执行rc.local</strong></em></a></p>
 <p>在使用了systemd作为启动器的系统（如较新版的deepin）中，默认不包含rc.local文件。此时请在/etc目录下以管理员权限创建一个名为rc.local的纯文本文件，并写入如下内容：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment">#!/bin/bash</span></span><br><span class="line">&gt; <span class="comment"># rc.local config file created by use</span></span><br><span class="line">&gt;</span><br><span class="line">&gt; 把你需要执行的命令写在这里 </span><br><span class="line">&gt;</span><br><span class="line">&gt; <span class="keyword">exit</span> <span class="number">0</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="comment"># rc.local config file created by use</span></span><br><span class="line"></span><br><span class="line">把你需要执行的命令写在这里 </span><br><span class="line"><span class="keyword">exit</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>保存后，赋予该文件可执行权限：<code>sudo chmod +x /etc/rc.local</code>。下次重启时，systemd就会自动执行rc.local里面的命令了</p>
 </blockquote>
@@ -342,7 +342,7 @@
 		  
 		
 		  
-			<li><a href="/categories/网络/" title="网络">网络<sup>1</sup></a></li>
+			<li><a href="/categories/网络/" title="网络">网络<sup>3</sup></a></li>
 		  
 		
 		  
@@ -355,7 +355,7 @@
   <div class="tagcloudlist">
     <p class="asidetitle">标签云</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 15px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 15px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/VPN-网络/" style="font-size: 10px;">VPN 网络</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/data-science/" style="font-size: 12.5px;">data-science</a> <a href="/tags/ios-jailbreak/" style="font-size: 10px;">ios jailbreak</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单调队列/" style="font-size: 10px;">单调队列</a> <a href="/tags/博弈/" style="font-size: 15px;">博弈</a> <a href="/tags/图论/" style="font-size: 17.5px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 12.5px;">排序</a> <a href="/tags/数论/" style="font-size: 20px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/树/" style="font-size: 12.5px;">树</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/笔记-线代/" style="font-size: 10px;">笔记 线代</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 12.5px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/路由器/" style="font-size: 12.5px;">路由器</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 15px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/OAuth-网络-安全/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG博弈/" style="font-size: 15px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/VPN-网络/" style="font-size: 10px;">VPN 网络</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/data-science/" style="font-size: 12.5px;">data-science</a> <a href="/tags/ios-jailbreak/" style="font-size: 10px;">ios jailbreak</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/前端/" style="font-size: 10px;">前端</a> <a href="/tags/单调队列/" style="font-size: 10px;">单调队列</a> <a href="/tags/博弈/" style="font-size: 15px;">博弈</a> <a href="/tags/图论/" style="font-size: 17.5px;">图论</a> <a href="/tags/夹逼思想/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/巴什博弈/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/强连通/" style="font-size: 10px;">强连通</a> <a href="/tags/微信小程序/" style="font-size: 10px;">微信小程序</a> <a href="/tags/拓扑排序/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/排列组合/" style="font-size: 10px;">排列组合</a> <a href="/tags/排序/" style="font-size: 12.5px;">排序</a> <a href="/tags/数论/" style="font-size: 20px;">数论</a> <a href="/tags/最小生成树/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/最短路径/" style="font-size: 10px;">最短路径</a> <a href="/tags/树/" style="font-size: 12.5px;">树</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/笔记-线代/" style="font-size: 10px;">笔记 线代</a> <a href="/tags/组合数/" style="font-size: 10px;">组合数</a> <a href="/tags/网络/" style="font-size: 15px;">网络</a> <a href="/tags/置换群/" style="font-size: 10px;">置换群</a> <a href="/tags/计算几何/" style="font-size: 12.5px;">计算几何</a> <a href="/tags/计组/" style="font-size: 10px;">计组</a> <a href="/tags/贪心/" style="font-size: 10px;">贪心</a> <a href="/tags/路由器/" style="font-size: 12.5px;">路由器</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
     </div>
   </div>
   
@@ -428,7 +428,7 @@
 </div>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共97.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共99.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>

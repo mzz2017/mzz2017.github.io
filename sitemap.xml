@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://mzz.pub/2019/03/31/JustPlay/OAuth%E5%88%9D%E6%8E%A2/</loc>
+    <loc>http://mzz.pub/2020/03/19/JustPlay/esxi-synology-hard-accelerate/</loc>
     
-    <lastmod>2020-02-01T06:38:03.186Z</lastmod>
+    <lastmod>2020-03-18T18:52:09.977Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2020/03/18/JustPlay/ipforward/</loc>
+    
+    <lastmod>2020-03-18T18:08:17.296Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://mzz.pub/2020/01/15/JustPlay/openLTE/</loc>
     
-    <lastmod>2020-01-15T17:13:43.375Z</lastmod>
+    <lastmod>2020-03-04T18:52:18.449Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2018/03/11/JustPlay/OpenVPN%E8%AE%BE%E7%BD%AE%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86/</loc>
+    
+    <lastmod>2020-03-04T16:57:33.420Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2019/07/21/algorithm/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/</loc>
+    
+    <lastmod>2020-03-04T16:50:51.345Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://mzz.pub/2019/03/31/JustPlay/OAuth%E5%88%9D%E6%8E%A2/</loc>
+    
+    <lastmod>2020-02-01T06:38:03.186Z</lastmod>
     
   </url>
   
@@ -135,13 +163,6 @@
   </url>
   
   <url>
-    <loc>http://mzz.pub/2019/07/21/algorithm/%E8%B4%A8%E5%9B%A0%E6%95%B0%E5%88%86%E8%A7%A3/</loc>
-    
-    <lastmod>2019-07-21T06:45:25.288Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://mzz.pub/2019/07/20/algorithm/%E7%BA%A6%E6%95%B0%E6%B1%82%E5%92%8C/</loc>
     
     <lastmod>2019-07-21T06:45:15.401Z</lastmod>
@@ -236,13 +257,6 @@
     <loc>http://mzz.pub/2018/06/15/tools/rpx/</loc>
     
     <lastmod>2019-01-11T09:29:31.502Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://mzz.pub/2018/03/11/JustPlay/OpenVPN%E8%AE%BE%E7%BD%AE%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86/</loc>
-    
-    <lastmod>2019-01-06T06:24:49.477Z</lastmod>
     
   </url>
   
