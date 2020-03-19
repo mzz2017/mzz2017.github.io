@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：之前IP转发的问题一直解决不了，熬了个通宵气得睡觉，起床后十分钟搞定，果然还是睡饱了有思路。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-18T18:08:17.296Z">
+<meta property="og:updated_time" content="2020-03-19T18:16:17.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="debian作为网关实现IP转发">
 <meta name="twitter:description" content="引言：之前IP转发的问题一直解决不了，熬了个通宵气得睡觉，起床后十分钟搞定，果然还是睡饱了有思路。">
@@ -115,7 +115,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text"> 背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 开始吧</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text"> 背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 开始吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说点别的"><span class="toc-number">3.</span> <span class="toc-text"> 说点别的</span></a></li></ol>
 		
 		</div>
 		
@@ -124,23 +124,23 @@
 <a id="more"></a>
 <h2 id="背景"><a class="markdownIt-Anchor" href="#背景"></a> 背景</h2>
 <blockquote>
-<p>自组了一台FX-8800P的ITX小机箱，准备当旁路由、服务器以及群晖用。</p>
+<p>自组了一台FX-8800P的ITX小主机，准备当旁路由、服务器以及群晖用。</p>
 <p>系统：ESXI 6.7</p>
 <p>拓扑：</p>
 <p>tplink：192.168.0.108，桥接别人家wifi，开启DHCP，DHCP网关192.168.0.254</p>
 <p>RouterOS：192.168.0.254、192.168.6.6、172.168.0.254，三网卡，网关172.20.0.1</p>
 <p>Debian：192.168.0.253、172.20.0.1，双网卡，网关192.168.0.108</p>
-<p>网络流量从192.168.0.254进入RouterOS，路由转172.20.0.254经172.20.0.1到达Debian，最后走192.168.0.243到网关192.168.0.108的tplink，通过PPPoE到达公网</p>
+<p>网络流量从192.168.0.254进入RouterOS，路由转172.20.0.254经172.20.0.1到达Debian，最后走192.168.0.243到网关192.168.0.108的tplink，通过桥接的192.168.0.1到达公网</p>
 <p>流量通过RouterOS转了一下是因为tplink无法将网关设在不同网段。</p>
 </blockquote>
 <h2 id="开始吧"><a class="markdownIt-Anchor" href="#开始吧"></a> 开始吧</h2>
 <p>主要说debian的IP转发。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">root@debian:~<span class="comment"># ip addr</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: ens192: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP group default qlen 1000</span><br><span class="line">    link/ether 00:0c:29:04:70:a0 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 192.168.0.253/24 brd 192.168.0.255 scope global ens192</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">3: ens224: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc mq state UP group default qlen 1000</span><br><span class="line">    link/ether 00:0c:29:04:70:aa brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.20.0.1/24 brd 172.20.0.255 scope global ens224</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">4: docker0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default</span><br><span class="line">    link/ether 02:42:19:df:91:61 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">6: vetha6ace1f@if5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default</span><br><span class="line">    link/ether 8a:ef:12:dc:98:e3 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">8: vethe156696@if7: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue master docker0 state UP group default</span><br><span class="line">    link/ether 76:04:34:d6:35:46 brd ff:ff:ff:ff:ff:ff link-netnsid 1</span><br></pre></td></tr></table></figure>
-<p>配好之后网卡接口看起来是这样的，其中ens192是默认网关，ens224是另一个网卡。</p>
+<p>配好之后网卡接口看起来是这样的，其中ens192是外网出口，ens224是另一个虚拟网卡。</p>
 <p>需要设置<code>/etc/network/interfaces</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">root@debian:~<span class="comment"># cat /etc/network/interfaces</span></span><br><span class="line"><span class="comment"># This file describes the network interfaces available on your system</span></span><br><span class="line"><span class="comment"># and how to activate them. For more information, see interfaces(5).</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> /etc/network/interfaces.d/*</span><br><span class="line"></span><br><span class="line"><span class="comment"># The loopback network interface</span></span><br><span class="line">auto lo</span><br><span class="line">iface lo inet loopback</span><br><span class="line"></span><br><span class="line"><span class="comment"># The primary network interface</span></span><br><span class="line">allow-hotplug ens192</span><br><span class="line"></span><br><span class="line">auto ens192</span><br><span class="line">iface ens192 inet static</span><br><span class="line">address 192.168.0.253</span><br><span class="line">netmask 255.255.255.0</span><br><span class="line">gateway 192.168.0.1</span><br><span class="line">dns-nameservers 192.168.0.1</span><br><span class="line"></span><br><span class="line">auto ens224</span><br><span class="line">iface ens224 inet static</span><br><span class="line">address 172.20.0.1</span><br><span class="line">netmask 255.255.255.0</span><br></pre></td></tr></table></figure>
 <p>重启生效。</p>
-<p>最后这一步才是折腾我一通宵的东西，涉及上述内容的博客们都没有提及过，而是反复讨论dnsmasq的DHCP？？？</p>
+<p>下一步才是折腾我一通宵的东西，涉及上述内容的博客们都没有提及过，而是反复讨论dnsmasq的DHCP？？？</p>
 <p><a href="https://linux.cn/article-5595-1.html" target="_blank" rel="noopener"><strong>配置IP转发</strong></a></p>
 <p>完成此步之后，会发现大约有50%的丢包。</p>
 <p>使用<code>arp -vn</code>可以看到一些192.168.0.0/24的机器也被分配给了ens224。</p>
@@ -151,10 +151,15 @@
 <p><strong>正解</strong></p>
 <ol>
 <li>在esxi的Networking中新建一个virtual switch，记为LAN，Security全选Accept，不设uplink。意味着该switch无法直接联网。</li>
-<li>在Port groups中新建一个group，关联LAN，同样取名为LAN。</li>
+<li>在Port groups中新建一个group，关联LAN，同样取名为LAN，<strong>设置VLAN为一个新值</strong>。</li>
 <li>将RouterOS的第三个网卡和Debian的第二个网卡改为LAN。</li>
-<li>配置IP转发并添加到<code>/etc/rc.local</code>以保证开机自启。</li>
+<li>按上文提及的文章配置IP转发并添加到<code>/etc/rc.local</code>以保证开机自启，因为iptables规则重启会被清除。</li>
 </ol>
+<h2 id="说点别的"><a class="markdownIt-Anchor" href="#说点别的"></a> 说点别的</h2>
+<p>这台配置加上机箱配下来800左右，但性能堪比i3-7100u【整机价格1800左右 <a href="https://technical.city/en/cpu/FX-8800P-vs-Core-i3-7100U#benchmarks" target="_blank" rel="noopener">benchmark</a> 】，但是想组这台的话需要注意它的致命缺点——风扇噪音很大。</p>
+<p>通过BIOS设置，改风扇为手动会有很大改善，但当温度高于设定的阈值（最高70度）时仍会强制满速大风呼呼刮。</p>
+<p>所以一定建议在BIOS中关闭AMD睿频，并且适当调低PState等级，这里我使用的是P4。PState等级与主频和节能相关，虽然这块CPU标称TDP是12-35W，但实际上它一点也不节能，P0下开启睿频4个核心加起来甚至能冲上12GHz。</p>
+<p>所以真正使用起来只能跑10GHz的情况下不发出噪音，那么这种情况就肯定打不过i3-7100u了，但是再怎么算也还是很香不是吗。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -244,7 +249,7 @@
  
 <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text"> 背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 开始吧</span></a></li></ol> 
+   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text"> 背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始吧"><span class="toc-number">2.</span> <span class="toc-text"> 开始吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#说点别的"><span class="toc-number">3.</span> <span class="toc-text"> 说点别的</span></a></li></ol> 
 </div>
 
 <div id="asidepart">
@@ -416,7 +421,7 @@
 </div>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共99.7k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共100.0k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
