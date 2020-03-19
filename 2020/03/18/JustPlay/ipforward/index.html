@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：之前IP转发的问题一直解决不了，熬了个通宵气得睡觉，起床后十分钟搞定，果然还是睡饱了有思路。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-19T18:16:17.589Z">
+<meta property="og:updated_time" content="2020-03-19T18:25:29.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="debian作为网关实现IP转发">
 <meta name="twitter:description" content="引言：之前IP转发的问题一直解决不了，熬了个通宵气得睡觉，起床后十分钟搞定，果然还是睡饱了有思路。">
@@ -156,10 +156,16 @@
 <li>按上文提及的文章配置IP转发并添加到<code>/etc/rc.local</code>以保证开机自启，因为iptables规则重启会被清除。</li>
 </ol>
 <h2 id="说点别的"><a class="markdownIt-Anchor" href="#说点别的"></a> 说点别的</h2>
-<p>这台配置加上机箱配下来800左右，但性能堪比i3-7100u【整机价格1800左右 <a href="https://technical.city/en/cpu/FX-8800P-vs-Core-i3-7100U#benchmarks" target="_blank" rel="noopener">benchmark</a> 】，但是想组这台的话需要注意它的致命缺点——风扇噪音很大。</p>
+<p>这台配置加上机箱配下来800左右，但性能堪比i3-7100u，但是想组这台的话需要注意它的致命缺点——风扇噪音很大。</p>
+<blockquote>
+<p>i3-7100u 整机价格1800左右（<a href="https://www.youtube.com/watch?v=rGIUouvATqc&amp;t=86s" target="_blank" rel="noopener">洋葱</a>）</p>
+<p><a href="https://technical.city/en/cpu/FX-8800P-vs-Core-i3-7100U#benchmarks" target="_blank" rel="noopener">benchmark</a></p>
+<p>passmark <a href="https://zmmoo.com/cpu/10665" target="_blank" rel="noopener">fx-8800p 3900分</a>，<a href="https://zmmoo.com/cpu/10728" target="_blank" rel="noopener">i3-7100u 3950分</a></p>
+</blockquote>
 <p>通过BIOS设置，改风扇为手动会有很大改善，但当温度高于设定的阈值（最高70度）时仍会强制满速大风呼呼刮。</p>
-<p>所以一定建议在BIOS中关闭AMD睿频，并且适当调低PState等级，这里我使用的是P4。PState等级与主频和节能相关，虽然这块CPU标称TDP是12-35W，但实际上它一点也不节能，P0下开启睿频4个核心加起来甚至能冲上12GHz。</p>
-<p>所以真正使用起来只能跑10GHz的情况下不发出噪音，那么这种情况就肯定打不过i3-7100u了，但是再怎么算也还是很香不是吗。</p>
+<p>所以一定建议在BIOS中关闭AMD睿频，并且适当调低PState等级，这里我使用的是P4。PState等级与主频和节能相关，虽然这块CPU标称TDP是12-35W，但实际上它一点也不节能，P0下开启睿频4个核心加起来甚至能冲上12GHz。在上述zmmoo测评中提到这块CPU默认消耗35W功率而不是15W，有节能需求的可以通过调节PState做到真正节能。</p>
+<p>所以真正使用起来只能在跑到10GHz的情况下不发出噪音，这种情况肯定是打不过i3-7100u的了，但是再怎么算也还是很香不是吗。</p>
+<p>当然，相同功耗的情况下就别想了，毕竟价格翻了一倍呢。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -421,7 +427,7 @@
 </div>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共100.0k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共100.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
