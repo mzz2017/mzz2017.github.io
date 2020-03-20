@@ -20,7 +20,7 @@
 <meta property="og:description" content="引言：使用的是AMD FX-8800p，群晖没有驱动，而debian有驱动，可以开启硬件加速硬解视频。 本方法可以支持所有在Linux上有显卡驱动的显卡开启硬解。 当然，只要你足够支撑Windows镜像，将本教程中的Debian换为Windows则可支持所有显卡，大体思路不变。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://mzzeast.shumsg.cn/Fg5HL8dC6GiX8r-0Z5G83_LYUgHG">
-<meta property="og:updated_time" content="2020-03-19T09:46:38.288Z">
+<meta property="og:updated_time" content="2020-03-20T08:41:26.766Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ESXI群晖在Jellyfin上开启硬件加速的万金油方案">
 <meta name="twitter:description" content="引言：使用的是AMD FX-8800p，群晖没有驱动，而debian有驱动，可以开启硬件加速硬解视频。 本方法可以支持所有在Linux上有显卡驱动的显卡开启硬解。 当然，只要你足够支撑Windows镜像，将本教程中的Debian换为Windows则可支持所有显卡，大体思路不变。">
@@ -117,7 +117,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.</span> <span class="toc-text"> 思路</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.</span> <span class="toc-text"> 思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证硬件加速"><span class="toc-number">2.</span> <span class="toc-text"> 验证硬件加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#驱动问题"><span class="toc-number">3.</span> <span class="toc-text"> 驱动问题</span></a></li></ol>
 		
 		</div>
 		
@@ -138,7 +138,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount 192.168.0.105:/ /var/qh</span><br></pre></td></tr></table></figure>
 </li>
 <li>
-<p>debian虚拟机开启硬件加速。</p>
+<p>debian虚拟机开启硬件加速（Intel，如果是其他显卡见<a href="#%E9%A9%B1%E5%8A%A8%E9%97%AE%E9%A2%98">驱动问题</a>）。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modprobe i915</span><br></pre></td></tr></table></figure>
 <p>查看是否成功</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /dev/dri</span><br></pre></td></tr></table></figure>
@@ -169,6 +169,13 @@
 <p>通关。</p>
 </li>
 </ol>
+<h2 id="验证硬件加速"><a class="markdownIt-Anchor" href="#验证硬件加速"></a> 验证硬件加速</h2>
+<p>假设我们当前目录存在<code>b.mp4</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/lib/jellyfin-ffmpeg/ffmpeg -v 100 -y -vaapi_device /dev/dri/renderD128 -hwaccel vaapi -hwaccel_output_format vaapi -i b.mp4 -vcodec h264_vaapi a.mp4</span><br></pre></td></tr></table></figure>
+<p>上述命令可以用以验证Intel处理器的硬件加速是否开启。</p>
+<h2 id="驱动问题"><a class="markdownIt-Anchor" href="#驱动问题"></a> 驱动问题</h2>
+<p>如果你在验证硬件加速时得到<code>libva: va_getDriverName() failed with unknown libva error,driver_name=(null)</code>，可有可能是驱动问题。</p>
+<p>AMD不支持GPU虚拟化，别折腾了。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -250,7 +257,7 @@
  
 <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.</span> <span class="toc-text"> 思路</span></a></li></ol> 
+   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#思路"><span class="toc-number">1.</span> <span class="toc-text"> 思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证硬件加速"><span class="toc-number">2.</span> <span class="toc-text"> 验证硬件加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#驱动问题"><span class="toc-number">3.</span> <span class="toc-text"> 驱动问题</span></a></li></ol> 
 </div>
 
 <div id="asidepart">
@@ -422,7 +429,7 @@
 </div>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
-博客全站共100.1k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+博客全站共100.2k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
 </span></div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
