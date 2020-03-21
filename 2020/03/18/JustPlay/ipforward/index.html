@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：之前IP转发的问题一直解决不了，熬了个通宵气得睡觉，起床后十分钟搞定，果然还是睡饱了有思路。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-19T18:25:29.021Z">
+<meta property="og:updated_time" content="2020-03-21T04:11:22.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="debian作为网关实现IP转发">
 <meta name="twitter:description" content="引言：之前IP转发的问题一直解决不了，熬了个通宵气得睡觉，起床后十分钟搞定，果然还是睡饱了有思路。">
@@ -127,10 +127,10 @@
 <p>自组了一台FX-8800P的ITX小主机，准备当旁路由、服务器以及群晖用。</p>
 <p>系统：ESXI 6.7</p>
 <p>拓扑：</p>
-<p>tplink：192.168.0.108，桥接别人家wifi，开启DHCP，DHCP网关192.168.0.254</p>
+<p>tplink：192.168.0.108，桥接别人家wifi，开启DHCP服务器，DHCP网关192.168.0.254</p>
 <p>RouterOS：192.168.0.254、192.168.6.6、172.168.0.254，三网卡，网关172.20.0.1</p>
-<p>Debian：192.168.0.253、172.20.0.1，双网卡，网关192.168.0.108</p>
-<p>网络流量从192.168.0.254进入RouterOS，路由转172.20.0.254经172.20.0.1到达Debian，最后走192.168.0.243到网关192.168.0.108的tplink，通过桥接的192.168.0.1到达公网</p>
+<p>Debian：192.168.0.253、172.20.0.1，双网卡，网关192.168.0.1</p>
+<p>网络流量从192.168.0.254进入RouterOS，路由转172.20.0.254经172.20.0.1到达Debian，最后走192.168.0.243到网关192.168.0.1</p>
 <p>流量通过RouterOS转了一下是因为tplink无法将网关设在不同网段。</p>
 </blockquote>
 <h2 id="开始吧"><a class="markdownIt-Anchor" href="#开始吧"></a> 开始吧</h2>
