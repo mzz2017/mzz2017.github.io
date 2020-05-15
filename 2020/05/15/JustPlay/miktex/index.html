@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="mzz&#39;s blog">
 <meta property="og:description" content="引言：简述一下在manjaro上折腾latex的安装过程">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-05-15T09:25:41.522Z">
+<meta property="og:updated_time" content="2020-05-15T09:37:57.804Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="manjaro安装latex(miktex)">
 <meta name="twitter:description" content="引言：简述一下在manjaro上折腾latex的安装过程">
@@ -128,18 +128,20 @@
 <p>正主有了以后：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /opt/miktex/bin/miktex-console --admin</span><br></pre></td></tr></table></figure>
 <p>打开后，以shared方式完成安装。</p>
-<p>随后再次打开，先在settings里Change一个镜像，我这里用的是httpmirros.cqu.edu.cn，速度比较快。然后Overview里Check for updates一下。</p>
+<p>随后再次打开，先在settings里Change一个镜像，我这里用的是https://mirrors.cqu.edu.cn，速度比较快。然后Overview里Check for updates一下。</p>
 <p>做好之后，移出install目录备用：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /opt/miktex/texmfs/install ~/texinstall</span><br></pre></td></tr></table></figure>
 <p>然后卸载，或恢复出厂：点击Cleanup，恢复出厂。</p>
 <p>给install目录正常权限：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R $(id -un) ~/texinstall</span><br><span class="line">sudo chgrp -R $(id -gn) ~/texinstall</span><br></pre></td></tr></table></figure>
 <p>上述步骤是为了获取一个正常的install目录。下面开始正戏：</p>
+<p>先覆盖install：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp -r ~/texinstall/* ~/.miktex/texmfs/install/</span><br></pre></td></tr></table></figure>
 <p>以非admin打开：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/miktex/bin/miktex-console</span><br></pre></td></tr></table></figure>
 <p>选择private方式完成安装。然后同样选择镜像，更新。</p>
 <p>在Settings里把on-the-fly改成Always install missing packages on-the-fly即可，不要勾选for anyone。</p>
-<p>可以忽略Overview中的PATH环境变量的提示，如果你不放心，可以自行写入<sub>/.xprofile、</sub>/.bashrc、~/.profile等文件。</p>
+<p>可以忽略Overview中的PATH环境变量的提示，如果你不放心，可以自行写入~/.xprofile、~/.bashrc、~/.profile等文件。</p>
 <hr style="margin: 4rem 0 1rem 0; background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);height:.1rem;border:none">
 <div align="center" style="font-weight: bold; font-size: 2rem; margin-bottom: 2rem">大功告成！</div>  
 	</div>
