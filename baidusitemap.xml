@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://mzz.pub/2020/05/15/JustPlay/miktex/</loc>
+    <lastmod>2020-05-15</lastmod>
+  </url>  <url>
+    <loc>http://mzz.pub/2019/12/13/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/xgboost/</loc>
+    <lastmod>2020-05-15</lastmod>
+  </url>  <url>
     <loc>http://mzz.pub/2020/03/18/JustPlay/ipforward/</loc>
     <lastmod>2020-03-21</lastmod>
   </url>  <url>
@@ -24,9 +30,6 @@
   </url>  <url>
     <loc>http://mzz.pub/2019/12/06/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/numpy/</loc>
     <lastmod>2020-01-09</lastmod>
-  </url>  <url>
-    <loc>http://mzz.pub/2019/12/13/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/xgboost/</loc>
-    <lastmod>2019-12-13</lastmod>
   </url>  <url>
     <loc>http://mzz.pub/2018/09/10/JustPlay/EasyConnect/</loc>
     <lastmod>2019-12-03</lastmod>
