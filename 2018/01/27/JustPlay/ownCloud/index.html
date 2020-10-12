@@ -1,0 +1,946 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>在梅林路由器搭建ownCloud/NextCloud网盘 | mzz&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="mzz2017">
+    
+
+    
+    <meta name="description" content="引言： 没东西玩了，玩玩路由器吧。于是我从1月24日一直搞到1月27日终于把这该死的东西搞好了。但最后由于路由器性能不是很好而放弃使用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在梅林路由器搭建ownCloud&#x2F;NextCloud网盘">
+<meta property="og:url" content="http://mzz.pub/2018/01/27/JustPlay/ownCloud/index.html">
+<meta property="og:site_name" content="mzz&#39;s blog">
+<meta property="og:description" content="引言： 没东西玩了，玩玩路由器吧。于是我从1月24日一直搞到1月27日终于把这该死的东西搞好了。但最后由于路由器性能不是很好而放弃使用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-01-27T11:05:00.000Z">
+<meta property="article:modified_time" content="2018-01-27T12:00:46.861Z">
+<meta property="article:author" content="mzz2017">
+<meta property="article:tag" content="路由器">
+<meta name="twitter:card" content="summary">
+
+    
+    
+    <link rel="icon" href="/img/f.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+	
+	
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<script src="/js/inspage.js" type="module"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="mzz&#39;s blog">mzz&#39;s blog</a></h1>
+				<h2 class="blog-motto">　　　　　虽千万人，  吾往矣</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a target="_blank" rel="noopener" href="https://v2raya.mzz.pub">V2RayA</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:mzz.pub">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/01/27/JustPlay/ownCloud/" title="在梅林路由器搭建ownCloud/NextCloud网盘" itemprop="url">在梅林路由器搭建ownCloud/NextCloud网盘</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="mzz2017" target="_blank" itemprop="author">mzz2017</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-27T11:05:00.000Z" itemprop="datePublished"> 发表于 2018-01-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#owncloud-nextcloud"><span class="toc-number">1.</span> <span class="toc-text"> ownCloud &#x2F; Nextcloud</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u%E7%9B%98%E6%88%96%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98"><span class="toc-number">1.1.</span> <span class="toc-text"> U盘或移动硬盘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8Bssh%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.</span> <span class="toc-text"> 建立SSH连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85entware-ng%E5%B9%B6%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83"><span class="toc-number">1.3.</span> <span class="toc-text"> 安装Entware-NG并安装环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEpostgresql"><span class="toc-number">1.4.</span> <span class="toc-text"> 配置PostgreSQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85owncloud-nextcloud"><span class="toc-number">1.5.</span> <span class="toc-text"> 安装ownCloud &#x2F; Nextcloud</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#web%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BA%8C%E9%80%89%E4%B8%80"><span class="toc-number">1.6.</span> <span class="toc-text"> Web服务器二选一</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#option-1-%E5%AE%89%E8%A3%85apache%E6%8E%A8%E8%8D%90500%E9%94%99%E8%AF%AF%E8%BE%83%E5%B0%91"><span class="toc-number">1.6.1.</span> <span class="toc-text"> Option 1: 安装apache（推荐，500错误较少）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#option-2-%E5%AE%89%E8%A3%85lighttpd%E6%88%91%E5%9C%A8%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%BB%8F%E5%B8%B8%E9%81%87%E5%88%B0500%E9%94%99%E8%AF%AF"><span class="toc-number">1.6.2.</span> <span class="toc-text"> Option 2: 安装lighttpd（我在使用过程中经常遇到500错误）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEowncloud-nextcloud"><span class="toc-number">1.7.</span> <span class="toc-text"> 配置ownCloud &#x2F; Nextcloud</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E5%8A%9F%E5%91%8A%E6%88%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 大功告成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text"> 进阶配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E9%99%90%E5%88%B6"><span class="toc-number">2.1.</span> <span class="toc-text"> 修改上传文件大小限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lighttpd%E4%BF%AE%E6%94%B9owncloud-url"><span class="toc-number">2.2.</span> <span class="toc-text"> lighttpd修改ownCloud URL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%8A%98%E8%85%BE%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%9D%9E%E5%86%99%E4%B8%8D%E5%8F%AF%E7%9A%84%E5%B7%A8%E5%9D%91"><span class="toc-number">3.</span> <span class="toc-text"> 在折腾的过程中非写不可的巨坑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E9%83%A8%E5%88%86"><span class="toc-number">4.</span> <span class="toc-text"> 参考文献（部分）</span></a></li></ol>
+		
+		</div>
+		
+		<p>引言： 没东西玩了，玩玩路由器吧。于是我从1月24日一直搞到1月27日终于把这该死的东西搞好了。但最后由于路由器性能不是很好而放弃使用。</p>
+<hr>
+<a id="more"></a>
+<h3 id="owncloud-nextcloud"><a class="markdownIt-Anchor" href="#owncloud-nextcloud"></a> ownCloud / Nextcloud</h3>
+<hr>
+<h4 id="u盘或移动硬盘"><a class="markdownIt-Anchor" href="#u盘或移动硬盘"></a> U盘或移动硬盘</h4>
+<ol>
+<li>将U盘格式化为ext4格式（可在Ubuntu上完成，Windows没试过），在路由器上插入U盘</li>
+</ol>
+<h4 id="建立ssh连接"><a class="markdownIt-Anchor" href="#建立ssh连接"></a> 建立SSH连接</h4>
+<ol>
+<li>进入梅林后台，在系统管理 - 系统设置 - Enable SSH 选择LAN only，应用保存。</li>
+<li>使用SSH连接工具（我使用的是Ubuntu的Terminal，也可以使用windows下git自带的shell）。假设你路由器的账号为admin，密码为123456，网关为192.168.50.1，则输入ssh admin@192.168.50.1，回车，键入密码，回车</li>
+</ol>
+<h4 id="安装entware-ng并安装环境"><a class="markdownIt-Anchor" href="#安装entware-ng并安装环境"></a> 安装Entware-NG并安装环境</h4>
+<ol>
+<li>
+<p>SSH客户端输入命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">entware-setup.sh</span><br></pre></td></tr></table></figure>
+<p>选择U盘的序号，回车，等待安装完成（如果输入opkg显示命令不存在，则用gpart给u盘分配新UUID再试）</p>
+</li>
+<li>
+<p><s>更换软件源</s>（不需要更换了，想尝试php5的可以更换一波）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/etc/opkg.conf</span><br></pre></td></tr></table></figure>
+<p>将官方软件源换为<code>src/gz packages http://qnapware.zyxmon.org/binaries-armv7</code></p>
+</li>
+<li>
+<p>更新</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg update</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>安装环境</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">opkg install \</span><br><span class="line">sudo \</span><br><span class="line">bzip2 \</span><br><span class="line">php7-cli \</span><br><span class="line">php7-cgi \</span><br><span class="line">php7-mod-ctype \</span><br><span class="line">php7-mod-curl \</span><br><span class="line">php7-mod-dom \</span><br><span class="line">php7-mod-fileinfo \</span><br><span class="line">php7-mod-gd \</span><br><span class="line">php7-mod-hash \</span><br><span class="line">php7-mod-iconv \</span><br><span class="line">php7-mod-json \</span><br><span class="line">php7-mod-mbstring \</span><br><span class="line">php7-mod-pdo \</span><br><span class="line">php7-mod-session \</span><br><span class="line">php7-mod-simplexml \</span><br><span class="line">php7-mod-xml \</span><br><span class="line">php7-mod-xmlwriter \</span><br><span class="line">php7-mod-xmlreader \</span><br><span class="line">php7-mod-zip \</span><br><span class="line">php7-fpm \</span><br><span class="line">php7-mod-pgsql \</span><br><span class="line">php7-mod-pdo-pgsql \</span><br><span class="line">php7-mod-intl \</span><br><span class="line">php7-mod-openssl \</span><br><span class="line">pgsql-server \</span><br><span class="line">pgsql-cli-extra</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="配置postgresql"><a class="markdownIt-Anchor" href="#配置postgresql"></a> 配置PostgreSQL</h4>
+<p>使用PostgreSQL是因为之前尝试Mysql和MariaDB都失败了。</p>
+<ol>
+<li>
+<p>为了保证内存充足，请先在软件中心使用虚拟内存划分512M虚拟内存。</p>
+</li>
+<li>
+<p>配置sudoers</p>
+<p>root无法启动pgsql，故在/etc/passwd发现有用户tor，借壳。</p>
+<p>给admin加入superusers</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/etc/sudoers</span><br></pre></td></tr></table></figure>
+<p>在<code>root ALL=(ALL) ALL</code>行下添加一行<code>admin ALL=(ALL) ALL</code> ，保存</p>
+</li>
+<li>
+<p>建立存储点并更改所有权</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /opt/usr/pgdata</span><br><span class="line">chown tor /opt/usr/pgdata</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>初始化数据库</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u tor initdb -D /opt/usr/pgdata</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>启动PostgreSQL服务</p>
+<p>如1.2步骤新建一个SSH连接，因为启动PostgreSQL服务将挂起线程！（不要关闭之前的SSH连接）</p>
+<p>在新的SSH命令行中输入下列命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u tor postgres -D /opt/usr/pgdata/</span><br></pre></td></tr></table></figure>
+<p>服务正常启动后，可以关闭窗口不管它了，也可以不关看看日志。</p>
+</li>
+<li>
+<p>设置用户密码</p>
+<ul>
+<li>
+<p>使用tor用户（推荐）</p>
+<p>回到之前的SSH连接，输入以下命令创建tor同名数据库</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u tor createdb tor</span><br></pre></td></tr></table></figure>
+<p>进入PostgreSQL-Client</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U tor</span><br></pre></td></tr></table></figure>
+<p>在SQL命令行下输入以下命令设置密码并退出</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER <span class="string">"tor"</span> WITH PASSWORD <span class="string">'123456'</span>;</span><br><span class="line">\q</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>你也可以创建一个新用户（貌似有点问题）</p>
+<p>回到之前的SSH连接，输入以下命令创建一个名为ownCloud的用户</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u tor createuser --interactive</span><br></pre></td></tr></table></figure>
+<p><code>ownCloud</code></p>
+<p><code>y</code></p>
+<p>创建同名数据库</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u tor createdb ownCloud</span><br></pre></td></tr></table></figure>
+<p>进入PostgreSQL-Client</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">psql -U ownCloud</span><br></pre></td></tr></table></figure>
+<p>在SQL命令行下输入以下命令设置密码并退出</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER <span class="string">"ownCloud"</span> WITH PASSWORD <span class="string">'123456'</span>;</span><br><span class="line">\q</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="安装owncloud-nextcloud"><a class="markdownIt-Anchor" href="#安装owncloud-nextcloud"></a> 安装ownCloud / Nextcloud</h4>
+<ol>
+<li>
+<p>下载ownCloud包</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O - https://download.owncloud.org/community/owncloud-<span class="number">10.0</span>.<span class="number">4</span>.tar.bz2 | bzip2 -cd | tar -xvC /opt/share/www/</span><br></pre></td></tr></table></figure>
+<p>or NextCloud</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O - https://download.nextcloud.com/server/releases/nextcloud-<span class="number">12.0</span>.<span class="number">5</span>.tar.bz2 | bzip2 -cd | tar -xvC /opt/share/www/</span><br></pre></td></tr></table></figure>
+<p>其中的版本号请根据<a href="https://owncloud.org/download/#owncloud-server-tar-ball" target="_blank" rel="noopener"><strong>官网</strong></a>版本进行修改，下文以ownCloud为例，但本文同样适用于Nextcloud</p>
+</li>
+<li>
+<p>修改php相关配置</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">"/upload_max_filesize =*/cupload_max_filesize = 100M"</span> <span class="string">"/opt/etc/php.ini"</span></span><br><span class="line">sed -i <span class="string">"/post_max_size =*/cpost_max_size = 100M"</span> <span class="string">"/opt/etc/php.aini"</span></span><br><span class="line">sed -i <span class="string">"/memory_limit =*/cmemory_limit = 32M"</span> <span class="string">"/opt/etc/php.ini"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="web服务器二选一"><a class="markdownIt-Anchor" href="#web服务器二选一"></a> Web服务器二选一</h4>
+<h5 id="option-1-安装apache推荐500错误较少"><a class="markdownIt-Anchor" href="#option-1-安装apache推荐500错误较少"></a> Option 1: 安装apache（推荐，500错误较少）</h5>
+<ol>
+<li>
+<p>SSH客户端输入命令</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg install apache</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改apache配置文件</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/etc/apache/httpd.conf</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>将<code>DocumentRoot</code>的值改为<code>/opt/share/www</code></p>
+</li>
+<li>
+<p>将<code>DirectoryIndex index.html</code>改为<code>DirectoryIndex index.php index.html</code></p>
+</li>
+<li>
+<p>将<code>Listen 80</code>改为<code>Listen 81</code>（为了不与路由管理端冲突）</p>
+</li>
+<li>
+<p>更改服务启动用户：</p>
+<p>将<code>User nobody</code>改为<code>User tor</code></p>
+<p>将<code>Group nogroup</code>改为<code>#Group nogroup</code></p>
+</li>
+<li>
+<p>将<code>&lt;Directory /&gt;...&lt;/Directory&gt;</code>修改如下</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;Directory /&gt;</span><br><span class="line">    Options FollowSymLinks</span><br><span class="line">    AllowOverride None</span><br><span class="line">    Order deny,allow</span><br><span class="line">    Allow from all</span><br><span class="line">&lt;<span class="regexp">/Directory&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改<code>DocumentRoot &quot;/opt/share/htdocs&quot;</code>为<code>DocumentRoot &quot;/opt/share/www/owncloud&quot;</code></p>
+<p>修改<code>&lt;Directory &quot;/opt/share/htdocs&quot;&gt;</code>为<code>&lt;Directory &quot;/opt/share/www/owncloud&quot;&gt;</code></p>
+</li>
+<li>
+<p>增加虚拟路径映射</p>
+<p>在<code>&lt;IfModule alias_module&gt;</code>下增加</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ScriptAlias /php/ <span class="string">"/opt/bin/"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>添加php解析</p>
+<p>在<code>&lt;IfModule mime_module&gt;</code>下增加</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">AddType application/x-httpd-php .php</span><br><span class="line">Action application/x-httpd-php <span class="string">"/php/php-cgi"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>最后保存即可</p>
+</li>
+<li>
+<p>修改防火墙规则，使外网可以访问81端口</p>
+<p>在SSH命令行输入</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --destination-port <span class="number">81</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>重启apache服务</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/etc/init.d/S80apache restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h5 id="option-2-安装lighttpd我在使用过程中经常遇到500错误"><a class="markdownIt-Anchor" href="#option-2-安装lighttpd我在使用过程中经常遇到500错误"></a> Option 2: 安装lighttpd（我在使用过程中经常遇到500错误）</h5>
+<ol>
+<li>SSH客户端输入命令</li>
+</ol>
+  <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opkg install lighttpd</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>
+<p>安装支持模块</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">opkg install \</span><br><span class="line">lighttpd-mod-fastcgi \</span><br><span class="line">lighttpd-mod-access \</span><br><span class="line">lighttpd-mod-rewrite</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>选择81端口作为lighttpd服务器端口并修复uploads目录，输入命令（中间的空格也要复制）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">'s/#server.port                 = 81/server.port                 = 81/g'</span> <span class="string">"/opt/etc/lighttpd/lighttpd.conf"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -i <span class="string">"/server.upload-dirs*/cserver.upload-dirs          = ( \"</span>/opt/tmp\<span class="string">" )"</span> <span class="string">"/opt/etc/lighttpd/lighttpd.conf"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>修改防火墙规则，使其通过81端口</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p tcp --destination-port <span class="number">81</span> -j ACCEPT</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>更改lighttpd配置文件，启用PHP及SSL证书</p>
+<p>SSH客户端输入命令<code>vi /opt/etc/lighttpd/lighttpd.conf</code>，在文件末尾加入下列内容：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">server.modules += ( <span class="string">"mod_fastcgi"</span>,</span><br><span class="line">                    <span class="string">"mod_access"</span>,</span><br><span class="line">                    <span class="string">"mod_rewrite"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">fastcgi.server = (</span><br><span class="line">  <span class="string">".php"</span> =&gt;</span><br><span class="line">    ( <span class="string">"localhost"</span> =&gt;</span><br><span class="line">      ( <span class="string">"socket"</span> =&gt; <span class="string">"/opt/tmp/php-fcgi.sock"</span>,</span><br><span class="line">        <span class="string">"bin-path"</span> =&gt; <span class="string">"/opt/bin/php-fcgi"</span>,</span><br><span class="line">        <span class="string">"max-procs"</span> =&gt; <span class="number">10</span>,</span><br><span class="line">        <span class="string">"min-procs"</span> =&gt; <span class="number">10</span>,</span><br><span class="line">        <span class="string">"bin-environment"</span> =&gt;</span><br><span class="line">          ( <span class="string">"PHP_FCGI_CHILDREN"</span> =&gt; <span class="string">"2"</span>,</span><br><span class="line">            <span class="string">"PHP_FCGI_MAX_REQUESTS"</span> =&gt; <span class="string">"1000"</span></span><br><span class="line">          )</span><br><span class="line">        )</span><br><span class="line">     )</span><br><span class="line"> )</span><br><span class="line"></span><br><span class="line"><span class="variable">$HTTP</span>[<span class="string">"url"</span>] =~ <span class="string">"^/owncloud/data/"</span> &#123;</span><br><span class="line">  url.access-deny = (<span class="string">""</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$HTTP</span>[<span class="string">"url"</span>] =~ <span class="string">"^/owncloud($|/)"</span> &#123;</span><br><span class="line">  dir-listing.activate = <span class="string">"disable"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$SERVER</span>[<span class="string">"socket"</span>] == <span class="string">":443"</span> &#123;</span><br><span class="line">ssl.engine = <span class="string">"enable"</span></span><br><span class="line">ssl.pemfile = <span class="string">"/opt/etc/lighttpd/certs/lighttpd.pem"</span></span><br><span class="line">ssl.use-sslv2 = <span class="string">"disable"</span></span><br><span class="line">ssl.cipher-list = <span class="string">"TLSv1+HIGH !SSLv2 RC4+MEDIUM !aNULL !eNULL !3DES @STRENGTH"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="variable">$HTTP</span>[<span class="string">"scheme"</span>] == <span class="string">"http"</span> &#123;</span><br><span class="line"><span class="variable">$HTTP</span>[<span class="string">"host"</span>] == <span class="string">"OwnCloud"</span> &#123;url.redirect = (<span class="string">".*"</span> =&gt; <span class="string">"https://%0<span class="variable">$0</span>"</span>)&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>创建SSL证书（下面的方法不好使。需要的请自己解决SSL证书问题 - <a href="https://www.logcg.com/archives/2007.html" target="_blank" rel="noopener"><strong>参考文献</strong></a>）</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /opt/etc/lighttpd/certs</span><br><span class="line">cd /opt/etc/lighttpd/certs</span><br><span class="line"></span><br><span class="line">openssl req -new -x509 -days <span class="number">1095</span> -nodes \</span><br><span class="line">-subj <span class="string">"/C=CN/ST=xxxxxx/L=xxxxxx/O=xxxxxx/CN=xxx.xxxxxx.com"</span> \</span><br><span class="line">-keyout lighttpd.pem -out lighttpd.pem</span><br></pre></td></tr></table></figure>
+<p>把xxxxxx换成你的公司名，后面的一串换成你的域名</p>
+</li>
+<li>
+<p>重启lighttpd服务</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/etc/init.d/S80lighttpd restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="配置owncloud-nextcloud"><a class="markdownIt-Anchor" href="#配置owncloud-nextcloud"></a> 配置ownCloud / Nextcloud</h4>
+<ol>
+<li>
+<p>访问网盘</p>
+<p>假设你的路由器网关为192.168.50.1</p>
+<ul>
+<li>apache：
+<ul>
+<li>ownCloud登入<code>http://192.168.50.1:81</code></li>
+<li>Nextcloud登入<code>http://192.168.50.1:81</code></li>
+</ul>
+</li>
+<li>lighttpd
+<ul>
+<li>ownCloud登入<code>http://192.168.50.1:81/owncloud</code></li>
+<li>Nextcloud登入<code>http://192.168.50.1:81/nextcloud</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>创建你的管理员账号。配置数据库为PostgresSQL，用户名输入tor（或ownCloud），密码输入123456，数据库名称为ownCloud</p>
+</li>
+<li>
+<p>点击创建，经过极其漫长的等待，网盘至此配置完毕。（我认为是要添加数据库服务开机自启的，但我暂时还没重启过路由器就暂时不折腾了）</p>
+</li>
+</ol>
+<h4 id="大功告成"><a class="markdownIt-Anchor" href="#大功告成"></a> 大功告成</h4>
+<ul>
+<li>你可以使用梅林的各种DDNS服务插件来将你的IP动态解析到你的域名，如我就将公网IP动态解析到了<code>m.mzz.pub</code>，于是就可以通过<code>http://m.mzz.pub:81</code>访问了。对了，记得参考着<code>/opt/share/www/owncloud/config/config.sample.php</code>对<code>/opt/share/www/owncloud/config/config.php</code> 进行修改添加域名信任。</li>
+<li><em><strong>本文作为一篇随笔，难免会有纰漏之处，敬请指正！谢谢！</strong></em></li>
+</ul>
+<h3 id="进阶配置"><a class="markdownIt-Anchor" href="#进阶配置"></a> 进阶配置</h3>
+<hr>
+<h4 id="修改上传文件大小限制"><a class="markdownIt-Anchor" href="#修改上传文件大小限制"></a> 修改上传文件大小限制</h4>
+<ol>
+<li>
+<p>打开配置文件</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/share/www/owncloud/.htaccess</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>找到这两行代码</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">php_value upload_max_filesize <span class="number">513</span>M</span><br><span class="line">php_value post_max_size <span class="number">513</span>M</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>改成你需要的大小，如10240M**（配置文件分为php5和php7，需要将两处都修改，总共是4个地方）**</p>
+</li>
+</ol>
+<h4 id="lighttpd修改owncloud-url"><a class="markdownIt-Anchor" href="#lighttpd修改owncloud-url"></a> lighttpd修改ownCloud URL</h4>
+<blockquote>
+<p>This admin manual assumes that the ownCloud server is already accessible under the route <code>/owncloud</code> (which is the default, e.g. <code>https://example.com/owncloud</code>). If you like, you can change this in your web server configuration, for example by changing it from <code>https://example.com/owncloud/</code> to <code>https://example.com/</code>.</p>
+</blockquote>
+<p>登录页面默认位于/owncloud，比如<code>https://example.com/owncloud</code>，如果你想更改你的web服务配置，比如从<code>https://example.com/owncloud</code>改为<code>https://example.com/</code>，你需要更改这些文件：</p>
+<ul>
+<li><code>/opt/etc/lighttpd/lighttpd.conf</code></li>
+<li><code>/opt/share/www/owncloud/config/config.php</code></li>
+<li><code>/opt/etc/php.ini</code></li>
+</ul>
+<p>官方文档只列了前两个，我改了半天都不奏效！！为了解决这个问题我脑浆都炸出来了！！！最后还是谷歌好使啊。。。（当然，也是因为我经验不足）</p>
+<ol>
+<li>
+<p>修改lighttpd.conf</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/etc/lighttpd/lighttpd.conf</span><br></pre></td></tr></table></figure>
+<p>将其中的<code>server.document-root = &quot;/opt/share/www/&quot;</code>改为<code>server.document-root = &quot;/opt/share/www/owncloud/&quot;</code><strong>（最后的/不能漏）</strong></p>
+</li>
+<li>
+<p>修改php.ini</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/etc/php.ini</span><br></pre></td></tr></table></figure>
+<p>将其中的<code>doc_root = &quot;/opt/share/www&quot;</code>改为<code>doc_root = &quot;/opt/share/www/owncloud&quot;</code> <strong>（最后不能加/）</strong></p>
+</li>
+<li>
+<p>修改config.php</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /opt/share/www/owncloud/config/config.php</span><br></pre></td></tr></table></figure>
+<p>假设你的路由器管理地址为192.168.50.1，则将<code>'overwrite.cli.url' =&gt; 'http://192.168.xx.x:81/owncloud/',</code>改为<code>'overwrite.cli.url' =&gt; 'http://192.168.xx.x:81/',</code><strong>（最后的/不能漏）</strong></p>
+</li>
+<li>
+<p>重启lighttpd</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/opt/etc/init.d/S80lighttpd restart</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
+<h3 id="在折腾的过程中非写不可的巨坑"><a class="markdownIt-Anchor" href="#在折腾的过程中非写不可的巨坑"></a> 在折腾的过程中非写不可的巨坑</h3>
+<hr>
+<ol>
+<li>
+<p>使用官方源的话没有网上各种教程中的php5系列，但我发现有php7，可以使用SQLite数据库成功安装</p>
+</li>
+<li>
+<p>想把SQLite换成MySQL，结果官方源里面mysql-server其实是MariaDB，我按照mysql的方式初始化数据库之后设置密码失败</p>
+</li>
+<li>
+<p>换了个源，这个源有php5，想换MySQL，最终总出现</p>
+<blockquote>
+<p><strong>内部服务器错误</strong></p>
+<p>服务器发送一个内部错误并且无法完成你的请求。</p>
+<p>请联系服务器管理员，如果多次出现这个错误，请把下面的技术细节包含在您的报告里。</p>
+<p>更多细节能在服务器日志中找到。</p>
+</blockquote>
+<p>哔了个狗，查询ownCloud日志发现下列语句出现了错误</p>
+<blockquote>
+<p>CREATE TABLE oc_addressbooks (id BIGINT UNSIGNED AUTO_INCREMENT NOT NULL, principaluri VARCHAR(255) DEFAULT NULL, displayname VARCHAR(255) DEFAULT NULL, uri VARCHAR(255) DEFAULT NULL, description VARCHAR(255) DEFAULT NULL, synctoken INT UNSIGNED DEFAULT 1 NOT NULL, UNIQUE INDEX addressbook_index (principaluri, uri), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ENGINE = InnoDB;</p>
+</blockquote>
+<p>机智的我在mysql里面跑了一下，出现<code>Specified key was too long; max key length is 1000 bytes</code>，按网上教程加入<code>innodb_large_prefix=on</code>来使上限扩展到3000 bytes，但总是不奏效，最后发现这个源的mysql版本是5.1，而这个参数要在5.6以上。</p>
+<p>于是怒杀回官方源继续折腾MariaDB！</p>
+</li>
+<li>
+<p>在mysql_install_db的时候总是提示<code>chown: unknown user mysql</code>简直要人命，网上的回答都不能解决问题，折腾了我好几个小时，终于找到救命答案了</p>
+<blockquote>
+<p>hey guys, seems it works now, im not sure if this is right but i think it’s wot I did.</p>
+<p>I changed the permissions of the var/lib/mysql/mysql directory so user ‘dan’ was the owner.</p>
+<p>Then I ran mysql_install_db</p>
+<p>Then I ran mysqld as dan</p>
+<p>It worked!</p>
+<p>So I can only assume that mysql_install_db doesn’t really work if root is the owner of the folder or something.</p>
+</blockquote>
+<p>这个叫<code>dancudds</code>的外国佬真的好亲切……</p>
+<p>然鹅并没有什么卵用，这个问题解决之后又会出现<code>/opt/bin/mysql_secure_installation: line 437: stty: not found</code>的问题。你让我一个Merlin上哪给你找centos的stty去？这不是分明为难我Merlin吗？所以说在梅林条件下是无法安装MariaDB了。</p>
+</li>
+<li>
+<p>找了一下别的源，找不到armv7的源了，下一步考虑使用别的数据库或者改源代码使适应mysql5.1？</p>
+</li>
+<li>
+<p>还是考虑使用PostgregSQL吧！</p>
+<p>​			出奇顺利！（一个半小时后留）</p>
+</li>
+<li>
+<p>修改ownCloud URL后突然会经常出现500 - Internal Server Error，一会儿好一会儿不好，看了一下console，感觉应该是ownCloud的问题，于是换Nextcloud再试，依然500，换回ownCloud莫名其妙又好了？后来发现多重启几次lighttpd就会好（黑人问号？？？）。</p>
+</li>
+<li>
+<p>考虑可能是lighttp不稳定，决定换apache试试。</p>
+<p>​			大获成功！（最后留）</p>
+</li>
+</ol>
+<h3 id="参考文献部分"><a class="markdownIt-Anchor" href="#参考文献部分"></a> 参考文献（部分）</h3>
+<hr>
+<ul>
+<li><a href="http://koolshare.cn/forum.php?mod=viewthread&amp;tid=42808&amp;highlight=owncloud" target="_blank" rel="noopener">【进阶类教程】期待已久的owncloud （附送lighttpd安装）- KoolShare</a></li>
+<li><a href="http://koolshare.cn/thread-99271-1-1.html" target="_blank" rel="noopener">【梅林建站】通过Entware-NG安装建站三件套建个人博客 - KoolShare</a></li>
+<li><a href="https://github.com/Entware-ng/Entware-ng/wiki/Using-Owncloud" target="_blank" rel="noopener">Using Owncloud - Wiki - Github</a></li>
+<li><a href="https://www.snbforums.com/threads/how-to-owncloud-on-router.10403/" target="_blank" rel="noopener">[HOW-TO] ownCloud on Router | SmallNetBuilder Forums</a></li>
+<li><a href="https://www.logcg.com/archives/2007.html" target="_blank" rel="noopener">用ownCloud搭建个人私有云 | 落格博客</a></li>
+<li><a href="https://tieba.baidu.com/p/4687119952?pn=1" target="_blank" rel="noopener">【图片】贴以下安装基本过程，给小白引个路【owncloud吧】 _百度贴吧</a></li>
+<li><a href="http://www.linuxforums.org/forum/servers/87370-newbie-help-mysql-server.html" target="_blank" rel="noopener">Newbie help with MySQL server</a></li>
+<li><a href="http://blog.csdn.net/corfox_liu/article/details/52937661" target="_blank" rel="noopener">Windows下搭建个人博客(Apache+MySQL+PHP+WordPress)</a></li>
+<li><a href="https://www.cnblogs.com/HD/p/4531342.html" target="_blank" rel="noopener">[PHP] - Apache + PHP 环境搭建 - 横渡 - 博客园</a></li>
+<li><a href="https://wiki.onion.io/Tutorials/How-To-Install-LAMP-Stack-on-the-Omega" target="_blank" rel="noopener">How To Install Linux, Apache, MySQL, PHP (LAMP) Stack on the Omega - Onion</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/路由器/">路由器</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://mzz.pub/2018/01/27/JustPlay/ownCloud/" data-title="在梅林路由器搭建ownCloud/NextCloud网盘 | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/03/05/algorithm/扇形涂色/" title="扇形涂色问题">
+  <strong>上一篇：</strong><br/>
+  <span>
+  扇形涂色问题</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/01/05/JustPlay/googlecloud/"  title="如何分别空手套得Google Cloud和阿里云国际版的300美金">
+ <strong>下一篇：</strong><br/> 
+ <span>如何分别空手套得Google Cloud和阿里云国际版的300美金
+</span>
+</a>
+</div>
+
+</nav>
+
+	  
+
+<!-- gitalk -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "3352072f2ad84717407d",
+    clientSecret: "8ea01d206f36234ab857d6d90f16b85a865e79e3",
+    repo: "mzz2017.github.io",
+    owner: "mzz2017",
+    admin: ["mzz2017"],
+    id: decodeURIComponent(location.pathname), // Ensure uniqueness and length less than 50
+    distractionFreeMode: false, // Facebook-like distraction free mode
+    title: document.title.split(" | ")[0]
+  });
+
+  gitalk.render("gitalk-container");
+</script>
+<style type="text/css" rel="stylesheet">
+  #gitalk-container {
+    padding: 10px 20px 50px;
+  }
+</style>
+<!-- gitalk -->
+
+</div>  
+      <div class="openaside">
+  <a class="navbutton" href="#" title="显示侧边栏"></a>
+</div>
+
+ 
+<div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+   <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#owncloud-nextcloud"><span class="toc-number">1.</span> <span class="toc-text"> ownCloud &#x2F; Nextcloud</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#u%E7%9B%98%E6%88%96%E7%A7%BB%E5%8A%A8%E7%A1%AC%E7%9B%98"><span class="toc-number">1.1.</span> <span class="toc-text"> U盘或移动硬盘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8Bssh%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.2.</span> <span class="toc-text"> 建立SSH连接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85entware-ng%E5%B9%B6%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83"><span class="toc-number">1.3.</span> <span class="toc-text"> 安装Entware-NG并安装环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEpostgresql"><span class="toc-number">1.4.</span> <span class="toc-text"> 配置PostgreSQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85owncloud-nextcloud"><span class="toc-number">1.5.</span> <span class="toc-text"> 安装ownCloud &#x2F; Nextcloud</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#web%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BA%8C%E9%80%89%E4%B8%80"><span class="toc-number">1.6.</span> <span class="toc-text"> Web服务器二选一</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#option-1-%E5%AE%89%E8%A3%85apache%E6%8E%A8%E8%8D%90500%E9%94%99%E8%AF%AF%E8%BE%83%E5%B0%91"><span class="toc-number">1.6.1.</span> <span class="toc-text"> Option 1: 安装apache（推荐，500错误较少）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#option-2-%E5%AE%89%E8%A3%85lighttpd%E6%88%91%E5%9C%A8%E4%BD%BF%E7%94%A8%E8%BF%87%E7%A8%8B%E4%B8%AD%E7%BB%8F%E5%B8%B8%E9%81%87%E5%88%B0500%E9%94%99%E8%AF%AF"><span class="toc-number">1.6.2.</span> <span class="toc-text"> Option 2: 安装lighttpd（我在使用过程中经常遇到500错误）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEowncloud-nextcloud"><span class="toc-number">1.7.</span> <span class="toc-text"> 配置ownCloud &#x2F; Nextcloud</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E5%8A%9F%E5%91%8A%E6%88%90"><span class="toc-number">1.8.</span> <span class="toc-text"> 大功告成</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text"> 进阶配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E9%99%90%E5%88%B6"><span class="toc-number">2.1.</span> <span class="toc-text"> 修改上传文件大小限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lighttpd%E4%BF%AE%E6%94%B9owncloud-url"><span class="toc-number">2.2.</span> <span class="toc-text"> lighttpd修改ownCloud URL</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%8A%98%E8%85%BE%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E9%9D%9E%E5%86%99%E4%B8%8D%E5%8F%AF%E7%9A%84%E5%B7%A8%E5%9D%91"><span class="toc-number">3.</span> <span class="toc-text"> 在折腾的过程中非写不可的巨坑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E9%83%A8%E5%88%86"><span class="toc-number">4.</span> <span class="toc-text"> 参考文献（部分）</span></a></li></ol> 
+</div>
+
+<div id="asidepart">
+  <div class="closeaside">
+    <a class="closebutton" href="#" title="隐藏侧边栏"></a>
+  </div>
+  <aside class="clearfix">
+     
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/2017暑期集训/" title="2017暑期集训">2017暑期集训<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Cloud/" title="Cloud">Cloud<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/VPN/" title="VPN">VPN<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/data-science/" title="data-science">data-science<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ios/" title="ios">ios<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/latex/" title="latex">latex<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linearAlgebra/" title="linearAlgebra">linearAlgebra<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nlp/" title="nlp">nlp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/rsh/" title="rsh">rsh<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ssh/" title="ssh">ssh<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/安全/" title="安全">安全<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/应试/" title="应试">应试<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/微信小程序/" title="微信小程序">微信小程序<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>23</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/网络/" title="网络">网络<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/路由器/" title="路由器">路由器<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 15px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/OAuth-%E7%BD%91%E7%BB%9C-%E5%AE%89%E5%85%A8/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG%E5%8D%9A%E5%BC%88/" style="font-size: 15px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/VPN-%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">VPN 网络</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/data-science/" style="font-size: 15px;">data-science</a> <a href="/tags/ios-jailbreak/" style="font-size: 10px;">ios jailbreak</a> <a href="/tags/latex/" style="font-size: 10px;">latex</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 10px;">单调队列</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size: 15px;">博弈</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 17.5px;">图论</a> <a href="/tags/%E5%A4%B9%E9%80%BC%E6%80%9D%E6%83%B3/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/%E5%B7%B4%E4%BB%80%E5%8D%9A%E5%BC%88/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/%E5%BC%BA%E8%BF%9E%E9%80%9A/" style="font-size: 10px;">强连通</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a> <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" style="font-size: 10px;">排列组合</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 12.5px;">排序</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 20px;">数论</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" style="font-size: 10px;">最短路径</a> <a href="/tags/%E6%A0%91/" style="font-size: 12.5px;">树</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/tags/%E7%AC%94%E8%AE%B0-%E7%BA%BF%E4%BB%A3/" style="font-size: 10px;">笔记 线代</a> <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0/" style="font-size: 10px;">组合数</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 12.5px;">网络</a> <a href="/tags/%E7%BD%AE%E6%8D%A2%E7%BE%A4/" style="font-size: 10px;">置换群</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" style="font-size: 12.5px;">计算几何</a> <a href="/tags/%E8%AE%A1%E7%BB%84/" style="font-size: 10px;">计组</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" style="font-size: 12.5px;">路由器</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="mzz2017" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+ 
+  </aside>
+</div>
+<!-- <iframe
+  id="neteasemusic"
+  style="position: relative; float:left; margin:2em 0 0 3%"
+  frameborder="no"
+  border="0"
+  marginwidth="0"
+  marginheight="0"
+  height="450px"
+  width="297px"
+  src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"
+></iframe> -->
+<style type="text/css" rel="stylesheet">
+  .moveMain ~ #neteasemusic {
+    display: none;
+  }
+</style>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am with little well content, And a little from thee sent <br/>
+			Is enough, with true intent. To be steadfast friend.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/mzz2017" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:m@mzz.pub" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo" style="color: #fff;">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman" style="color: #fff;">Jacman</a> © 2020 
+		
+		<a href="/about" target="_blank" title="mzz2017" style="color: #fff">mzz2017</a>
+		
+		
+		</p>
+		
+		<script type="text/javascript">
+		  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+		  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+		  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+		  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+		  
+		  _st('install','KARTphmFVqNf53QQL7QN','2.0.0');
+		</script>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div style="text-align:center; color:#fff;" class="theme-info">
+博客全站共100.3k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+</div>
+</footer>
+    <script src="js/jquery-2.0.3.min.js"></script>
+<script src="js/jquery.imagesloaded.min.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(15,260-$(this).scrollTop()));
+    o.css("right",30);
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+            c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+      c.click();
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(50,295-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1263193610'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263193610%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+<!-- BAIDU_PUSH Begin -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- BAIDU_PUSH End -->
+
+<!-- MathJax Begin -->
+<!-- partial('mathjax') -->
+<!-- MathJax End -->
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+  </body>
+</html>

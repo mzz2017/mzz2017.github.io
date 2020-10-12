@@ -1,0 +1,652 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+  
+    <title>OpenVPN设置条件代理的方法 | mzz&#39;s blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="mzz2017">
+    
+
+    
+    <meta name="description" content="引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenVPN设置条件代理的方法">
+<meta property="og:url" content="http://mzz.pub/2018/03/11/JustPlay/OpenVPN%E8%AE%BE%E7%BD%AE%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86/index.html">
+<meta property="og:site_name" content="mzz&#39;s blog">
+<meta property="og:description" content="引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-03-11T11:18:00.000Z">
+<meta property="article:modified_time" content="2020-03-04T16:57:33.420Z">
+<meta property="article:author" content="mzz2017">
+<meta property="article:tag" content="VPN">
+<meta name="twitter:card" content="summary">
+
+    
+    
+    <link rel="icon" href="/img/f.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+	
+	
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<script src="/js/inspage.js" type="module"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+
+  <body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="mzz&#39;s blog">mzz&#39;s blog</a></h1>
+				<h2 class="blog-motto">　　　　　虽千万人，  吾往矣</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a target="_blank" rel="noopener" href="https://v2raya.mzz.pub">V2RayA</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:mzz.pub">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/03/11/JustPlay/OpenVPN设置条件代理/" title="OpenVPN设置条件代理的方法" itemprop="url">OpenVPN设置条件代理的方法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="mzz2017" target="_blank" itemprop="author">mzz2017</a>
+		
+  <p class="article-time">
+    <time datetime="2018-03-11T11:18:00.000Z" itemprop="datePublished"> 发表于 2018-03-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#openvpn%E8%AE%BE%E7%BD%AE%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text"> OpenVPN设置条件代理的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text"> 如何设置条件代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E4%BE%8B%E5%A4%96"><span class="toc-number">1.2.</span> <span class="toc-text"> 如何设置代理例外</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AAshuvpn%E7%9A%84%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86demo"><span class="toc-number">2.</span> <span class="toc-text"> 一个SHUVPN的条件代理demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E4%B8%8B%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="toc-number">3.</span> <span class="toc-text"> Linux下添加开机自启</span></a></li></ol>
+		
+		</div>
+		
+		<p>引言：每次上学校的一些网站都得手动挂VPN，挂了VPN下载速度又慢，所以往往干别的事儿的时候又得把VPN下了，特别麻烦，所以找到了一个OpenVPN条件代理的方法供大家参考。</p>
+<hr>
+<a id="more"></a>
+<h2 id="openvpn设置条件代理的方法"><a class="markdownIt-Anchor" href="#openvpn设置条件代理的方法"></a> OpenVPN设置条件代理的方法</h2>
+<p>route命令第一参数为IP地址，第二地址为网子掩码，位与得到网段。</p>
+<p>下面我们以SHUVPN为例：</p>
+<h3 id="如何设置条件代理"><a class="markdownIt-Anchor" href="#如何设置条件代理"></a> 如何设置条件代理</h3>
+<ul>
+<li>假设我们在vpn.shu.edu.cn下载了一个ovpn文件，并且修改ovpn文件添加如下一行：</li>
+</ul>
+<blockquote>
+<p>route-nopull</p>
+</blockquote>
+<p>​	命令解释：不从服务端拉取代理配置。</p>
+<br>
+<ul>
+<li><strong>如果</strong>我们修改ovpn文件添加如下一行：</li>
+</ul>
+<blockquote>
+<p>route 202.120.127.0 255.255.255.0 vpn_gateway</p>
+</blockquote>
+<p>​	命令解释：将202.120.127.*设置为使用OpenVPN代理。</p>
+<h3 id="如何设置代理例外"><a class="markdownIt-Anchor" href="#如何设置代理例外"></a> 如何设置代理例外</h3>
+<ul>
+<li><strong>如果</strong>我们修改ovpn文件添加如下第二行：</li>
+</ul>
+<blockquote>
+<p>route 202.120.127.0 255.255.255.0 vpn_gateway</p>
+<p>route 202.120.127.105 255.255.255.255 net_gateway</p>
+</blockquote>
+<p>​	命令解释：将202.120.127.*设置为OpenVPN代理，但202.120.127.105走本地网络（202.120.127.105是我们VPN连接的目标服务器的IP地址，应该加入例外）。</p>
+<h2 id="一个shuvpn的条件代理demo"><a class="markdownIt-Anchor" href="#一个shuvpn的条件代理demo"></a> 一个SHUVPN的条件代理demo</h2>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">client</span><br><span class="line">dev tun</span><br><span class="line">proto tcp</span><br><span class="line"></span><br><span class="line">remote <span class="number">202.120</span>.<span class="number">127.105</span> <span class="number">80</span></span><br><span class="line"></span><br><span class="line">comp-lzo</span><br><span class="line">resolv-retry infinite</span><br><span class="line">nobind</span><br><span class="line">persist-key</span><br><span class="line">persist-tun</span><br><span class="line">setenv CLIENT_CERT <span class="number">0</span></span><br><span class="line">auth-user-pass</span><br><span class="line">remote-cert-tls server</span><br><span class="line">verb <span class="number">3</span></span><br><span class="line"></span><br><span class="line">sndbuf <span class="number">0</span></span><br><span class="line">rcvbuf <span class="number">0</span></span><br><span class="line">cipher none</span><br><span class="line"></span><br><span class="line">route-nopull</span><br><span class="line">route <span class="number">10.95</span>.<span class="number">192.1</span> <span class="number">255.255</span>.<span class="number">255.255</span> vpn_gateway</span><br><span class="line">route <span class="number">9.9</span>.<span class="number">9.2</span>  <span class="number">255.255</span>.<span class="number">255.255</span> vpn_gateway</span><br><span class="line">route <span class="number">10.105</span>.<span class="number">3.129</span> <span class="number">255.255</span>.<span class="number">255.255</span> vpn_gateway</span><br><span class="line">route <span class="number">172.16</span>.<span class="number">255.253</span> <span class="number">255.255</span>.<span class="number">255.255</span> vpn_gateway</span><br><span class="line"><span class="comment">#route 172.31.0.0 255.255.0.0 vpn_gateway</span></span><br><span class="line">route <span class="number">202.120</span>.<span class="number">0.0</span> <span class="number">255.255</span>.<span class="number">0.0</span> vpn_gateway</span><br><span class="line">route <span class="number">202.121</span>.<span class="number">0.0</span> <span class="number">255.255</span>.<span class="number">0.0</span> vpn_gateway</span><br><span class="line">route <span class="number">202.120</span>.<span class="number">127.105</span> <span class="number">255.255</span>.<span class="number">255.255</span> net_gateway</span><br><span class="line"></span><br><span class="line">&lt;ca&gt;</span><br><span class="line">-----BEGIN CERTIFICATE-----</span><br><span class="line">MIIEoTCCA4mgAwIBAgIJAMW52H83M9JAMA0GCSqGSIb3DQEBCwUAMIGRMQswCQYD</span><br><span class="line">VQQGEwJDTjELMAkGA1UECBMCU0gxETAPBgNVBAcTCFNoYW5nSGFpMQwwCgYDVQQK</span><br><span class="line">EwNTSFUxDDAKBgNVBAsTA1NIVTEPMA0GA1UEAxMGU0hVIENBMRAwDgYDVQQpEwdF</span><br><span class="line">YXN5UlNBMSMwIQYJKoZIhvcNAQkBFhRyb2RkeTE5ODZAc2h1LmVkdS5jbjAeFw0x</span><br><span class="line">NzA2MjEwOTQwMjlaFw0yNzA2MTkwOTQwMjlaMIGRMQswCQYDVQQGEwJDTjELMAkG</span><br><span class="line">A1UECBMCU0gxETAPBgNVBAcTCFNoYW5nSGFpMQwwCgYDVQQKEwNTSFUxDDAKBgNV</span><br><span class="line">BAsTA1NIVTEPMA0GA1UEAxMGU0hVIENBMRAwDgYDVQQpEwdFYXN5UlNBMSMwIQYJ</span><br><span class="line">KoZIhvcNAQkBFhRyb2RkeTE5ODZAc2h1LmVkdS5jbjCCASIwDQYJKoZIhvcNAQEB</span><br><span class="line">BQADggEPADCCAQoCggEBAJ17qOLBJgX7DKsBxVhqpfYkZcPwy8DggDiwRHNLLP3h</span><br><span class="line">aEWRcS5NViqGthWh4mWvVkD9RypYlUywbYewoSkuLyllsFuw+iZUR93cWGMjccq/</span><br><span class="line"><span class="number">9</span>ZdhVPpYCGRJrtkTNeVtU9XTXEjZ3vWEwAMpOcVdhLQz6kxCVTt2qrB4ClhIAdPh</span><br><span class="line">jaz5tusNlwVGzaM7EMIr3O08Y8gYlAe78tkD+<span class="number">18</span>uCMYIyKPORs9H31UHbreLcONv</span><br><span class="line"><span class="number">4</span>Lc3dOz/g4KOQTkuwqcRnTJN1AVVfpjFUQeabyxFV/u4BkSvU33HWxLzYiyDGZkU</span><br><span class="line">W8PLr1mouNEXWGHxfhooZb9wozk+jfuLYk3KhKh9+ZMCAwEAAaOB+TCB9jAdBgNV</span><br><span class="line">HQ4EFgQU2sjeWJZf5o/<span class="number">1</span>eL1Ke5PyE7K1nw4wgcYGA1UdIwSBvjCBu4AU2sjeWJZf</span><br><span class="line"><span class="number">5</span>o/<span class="number">1</span>eL1Ke5PyE7K1nw6hgZekgZQwgZExCzAJBgNVBAYTAkNOMQswCQYDVQQIEwJT</span><br><span class="line">SDERMA8GA1UEBxMIU2hhbmdIYWkxDDAKBgNVBAoTA1NIVTEMMAoGA1UECxMDU0hV</span><br><span class="line">MQ8wDQYDVQQDEwZTSFUgQ0ExEDAOBgNVBCkTB0Vhc3lSU0ExIzAhBgkqhkiG9w0B</span><br><span class="line">CQEWFHJvZGR5MTk4NkBzaHUuZWR1LmNuggkAxbnYfzcz0kAwDAYDVR0TBAUwAwEB</span><br><span class="line">/zANBgkqhkiG9w0BAQsFAAOCAQEATqu24naX9L6jyzXt+mBJAS5IWr7gfh5Ymi7X</span><br><span class="line">Tl+uSXS+H0w7VYqSGsrQsd17U9RfcAxglhGx2FtYvuYVWHQ4InaUjbrzxDrFO+ZG</span><br><span class="line">rN471ASybovHR97rHfPOnqigAbDaKLynb8JoFYkzAxRAclPh/jZFXpG06KC+fkW/</span><br><span class="line">ox+<span class="number">1</span>WKF/<span class="number">6</span>d5gXOZOTf0GuJi4JHRojDzb5p/Z6/<span class="number">8</span>gxE9krVsQmfiR3HnaegyTVMle</span><br><span class="line">KzpCQRuEx5rn/uDvV6joYCwy4q0BkQTKGBeUofR2ETlTeC7t6l+GKRPwCQ8BeBvL</span><br><span class="line">e0+RSP6QWl/+flS0qdmtSswuZF98OqAuu6wW2PHXB3auUn77nw==</span><br><span class="line">-----END CERTIFICATE-----</span><br><span class="line">&lt;/ca&gt;</span><br></pre></td></tr></table></figure>
+<p>思路：linux下挂上全局OpenVPN，使用traceroute命令访问被教育网墙掉的几个网站，记录经过的几个IP地址，逐一添加到条件代理中去。经查询，202.120.112~202.120.127段与202.121.192~202.121.199是SHU的公网段。由于202.120.127.105是目标服务器IP地址，因此加入例外，否则OpenVPN将无法正常工作。</p>
+<h2 id="linux下添加开机自启"><a class="markdownIt-Anchor" href="#linux下添加开机自启"></a> Linux下添加开机自启</h2>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openvpn --daemon --config ~/shu.ovpn --auth-user-pass ~/pass.txt</span><br></pre></td></tr></table></figure>
+<p>使用上述命令可以启动OpenVPN的守护进程，其中pass.txt文件保存了连接所需的账号密码，第一行为账号，第二行为密码，两处文件路径均需完整路径。</p>
+<p>linux版本不同方法也不同，有的linux版本自启时没有su权限，使用sudo会无法进入图形界面（好像是Fedora），下面仅以deepin为例（debian系）：</p>
+<blockquote>
+<p><a href="https://wiki.deepin.org/index.php?title=%E8%87%AA%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F" target="_blank" rel="noopener"><em><strong>使用systemd执行rc.local</strong></em></a></p>
+<p>在使用了systemd作为启动器的系统（如较新版的deepin）中，默认不包含rc.local文件。此时请在/etc目录下以管理员权限创建一个名为rc.local的纯文本文件，并写入如下内容：</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/bash</span></span><br><span class="line"><span class="comment"># rc.local config file created by use</span></span><br><span class="line"></span><br><span class="line">把你需要执行的命令写在这里 </span><br><span class="line"><span class="keyword">exit</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>保存后，赋予该文件可执行权限：<code>sudo chmod +x /etc/rc.local</code>。下次重启时，systemd就会自动执行rc.local里面的命令了</p>
+</blockquote>
+<p>因此我们如法炮制，把<code>sudo openvpn --daemon --config ~/shu.ovpn --auth-user-pass ~/pass.txt</code>写入即可(deepin自启有su权限，故可以加sudo)。</p>
+<p>Shell中敲入reboot回车，一切明朗。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/VPN/">VPN</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/VPN/">VPN</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://mzz.pub/2018/03/11/JustPlay/OpenVPN%E8%AE%BE%E7%BD%AE%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86/" data-title="OpenVPN设置条件代理的方法 | mzz&#39;s blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/04/17/algorithm/最短路径归纳/" title="最短路径算法归纳">
+  <strong>上一篇：</strong><br/>
+  <span>
+  最短路径算法归纳</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/03/05/algorithm/扇形涂色/"  title="扇形涂色问题">
+ <strong>下一篇：</strong><br/> 
+ <span>扇形涂色问题
+</span>
+</a>
+</div>
+
+</nav>
+
+	  
+
+<!-- gitalk -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: "3352072f2ad84717407d",
+    clientSecret: "8ea01d206f36234ab857d6d90f16b85a865e79e3",
+    repo: "mzz2017.github.io",
+    owner: "mzz2017",
+    admin: ["mzz2017"],
+    id: decodeURIComponent(location.pathname), // Ensure uniqueness and length less than 50
+    distractionFreeMode: false, // Facebook-like distraction free mode
+    title: document.title.split(" | ")[0]
+  });
+
+  gitalk.render("gitalk-container");
+</script>
+<style type="text/css" rel="stylesheet">
+  #gitalk-container {
+    padding: 10px 20px 50px;
+  }
+</style>
+<!-- gitalk -->
+
+</div>  
+      <div class="openaside">
+  <a class="navbutton" href="#" title="显示侧边栏"></a>
+</div>
+
+ 
+<div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+   <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#openvpn%E8%AE%BE%E7%BD%AE%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text"> OpenVPN设置条件代理的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text"> 如何设置条件代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86%E4%BE%8B%E5%A4%96"><span class="toc-number">1.2.</span> <span class="toc-text"> 如何设置代理例外</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AAshuvpn%E7%9A%84%E6%9D%A1%E4%BB%B6%E4%BB%A3%E7%90%86demo"><span class="toc-number">2.</span> <span class="toc-text"> 一个SHUVPN的条件代理demo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#linux%E4%B8%8B%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF"><span class="toc-number">3.</span> <span class="toc-text"> Linux下添加开机自启</span></a></li></ol> 
+</div>
+
+<div id="asidepart">
+  <div class="closeaside">
+    <a class="closebutton" href="#" title="隐藏侧边栏"></a>
+  </div>
+  <aside class="clearfix">
+     
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/2017暑期集训/" title="2017暑期集训">2017暑期集训<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Cloud/" title="Cloud">Cloud<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/JAVA/" title="JAVA">JAVA<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/VPN/" title="VPN">VPN<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/cpp/" title="cpp">cpp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/data-science/" title="data-science">data-science<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ios/" title="ios">ios<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/latex/" title="latex">latex<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/linearAlgebra/" title="linearAlgebra">linearAlgebra<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nlp/" title="nlp">nlp<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/rsh/" title="rsh">rsh<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/ssh/" title="ssh">ssh<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/前端/" title="前端">前端<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/博客搭建指南/" title="博客搭建指南">博客搭建指南<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/安全/" title="安全">安全<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/应试/" title="应试">应试<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/微信小程序/" title="微信小程序">微信小程序<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/算法/" title="算法">算法<sup>23</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/网络/" title="网络">网络<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/路由器/" title="路由器">路由器<sup>2</sup></a></li>
+		  
+		
+		</ul>
+</div>
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">标签云</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/BFS/" style="font-size: 10px;">BFS</a> <a href="/tags/Cloud/" style="font-size: 15px;">Cloud</a> <a href="/tags/DP/" style="font-size: 15px;">DP</a> <a href="/tags/JAVA/" style="font-size: 15px;">JAVA</a> <a href="/tags/OAuth-%E7%BD%91%E7%BB%9C-%E5%AE%89%E5%85%A8/" style="font-size: 10px;">OAuth 网络 安全</a> <a href="/tags/SG%E5%8D%9A%E5%BC%88/" style="font-size: 15px;">SG博弈</a> <a href="/tags/VPN/" style="font-size: 10px;">VPN</a> <a href="/tags/VPN-%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">VPN 网络</a> <a href="/tags/cpp/" style="font-size: 10px;">cpp</a> <a href="/tags/data-science/" style="font-size: 15px;">data-science</a> <a href="/tags/ios-jailbreak/" style="font-size: 10px;">ios jailbreak</a> <a href="/tags/latex/" style="font-size: 10px;">latex</a> <a href="/tags/nlp/" style="font-size: 10px;">nlp</a> <a href="/tags/rsh/" style="font-size: 10px;">rsh</a> <a href="/tags/springmvc/" style="font-size: 10px;">springmvc</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/tip/" style="font-size: 10px;">tip</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97/" style="font-size: 10px;">单调队列</a> <a href="/tags/%E5%8D%9A%E5%BC%88/" style="font-size: 15px;">博弈</a> <a href="/tags/%E5%9B%BE%E8%AE%BA/" style="font-size: 17.5px;">图论</a> <a href="/tags/%E5%A4%B9%E9%80%BC%E6%80%9D%E6%83%B3/" style="font-size: 10px;">夹逼思想</a> <a href="/tags/%E5%B7%B4%E4%BB%80%E5%8D%9A%E5%BC%88/" style="font-size: 10px;">巴什博弈</a> <a href="/tags/%E5%BC%BA%E8%BF%9E%E9%80%9A/" style="font-size: 10px;">强连通</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a> <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">拓扑排序</a> <a href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" style="font-size: 10px;">排列组合</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 12.5px;">排序</a> <a href="/tags/%E6%95%B0%E8%AE%BA/" style="font-size: 20px;">数论</a> <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" style="font-size: 12.5px;">最小生成树</a> <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" style="font-size: 10px;">最短路径</a> <a href="/tags/%E6%A0%91/" style="font-size: 12.5px;">树</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">笔记</a> <a href="/tags/%E7%AC%94%E8%AE%B0-%E7%BA%BF%E4%BB%A3/" style="font-size: 10px;">笔记 线代</a> <a href="/tags/%E7%BB%84%E5%90%88%E6%95%B0/" style="font-size: 10px;">组合数</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 12.5px;">网络</a> <a href="/tags/%E7%BD%AE%E6%8D%A2%E7%BE%A4/" style="font-size: 10px;">置换群</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/" style="font-size: 12.5px;">计算几何</a> <a href="/tags/%E8%AE%A1%E7%BB%84/" style="font-size: 10px;">计组</a> <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 10px;">贪心</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" style="font-size: 12.5px;">路由器</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+  
+<div class="github-card">
+<p class="asidetitle">Github 名片</p>
+<div class="github-card" data-github="mzz2017" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
+ 
+  </aside>
+</div>
+<!-- <iframe
+  id="neteasemusic"
+  style="position: relative; float:left; margin:2em 0 0 3%"
+  frameborder="no"
+  border="0"
+  marginwidth="0"
+  marginheight="0"
+  height="450px"
+  width="297px"
+  src="//music.163.com/outchain/player?type=0&id=452039124&auto=0&height=450"
+></iframe> -->
+<style type="text/css" rel="stylesheet">
+  .moveMain ~ #neteasemusic {
+    display: none;
+  }
+</style>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am with little well content, And a little from thee sent <br/>
+			Is enough, with true intent. To be steadfast friend.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/mzz2017" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:m@mzz.pub" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo" style="color: #fff;">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman" style="color: #fff;">Jacman</a> © 2020 
+		
+		<a href="/about" target="_blank" title="mzz2017" style="color: #fff">mzz2017</a>
+		
+		
+		</p>
+		
+		<script type="text/javascript">
+		  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+		  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+		  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+		  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+		  
+		  _st('install','KARTphmFVqNf53QQL7QN','2.0.0');
+		</script>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div style="text-align:center; color:#fff;" class="theme-info">
+博客全站共100.3k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
+</div>
+</footer>
+    <script src="js/jquery-2.0.3.min.js"></script>
+<script src="js/jquery.imagesloaded.min.js"></script>
+<script src="js/gallery.js"></script>
+<script src="js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    $('#toc.toc-aside').css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(15,260-$(this).scrollTop()));
+    o.css("right",30);
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+            c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+      c.click();
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(50,295-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1263193610'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263193610%26online%3D1%26show%3Dline' type='text/javascript'%3E%3C/script%3E"));</script>
+
+
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+<!-- BAIDU_PUSH Begin -->
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<!-- BAIDU_PUSH End -->
+
+<!-- MathJax Begin -->
+<!-- partial('mathjax') -->
+<!-- MathJax End -->
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/KaTeX/0.7.1/katex.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css"><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+  </body>
+</html>
