@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
     <title>GITHUB+HEXO博客搭建 | mzz&#39;s blog</title>
@@ -81,13 +81,13 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:mzz.pub">
 					</form>
 					
 					</li>
 				</ul>
-			</ul></nav>			
+			</nav>			
 			
 </div>
     </header>
@@ -104,7 +104,7 @@
        
 		<a href="/about" title="mzz2017" target="_blank" itemprop="author">mzz2017</a>
 		
-  </p><p class="article-time">
+  <p class="article-time">
     <time datetime="2017-08-06T08:14:00.000Z" itemprop="datePublished"> 发表于 2017-08-06</time>
     
   </p>
@@ -218,7 +218,7 @@
 <ul>
 <li><strong><a href="http://npm.taobao.org/package/hexo-math" target="_blank" rel="noopener">hexo-math插件</a></strong> 按照文档来很快的，但是！！敲重点！！Config这里需要这样写才能使用MathJax：</li>
 </ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line"><span class="attr">  engine:</span> <span class="string">'mathjax'</span> <span class="comment"># or 'katex'</span></span><br><span class="line"><span class="attr">  mathjax:</span></span><br><span class="line"><span class="attr">    src:</span> <span class="string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line"><span class="attr">      tex2jax:</span> </span><br><span class="line"><span class="attr">        inlineMath:</span> <span class="string">[</span> <span class="string">['$','$'],</span> <span class="string">["\\(","\\)"]</span> <span class="string">]</span></span><br><span class="line"><span class="attr">        skipTags:</span> <span class="string">['script',</span> <span class="string">'noscript'</span><span class="string">,</span> <span class="string">'style'</span><span class="string">,</span> <span class="string">'textarea'</span><span class="string">,</span> <span class="string">'pre'</span><span class="string">,</span> <span class="string">'code'</span><span class="string">]</span></span><br><span class="line"><span class="attr">        processEscapes:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">      TeX:</span> </span><br><span class="line"><span class="attr">        equationNumbers:</span> </span><br><span class="line"><span class="attr">          autoNumber:</span> <span class="string">"AMS"</span></span><br><span class="line">  <span class="comment"># MathJax config</span></span><br><span class="line"><span class="attr">  katex:</span></span><br><span class="line"><span class="attr">    css:</span> <span class="string">custom_css_source</span></span><br><span class="line"><span class="attr">    js:</span> <span class="string">custom_js_source</span> <span class="comment"># not used</span></span><br><span class="line"><span class="attr">    config:</span></span><br><span class="line">      <span class="comment"># KaTeX config</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">'mathjax'</span> <span class="comment"># or 'katex'</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">src:</span> <span class="string">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span></span><br><span class="line">    <span class="attr">config:</span></span><br><span class="line">      <span class="attr">tex2jax:</span> </span><br><span class="line">        <span class="attr">inlineMath:</span> <span class="string">[</span> <span class="string">['$','$'],</span> <span class="string">["\\(","\\)"]</span> <span class="string">]</span></span><br><span class="line">        <span class="attr">skipTags:</span> <span class="string">['script',</span> <span class="string">'noscript'</span><span class="string">,</span> <span class="string">'style'</span><span class="string">,</span> <span class="string">'textarea'</span><span class="string">,</span> <span class="string">'pre'</span><span class="string">,</span> <span class="string">'code'</span><span class="string">]</span></span><br><span class="line">        <span class="attr">processEscapes:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">TeX:</span> </span><br><span class="line">        <span class="attr">equationNumbers:</span> </span><br><span class="line">          <span class="attr">autoNumber:</span> <span class="string">"AMS"</span></span><br><span class="line">  <span class="comment"># MathJax config</span></span><br><span class="line">  <span class="attr">katex:</span></span><br><span class="line">    <span class="attr">css:</span> <span class="string">custom_css_source</span></span><br><span class="line">    <span class="attr">js:</span> <span class="string">custom_js_source</span> <span class="comment"># not used</span></span><br><span class="line">    <span class="attr">config:</span></span><br><span class="line">      <span class="comment"># KaTeX config</span></span><br></pre></td></tr></table></figure>
 <p>我可是花了不少时间去填坑的啊。</p>
 <p>悄悄提示你：如果你是支持mathjax的主题别忘了注释或删掉<code>\themes\jacman\layout\partial\after_footer.ejs</code>中有关mathjax的语句（非jacman主题也可能放在head.ejs等地方）。</p>
 <h3 id="mathjax语法学习"><a class="markdownIt-Anchor" href="#mathjax语法学习"></a> MathJax语法学习</h3>
@@ -342,7 +342,7 @@
 <li>下方字体颜色与背景颜色重合的解决方案：添加<code>style=&quot;color: #fff&quot;</code></li>
 <li>代码区无法自动换行问题的解决方案：在<code>\themes\jacman\layout\_partial\head.ejs</code>中的<code>&lt;/head&gt;</code>之前添加</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-tag">pre</span> &#123;<span class="attribute">white-space</span>: pre-wrap;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-tag">pre</span> &#123;<span class="attribute">white-space</span>: pre-wrap;&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="主页出现乱码文章"><a class="markdownIt-Anchor" href="#主页出现乱码文章"></a> 主页出现乱码文章</h3>
 <ul>
 <li>发现主页有一个乱码文章，却在资源管理器找不到这个文件。这时候在bash下<code>cd</code>到_posts目录，用<code>dir</code>命令查看是否有可疑的文件，然后用<code>rm</code>删掉。注意，如果字符串中有特殊字符，需要用<code>\</code>进行转义。</li>
@@ -378,7 +378,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2017/08/06/JustPlay/blog/" data-title="GITHUB+HEXO博客搭建 | mzz&#39;s blog" data-tsina class="share clearfix">
+	  <div data-url="http://mzz.pub/2017/08/06/JustPlay/blog/" data-title="GITHUB+HEXO博客搭建 | mzz&#39;s blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -391,9 +391,9 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev">
+ <div class="prev" >
  <a href="/2017/08/07/algorithm/排序章节/" title="排序章节总结">
-  <strong>上一篇：</strong><br>
+  <strong>上一篇：</strong><br/>
   <span>
   排序章节总结</span>
 </a>
@@ -401,8 +401,8 @@
 
 
 <div class="next">
-<a href="/2017/08/05/algorithm/51Nod1714/" title="51Nod1714 - B君的游戏 (SG博弈)">
- <strong>下一篇：</strong><br> 
+<a href="/2017/08/05/algorithm/51Nod1714/"  title="51Nod1714 - B君的游戏 (SG博弈)">
+ <strong>下一篇：</strong><br/> 
  <span>51Nod1714 - B君的游戏 (SG博弈)
 </span>
 </a>
@@ -413,7 +413,7 @@
 	  
 
 <!-- gitalk -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
 <script type="text/javascript">
@@ -555,7 +555,7 @@
 <div class="github-card">
 <p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="mzz2017" data-theme="medium"></div>
-<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
 
  
@@ -578,7 +578,7 @@
   }
 </style>
     </div>
-    <footer><div id="footer">
+    <footer><div id="footer" >
 	
 	<div class="line">
 		<span></span>
@@ -587,11 +587,11 @@
 	
 	
 	<section class="info">
-		<p> I am with little well content, And a little from thee sent <br>
+		<p> I am with little well content, And a little from thee sent <br/>
 			Is enough, with true intent. To be steadfast friend.</p>
 	</section>
 	 
-	<div class="social-font">
+	<div class="social-font" class="clearfix">
 		
 		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
 		
@@ -632,7 +632,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
 博客全站共100.3k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
-</span></div>
+</div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
@@ -795,7 +795,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

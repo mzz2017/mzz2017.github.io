@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
     <title>C++继承与多态章节小结 | mzz&#39;s blog</title>
@@ -82,13 +82,13 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:mzz.pub">
 					</form>
 					
 					</li>
 				</ul>
-			</ul></nav>			
+			</nav>			
 			
 </div>
     </header>
@@ -105,7 +105,7 @@
        
 		<a href="/about" title="mzz2017" target="_blank" itemprop="author">mzz2017</a>
 		
-  </p><p class="article-time">
+  <p class="article-time">
     <time datetime="2017-10-25T07:33:00.000Z" itemprop="datePublished"> 发表于 2017-10-25</time>
     
   </p>
@@ -174,11 +174,11 @@
 <p>假设Base是基类，B1是派生类。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">B1 *b1 = <span class="keyword">new</span> B1; </span><br><span class="line"><span class="keyword">delete</span> b1;<span class="comment">//先调用B1的析构，然后调Base的析构。</span></span><br></pre></td></tr></table></figure>
 <p>也就是说，先调用派生类的析构函数，然后再调用基类的析构函数。为了验证，我们写了如下代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Base() &#123; p = <span class="keyword">new</span> <span class="keyword">int</span>; &#125;</span><br><span class="line">	<span class="keyword">virtual</span> ~Base() &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Base析构"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">delete</span> p; p = <span class="literal">nullptr</span>; &#125;;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">	<span class="keyword">int</span> *p;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B1</span> <span class="title">final</span>:</span><span class="keyword">public</span> Base&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	B1() &#123; p2 = <span class="keyword">new</span> <span class="keyword">int</span>; &#125;;</span><br><span class="line">	~B1() override &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"B1析构"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">delete</span> p2; p2 = <span class="literal">nullptr</span>; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> *p2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	B1 *b1 = <span class="keyword">new</span> B1;</span><br><span class="line">	<span class="keyword">delete</span> b1;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Base() &#123; p = <span class="keyword">new</span> <span class="keyword">int</span>; &#125;</span><br><span class="line">	<span class="keyword">virtual</span> ~Base() &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Base析构"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">delete</span> p; p = <span class="literal">nullptr</span>; &#125;;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">	<span class="keyword">int</span> *p;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B1</span> <span class="title">final</span>:</span><span class="keyword">public</span> Base&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	B1() &#123; p2 = <span class="keyword">new</span> <span class="keyword">int</span>; &#125;;</span><br><span class="line">	~B1() <span class="keyword">override</span> &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"B1析构"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">delete</span> p2; p2 = <span class="literal">nullptr</span>; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> *p2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	B1 *b1 = <span class="keyword">new</span> B1;</span><br><span class="line">	<span class="keyword">delete</span> b1;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果为：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">B1析构</span><br><span class="line">Base析构</span><br></pre></td></tr></table></figure>
 <p>那如果我将b1的类型转换为Base后再delete，将会发生什么呢？</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Base() &#123; p = <span class="keyword">new</span> <span class="keyword">int</span>; &#125;</span><br><span class="line">	<span class="keyword">virtual</span> ~Base() &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Base析构"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">delete</span> p; p = <span class="literal">nullptr</span>; &#125;;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">	<span class="keyword">int</span> *p;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B1</span> <span class="title">final</span>:</span><span class="keyword">public</span> Base&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	B1() &#123; p2 = <span class="keyword">new</span> <span class="keyword">int</span>; &#125;;</span><br><span class="line">	~B1() override &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"B1析构"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">delete</span> p2; p2 = <span class="literal">nullptr</span>; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> *p2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	B1 *b1 = <span class="keyword">new</span> B1;</span><br><span class="line">	Base *base = b1;</span><br><span class="line">	<span class="keyword">delete</span> base;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Base() &#123; p = <span class="keyword">new</span> <span class="keyword">int</span>; &#125;</span><br><span class="line">	<span class="keyword">virtual</span> ~Base() &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"Base析构"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">delete</span> p; p = <span class="literal">nullptr</span>; &#125;;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">	<span class="keyword">int</span> *p;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B1</span> <span class="title">final</span>:</span><span class="keyword">public</span> Base&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	B1() &#123; p2 = <span class="keyword">new</span> <span class="keyword">int</span>; &#125;;</span><br><span class="line">	~B1() <span class="keyword">override</span> &#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"B1析构"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">delete</span> p2; p2 = <span class="literal">nullptr</span>; &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">	<span class="keyword">int</span> *p2;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	B1 *b1 = <span class="keyword">new</span> B1;</span><br><span class="line">	Base *base = b1;</span><br><span class="line">	<span class="keyword">delete</span> base;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>运行结果为：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">B1析构</span><br><span class="line">Base析构</span><br></pre></td></tr></table></figure>
 <p>与之前的结果一模一样。</p>
@@ -229,7 +229,7 @@
 </li>
 <li>
 <p>为了验证int fcn()是否真的被D1继承下来了，我们编写如下代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D2</span> :</span><span class="keyword">public</span> D1 &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">fcn</span><span class="params">(<span class="keyword">int</span>)</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"D2:fcn(int)"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">return</span> <span class="number">0</span>;&#125;<span class="comment">//隐藏D1中的fcn(int)，非虚函数</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">fcn</span><span class="params">()</span> override </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"D2:fcn()"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">return</span> <span class="number">0</span>; &#125;<span class="comment">//覆盖D1中的虚函数fcn()</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">()</span> override </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"D2:f2()"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	D2 a;</span><br><span class="line">	a.fcn(<span class="number">3</span>);</span><br><span class="line">	a.fcn();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">D2</span> :</span><span class="keyword">public</span> D1 &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">fcn</span><span class="params">(<span class="keyword">int</span>)</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"D2:fcn(int)"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">return</span> <span class="number">0</span>;&#125;<span class="comment">//隐藏D1中的fcn(int)，非虚函数</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">fcn</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"D2:fcn()"</span> &lt;&lt; <span class="built_in">endl</span>; <span class="keyword">return</span> <span class="number">0</span>; &#125;<span class="comment">//覆盖D1中的虚函数fcn()</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">f2</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123; <span class="built_in">cout</span> &lt;&lt; <span class="string">"D2:f2()"</span> &lt;&lt; <span class="built_in">endl</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	D2 a;</span><br><span class="line">	a.fcn(<span class="number">3</span>);</span><br><span class="line">	a.fcn();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译是通过的，所以说明D1中确实有一个int fcn()的虚函数。</p>
 <p>输出结果：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D2:fcn(int)</span><br><span class="line">D2:fcn()</span><br></pre></td></tr></table></figure>
@@ -270,7 +270,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2017/10/25/cpp/cpp继承与多态章节小结/" data-title="C++继承与多态章节小结 | mzz&#39;s blog" data-tsina class="share clearfix">
+	  <div data-url="http://mzz.pub/2017/10/25/cpp/cpp继承与多态章节小结/" data-title="C++继承与多态章节小结 | mzz&#39;s blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -283,9 +283,9 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev">
+ <div class="prev" >
  <a href="/2017/12/22/JustPlay/MobileUbuntu/" title="把Ubuntu16.04装进移动硬盘的惨痛实战">
-  <strong>上一篇：</strong><br>
+  <strong>上一篇：</strong><br/>
   <span>
   把Ubuntu16.04装进移动硬盘的惨痛实战</span>
 </a>
@@ -293,8 +293,8 @@
 
 
 <div class="next">
-<a href="/2017/08/28/JAVA/JAVA传参/" title="JAVA传参 | JAVA可以传引用吗？">
- <strong>下一篇：</strong><br> 
+<a href="/2017/08/28/JAVA/JAVA传参/"  title="JAVA传参 | JAVA可以传引用吗？">
+ <strong>下一篇：</strong><br/> 
  <span>JAVA传参 | JAVA可以传引用吗？
 </span>
 </a>
@@ -305,7 +305,7 @@
 	  
 
 <!-- gitalk -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
 <script type="text/javascript">
@@ -447,7 +447,7 @@
 <div class="github-card">
 <p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="mzz2017" data-theme="medium"></div>
-<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
 
  
@@ -470,7 +470,7 @@
   }
 </style>
     </div>
-    <footer><div id="footer">
+    <footer><div id="footer" >
 	
 	<div class="line">
 		<span></span>
@@ -479,11 +479,11 @@
 	
 	
 	<section class="info">
-		<p> I am with little well content, And a little from thee sent <br>
+		<p> I am with little well content, And a little from thee sent <br/>
 			Is enough, with true intent. To be steadfast friend.</p>
 	</section>
 	 
-	<div class="social-font">
+	<div class="social-font" class="clearfix">
 		
 		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
 		
@@ -524,7 +524,7 @@
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
 博客全站共100.3k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
-</span></div>
+</div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
@@ -687,7 +687,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

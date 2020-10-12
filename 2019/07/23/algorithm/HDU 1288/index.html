@@ -1,7 +1,7 @@
 
  <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
   
     <title>HDU 1288 Hat&#39;s Tea | mzz&#39;s blog</title>
@@ -82,13 +82,13 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索">
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:mzz.pub">
 					</form>
 					
 					</li>
 				</ul>
-			</ul></nav>			
+			</nav>			
 			
 </div>
     </header>
@@ -105,7 +105,7 @@
        
 		<a href="/about" title="mzz2017" target="_blank" itemprop="author">mzz2017</a>
 		
-  </p><p class="article-time">
+  <p class="article-time">
     <time datetime="2019-07-22T18:32:00.000Z" itemprop="datePublished"> 发表于 2019-07-23</time>
     
   </p>
@@ -115,7 +115,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hdu-1288-hats-tea"><span class="toc-number">1.</span> <span class="toc-text"> HDU 1288 Hat’s Tea</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 代码</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hdu-1288-hats-tea"><span class="toc-number">1.</span> <span class="toc-text"> HDU 1288 Hat’s Tea</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 代码</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
@@ -156,7 +156,7 @@ Your program will be given numbers and types of coins Hat has and the tea price.
 </blockquote>
 <p>这道题网上还有另解，应该是数论吧，感兴趣的可以去翻一翻。</p>
 <h3 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a,b,c,d,n,m,l;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  1  5  10</span></span><br><span class="line"><span class="comment">  b  c  d</span></span><br><span class="line"><span class="comment">  n  m  l</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//    freopen("input.txt","r",stdin);</span></span><br><span class="line"><span class="comment">//    freopen("output.txt","w",stdout);</span></span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;a,&amp;b,&amp;c,&amp;d) &amp;&amp; !(!a&amp;&amp;!b&amp;&amp;!c&amp;&amp;!d))&#123;</span><br><span class="line">        <span class="keyword">if</span>(a&gt;b+c*<span class="number">5</span>+d*<span class="number">10</span>)&#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"Hat cannot buy tea."</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> t=a;</span><br><span class="line">            l=min(d,t/<span class="number">10</span>);</span><br><span class="line">            t-=<span class="number">10</span>*l;</span><br><span class="line">            m=min(c,t/<span class="number">5</span>);</span><br><span class="line">            t-=<span class="number">5</span>*m;</span><br><span class="line">            <span class="keyword">if</span>(b&lt;t)&#123;</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">"Hat cannot buy tea."</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            n=t;</span><br><span class="line">            <span class="keyword">bool</span> changed=<span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">while</span>(changed)&#123;</span><br><span class="line">                <span class="keyword">int</span> an=n,am=m,al=l;</span><br><span class="line">                <span class="keyword">int</span> inc=min((c-m)/<span class="number">2</span>,l);</span><br><span class="line">                l-=inc;</span><br><span class="line">                m+=inc*<span class="number">2</span>;</span><br><span class="line">                inc=min((b-n)/<span class="number">10</span>,l);</span><br><span class="line">                l-=inc;</span><br><span class="line">                n+=inc*<span class="number">10</span>;</span><br><span class="line">                inc=min((b-n)/<span class="number">5</span>,m);</span><br><span class="line">                m-=inc;</span><br><span class="line">                n+=inc*<span class="number">5</span>;</span><br><span class="line">                <span class="comment">//还有可能是1jiao剩5个，5jiao剩1个</span></span><br><span class="line">                <span class="keyword">if</span>(b-n&gt;=<span class="number">5</span> &amp;&amp; c-m&gt;=<span class="number">1</span> &amp;&amp; l&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">                    l-=<span class="number">1</span>;</span><br><span class="line">                    n+=<span class="number">5</span>;</span><br><span class="line">                    m+=<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                changed=(an!=n)||(am!=m)||(al!=l);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d YiJiao, %d WuJiao, and %d ShiJiao\n"</span>,n,m,l);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a,b,c,d,n,m,l;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  1  5  10</span></span><br><span class="line"><span class="comment">  b  c  d</span></span><br><span class="line"><span class="comment">  n  m  l</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//    freopen("input.txt","r",stdin);</span></span><br><span class="line"><span class="comment">//    freopen("output.txt","w",stdout);</span></span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>,&amp;a,&amp;b,&amp;c,&amp;d) &amp;&amp; !(!a&amp;&amp;!b&amp;&amp;!c&amp;&amp;!d))&#123;</span><br><span class="line">        <span class="keyword">if</span>(a&gt;b+c*<span class="number">5</span>+d*<span class="number">10</span>)&#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"Hat cannot buy tea."</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> t=a;</span><br><span class="line">            l=<span class="built_in">min</span>(d,t/<span class="number">10</span>);</span><br><span class="line">            t-=<span class="number">10</span>*l;</span><br><span class="line">            m=<span class="built_in">min</span>(c,t/<span class="number">5</span>);</span><br><span class="line">            t-=<span class="number">5</span>*m;</span><br><span class="line">            <span class="keyword">if</span>(b&lt;t)&#123;</span><br><span class="line">                <span class="built_in">puts</span>(<span class="string">"Hat cannot buy tea."</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            n=t;</span><br><span class="line">            <span class="keyword">bool</span> changed=<span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">while</span>(changed)&#123;</span><br><span class="line">                <span class="keyword">int</span> an=n,am=m,al=l;</span><br><span class="line">                <span class="keyword">int</span> inc=<span class="built_in">min</span>((c-m)/<span class="number">2</span>,l);</span><br><span class="line">                l-=inc;</span><br><span class="line">                m+=inc*<span class="number">2</span>;</span><br><span class="line">                inc=<span class="built_in">min</span>((b-n)/<span class="number">10</span>,l);</span><br><span class="line">                l-=inc;</span><br><span class="line">                n+=inc*<span class="number">10</span>;</span><br><span class="line">                inc=<span class="built_in">min</span>((b-n)/<span class="number">5</span>,m);</span><br><span class="line">                m-=inc;</span><br><span class="line">                n+=inc*<span class="number">5</span>;</span><br><span class="line">                <span class="comment">//还有可能是1jiao剩5个，5jiao剩1个</span></span><br><span class="line">                <span class="keyword">if</span>(b-n&gt;=<span class="number">5</span> &amp;&amp; c-m&gt;=<span class="number">1</span> &amp;&amp; l&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">                    l-=<span class="number">1</span>;</span><br><span class="line">                    n+=<span class="number">5</span>;</span><br><span class="line">                    m+=<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                changed=(an!=n)||(am!=m)||(al!=l);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d YiJiao, %d WuJiao, and %d ShiJiao\n"</span>,n,m,l);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -179,7 +179,7 @@ Your program will be given numbers and types of coins Hat has and the tea price.
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://mzz.pub/2019/07/23/algorithm/HDU 1288/" data-title="HDU 1288 Hat&#39;s Tea | mzz&#39;s blog" data-tsina class="share clearfix">
+	  <div data-url="http://mzz.pub/2019/07/23/algorithm/HDU 1288/" data-title="HDU 1288 Hat&#39;s Tea | mzz&#39;s blog" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -192,9 +192,9 @@ Your program will be given numbers and types of coins Hat has and the tea price.
 	
 <nav class="article-nav clearfix">
  
- <div class="prev">
+ <div class="prev" >
  <a href="/2019/07/24/面试/内存不足产生的若干面试问题/" title="内存不足产生的若干面试问题">
-  <strong>上一篇：</strong><br>
+  <strong>上一篇：</strong><br/>
   <span>
   内存不足产生的若干面试问题</span>
 </a>
@@ -202,8 +202,8 @@ Your program will be given numbers and types of coins Hat has and the tea price.
 
 
 <div class="next">
-<a href="/2019/07/22/algorithm/OpenJ_Bailian - 1062/" title="最短路【昂贵的婚礼 OpenJ_Bailian - 1062】">
- <strong>下一篇：</strong><br> 
+<a href="/2019/07/22/algorithm/OpenJ_Bailian - 1062/"  title="最短路【昂贵的婚礼 OpenJ_Bailian - 1062】">
+ <strong>下一篇：</strong><br/> 
  <span>最短路【昂贵的婚礼 OpenJ_Bailian - 1062】
 </span>
 </a>
@@ -214,7 +214,7 @@ Your program will be given numbers and types of coins Hat has and the tea price.
 	  
 
 <!-- gitalk -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
 <script type="text/javascript">
@@ -246,7 +246,7 @@ Your program will be given numbers and types of coins Hat has and the tea price.
  
 <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
-   <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hdu-1288-hats-tea"><span class="toc-number">1.</span> <span class="toc-text"> HDU 1288 Hat’s Tea</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 代码</span></a></li></ol></li></ol> 
+   <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hdu-1288-hats-tea"><span class="toc-number">1.</span> <span class="toc-text"> HDU 1288 Hat’s Tea</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目描述"><span class="toc-number">1.0.1.</span> <span class="toc-text"> 题目描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析"><span class="toc-number">1.0.2.</span> <span class="toc-text"> 分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">1.0.3.</span> <span class="toc-text"> 代码</span></a></li></ol></li></ol></li></ol> 
 </div>
 
 <div id="asidepart">
@@ -356,7 +356,7 @@ Your program will be given numbers and types of coins Hat has and the tea price.
 <div class="github-card">
 <p class="asidetitle">Github 名片</p>
 <div class="github-card" data-github="mzz2017" data-theme="medium"></div>
-<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
 </div>
 
  
@@ -379,7 +379,7 @@ Your program will be given numbers and types of coins Hat has and the tea price.
   }
 </style>
     </div>
-    <footer><div id="footer">
+    <footer><div id="footer" >
 	
 	<div class="line">
 		<span></span>
@@ -388,11 +388,11 @@ Your program will be given numbers and types of coins Hat has and the tea price.
 	
 	
 	<section class="info">
-		<p> I am with little well content, And a little from thee sent <br>
+		<p> I am with little well content, And a little from thee sent <br/>
 			Is enough, with true intent. To be steadfast friend.</p>
 	</section>
 	 
-	<div class="social-font">
+	<div class="social-font" class="clearfix">
 		
 		<a href="http://weibo.com/6251750072" target="_blank" class="icon-weibo" title="微博"></a>
 		
@@ -433,7 +433,7 @@ Your program will be given numbers and types of coins Hat has and the tea price.
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <div style="text-align:center; color:#fff;" class="theme-info">
 博客全站共100.3k字 | 总访客数:<span id="busuanzi_value_site_uv"> 
-</span></div>
+</div>
 </footer>
     <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
@@ -596,7 +596,7 @@ $(document).ready(function(){
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
